@@ -1,1 +1,2 @@
+*.knsv filter=lfs diff=lfs merge=lfs -text
 *.knsv !text !filter !merge !diff
