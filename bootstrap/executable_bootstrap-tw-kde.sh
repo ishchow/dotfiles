@@ -40,7 +40,8 @@ sudo zypper in -y \
     pipewire-pulseaudio \
     wireplumber \
     pipewire-aptx \
-    thermald
+    thermald \
+    remmina
 
 if ! command -v distrobox &> /dev/null; then
     echo "Installing distrobox..."
