@@ -41,7 +41,8 @@ sudo zypper in -y \
     wireplumber \
     pipewire-aptx \
     thermald \
-    remmina
+    remmina \
+    spectacle
 
 if ! command -v distrobox &> /dev/null; then
     echo "Installing distrobox..."
