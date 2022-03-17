@@ -151,11 +151,4 @@ fi
 echo "Installing konsave..."
 sudo python3 -m pip install konsave
 
-STR=$(konsave -l)
-if [[ "$STR" == *"No profile found"* ]]; then
-    echo "Restoring plasma settings..."
-    konsave -i ~/default.knsv
-    konsave -a default
-fi
-
 kwriteconfig5 --file ~/.config/kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.kglobalaccel,/component/kwin,org.kde.kglobalaccel.Component,invokeShortcut,ExposeAll"
