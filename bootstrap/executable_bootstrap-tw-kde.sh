@@ -42,7 +42,8 @@ sudo zypper in -y \
     pipewire-aptx \
     thermald \
     remmina \
-    spectacle
+    spectacle \
+    earlyoom
 
 if ! command -v distrobox &> /dev/null; then
     echo "Installing distrobox..."
@@ -53,6 +54,7 @@ echo "Starting services..."
 sudo systemctl enable --now touchegg.service
 sudo systemctl enable --now docker.service
 sudo systemctl enable --now thermald.service
+sudo systemctl enable --now earlyoom
 systemctl --user enable --now pipewire.service
 systemctl --user enable --now wireplumber.service
 systemctl --user enable --now pipewire-pulse.{service,socket}
@@ -150,5 +152,12 @@ fi
 
 echo "Installing konsave..."
 sudo python3 -m pip install konsave
+
+STR=$(konsave -l)
+if [[ "$STR" == *"No profile found"* ]]; then
+    echo "Restoring plasma settings..."
+    konsave -i ~/default.knsv
+    konsave -a default
+fi
 
 kwriteconfig5 --file ~/.config/kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.kglobalaccel,/component/kwin,org.kde.kglobalaccel.Component,invokeShortcut,ExposeAll"
