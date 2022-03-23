@@ -43,7 +43,8 @@ sudo zypper in -y \
     thermald \
     remmina \
     spectacle \
-    earlyoom
+    earlyoom \
+    kcalc
 
 if ! command -v distrobox &> /dev/null; then
     echo "Installing distrobox..."
@@ -92,7 +93,6 @@ sudo flatpak install -y \
     md.obsidian.Obsidian \
     org.gimp.GIMP \
     org.kde.gwenview \
-    org.kde.kcalc \
     org.kde.okular \
     org.libreoffice.LibreOffice \
     org.mozilla.firefox \
