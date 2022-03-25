@@ -141,9 +141,12 @@ if [[ ! -z "$WSL_DISTRO_NAME" ]]; then
         then
             git.exe "$@"
         else
-            /usr/bin/git "$@"
+            $(which git) "$@"
         fi
     }
+
+    # See: https://github.com/microsoft/WSL/issues/2530#issuecomment-879597974
+    export TMUX_TMPDIR='/tmp'
 fi
 
 source "$HOME/.cargo/env"
