@@ -148,3 +148,5 @@ fi
 
 source "$HOME/.cargo/env"
 export PATH="$PATH:~/.local/bin"
+
+complete -F _complete_alias "${!BASH_ALIASES[@]}"
