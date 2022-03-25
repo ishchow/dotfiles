@@ -8,7 +8,7 @@ Open Powershell as admin:
 
 Set execution policy to bypass so we can run bw cli. I generally find the defaults to be annoying anyways:
 
-`Set-ExecutionPolicy -ExecutionPolicy Bypass`
+`Set-ExecutionPolicy -ExecutionPolicy Bypass -Force`
 
 Install chocolatey:
 
