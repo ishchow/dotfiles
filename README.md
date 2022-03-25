@@ -65,6 +65,13 @@ bw login
 chezmoi init --apply ishchow
 ```
 
+# Change chezmoi repo settings
+
+```
+git remote set-url origin git@github.com:ishchow/dotfiles.git
+git config user.email "ishaat@ualberta.ca"
+```
+
 # Bootstrap new system
 ## Linux (OpenSUSE Tumbleweed)
 
