@@ -8,7 +8,9 @@ Open Powershell as admin:
 
 Set execution policy to bypass so we can run bw cli. I generally find the defaults to be annoying anyways:
 
-`Set-ExecutionPolicy -ExecutionPolicy Bypass -Force`
+```
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
+```
 
 Install chocolatey:
 
@@ -18,11 +20,15 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 
 Install chezmoi and nodejs (needed for bw cli):
 
-`choco install -y git chezmoi nodejs`
+```
+choco install -y git chezmoi nodejs
+```
 
 Install bw cli:
 
-`npm install -g @bitwarden/cli`
+```
+npm install -g @bitwarden/cli
+```
 
 ## Linux (OpenSUSE Tumbleweed)
 
@@ -33,24 +39,46 @@ sudo zypper in -y npm nodejs-default git
 sudo npm install -g @bitwarden/cli
 ```
 
-# Init dotfiles
-chezmoi init --apply ishchow
+# Set api client secret
 
+Windows:
+
+```
+$env:BW_CLIENTSECRET='...' 
+```
+
+Linux:
+
+```
+export BW_CLIENTSECRET="..."
+```
+
+# Log into bitwarden
+
+```
+bw login
+```
 
 # Initialize dotfiles
 
-`chezmoi init --apply ishchow`
+```
+chezmoi init --apply ishchow
+```
 
 # Bootstrap new system
 ## Linux (OpenSUSE Tumbleweed)
 
 Enter bootstrap directory:
 
-`cd ~/bootstrap`
+```
+cd ~/bootstrap
+```
 
 Run with default arguments:
 
-`./bootstrap`
+```
+./bootstrap
+```
 
 ## Windows
 
@@ -58,8 +86,12 @@ Open Powershell as admin.
 
 Enter bootstrap directory:
 
-`cd ~\bootstrap`
+```
+cd ~\bootstrap
+```
 
 Run bootstrap script:
 
-`.\bootstrap.ps1`
+```
+.\bootstrap.ps1
+```
