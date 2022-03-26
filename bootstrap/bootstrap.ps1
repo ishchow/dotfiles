@@ -51,8 +51,8 @@ if (!$(Check-Command "choco"))
     Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 }
 
-Write-Header "Installing Chocolatey packages"
-cinst -y .\packages.config
+Write-Header "Installing Base Chocolatey packages"
+cinst -y .\packages-base.config
 
 Write-Header "Installing Windows Features"
 cinst -y .\features.config -s windowsFeatures
