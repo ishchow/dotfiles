@@ -33,7 +33,6 @@ sudo zypper in -y \
     python38-protobuf \
     runc \
     gnome-keyring \
-    virtual-desktop-bar \
     onedrive \
     onedrive-bash-completion \
     pipewire-alsa \
@@ -88,8 +87,6 @@ sudo flatpak install -y \
     com.sindresorhus.Caprine \
     com.spotify.Client  \
     org.freedesktop.Platform.VulkanLayer.MangoHud \
-    com.visualstudio.code \
-    io.neovim.nvim \
     md.obsidian.Obsidian \
     org.gimp.GIMP \
     org.kde.gwenview \
@@ -155,9 +152,11 @@ sudo python3 -m pip install konsave
 
 STR=$(konsave -l)
 if [[ "$STR" == *"No profile found"* ]]; then
-    echo "Restoring plasma settings..."
-    konsave -i ~/default.knsv
-    konsave -a default
+    if test ~/default.knsv;
+        echo "Restoring plasma settings..."
+        konsave -i ~/default.knsv
+        konsave -a default
+    then
 fi
 
 kwriteconfig5 --file ~/.config/kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.kglobalaccel,/component/kwin,org.kde.kglobalaccel.Component,invokeShortcut,ExposeAll"
