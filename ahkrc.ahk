@@ -158,7 +158,7 @@ if (KomorebicExists())
 	FloatRule("exe", "1Password.exe")
 	FloatRule("exe", "Wox.exe")
 	FloatRule("exe", "ddm.exe")
-	FloatRule("exe", "Steam.exe")
+	FloatRule("exe", "steam.exe")
 	FloatRule("class", "Chrome_RenderWidgetHostHWND") ; GOG Electron invisible overlay
 	FloatRule("class", "CEFCLIENT")
 
