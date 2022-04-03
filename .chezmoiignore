@@ -3,6 +3,8 @@ bootstrap/bootstrap.ps1
 bootstrap/features.config
 bootstrap/packages.config
 bootstrap/packages-base.config
+ahkrc.ahk
+komorebic.lib.ahk
 {{ end }}
 
 {{ if ne .chezmoi.os "linux"  }}
