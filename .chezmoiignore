@@ -2,7 +2,7 @@
 bootstrap/bootstrap.ps1
 bootstrap/features.config
 bootstrap/packages.config
-run_setup_nvim_dir.ps1
+bootstrap/packages-base.config
 {{ end }}
 
 {{ if ne .chezmoi.os "linux"  }}
