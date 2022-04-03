@@ -14,7 +14,9 @@ run_setup_nvim_dir.ps1
 .profile
 .tmux.conf
 bootstrap/bootstrap.sh
-default.knsv
+bootstrap/bootstrap-common.sh
+bootstrap/bootstrap-twdevbox.sh
+bootstrap/bootstrap-tw-kde.sh
 {{ end  }}
 
 README.md
