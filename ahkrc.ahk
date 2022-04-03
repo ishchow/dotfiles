@@ -174,11 +174,14 @@ if (KomorebicExists())
 	IdentifyBorderOverflow("exe", "GalaxyClient.exe")
 	IdentifyBorderOverflow("class", "ZPFTEWndClass")
 	IdentifyBorderOverflow("exe", "Teams.exe")
+	IdentifyBorderOverflow("exe", "Obsidian.exe")
+	IdentifyBorderOverflow("exe", "code.exe")
 
 	; Identify applications to be forcibly managed
 	ManageRule("exe", "GalaxyClient.exe")
 	ManageRule("exe", "code.exe")
 	ManageRule("exe", "notepad.exe")
+	ManageRule("exe", "Obsidian.exe")
 }
 
 ;; deactivate capslock completely
