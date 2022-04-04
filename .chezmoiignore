@@ -1,10 +1,8 @@
 {{ if ne .chezmoi.os "windows" }}
-bootstrap/bootstrap.ps1
-bootstrap/features.config
-bootstrap/packages.config
-bootstrap/packages-base.config
-ahkrc.ahk
-komorebic.lib.ahk
+bootstrap/*.ps1
+bootstrap/*.config
+*.ahk
+Documents/WindowsPowerShell/
 {{ end }}
 
 {{ if ne .chezmoi.os "linux"  }}
@@ -15,10 +13,7 @@ komorebic.lib.ahk
 .bashrc
 .profile
 .tmux.conf
-bootstrap/bootstrap.sh
-bootstrap/bootstrap-common.sh
-bootstrap/bootstrap-twdevbox.sh
-bootstrap/bootstrap-tw-kde.sh
+bootstrap/*.sh
 {{ end  }}
 
 README.md
