@@ -23,7 +23,7 @@ OnShellMessage( wParam, lParam )
 		GetKeyState, mouseDown, LButton
 		if (mouseDown <> "D" and A_TickCount - lastMouseClickTime > 500) {
 			; delay a tiny bit to ignore taskbar focus on Win+Number switching
-			Sleep, 100
+			Sleep, 200
 			CoordMode, Mouse, Screen
 			WinGetPos, wx, wy, width, height, A
 
