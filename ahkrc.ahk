@@ -6,6 +6,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #InstallKeybdHook
 #SingleInstance force
 
+; Disable Windows 10 Show Desktop Button
+Control, Hide, , TrayShowDesktopButtonWClass1, ahk_class Shell_TrayWnd
+
 ;; deactivate capslock completely
 SetCapslockState, AlwaysOff
 
