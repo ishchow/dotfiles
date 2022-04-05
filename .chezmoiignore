@@ -1,7 +1,6 @@
 {{ if ne .chezmoi.os "windows" }}
 bootstrap/*.ps1
 bootstrap/*.config
-*.ahk
 Documents/WindowsPowerShell/
 {{ end }}
 
@@ -17,3 +16,4 @@ bootstrap/*.sh
 {{ end  }}
 
 README.md
+ahk/
