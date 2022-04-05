@@ -7,7 +7,7 @@ return
 ; modal shortcuts using CapsLock
 #If GetKeyState("Capslock","P") ;"P" means "pressed".
 
-; Turn caps lock off in case it was turned on. CapsLock + Esc.
+; Turn caps lock off in case it was turned on. CapsLock + Ctrl + Shift + Alt + Win + C.
 ^+!#c::SetCapslockState, off
 
 ; Reload current ahk script, CapsLock + Alt + Shift + '
