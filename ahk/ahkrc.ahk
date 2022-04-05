@@ -6,6 +6,10 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #InstallKeybdHook
 #SingleInstance force
 
+; needs to be at top of file for some reason
+; deactivate capslock completely
+SetCapslockState, AlwaysOff
+
 ; Makes the mouse cursor follow window focus, but ONLY if the focus change
 ; wasn't caused by the mouse - e.g. Alt-Tab, Win+<Number>, hotkeys, ...
 ; Saves a lot of mousing around on multi-monitor setups!
@@ -58,9 +62,6 @@ Return
 
 ; Disable Windows 10 Show Desktop Button
 Control, Hide, , TrayShowDesktopButtonWClass1, ahk_class Shell_TrayWnd
-
-;; deactivate capslock completely
-SetCapslockState, AlwaysOff
 
 Capslock UP::
 	if (A_PriorKey = "Capslock") {
