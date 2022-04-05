@@ -71,6 +71,9 @@ return
 ; modal shortcuts using CapsLock
 #If GetKeyState("Capslock","P") ;"P" means "pressed".
 
+; Turn caps lock off in case it was turned on. CapsLock + Esc.
+^+!#c::SetCapslockState, off
+
 ; Move the focused window out of its containing panel. CapsLock + Shift + Enter
 +Enter::RunWait, fancywm.exe --action PullWindowUp, , Hide
 
