@@ -63,7 +63,7 @@ GetMousePositionOnScreen()
 	MouseGetPos, MouseX, MouseY, MouseActiveWindowHandle, MouseControlClass 
 	Mouse.X := MouseX
 	Mouse.Y := MouseY
-	Mosue.ActiveWindowsHandle := MouseActiveWindowHandle
+	Mosue.WindowHandle := MouseActiveWindowHandle
 	Mouse.ControlClass := MouseControlClass
 	return Mouse
 }
