@@ -1,3 +1,5 @@
+#Include %A_LineFile%\..\Common\screen_utils.ahk
+
 Capslock UP::
 	if (A_PriorKey = "Capslock") {
 		Send {Esc}
@@ -15,6 +17,18 @@ return
 
 ; Kill application/window. CapsLock + W
 w::!F4
+
+; Focus virtual desktop to the right. CapsLock + N
+n::Send,^#{Right}
+
+; Focus virtual desktop to left. CapsLock + B
+b::Send,^#{Left}
+
+; Move mouse to monitor on left. CapsLock + ,
+,::MoveMouseToMonitorInDirection("left")
+
+; Mouve mouse to monitor on right. CapsLock + .
+.::MoveMouseToMonitorInDirection("right")
 
 ; CapsLock + any unhandled key combo + vim keys to key combo + arrow keys.
 ; * is the wildcard prefix, it matches any key combo. {Blind} is the wildcard key combo.
