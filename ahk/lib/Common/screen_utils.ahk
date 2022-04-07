@@ -60,11 +60,11 @@ GetMousePositionOnScreen()
 {
 	Mouse := {}
 	Coordmode, Mouse, Screen
-	MouseGetPos, MouseX, MouseY, MouseWindowHandle, MouseControlHandle, 2
+	MouseGetPos, MouseX, MouseY, MouseActiveWindowHandle, MouseControlClass 
 	Mouse.X := MouseX
 	Mouse.Y := MouseY
-	Mosue.WindowHandle := MouseWindowHandle
-	Mouse.ControlHandle := MouseControlHandle
+	Mosue.WindowHandle := MouseActiveWindowHandle
+	Mouse.ControlClass := MouseControlClass
 	return Mouse
 }
 
@@ -131,9 +131,6 @@ MoveMouseToMonitorInDirection(Direction)
             {
                 NewMonitor := VirtualScreen.Monitors[NewMonitorIndex]
                 MoveMouseToCenterOfMonitor(Mouse, NewMonitor)
-
-                ; Focus window by clicking on it. For some reason, WinActivate and ControlFocus don't work for this purpose.
-                Click
             }
             else
             {
@@ -168,7 +165,7 @@ ShowRawVirtualScreenInfo()
 ShowMousePosition()
 {
 	Mouse := GetMousePositionOnScreen()
-	MsgStr := Format("The cursor is at X{1} Y{2}.`nWindow hwnd: {3}, Control hwnd: {4}.", Mouse.X, Mouse.Y, Mouse.WindowHandle, Mouse.ControlHandle)
+	MsgStr := Format("The cursor is at X{1} Y{2}", Mouse.X, Mouse.Y)
 	MsgBox, %MsgStr%.
 }
 
