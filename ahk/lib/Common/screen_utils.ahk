@@ -111,9 +111,17 @@ MoveMouseToMonitorInDirection(Direction)
             {
                 NewMonitorIndex += 1
             }
+            else if (Direction == "right")
+            {
+                NewMonitorIndex := 1
+            }
             else if (Direction == "left" and (A_Index > 1))
             {
                 NewMonitorIndex -= 1
+            }
+            else if (Direction == "left")
+            {
+                NewMonitorIndex := VirtualScreen.MonitorCount
             }
 
             ;MsgStr := Format("Direction:`t{1}`nA_Index:`t{2}`nNewMonitorIndex:`t{3}", Direction, A_Index, NewMonitorIndex)
