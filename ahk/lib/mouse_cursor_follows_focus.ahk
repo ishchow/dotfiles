@@ -26,12 +26,17 @@ OnShellMessage( wParam, lParam )
 			Sleep, 200
 			CoordMode, Mouse, Screen
 			WinGetPos, wx, wy, width, height, A
+			WinGet, processName, ProcessName, A
 
-			; puts the cursor in middle of the active window, tweak to your needs
-			mx := Round(wx + width * 0.50)
-			my := Round(wy + height * 0.50)
+			; these processes send a lot of focus events and thus behave weirdly
+			if (processName != "steam.exe")
+			{
+				; puts the cursor in middle of the active window, tweak to your needs
+				mx := Round(wx + width * 0.50)
+				my := Round(wy + height * 0.50)
 
-			DllCall("SetCursorPos", int, mx, int, my)
+				DllCall("SetCursorPos", int, mx, int, my)
+			}
 		}
 	}
 }
