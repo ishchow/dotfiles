@@ -2,6 +2,7 @@
 bootstrap/*.ps1
 bootstrap/*.config
 Documents/WindowsPowerShell/
+.local/bin/VirtualDesktopIndicator
 {{ end }}
 
 {{ if ne .chezmoi.os "linux"  }}
