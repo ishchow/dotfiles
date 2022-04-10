@@ -23,11 +23,6 @@ return require('packer').startup(function()
     use 'itchyny/lightline.vim' -- Status bar
     -- #### Cosmetic Stuff ####
 
-    -- #### Git ####
-    use 'lambdalisue/gina.vim' -- Async control of git repos (similar to vim-fugitive)
-    use 'airblade/vim-gitgutter' -- Git gutter
-    -- #### Git ####
-
     -- #### Search ####
     use 'haya14busa/is.vim' -- Automatically clear search highlight after cursor moves
     use 'nelstrom/vim-visual-star-search' -- Modify * to also work with visual selections.
