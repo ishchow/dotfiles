@@ -153,3 +153,5 @@ source "$HOME/.cargo/env"
 export PATH="$PATH:~/.local/bin"
 
 complete -F _complete_alias "${!BASH_ALIASES[@]}"
+
+eval "$(fasd --init auto)"a
