@@ -33,7 +33,8 @@ sudo zypper in -y \
     fzf-tmux \
     clang \
     lldb \
-    neovim
+    neovim \
+    fasd
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
     echo "Installing tmux plugin manager (tpm)..."
