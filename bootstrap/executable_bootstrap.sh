@@ -15,9 +15,13 @@ sudo zypper in -y \
     fuse \
     ripgrep \
     ripgrep-bash-completion \
+    ripgrep-fish-completion \
     bat \
     yarn \
     exa \
+    exa-fish-completion \
+    fd \
+    fd-fish-completion \
     ruby \
     python \
     python2-pip \
@@ -30,11 +34,13 @@ sudo zypper in -y \
     tmux \
     fzf \
     fzf-bash-completion \
+    fzf-fish-completion \
     fzf-tmux \
     clang \
     lldb \
     neovim \
-    fasd
+    fasd \
+    fish
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
     echo "Installing tmux plugin manager (tpm)..."
@@ -89,3 +95,9 @@ if comamnd -v firewall-cmd &> /dev/null; then
     sudo firewall-cmd --permanent --zone=public --add-service=https
     sudo firewall-cmd --reload
 fi
+
+# Fish boostrap
+# curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+# fisher install fishgretel/fasd
+# fisher install PatrickF1/fzf.fish
+

@@ -99,7 +99,7 @@ alias gclfdx='git clean -fdx'
 alias gdf='git diff'
 alias gdfh='git diff HEAD'
 alias gdfom='git diff origin/$(gbrdef)'
-alias gdfoh='git diff origin/HEAD'
+alias gdfoh='git diff origin/$(git rev-parse --abbrev-ref HEAD)'
 alias gdfob='git diff origin/$(gbrsc)'
 # git cherry-pick
 alias gcp='git cherry-pick'
@@ -138,21 +138,3 @@ fi
 alias tmls='tmux ls'
 alias tmas='tmux attach-session -t'
 alias tmks='tmux kill-session -t'
-
-
-#### todo ####
-alias t='todo.sh'
-alias td='todo.sh do'
-alias ta='todo.sh a'
-alias tap='todo.sh append'
-alias tav='todo.sh archive'
-alias tls='todo.sh ls'
-alias tlsa='todo.sh lsa'
-alias tlsc='todo.sh lsc'
-alias tlsp='todo.sh lsp'
-alias tlsprj='todo.sh lsprj'
-alias trm='todo.sh rm'
-
-
-#### lazygit ####
-alias lg='lazygit'

@@ -29,12 +29,14 @@ sudo zypper in -y \
     criu \
     docker \
     docker-bash-completion \
+    docker-fish-completion \
     libnet9 \
     python38-protobuf \
     runc \
     gnome-keyring \
     onedrive \
     onedrive-bash-completion \
+    onedrive-fish-completion \
     pipewire-alsa \
     pipewire-pulseaudio \
     wireplumber \
