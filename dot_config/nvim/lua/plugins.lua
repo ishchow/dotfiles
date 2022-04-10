@@ -8,13 +8,7 @@ return require('packer').startup(function()
     use {'wbthomason/packer.nvim', opt = true}
 
     -- #### Colorschemes ####
-    -- use 'morhetz/gruvbox'
-    -- use 'arcticicestudio/nord-vim'
-    -- use 'mhartington/oceanic-next'
     use 'sainnhe/sonokai'
-    -- use 'sainnhe/edge'
-    -- use 'glepnir/zephyr-nvim'
-    -- use 'ChristianChiarulli/nvcode-color-schemes.vim'
     -- #### Colorschemes ####
 
     -- #### Editing ####
@@ -42,48 +36,18 @@ return require('packer').startup(function()
 
     -- #### Misc ####
     use 'voldikss/vim-floaterm' -- Create floating terminals
-    use 'vitalk/vim-simple-todo' -- Work with markdown lists
     -- #### Misc ####
 
     -- #### Syntax Highlighting ####
     use 'lepture/vim-jinja' -- Jinja/Nunjucks Template Highlighting
     -- #### Syntax Highlighting ####
 
-    -- #### Snippets ####
-    use 'L3MON4D3/LuaSnip'
-    -- #### Snippets ####
-
     if vim.fn.has('nvim-0.5') then
-        -- #### LSP ####
-        use 'neovim/nvim-lspconfig' -- Configs for lsp servers
-        use 'kosayoda/nvim-lightbulb' -- Show lightbulb in sign column if code action available at cursor
-        -- #### LSP ####
-
-        -- #### Completion ####
-        use "hrsh7th/nvim-cmp"
-        use "hrsh7th/cmp-buffer"
-        use "hrsh7th/cmp-path"
-        use "hrsh7th/cmp-nvim-lua"
-        use "hrsh7th/cmp-nvim-lsp"
-        use "saadparwaiz1/cmp_luasnip"
-        -- #### Completion ####
-
         -- #### Telescope ####
         use {
             'nvim-telescope/telescope.nvim', -- Fuzzy finder
             requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
         }
-        use {'fannheyward/telescope-coc.nvim'}
         -- #### Telescope ####
-
-        -- #### Treesitter ####
-        use 'nvim-treesitter/nvim-treesitter' -- Treesitter highlighting and config
-        -- #### Treesitter ####
-
-        -- #### DAP ####
-        -- use 'mfussenegger/nvim-dap'
-        -- use 'theHamsta/nvim-dap-virtual-text'
-        -- use 'mfussenegger/nvim-dap-python'
-        -- #### DAP ####
     end
 end)
