@@ -13,6 +13,11 @@ Documents/WindowsPowerShell/
 .profile
 .tmux.conf
 bootstrap/*.sh
+.local/bin/caps_lock_press_to_escape
+.local/bin/create_virtmic
+.local/bin/delete_virtmic
+.local/bin/kill_touchegg_logout
+.local/bin/steam
 {{ end  }}
 
 README.md
