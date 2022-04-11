@@ -154,4 +154,4 @@ export PATH="$PATH:~/.local/bin"
 
 complete -F _complete_alias "${!BASH_ALIASES[@]}"
 
-eval "$(fasd --init auto)"a
+eval "$(fasd --init auto)"
