@@ -18,7 +18,6 @@ Install-Module ZLocation
 winget install gerardog.gsudo
 gsudo config CacheMode auto
 Install-Module -Name PSFzf
-PowerShellGet\Install-Module posh-git
 
 Write-Header "Disable Sleep on AC Power..."
 Powercfg /Change standby-timeout-ac 0

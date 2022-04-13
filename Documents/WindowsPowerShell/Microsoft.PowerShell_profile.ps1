@@ -1,9 +1,5 @@
-Import-Module posh-git
 Import-Module PSReadLine
 Import-Module ZLocation
-
-# Disable posh-git prompt
-$GitPromptSettings.EnablePromptStatus = $false
 
 Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
