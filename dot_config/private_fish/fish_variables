@@ -3,8 +3,12 @@
 SETUVAR EDITOR:nvim
 SETUVAR VISUAL:nvim
 SETUVAR __fish_initialized:3400
+SETUVAR _fish_abbr_cat:bat\x20\x2dp
 SETUVAR _fish_abbr_cdgroot:cd\x20\x24\x28git\x20rev\x2dparse\x20\x2d\x2dshow\x2dtoplevel\x29
 SETUVAR _fish_abbr_cl:clear
+SETUVAR _fish_abbr_cz:chezmoi
+SETUVAR _fish_abbr_czad:chezmoi\x20add
+SETUVAR _fish_abbr_czap:chezmoi\x20apply
 SETUVAR _fish_abbr_g:git
 SETUVAR _fish_abbr_ga:git\x20add
 SETUVAR _fish_abbr_gaa:git\x20add\x20\x2dA
