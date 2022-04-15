@@ -47,6 +47,7 @@ SETUVAR _fish_abbr_gmb:git\x20merge\x2dbase
 SETUVAR _fish_abbr_gmbom:git\x20merge\x2dbase\x20origin/\x24\x28git\x20remote\x20show\x20origin\x20\x7c\x20grep\x20\x22HEAD\x20branch\x22\x20\x7c\x20sed\x20\x22s/\x2e\x2a\x20//\x22\x29
 SETUVAR _fish_abbr_gpl:git\x20pull
 SETUVAR _fish_abbr_gplom:git\x20pull\x20origin\x20master
+SETUVAR _fish_abbr_gplr:git\x20pull\x20\x2d\x2drebase
 SETUVAR _fish_abbr_gplrb:git\x20pull\x20\x2d\x2drebase
 SETUVAR _fish_abbr_gpu:git\x20push
 SETUVAR _fish_abbr_gpuoh:git\x20push\x20\x2du\x20origin\x20HEAD
