@@ -18,6 +18,7 @@ SETUVAR _fish_abbr_gbr:git\x20branch
 SETUVAR _fish_abbr_gbrD:git\x20branch\x20\x2dD
 SETUVAR _fish_abbr_gbrd:git\x20branch\x20\x2dd
 SETUVAR _fish_abbr_gbrdef:git\x20remote\x20show\x20origin\x20\x7c\x20grep\x20\x22HEAD\x20branch\x22\x20\x7c\x20sed\x20\x22s/\x2e\x2a\x20//\x22
+SETUVAR _fish_abbr_gbrm:git\x20branch\x20\x2dm
 SETUVAR _fish_abbr_gbrsc:git\x20branch\x20\x2d\x2dshow\x2dcurrent
 SETUVAR _fish_abbr_gc:git\x20commit
 SETUVAR _fish_abbr_gca:git\x20commit\x20\x2d\x2damend
