@@ -8,6 +8,7 @@ sethandler <C-[> a:vim
 sethandler <C-]> a:vim
 sethandler <C-S> a:ide
 sethandler <C-R> a:ide
+sethandler <C-E> a:ide
 
 " Settings
 set incsearch
@@ -18,6 +19,7 @@ set idearefactormode=keep
 set scrolloff=5
 set clipboard+=unnamed
 set clipboard+=ideaput
+set showmode
 
 " Plugins
 Plug 'tpope/vim-surround'
@@ -47,12 +49,15 @@ nmap gu <Action>(FindUsages)
 nmap gr <Action>(RenameElement)
 nmap ge <Action>(GotoNextError)
 nmap gE <Action>(GotoPreviousError)
+nmap <leader>e :e ~\.ideavimrc<CR>
+nmap <leader>r <Action>(IdeaVim.ReloadVimRc.reload)
 
 map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>d <Action>(Debug)
 map <leader>s <Action>(FileStructurePopup)
+map <leader>f <Action>(RecentFiles)
 map <leader><leader> <Action>(SearchEverywhere)
-nmap <leader>e :e ~/.ideavimrc<CR>
-nmap <leader>r <Action>(IdeaVim.ReloadVimRc.reload)
+map <C-O> <Action>(Back)
+map <C-I> <Action>(Forward)
 
 " Find more examples here: https://jb.gg/share-ideavimrc
