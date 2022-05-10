@@ -1,0 +1,58 @@
+"" Source your .vimrc
+"source ~/.vimrc
+
+" Configure handlers
+sethandler <C-O> a:vim
+sethandler <C-I> a:vim
+sethandler <C-[> a:vim
+sethandler <C-]> a:vim
+sethandler <C-S> a:ide
+sethandler <C-R> a:ide
+
+" Settings
+set incsearch
+set ideajoin
+set number
+set relativenumber
+set idearefactormode=keep
+set scrolloff=5
+set clipboard+=unnamed
+set clipboard+=ideaput
+
+" Plugins
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'machakann/vim-highlightedyank'
+
+" Leader key
+let mapleader=" "
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" system clipboard
+vmap <leader>y "+y
+vmap <leader>d "+d
+nmap <leader>y "+yy
+nmap <leader>p "+p
+nmap <leader>P "+P
+vmap <leader>p "+p
+vmap <leader>P "+P
+
+nmap gd <Action>(GotoDeclaration)
+nmap gs <Action>(GotoSuperMethod)
+nmap gi <Action>(GotoImplementation)
+nmap gb <Action>(JumpToLastChange)
+nmap gu <Action>(FindUsages)
+nmap gr <Action>(RenameElement)
+nmap ge <Action>(GotoNextError)
+nmap gE <Action>(GotoPreviousError)
+
+map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>d <Action>(Debug)
+map <leader>s <Action>(FileStructurePopup)
+map <leader><leader> <Action>(SearchEverywhere)
+nmap <leader>e :e ~/.ideavimrc<CR>
+nmap <leader>r <Action>(IdeaVim.ReloadVimRc.reload)
+
+" Find more examples here: https://jb.gg/share-ideavimrc
