@@ -32,6 +32,7 @@ SETUVAR _fish_abbr_gclnfd:git\x20clean\x20\x2dnfd
 SETUVAR _fish_abbr_gcm:git\x20commit\x20\x2dm
 SETUVAR _fish_abbr_gco:git\x20checkout
 SETUVAR _fish_abbr_gcob:git\x20checkout\x20\x2db
+SETUVAR _fish_abbr_gcom:git\x20checkout\x20master
 SETUVAR _fish_abbr_gcp:git\x20cherry\x2dpick
 SETUVAR _fish_abbr_gcpa:git\x20cherry\x2dpick\x20\x2d\x2dabort
 SETUVAR _fish_abbr_gcpc:git\x20cherry\x2dpick\x20\x2d\x2dcontinue
@@ -53,6 +54,8 @@ SETUVAR _fish_abbr_gplom:git\x20pull\x20origin\x20master
 SETUVAR _fish_abbr_gplr:git\x20pull\x20\x2d\x2drebase
 SETUVAR _fish_abbr_gplrb:git\x20pull\x20\x2d\x2drebase
 SETUVAR _fish_abbr_gpu:git\x20push
+SETUVAR _fish_abbr_gpud:git\x20push\x20\x2dd\x20origin
+SETUVAR _fish_abbr_gpudob:git\x20push\x20\x2dd\x20origin\x20dev/ischowdh/rm\x2dcdn\x2dthrottling
 SETUVAR _fish_abbr_gpuod:git\x20push\x20\x2dd\x20origin
 SETUVAR _fish_abbr_gpuoh:git\x20push\x20\x2du\x20origin\x20HEAD
 SETUVAR _fish_abbr_grb:git\x20rebase
