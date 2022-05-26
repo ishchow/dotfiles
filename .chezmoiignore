@@ -19,6 +19,7 @@ bootstrap/*.sh
 .local/bin/delete_virtmic
 .local/bin/kill_touchegg_logout
 .local/bin/steam
+.config/fish
 {{ end  }}
 
 README.md
