@@ -35,8 +35,9 @@ return
 ; Change the width/height of the focused window. CapsLock + Ctrl + Vim keys
 ^h::RunWait, fancywm.exe --action DecreaseWidth, , Hide
 ^j::RunWait, fancywm.exe --action DecreaseHeight, , Hide
-^k::RunWait, fancywm.exe --action IncreaseWidth, , Hide
-^l::RunWait, fancywm.exe --action IncreaseHeight, , Hide
+^k::RunWait, fancywm.exe --action IncreaseHeight, , Hide
+^l::RunWait, fancywm.exe --action IncreaseWidth, , Hide
+
 
 ; Switch to the selected virtual desktop. CapsLock + Alt + Number
 !1::RunWait, fancywm.exe --action SwitchToDesktop1, , Hide
