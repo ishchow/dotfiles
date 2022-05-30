@@ -38,7 +38,6 @@ return
 ^k::RunWait, fancywm.exe --action IncreaseHeight, , Hide
 ^l::RunWait, fancywm.exe --action IncreaseWidth, , Hide
 
-
 ; Switch to the selected virtual desktop. CapsLock + Alt + Number
 !1::RunWait, fancywm.exe --action SwitchToDesktop1, , Hide
 !2::RunWait, fancywm.exe --action SwitchToDesktop2, , Hide
