@@ -107,13 +107,13 @@ RunWait, fancywm.exe --action MoveToDesktop9, , Hide
 RunWait, fancywm.exe --action SwitchToDesktop9, , Hide
 return
 
-; Toggle floating mode for the active window.
+; Toggle floating mode for the active window. CapsLock + Shift + F
 +f::RunWait, fancywm.exe --action ToggleFloatingMode, , Hide
 
-; Temporarily toggle the window management functionality in FancyWM.
+; Temporarily toggle the window management functionality in FancyWM. CapsLock + Alt + Shift + F
 !+f::RunWait, fancywm.exe --action ToggleManager, , Hide
 
-; Manually refresh the window positions.
+; Manually refresh the window positions. CapsLock + Shift + R.
 +r::RunWait, fancywm.exe --action RefreshWorkspace, , Hide
 
 ; Reload current ahk script, CapsLock + Alt + Shift + '
