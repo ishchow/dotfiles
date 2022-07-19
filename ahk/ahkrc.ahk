@@ -16,3 +16,8 @@ Control, Hide, , TrayShowDesktopButtonWClass1, ahk_class Shell_TrayWnd
 
 #Include %A_ScriptDir%\Lib\mouse_cursor_follows_focus.ahk
 #Include %A_ScriptDir%\Lib\modal_capslock.ahk
+
+SetTimer, ReloadScript,% 30*1000 ;30 seconds
+
+ReloadScript:
+	Reload
