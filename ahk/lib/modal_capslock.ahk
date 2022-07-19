@@ -33,10 +33,47 @@ return
 +/::RunWait, fancywm.exe --action CreateStackPanel, , Hide
 
 ; Change the width/height of the focused window. CapsLock + Ctrl + Vim keys
-^h::RunWait, fancywm.exe --action DecreaseWidth, , Hide
-^j::RunWait, fancywm.exe --action DecreaseHeight, , Hide
-^k::RunWait, fancywm.exe --action IncreaseHeight, , Hide
-^l::RunWait, fancywm.exe --action IncreaseWidth, , Hide
+; Decrease width
+^h::
+Send, {LWin down}{Shift down}
+Sleep, 150
+Send, {LWin up}{Shift up}
+Sleep, 150
+Send, [
+Return
+
+; Decrease height
+^j::
+Send, {LWin down}{Shift down}
+Sleep, 150
+Send, {LWin up}{Shift up}
+Sleep, 150
+Send, {;}
+Return
+
+; Increase height
+^k::
+Send, {LWin down}{Shift down}
+Sleep, 150
+Send, {LWin up}{Shift up}
+Sleep, 150
+Send, '
+Return
+
+; Increase width
+^l::
+Send, {LWin down}{Shift down}
+Sleep, 150
+Send, {LWin up}{Shift up}
+Sleep, 150
+Send, ]
+Return
+
+; Doesn't work, see https://github.com/FancyWM/fancywm-issues/issues/77
+;^h::RunWait, fancywm.exe --action DecreaseWidth, , Hide
+;^j::RunWait, fancywm.exe --action DecreaseHeight, , Hide
+;^k::RunWait, fancywm.exe --action IncreaseHeight, , Hide
+;^l::RunWait, fancywm.exe --action IncreaseWidth, , Hide
 
 ; Switch to the selected virtual desktop. CapsLock + Alt + Number
 !1::RunWait, fancywm.exe --action SwitchToDesktop1, , Hide
