@@ -11,7 +11,8 @@ InvokeFancyWmAction(key)
 }
 
 Capslock UP::
-	if (A_PriorKey = "Capslock") {
+	if (A_PriorKey = "Capslock")
+	{
 		Send {Esc}
 	}
 return
