@@ -1,5 +1,15 @@
 #Include %A_LineFile%\..\Common\screen_utils.ahk
 
+; Invokes key press after activation shortcut
+InvokeFancyWmAction(key)
+{
+	Send, {LWin down}{Shift down}
+	Sleep, 100
+	Send, {LWin up}{Shift up}
+	Send, {%key%}
+	Return
+}
+
 Capslock UP::
 	if (A_PriorKey = "Capslock") {
 		Send {Esc}
@@ -34,40 +44,16 @@ return
 
 ; Change the width/height of the focused window. CapsLock + Ctrl + Vim keys
 ; Decrease width
-^h::
-Send, {LWin down}{Shift down}
-Sleep, 150
-Send, {LWin up}{Shift up}
-Sleep, 150
-Send, [
-Return
+^h::InvokeFancyWmAction("[")
 
 ; Decrease height
-^j::
-Send, {LWin down}{Shift down}
-Sleep, 150
-Send, {LWin up}{Shift up}
-Sleep, 150
-Send, {;}
-Return
+^j::InvokeFancyWmAction(";")
 
 ; Increase height
-^k::
-Send, {LWin down}{Shift down}
-Sleep, 150
-Send, {LWin up}{Shift up}
-Sleep, 150
-Send, '
-Return
+^k::InvokeFancyWmAction("'")
 
 ; Increase width
-^l::
-Send, {LWin down}{Shift down}
-Sleep, 150
-Send, {LWin up}{Shift up}
-Sleep, 150
-Send, ]
-Return
+^l::InvokeFancyWmAction("]")
 
 ; Doesn't work, see https://github.com/FancyWM/fancywm-issues/issues/77
 ;^h::RunWait, fancywm.exe --action DecreaseWidth, , Hide
