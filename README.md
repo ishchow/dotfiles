@@ -32,11 +32,28 @@ npm install -g @bitwarden/cli
 
 ## Linux (OpenSUSE Tumbleweed)
 
-[Install chezmoi](https://www.chezmoi.io/docs/install/)
+Install git:
 
 ```
-sudo zypper in -y npm nodejs-default git
-sudo npm install -g @bitwarden/cli
+sudo zypper in -y git
+```
+
+[Install chezmoi](https://www.chezmoi.io/docs/install/)
+
+Install fnm, node, and npm:
+
+```
+curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
+export PATH=/home/ishaat/.fnm:$PATH
+eval "`fnm env`"
+fnm install v16.16.0
+fnm default v16.16.0
+```
+
+Install bitwarden cli:
+
+```
+npm install -g @bitwarden/cli
 ```
 
 # Set api client secret
@@ -69,7 +86,7 @@ chezmoi init --apply ishchow
 
 ```
 git remote set-url origin git@github.com:ishchow/dotfiles.git
-git config user.email "ishaat@ualberta.ca"
+git config user.email "<chezmoi repo email>" # In case default git user is different
 ```
 
 # Bootstrap new system
