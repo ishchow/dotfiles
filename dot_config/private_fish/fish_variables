@@ -33,6 +33,7 @@ SETUVAR _fish_abbr_gcm:git\x20commit\x20\x2dm
 SETUVAR _fish_abbr_gco:git\x20checkout
 SETUVAR _fish_abbr_gcob:git\x20checkout\x20\x2db
 SETUVAR _fish_abbr_gcom:git\x20checkout\x20master
+SETUVAR _fish_abbr_gcoom:git\x20checkout\x20origin/master
 SETUVAR _fish_abbr_gcp:git\x20cherry\x2dpick
 SETUVAR _fish_abbr_gcpa:git\x20cherry\x2dpick\x20\x2d\x2dabort
 SETUVAR _fish_abbr_gcpc:git\x20cherry\x2dpick\x20\x2d\x2dcontinue
