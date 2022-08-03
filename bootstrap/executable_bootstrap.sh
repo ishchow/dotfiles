@@ -17,7 +17,6 @@ sudo zypper in -y \
     ripgrep-bash-completion \
     ripgrep-fish-completion \
     bat \
-    yarn \
     exa \
     exa-fish-completion \
     fd \
