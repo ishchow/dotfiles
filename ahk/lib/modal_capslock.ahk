@@ -166,6 +166,9 @@ b::Send,^#{Left}
 ; Open PowerToys Run. CapsLock + Space
 Space::Send,!{Space}
 
+; Open start menu. CapsLock + G
+g::Send,{LWin}
+
 ; CapsLock + any unhandled key combo + vim keys to key combo + arrow keys.
 ; * is the wildcard prefix, it matches any key combo. {Blind} is the wildcard key combo.
 ; Example: Can use CapsLock + Vim keys to navigate as if using arrow keys.
