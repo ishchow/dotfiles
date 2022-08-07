@@ -19,5 +19,7 @@ Control, Hide, , TrayShowDesktopButtonWClass1, ahk_class Shell_TrayWnd
 
 SetTimer, ReloadScript,% 30*1000 ;30 seconds
 
-ReloadScript:
+ReloadScript()
+{
 	Reload
+}

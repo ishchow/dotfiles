@@ -6,6 +6,7 @@ InvokeFancyWmAction(key)
 	Send, {LWin down}{Shift down}
 	Sleep, 100
 	Send, {LWin up}{Shift up}
+	Sleep, 100
 	Send, {%key%}
 	Return
 }
