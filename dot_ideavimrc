@@ -1,8 +1,3 @@
-"" Source your .vimrc
-map <leader>f <Action>(RecentFiles)
-map <leader>f <Action>(RecentFiles)
-"source ~/.vimrc
-
 " Configure handlers
 sethandler <C-O> a:vim
 sethandler <C-I> a:vim
@@ -14,6 +9,7 @@ sethandler <C-R> a:ide
 sethandler <C-E> a:ide
 sethandler <C-B> a:ide
 sethandler <C-G> a:ide
+sethandler <C-U> a:ide
 
 " Settings
 set incsearch
