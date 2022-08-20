@@ -13,12 +13,6 @@ function Check-Command($cmdname)
     return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
 }
 
-Install-Module -Name PowerShellGet -Force
-Install-Module ZLocation
-winget install gerardog.gsudo
-gsudo config CacheMode auto
-Install-Module -Name PSFzf
-
 Write-Header "Disable Sleep on AC Power..."
 Powercfg /Change standby-timeout-ac 0
 
@@ -63,23 +57,36 @@ cinst -y .\packages-base.config
 Write-Header "Installing Windows Features"
 cinst -y .\features.config -s windowsFeatures
 
+Write-Header "Installing winget packages"
+winget install gerardog.gsudo
+winget install -e --id voidtools.Everything
+winget install 7zip.7zip
+
+Write-Header "Installing powershell modules"
+Install-Module -Name PowerShellGet -Force
+Install-Module ZLocation
+Install-Module -Name PSFzf
+
+Write-Header "Setting up gsudo"
+gsudo config CacheMode auto
+
 if (Check-Command "wsl")
 {
 	Write-Header "Setting WSL 2 as default version"
 	wsl --set-default-version 2
 	
-	$distroList = $(wsl -l -q)
-	if (!$distroList) 
+	$isTumbleweedInstalled = @(@(wsl -l -q) |? { $_ -eq "openSUSE-Tumbleweed" }).Count -eq 0
+	if ($isTumbleweedInstalled)
 	{
-		Write-Header "Installing the latest openSUSE Tumbleweed WSL"
+		Write-Header "Installing the latest openSUSE Tumbleweed WSL from OBS"
 		
 		$appxPath = ".\tumbleweed-latest.Appx"
 		
 		if (!$(Test-Path -Path $appxPath))
 		{		
-			$baseUrl = "http://download.opensuse.org/repositories/Virtualization:/WSL/openSUSE_Tumbleweed/"
+			$baseUrl = "https://download.opensuse.org/tumbleweed/appliances/"
 			$resp =  $r = iwr $baseUrl -UseBasicParsing
-			$appx = $($resp.Links | ?{$_.href -Match ".Appx$"})[0].href
+			$appx = $($resp.Links | ?{$_.href -Match "-WSL.x86_64.appx$"})[0].href
 			$appxUrl = -join($baseUrl, $appx)
 
 			$progresspreference = 'silentlyContinue'
