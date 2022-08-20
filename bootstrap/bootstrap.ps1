@@ -76,7 +76,7 @@ if (Check-Command "wsl")
 	wsl --set-default-version 2
 	
 	$isTumbleweedInstalled = @(@(wsl -l -q) |? { $_ -eq "openSUSE-Tumbleweed" }).Count -eq 0
-	if ($isTumbleweedInstalled)
+	if (!$isTumbleweedInstalled)
 	{
 		Write-Header "Installing the latest openSUSE Tumbleweed WSL from OBS"
 		
