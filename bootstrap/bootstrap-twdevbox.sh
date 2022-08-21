@@ -1,5 +1,5 @@
 #!/bin/bash
-source ./bootstrap.sh || source ./executable_bootstrap.sh
+source ./bootstrap.sh
 
 echo "Adding repositories..."
 if ! $(zypper lr | grep "vscode" &> /dev/null); then
