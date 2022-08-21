@@ -95,13 +95,13 @@ git config user.email "<chezmoi repo email>" # In case default git user is diffe
 Enter bootstrap directory:
 
 ```
-cd ~/bootstrap
+cd ~/.local/share/chezmoi/bootstrap
 ```
 
 Run with default arguments:
 
 ```
-./bootstrap
+./bootstrap.sh
 ```
 
 ## Windows
@@ -111,7 +111,7 @@ Open Powershell as admin.
 Enter bootstrap directory:
 
 ```
-cd ~\bootstrap
+cd ~\.local\share\chezmoi\bootstrap
 ```
 
 Run bootstrap script:
