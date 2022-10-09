@@ -74,29 +74,18 @@ fi
 echo "Creating projects folder..."
 mkdir -p ~/projects
 
-if [ ! -d ~/projects/personal-site ]; then
-    echo "Cloning personal webiste..."
-    git clone git@github.com:ishchow/personal-site.git ~/projects/personal-site
-    if [ ! $? -eq 0 ]; then
-        git clone https://github.com/ishchow/personal-site.git ~/projects/personal-site
-    fi
-
-    if comamnd -v firewall-cmd &> /dev/null; then
-        echo "Setting up firewall rules for personal website..."
-        sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
-        sudo firewall-cmd --reload
-    fi
-fi
-
 if comamnd -v firewall-cmd &> /dev/null; then
     echo "Setting up firewall rules..."
     sudo firewall-cmd --permanent --zone=public --add-service=http
     sudo firewall-cmd --permanent --zone=public --add-service=https
+
+    if [ ! -d ~/projects/personal-site ]; then
+        if comamnd -v firewall-cmd &> /dev/null; then
+            echo "Setting up firewall rules for personal website..."
+            sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
+        fi
+    fi
+
+    echo "Reloading firewall rules..."
     sudo firewall-cmd --reload
 fi
-
-# Fish boostrap
-# curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-# fisher install fishgretel/fasd
-# fisher install PatrickF1/fzf.fish
-
