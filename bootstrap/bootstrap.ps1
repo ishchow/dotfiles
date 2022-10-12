@@ -59,8 +59,19 @@ cinst -y .\features.config -s windowsFeatures
 
 Write-Header "Installing winget packages"
 winget install gerardog.gsudo
-winget install -e --id voidtools.Everything
 winget install 7zip.7zip
+winget install Git.Git
+winget install Microsoft.PowerToys
+winget install Microsoft.WindowsTerminal
+winget install Microsoft.PowerShell
+winget install Microsoft.VisualStudioCode
+winget install 2203VeselinKaraganev.FancyWM_9x2ndwrcmyd2c
+winget install 46932SUSE.openSUSETumbleweed_022rs5jcyhyac
+winget install -e --id voidtools.Everything
+
+Write-Header "Installing scoop packages..."
+scoop bucket add main
+scoop install ripgrep fzf bat
 
 Write-Header "Installing powershell modules"
 Install-Module -Name PowerShellGet -Force
@@ -74,38 +85,4 @@ if (Check-Command "wsl")
 {
 	Write-Header "Setting WSL 2 as default version"
 	wsl --set-default-version 2
-	
-	$isTumbleweedInstalled = @(@(wsl -l -q) |? { $_ -eq "openSUSE-Tumbleweed" }).Count -eq 0
-	if (!$isTumbleweedInstalled)
-	{
-		Write-Header "Installing the latest openSUSE Tumbleweed WSL from OBS"
-		
-		$appxPath = ".\tumbleweed-latest.Appx"
-		
-		if (!$(Test-Path -Path $appxPath))
-		{		
-			$baseUrl = "https://download.opensuse.org/tumbleweed/appliances/"
-			$resp =  $r = iwr $baseUrl -UseBasicParsing
-			$appx = $($resp.Links | ?{$_.href -Match "-WSL.x86_64.appx$"})[0].href
-			$appxUrl = -join($baseUrl, $appx)
-
-			$progresspreference = 'silentlyContinue'
-			iwr $appxUrl -OutFile $appxPath
-			$progressPreference = 'Continue'	
-		}
-
-		$certPath = ".\tumbleweed-latest.cer"
-		if (!$(Test-Path -Path $certPath))
-		{
-			$cert = $(Get-AuthenticodeSignature -FilePath $appxPath).SignerCertificate
-			Export-Certificate -Cert $cert -FilePath $certPath -Type CERT
-		}
-	
-		Import-Certificate -FilePath $certPath -CertStoreLocation Cert:\LocalMachine\Root
-		Add-AppxPackage $appxPath
-		$installDir = $(Get-AppxPackage | ?{$_.Name -match "Tumbleweed"})[0].InstallLocation
-		Start-Process -FilePath $(Join-Path $installDir "openSUSE-Tumbleweed") -Wait
-		rm $appxPath
-		rm $certPath
-	}
 }
