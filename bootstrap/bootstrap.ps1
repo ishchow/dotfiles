@@ -59,7 +59,6 @@ cinst -y .\features.config -s windowsFeatures
 
 Write-Header "Installing winget packages"
 winget install gerardog.gsudo
-winget install 7zip.7zip
 winget install Git.Git
 winget install Microsoft.PowerToys
 winget install Microsoft.WindowsTerminal
@@ -71,7 +70,6 @@ winget install -e --id voidtools.Everything
 
 Write-Header "Installing scoop packages..."
 scoop bucket add main
-scoop install ripgrep fzf bat
 
 Write-Header "Installing powershell modules"
 Install-Module -Name PowerShellGet -Force
