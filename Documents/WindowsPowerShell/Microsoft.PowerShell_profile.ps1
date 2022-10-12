@@ -20,3 +20,8 @@ if (Get-Command fzf)
     Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
     Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 }
+
+if (Get-Command fnm)
+{
+    fnm env --use-on-cd | Out-String | Invoke-Expression
+}

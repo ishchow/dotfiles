@@ -58,7 +58,6 @@ Write-Header "Installing Windows Features"
 cinst -y .\features.config -s windowsFeatures
 
 Write-Header "Installing winget packages"
-winget install gerardog.gsudo
 winget install Git.Git
 winget install Microsoft.PowerToys
 winget install Microsoft.WindowsTerminal
