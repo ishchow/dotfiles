@@ -4,6 +4,12 @@ Personal dotfiles for Windows and Linux. Dotfiles managed using [chezmoi](https:
 
 ## Windows
 
+Install scoop:
+
+```
+iwr -useb get.scoop.sh | iex
+```
+
 Open Powershell as admin:
 
 Set execution policy to bypass so we can run bw cli. I generally find the defaults to be annoying anyways:
@@ -12,16 +18,24 @@ Set execution policy to bypass so we can run bw cli. I generally find the defaul
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
 ```
 
-Install chocolatey:
+Install git:
 
 ```
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+winget install git
 ```
 
-Install chezmoi and nodejs (needed for bw cli):
+Install fnm, chezmoi:
 
 ```
-choco install -y git chezmoi nodejs
+scoop install chezmoi fnm
+```
+
+Install nodejs using fnm:
+
+```
+fnm install v16.16.0
+fnm default v16.16.0
+fnm env --use-on-cd | Out-String | Invoke-Expression
 ```
 
 Install bw cli:
