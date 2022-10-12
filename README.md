@@ -33,9 +33,9 @@ scoop install chezmoi fnm
 Install nodejs using fnm:
 
 ```
+fnm env --use-on-cd | Out-String | Invoke-Expression
 fnm install v16.16.0
 fnm default v16.16.0
-fnm env --use-on-cd | Out-String | Invoke-Expression
 ```
 
 Install bw cli:
