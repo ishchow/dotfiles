@@ -99,6 +99,7 @@ chezmoi init --apply ishchow
 # Change chezmoi repo settings
 
 ```
+chezmoi cd
 git remote set-url origin git@github.com:ishchow/dotfiles.git
 git config user.email "<chezmoi repo email>" # In case default git user is different
 ```
@@ -115,7 +116,7 @@ cd ~/.local/share/chezmoi/bootstrap
 Run with default arguments:
 
 ```
-./bootstrap.sh
+sudo bash bootstrap.sh
 ```
 
 ## Windows
