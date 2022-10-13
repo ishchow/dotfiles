@@ -13,6 +13,15 @@ function Check-Command($cmdname)
     return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
 }
 
+function Install-WingetPkg($appName)
+{
+    $app = $(winget list $appName | Select-String "No installed package found")
+    if ($app)
+    {
+        winget install $appName
+    }
+}
+
 Write-Header "Disable Sleep on AC Power..."
 Powercfg /Change standby-timeout-ac 0
 
@@ -58,17 +67,22 @@ Write-Header "Installing Windows Features"
 cinst -y .\features.config -s windowsFeatures
 
 Write-Header "Installing winget packages"
-winget install Git.Git
-winget install Microsoft.PowerToys
-winget install Microsoft.WindowsTerminal
-winget install Microsoft.PowerShell
-winget install Microsoft.VisualStudioCode
-winget install 2203VeselinKaraganev.FancyWM_9x2ndwrcmyd2c
-winget install 46932SUSE.openSUSETumbleweed_022rs5jcyhyac
-winget install -e --id voidtools.Everything
+Intall-WingetPkg Git.Git
+Intall-WingetPkg Microsoft.PowerToys
+Intall-WingetPkg Microsoft.WindowsTerminal
+Intall-WingetPkg Microsoft.PowerShell
+Intall-WingetPkg Microsoft.VisualStudioCode
+Intall-WingetPkg 2203VeselinKaraganev.FancyWM_9x2ndwrcmyd2c
+Intall-WingetPkg 46932SUSE.openSUSETumbleweed_022rs5jcyhyac
+Intall-WingetPkg 7zip.7zip
+Intall-WingetPkg voidtools.Everything
 
 Write-Header "Installing scoop packages..."
 scoop bucket add main
+scoop install gsudo
+scoop install bat
+scoop install ripgrep
+scoop install fzf
 
 Write-Header "Installing powershell modules"
 Install-Module -Name PowerShellGet -Force
