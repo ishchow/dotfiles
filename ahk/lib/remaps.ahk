@@ -1,0 +1,2 @@
+; Disable insert
+Insert::return

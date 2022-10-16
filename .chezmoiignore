@@ -2,6 +2,7 @@
 Documents/WindowsPowerShell/
 .local/bin/VirtualDesktopIndicator
 .config/scoop
+AppData/Roaming/WinCompose/
 {{ end }}
 
 {{ if ne .chezmoi.os "linux"  }}
