@@ -169,6 +169,7 @@ return
 	; Open start menu. CapsLock + G
 	g::Send,{LWin}
 
+	; Launch Alt+Tab Terminator. CapsLock + Tab
 	Tab::RunWait, "C:\Program Files\Alt-Tab Terminator\AltTabTer.exe", "C:\Program Files\Alt-Tab Terminator", Hide
 
 	; CapsLock + any unhandled key combo + vim keys to key combo + arrow keys.
