@@ -1,12 +1,12 @@
 #Include %A_LineFile%\..\Common\screen_utils.ahk
 
 ; Invokes key press after activation shortcut
-InvokeFancyWmAction(key)
+InvokeFancyWmAction(key, downDelay:=100, upDelay:=100)
 {
 	Send, {LWin down}{Shift down}
-	Sleep, 100
+	Sleep, downDelay
 	Send, {LWin up}{Shift up}
-	Sleep, 100
+	Sleep, upDelay
 	Send, {%key%}
 	Return
 }
@@ -20,8 +20,8 @@ return
 
 ; modal shortcuts using CapsLock
 #If GetKeyState("Capslock","P") ;"P" means "pressed".
-	; Turn caps lock off in case it was turned on. CapsLock + Ctrl + Shift + Alt + Win + C.
-	^+!#c::SetCapslockState, off
+	; Turn caps lock off in case it was turned on. CapsLock + Ctrl + Shift + Win + C.
+	^+#c::SetCapslockState, off
 
 	; Move the focused window out of its containing panel. CapsLock + Shift + Enter
 	+Enter::RunWait, fancywm.exe --action PullWindowUp, , Hide
@@ -56,7 +56,7 @@ return
 	; Increase width
 	^l::InvokeFancyWmAction("]")
 
-	; Doesn't work, see https://github.com/FancyWM/fancywm-issues/issues/77
+	; Doesn't work, see https://github.com/FancyWM/fancywm-issues/issues/7q7
 	;^h::RunWait, fancywm.exe --action DecreaseWidth, , Hide
 	;^j::RunWait, fancywm.exe --action DecreaseHeight, , Hide
 	;^k::RunWait, fancywm.exe --action IncreaseHeight, , Hide
