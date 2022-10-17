@@ -72,8 +72,8 @@ Intall-WingetPkg Microsoft.PowerToys
 Intall-WingetPkg Microsoft.WindowsTerminal
 Intall-WingetPkg Microsoft.PowerShell
 Intall-WingetPkg Microsoft.VisualStudioCode
-Intall-WingetPkg 2203VeselinKaraganev.FancyWM_9x2ndwrcmyd2c
-Intall-WingetPkg 46932SUSE.openSUSETumbleweed_022rs5jcyhyac
+Intall-WingetPkg FancyWM
+Intall-WingetPkg 'openSUSE Tumbleweed'
 Intall-WingetPkg 7zip.7zip
 Intall-WingetPkg voidtools.Everything
 
