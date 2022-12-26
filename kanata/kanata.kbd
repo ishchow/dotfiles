@@ -34,6 +34,16 @@
   ptr C-A-S-M-spc
   lsm C-esc
   ftab (multi f24 tab)
+  
+  ;;home row mods -> too finicky
+  ;;hlmet (tap-hold-release 50 200 a lmet)
+  ;;hlalt (tap-hold-release 50 200 s lalt)
+  ;;hlsft (tap-hold-release 50 200 d lsft)
+  ;;hlctl (tap-hold-release 50 200 f lctl)
+  ;;hrctl (tap-hold-release 50 200 j rctl)
+  ;;hrsft (tap-hold-release 50 200 k rsft)
+  ;;hralt (tap-hold-release 50 200 l ralt)
+  ;;hrmet (tap-hold-release 50 200 ; rmet)
 
   ;; FancyWM bindings
   ;; Note: need to run kanata as admin if FancyWM run as admin
