@@ -3,8 +3,8 @@
 ;;  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
 ;;  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
 ;;  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
-;;  _    _    _    _    _    _    _    _    _    _    _    _    _          _          
-;;  _    _    _    _    _    _    _    _    _    _    _    _                    _     
+;;  _    _    _    _    _    _    _    _    _    _    _    _    _          _
+;;  _    _    _    _    _    _    _    _    _    _    _    _                    _
 ;;  _    _    _              _              _    _    _    _               _    _    _
 ;;)
 
@@ -17,8 +17,8 @@
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret        prnt          
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up       
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret        prnt
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up
   lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght
 )
 
@@ -26,6 +26,7 @@
   cap (tap-hold-press 200 200 esc (layer-toggle modal))
   tab (tap-hold-press 200 200 tab (layer-toggle nav))
   apos (tap-hold-press 200 200 apos (layer-toggle nav))
+  grv (tap-hold-press 200 200 grv (layer-toggle numbers))
   lsft (tap-hold-press 200 200 S-9 lsft)
   rsft (tap-hold-press 200 200 S-0 lsft)
   kw A-f4
@@ -34,16 +35,18 @@
   ptr C-A-S-M-spc
   lsm C-esc
   ftab (multi f24 tab)
-  
-  ;;home row mods -> too finicky
-  ;;hlmet (tap-hold-release 50 200 a lmet)
-  ;;hlalt (tap-hold-release 50 200 s lalt)
-  ;;hlsft (tap-hold-release 50 200 d lsft)
-  ;;hlctl (tap-hold-release 50 200 f lctl)
-  ;;hrctl (tap-hold-release 50 200 j rctl)
-  ;;hrsft (tap-hold-release 50 200 k rsft)
-  ;;hralt (tap-hold-release 50 200 l ralt)
-  ;;hrmet (tap-hold-release 50 200 ; rmet)
+  * S-8
+  + S-=
+
+  ;; Home row mod-taps
+  hlmet (tap-hold 50 300 a lmet)
+  hlalt (tap-hold 50 300 s lalt)
+  hlsft (tap-hold 50 300 d lsft)
+  hlctl (tap-hold 50 300 f lctl)
+  hrctl (tap-hold 50 300 j rctl)
+  hrsft (tap-hold 50 300 k rsft)
+  hralt (tap-hold 50 300 l ralt)
+  hrmet (tap-hold 50 300 ; rmet)
 
   ;; FancyWM bindings
   ;; Note: need to run kanata as admin if FancyWM run as admin
@@ -75,27 +78,36 @@
 
 (deflayer default
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _     XX   _    _
+  @grv    _    _    _    _    _    _    _    _    _    _    _    _    _     XX   _    _
   @tab    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
-  @cap    _    _    _    _    _    _    _    _    _    _    @apos    _       @ptr          
-  @lsft    _    _    _    _    _    _    _    _    _    _    @rsft                    _     
+  @cap    @hlmet    @hlalt    @hlsft    @hlctl    _    _    @hrctl    @hrsft    @hralt    @hrmet    @apos    _       @ptr
+  @lsft    _    _    _    _    _    _    _    _    _    _    @rsft                    _
   _    _    _              _              _    _    @ptr    _               _    _    _
 )
 
 (deflayer modal
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     
-  @ftab    _    @kw    _    _    _    home    pgdn    pgup    end    _    _    _    _     _    _    _     
-  _    _    _    _    _    @lsm    lft    down    up    rght    _    _    _    _                     
-  _    _    _    _    _    _    -    _    _    _    _    _                    _          
-  _    _    _              @ptr              _    _    _    _               _    _    _     
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
+  @ftab    _    @kw    _    _    _    home    pgdn    pgup    end    _    _    _    _     _    _    _
+  _    lmet    lalt    lsft    lctl    @lsm    lft    down    up    rght    _    _    _    _
+  _    _    _    _    _    _    -    _    _    _    _    _                    _
+  _    _    _              @ptr              _    _    _    _               _    _    _
 )
 
 (deflayer nav
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
   _    @fwd1    @fwd2    @fwd3    @fwd4    @fwd5    @fwd6    @fwd7    @fwd8    @fwd9    _    _    _    _     _    _    _
   XX    _    _    _    @fwrw    @fwtf    @fwml    @fwmd    @fwmu    @fwmr    _    _    _    _     _    _    _
-  _    _    _    _    _    _    @fwfl    @fwfd    @fwfu    @fwfr    _    _    _          _          
-  _    _    _    _    @fwtm    @vdp    @vdn    @fwpu    @fwhp    @fwvp    @fwsp    _                    _     
+  _    _    _    _    _    _    @fwfl    @fwfd    @fwfu    @fwfr    _    _    _          _
+  _    _    _    _    @fwtm    @vdp    @vdn    @fwpu    @fwhp    @fwvp    @fwsp    _                    _
+  _    _    _              _              _    _    _    _               _    _    _
+)
+
+(deflayer numbers
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    _    _    _    _    _    _    7    8    9    _    _    _    _     _    _    _
+  _    _    _    _    _    _    _    4    5    6    @+    _    _    _     _    _    _
+  _    _    _    _    _    _    _    1    2    3    -    ret    _          _
+  _    _    _    _    _    _    _    0    .    @*    /    _                    _
   _    _    _              _              _    _    _    _               _    _    _
 )
