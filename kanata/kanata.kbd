@@ -39,7 +39,6 @@
   ptr C-A-S-M-spc
   lsm C-esc
   ftab (multi f24 tab)
-  att (cmd AltTabTer.exe)
 
   ;; Home row mod-taps
   hlmet (tap-hold 50 300 a lmet)
@@ -50,6 +49,10 @@
   hrsft (tap-hold 50 300 k rsft)
   hralt (tap-hold 50 300 l ralt)
   hrmet (tap-hold 50 300 ; rmet)
+
+  ;; Alt-Tab Terminator
+  ;; Note: C:\Program Files\Alt-Tab Terminator needs to be in System Path for this to run
+  att (cmd AltTabTer.exe)
 
   ;; FancyWM bindings
   ;; Note: need to run kanata as admin if FancyWM run as admin
@@ -91,7 +94,7 @@
 (deflayer modal
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
-  @ftab    _    @kw    _    _    _    home    pgdn    pgup    end    _    mlft    mrgt    _     _    _    _
+  @att    _    @kw    _    _    _    home    pgdn    pgup    end    _    mlft    mrgt    _     _    _    _
   _    lmet    lalt    lsft    lctl    @lsm    lft    down    up    rght    _    _    _    _
   _    _    _    _    _    _    -    _    _    _    _    _                    _
   _    _    _              @ptr              _    _    _    _               _    _    _
