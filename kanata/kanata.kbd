@@ -52,8 +52,8 @@
 
   ;; Alt-Tab Terminator
   ;; Note: C:\Program Files\Alt-Tab Terminator needs to be in System Path for this to run
-  ;; Doesn't work: https://github.com/jtroo/kanata/issues/234
-  ;;att (cmd AltTabTer.exe)
+  ;; att (cmd AltTabTer.exe) ;; Doesn't work: https://github.com/jtroo/kanata/issues/234
+  att (cmd cmd.exe /c AltTabTer.exe)
 
   ;; FancyWM bindings
   ;; Note: need to run kanata as admin if FancyWM run as admin
@@ -95,7 +95,7 @@
 (deflayer modal
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     lrld    _    _
-  @ftab    _    @kw    _    _    _    home    pgdn    pgup    end    _    mlft    mrgt    _     _    _    _
+  @att    _    @kw    _    _    _    home    pgdn    pgup    end    _    mlft    mrgt    _     _    _    _
   _    lmet    lalt    lsft    lctl    @lsm    lft    down    up    rght    _    _    _    _
   _    _    _    _    _    _    -    _    _    _    _    _                    _
   _    _    _              @ptr              _    _    _    _               _    _    _
