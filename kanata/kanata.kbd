@@ -1,0 +1,91 @@
+;;Layer template
+;;(deflayer name
+;;  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+;;  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
+;;  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
+;;  _    _    _    _    _    _    _    _    _    _    _    _    _          _          
+;;  _    _    _    _    _    _    _    _    _    _    _    _                    _     
+;;  _    _    _              _              _    _    _    _               _    _    _
+;;)
+
+(defcfg
+  process-unmapped-keys yes
+  danger-enable-cmd yes
+)
+
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret        prnt          
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up       
+  lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght
+)
+
+(defalias
+  cap (tap-hold-press 200 200 esc (layer-toggle modal))
+  tab (tap-hold-press 200 200 tab (layer-toggle nav))
+  apos (tap-hold-press 200 200 apos (layer-toggle nav))
+  lsft (tap-hold-press 200 200 S-9 lsft)
+  rsft (tap-hold-press 200 200 S-0 lsft)
+  kw A-f4
+  vdp C-M-lft
+  vdn C-M-rght
+  ptr C-A-S-M-spc
+  lsm C-esc
+  ftab (multi f24 tab)
+
+  ;; FancyWM bindings
+  ;; Note: need to run kanata as admin if FancyWM run as admin
+  fwfl (cmd fancywm.exe --action MoveFocusLeft)
+  fwfd (cmd fancywm.exe --action MoveFocusDown)
+  fwfu (cmd fancywm.exe --action MoveFocusUp)
+  fwfr (cmd fancywm.exe --action MoveFocusRight)
+  fwml (cmd fancywm.exe --action MoveLeft)
+  fwmd (cmd fancywm.exe --action MoveDown)
+  fwmu (cmd fancywm.exe --action MoveUp)
+  fwmr (cmd fancywm.exe --action MoveRight)
+  fwpu (cmd fancywm.exe --action PullWindowUp)
+  fwhp (cmd fancywm.exe --action CreateHorizontalPanel)
+  fwvp (cmd fancywm.exe --action CreateVerticalPanel)
+  fwtf (cmd fancywm.exe --action ToggleFloatingMode)
+  fwtm (cmd fancywm.exe --action ToggleManager)
+  fwrw (cmd fancywm.exe --action RefreshWorkspace)
+  fwsp (cmd fancywm.exe --action CreateStackPanel)
+  fwd1 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop1) (cmd fancywm.exe --action MoveToDesktop1)))
+  fwd2 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop2) (cmd fancywm.exe --action MoveToDesktop2)))
+  fwd3 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop3) (cmd fancywm.exe --action MoveToDesktop3)))
+  fwd4 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop4) (cmd fancywm.exe --action MoveToDesktop4)))
+  fwd5 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop5) (cmd fancywm.exe --action MoveToDesktop5)))
+  fwd6 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop6) (cmd fancywm.exe --action MoveToDesktop6)))
+  fwd7 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop7) (cmd fancywm.exe --action MoveToDesktop7)))
+  fwd8 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop8) (cmd fancywm.exe --action MoveToDesktop8)))
+  fwd9 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop9) (cmd fancywm.exe --action MoveToDesktop9)))
+)
+
+(deflayer default
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     XX   _    _
+  @tab    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
+  @cap    _    _    _    _    _    _    _    _    _    _    @apos    _       @ptr          
+  @lsft    _    _    _    _    _    _    _    _    _    _    @rsft                    _     
+  _    _    _              _              _    _    @ptr    _               _    _    _
+)
+
+(deflayer modal
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     
+  @ftab    _    @kw    _    _    _    home    pgdn    pgup    end    _    _    _    _     _    _    _     
+  _    _    _    _    _    @lsm    lft    down    up    rght    _    _    _    _                     
+  _    _    _    _    _    _    -    _    _    _    _    _                    _          
+  _    _    _              @ptr              _    _    _    _               _    _    _     
+)
+
+(deflayer nav
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    @fwd1    @fwd2    @fwd3    @fwd4    @fwd5    @fwd6    @fwd7    @fwd8    @fwd9    _    _    _    _     _    _    _
+  XX    _    _    _    @fwrw    @fwtf    @fwml    @fwmd    @fwmu    @fwmr    _    _    _    _     _    _    _
+  _    _    _    _    _    _    @fwfl    @fwfd    @fwfu    @fwfr    _    _    _          _          
+  _    _    _    _    @fwtm    @vdp    @vdn    @fwpu    @fwhp    @fwvp    @fwsp    _                    _     
+  _    _    _              _              _    _    _    _               _    _    _
+)
