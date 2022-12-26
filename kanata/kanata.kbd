@@ -29,7 +29,7 @@
   + S-=
   cap (tap-hold-press 200 200 esc (layer-toggle modal))
   tab (tap-hold-press 200 200 tab (layer-toggle nav))
-  apos (tap-hold-press 200 200 apos (layer-toggle nav))
+  apos (tap-hold 200 200 apos (layer-toggle nav))
   grv (tap-hold-press 200 200 grv (layer-toggle numbers))
   lsft (tap-hold-press 200 200 @lprn lsft)
   rsft (tap-hold-press 200 200 @rprn lsft)
@@ -38,21 +38,22 @@
   vdn C-M-rght
   ptr C-A-S-M-spc
   lsm C-esc
-  ftab (multi f24 tab)
+  ftab (multi f14 a)
 
   ;; Home row mod-taps
-  hlmet (tap-hold 50 300 a lmet)
-  hlalt (tap-hold 50 300 s lalt)
-  hlsft (tap-hold 50 300 d lsft)
-  hlctl (tap-hold 50 300 f lctl)
-  hrctl (tap-hold 50 300 j rctl)
-  hrsft (tap-hold 50 300 k rsft)
-  hralt (tap-hold 50 300 l ralt)
-  hrmet (tap-hold 50 300 ; rmet)
+  ;;hlmet (tap-hold 1 300 a lmet)
+  ;;hlalt (tap-hold 1 300 s lalt)
+  ;;hlsft (tap-hold 1 300 d lsft)
+  ;;hlctl (tap-hold 1 300 f lctl)
+  ;;hrctl (tap-hold 1 300 j rctl)
+  ;;hrsft (tap-hold 1 300 k rsft)
+  ;;hralt (tap-hold 1 300 l ralt)
+  ;;hrmet (tap-hold 1 300 ; rmet)
 
   ;; Alt-Tab Terminator
   ;; Note: C:\Program Files\Alt-Tab Terminator needs to be in System Path for this to run
-  att (cmd AltTabTer.exe)
+  ;; Doesn't work: https://github.com/jtroo/kanata/issues/234
+  ;;att (cmd AltTabTer.exe)
 
   ;; FancyWM bindings
   ;; Note: need to run kanata as admin if FancyWM run as admin
@@ -86,15 +87,15 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
   @grv    _    _    _    _    _    _    _    _    _    _    _    _    _     XX   _    _
   @tab    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
-  @cap    @hlmet    @hlalt    @hlsft    @hlctl    _    _    @hrctl    @hrsft    @hralt    @hrmet    @apos    _       @ptr
+  @cap    _    _    _    _    _    _    _    _    _    _    @apos    _       @ptr
   @lsft    _    _    _    _    _    _    _    _    _    _    @rsft                    _
   _    _    _              _              _    _    @ptr    _               _    _    _
 )
 
 (deflayer modal
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
-  @att    _    @kw    _    _    _    home    pgdn    pgup    end    _    mlft    mrgt    _     _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     lrld    _    _
+  @ftab    _    @kw    _    _    _    home    pgdn    pgup    end    _    mlft    mrgt    _     _    _    _
   _    lmet    lalt    lsft    lctl    @lsm    lft    down    up    rght    _    _    _    _
   _    _    _    _    _    _    -    _    _    _    _    _                    _
   _    _    _              @ptr              _    _    _    _               _    _    _
