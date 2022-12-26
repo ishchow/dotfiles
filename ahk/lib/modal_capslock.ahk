@@ -164,7 +164,7 @@ return
 	]::Click Right
 
 	; Open PowerToys Run. CapsLock + Space
-	Space::Send,!{Space}
+	Space::Send,+^#!{Space}
 
 	; Open start menu. CapsLock + G
 	g::Send,{LWin}
