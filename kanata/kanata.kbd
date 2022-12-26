@@ -23,20 +23,23 @@
 )
 
 (defalias
+  lprn S-9
+  rprn S-0
+  * S-8
+  + S-=
   cap (tap-hold-press 200 200 esc (layer-toggle modal))
   tab (tap-hold-press 200 200 tab (layer-toggle nav))
   apos (tap-hold-press 200 200 apos (layer-toggle nav))
   grv (tap-hold-press 200 200 grv (layer-toggle numbers))
-  lsft (tap-hold-press 200 200 S-9 lsft)
-  rsft (tap-hold-press 200 200 S-0 lsft)
+  lsft (tap-hold-press 200 200 @lprn lsft)
+  rsft (tap-hold-press 200 200 @rprn lsft)
   kw A-f4
   vdp C-M-lft
   vdn C-M-rght
   ptr C-A-S-M-spc
   lsm C-esc
   ftab (multi f24 tab)
-  * S-8
-  + S-=
+  att (cmd AltTabTer.exe)
 
   ;; Home row mod-taps
   hlmet (tap-hold 50 300 a lmet)
@@ -88,7 +91,7 @@
 (deflayer modal
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
-  @ftab    _    @kw    _    _    _    home    pgdn    pgup    end    _    _    _    _     _    _    _
+  @ftab    _    @kw    _    _    _    home    pgdn    pgup    end    _    mlft    mrgt    _     _    _    _
   _    lmet    lalt    lsft    lctl    @lsm    lft    down    up    rght    _    _    _    _
   _    _    _    _    _    _    -    _    _    _    _    _                    _
   _    _    _              @ptr              _    _    _    _               _    _    _
