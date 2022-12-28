@@ -27,10 +27,9 @@
   rprn S-0
   * S-8
   + S-=
-  cap (tap-hold-press 200 200 esc (layer-toggle modal))
-  tab (tap-hold-press 200 200 tab (layer-toggle nav))
-  apos (tap-hold 200 200 apos (layer-toggle nav))
-  grv (tap-hold-press 200 200 grv (layer-toggle numbers))
+  cap (tap-hold-press 200 200 esc (layer-while-held modal))
+  tab (tap-hold-press 200 200 tab (layer-while-held nav))
+  grv (tap-hold-press 200 200 grv (layer-while-held numbers))
   lsft (tap-hold-press 200 200 @lprn lsft)
   rsft (tap-hold-press 200 200 @rprn lsft)
   kw A-f4
@@ -87,7 +86,7 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
   @grv    _    _    _    _    _    _    _    _    _    _    _    _    _     XX   _    _
   @tab    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
-  @cap    _    _    _    _    _    _    _    _    _    _    @apos    _       @ptr
+  @cap    _    _    _    _    _    _    _    _    _    _    _    _       @ptr
   @lsft    _    _    _    _    _    _    _    _    _    _    @rsft                    _
   _    _    _              _              _    _    @ptr    _               _    _    _
 )
