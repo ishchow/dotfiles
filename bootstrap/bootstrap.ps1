@@ -97,3 +97,11 @@ if (Check-Command "wsl")
 	Write-Header "Setting WSL 2 as default version"
 	wsl --set-default-version 2
 }
+
+$p = [System.Environment]::GetEnvironmentVariable('Path',[System.EnvironmentVariableTarget]::Machine)
+if (!$p.Contains("C:\Program Files\Alt-Tab Terminator"))
+{
+    Write-Header "Adding Alt-Tab Terminator to path"
+    $p += ";C:\Program Files\Alt-Tab Terminator"
+    [System.Environment]::SetEnvironmentVariable('Path',$p,[System.EnvironmentVariableTarget]::Machine);
+}
