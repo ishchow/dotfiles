@@ -67,15 +67,15 @@ Write-Header "Installing Windows Features"
 cinst -y .\features.config -s windowsFeatures
 
 Write-Header "Installing winget packages"
-Intall-WingetPkg Git.Git
-Intall-WingetPkg Microsoft.PowerToys
-Intall-WingetPkg Microsoft.WindowsTerminal
-Intall-WingetPkg Microsoft.PowerShell
-Intall-WingetPkg Microsoft.VisualStudioCode
-Intall-WingetPkg FancyWM
-Intall-WingetPkg 'openSUSE Tumbleweed'
-Intall-WingetPkg 7zip.7zip
-Intall-WingetPkg voidtools.Everything
+Install-WingetPkg Git.Git
+Install-WingetPkg Microsoft.PowerToys
+Install-WingetPkg Microsoft.WindowsTerminal
+Install-WingetPkg Microsoft.PowerShell
+Install-WingetPkg Microsoft.VisualStudioCode
+Install-WingetPkg FancyWM
+Install-WingetPkg 'openSUSE Tumbleweed'
+Install-WingetPkg 7zip.7zip
+Install-WingetPkg voidtools.Everything
 
 Write-Header "Installing scoop packages..."
 scoop bucket add main
