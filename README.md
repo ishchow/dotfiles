@@ -55,10 +55,8 @@ npm install -g @bitwarden/cli
 Install git:
 
 ```
-sudo zypper in -y git
+sudo zypper in -y git chezmoi
 ```
-
-[Install chezmoi](https://www.chezmoi.io/docs/install/)
 
 Install fnm, node, and npm:
 
