@@ -35,7 +35,7 @@
   kw A-f4
   vdp C-M-lft
   vdn C-M-rght
-  ptr C-A-S-M-spc
+  ptr M-spc
   lsm C-esc
 
   ;; Alt-Tab Terminator
@@ -83,7 +83,7 @@
 (deflayer modal
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     lrld    _    _
-  @att    _    @kw    _    _    _    home    pgdn    pgup    end    _    mlft    mrgt    _     _    _    _
+  @att    _    @kw    _    _    _    home    pgdn    pgup    end    _    _    _    _     _    _    _
   _    lmet    lalt    lsft    lctl    @lsm    lft    down    up    rght    _    _    _    _
   _    _    _    _    _    _    -    _    _    _    _    _                    _
   _    _    _              @ptr              _    _    _    _               _    _    _
