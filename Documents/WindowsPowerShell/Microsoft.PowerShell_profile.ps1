@@ -14,14 +14,14 @@ Set-PSReadLineKeyHandler -Key Ctrl+Q -Function TabCompletePrevious
 Set-PSReadLineKeyHandler -Key Ctrl+C -Function Copy
 Set-PSReadLineKeyHandler -Key Ctrl+v -Function Paste
 
-if (Get-Command fzf)
+if (Get-Command fzf -ErrorAction "silentlycontinue")
 {
     Import-Module -Name PSFzf
     Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
     Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 }
 
-if (Get-Command fnm)
+if (Get-Command fnm -ErrorAction "silentlycontinue")
 {
     fnm env --use-on-cd | Out-String | Invoke-Expression
 }
