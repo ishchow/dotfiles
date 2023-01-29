@@ -14,5 +14,9 @@ if ! command -v node &> /dev/null; then
     fnm default v16.16.0
 fi
 
-echo "Installing bitwarden-cli..."
-npm install -g @bitwarden/cli
+if ! command -v bw &> /dev/null; then
+    echo "Installing bitwarden-cli..."
+    npm install -g @bitwarden/cli
+fi
+
+

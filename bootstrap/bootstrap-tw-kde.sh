@@ -1,15 +1,11 @@
-add_home_repo () {
+add_repo () {
     if ! $(zypper lr | grep "$1" &> /dev/null); then
         sudo zypper ar -p 105 "https://download.opensuse.org/repositories/$1/openSUSE_Tumbleweed/$1.repo"
     fi
 }
 
-echo "Adding home repositories..."
-add_home_repo "home:rxmd"
-add_home_repo "home:Dead_Mozay"
-
-echo "Adding packman essentials repository..."
-sudo zypper ar -cfp 105 https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/Essentials packamn-essentials
+echo "Adding extra repositories..."
+add_repo "KDE:Extra"
 
 echo "Installing packages..."
 sudo zypper ref
@@ -18,39 +14,25 @@ sudo zypper in -y \
     discover \
     discover-backend-flatpak \
     kdeconnect-kde \
+    konsole \
     yakuake \
     kate \
+    okular \
+    gwenview \
     ark \
     opi \
+    kcalc \
+    bismuth \
     touchegg \
-    kwin-script-tiling-bismuth \
-    catatonit \
-    containerd \
-    criu \
-    docker \
-    docker-bash-completion \
-    docker-fish-completion \
-    libnet9 \
-    python38-protobuf \
-    runc \
+    distrobox \
     gnome-keyring \
     onedrive \
-    onedrive-bash-completion \
-    onedrive-fish-completion \
-    pipewire-alsa \
-    pipewire-pulseaudio \
-    wireplumber \
-    pipewire-aptx \
+    onedrive-completion-bash \
+    onedrive-completion-fish \
     thermald \
     remmina \
     spectacle \
-    earlyoom \
-    kcalc
-
-if ! command -v distrobox &> /dev/null; then
-    echo "Installing distrobox..."
-    curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sh -s -- --prefix ~/.local
-fi
+    earlyoom
 
 echo "Starting services..."
 sudo systemctl enable --now touchegg.service
@@ -83,7 +65,6 @@ sudo flatpak install -y \
     com.calibre_ebook.calibre \
     com.discordapp.Discord \
     com.getmailspring.Mailspring \
-    com.github.Eloston.UngoogledChromium \
     com.github.tchx84.Flatseal \
     com.github.wwmm.easyeffects \
     com.sindresorhus.Caprine \
@@ -91,8 +72,6 @@ sudo flatpak install -y \
     org.freedesktop.Platform.VulkanLayer.MangoHud \
     md.obsidian.Obsidian \
     org.gimp.GIMP \
-    org.kde.gwenview \
-    org.kde.okular \
     org.libreoffice.LibreOffice \
     org.mozilla.firefox \
     org.qbittorrent.qBittorrent \
@@ -137,28 +116,22 @@ if test ~/OneDrive/; then
     fi
 fi
 
-if flatpak list --app | grep "Firefox" &> /dev/null && ! zypper se -i firefox &> /dev/null; then
+if flatpak list --app | grep "Firefox" &> /dev/null && ! zypper se -i MozillaFirefox &> /dev/null; then
     echo "Removing native firefox..."
-    sudo zypper rm --clean-deps firefox
-fi
-
-if [ ! getent group docker &> /dev/null ]; then
-    echo "Setting up docker group..."
-    getent group docker || sudo groupadd docker 
-    sudo usermod -aG docker $USER 
-    newgrp docker
+    sudo zypper rm --clean-deps MozillaFirefox
 fi
 
 echo "Installing konsave..."
 sudo python3 -m pip install konsave
 
-STR=$(konsave -l)
-if [[ "$STR" == *"No profile found"* ]]; then
-    if test ~/default.knsv;
-        echo "Restoring plasma settings..."
-        konsave -i ~/default.knsv
-        konsave -a default
-    then
-fi
+# STR=$(konsave -l)
+# if [[ "$STR" == *"No profile found"* ]]; then
+#     if test ~/default.knsv;
+#         echo "Restoring plasma settings..."
+#         konsave -i ~/default.knsv
+#         konsave -a default
+#     then
+#     fi
+# fi
 
-kwriteconfig5 --file ~/.config/kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.kglobalaccel,/component/kwin,org.kde.kglobalaccel.Component,invokeShortcut,ExposeAll"
+# kwriteconfig5 --file ~/.config/kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.kglobalaccel,/component/kwin,org.kde.kglobalaccel.Component,invokeShortcut,ExposeAll"
