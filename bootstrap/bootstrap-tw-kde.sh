@@ -13,6 +13,7 @@ sudo zypper in -y \
     flatpak \
     discover \
     discover-backend-flatpak \
+    libqt5-qttools \
     kdeconnect-kde \
     konsole \
     yakuake \
