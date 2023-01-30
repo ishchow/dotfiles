@@ -44,6 +44,18 @@ systemctl --user enable --now wireplumber.service
 systemctl --user enable --now pipewire-pulse.{service,socket}
 systemctl --user enable --now onedrive
 
+# See https://superuser.com/a/1107191 for explanation
+if cat /sys/class/dmi/id/chassis_type | grep "10" &> /dev/null; then
+    echo "Installing laptop specific packages..."
+    sudo zypper in -y \
+        powertop \
+        tlp
+
+    echo "Starting laptop specific services..."
+    sudo systemctl enable --now tlp.service
+fi
+
+
 if [ ! getent group docker &> /dev/null ]; then
     echo "Setting up docker group..."
     getent group docker || sudo groupadd docker 
@@ -126,12 +138,17 @@ sudo python3 -m pip install konsave
 
 # STR=$(konsave -l)
 # if [[ "$STR" == *"No profile found"* ]]; then
-#     if test ~/default.knsv;
+#     if test ~/default.knsv; then
 #         echo "Restoring plasma settings..."
 #         konsave -i ~/default.knsv
 #         konsave -a default
-#     then
-#     fi
+#     fi    n
 # fi
 
-# kwriteconfig5 --file ~/.config/kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.kglobalaccel,/component/kwin,org.kde.kglobalaccel.Component,invokeShortcut,ExposeAll"
+# See https://www.reddit.com/r/kde/comments/8vvwwn/setting_window_spread_to_meta_key/ for explanation
+kwriteconfig5 --file ~/.config/kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.kglobalaccel,/component/kwin,org.kde.kglobalaccel.Component,invokeShortcut,ExposeAll"
+qdbus-qt5 org.kde.KWin /KWin reconfigure
+
+# Run this to get all qdbus shortcuts
+# qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.shortcutNames
+
