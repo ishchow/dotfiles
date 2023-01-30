@@ -33,7 +33,8 @@ sudo zypper in -y \
     thermald \
     remmina \
     spectacle \
-    earlyoom
+    earlyoom \
+    intel-gpu-tools
 
 echo "Starting services..."
 sudo systemctl enable --now touchegg.service
@@ -134,6 +135,8 @@ if flatpak list --app | grep "Firefox" &> /dev/null && ! zypper se -i MozillaFir
     sudo zypper rm --clean-deps MozillaFirefox
 fi
 
+# See https://discourse.flathub.org/t/how-to-enable-video-hardware-acceleration-on-flatpak-firefox/3125 for how to setup hardware acceleration
+
 echo "Installing konsave..."
 sudo python3 -m pip install konsave
 
@@ -153,3 +156,10 @@ qdbus-qt5 org.kde.KWin /KWin reconfigure
 # Run this to get all qdbus shortcuts
 # qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.shortcutNames
 
+if test ~/.local/share/chezmoi/kanata; then
+    if ! test  ; then
+        echo "Copying kanata service file and starting kanata service..."
+        sudo cp ~/.local/share/chezmoi/kanata/kanata.service /etc/systemd/system/kanata.service
+        sudo systemctl enable --now kanata.service
+    fi
+fi

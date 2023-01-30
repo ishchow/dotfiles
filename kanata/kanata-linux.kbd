@@ -1,0 +1,123 @@
+;;Layer template
+;;(deflayer name
+;;  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _
+;;  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
+;;  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
+;;  _    _    _    _    _    _    _    _    _    _    _    _    _          _
+;;  _    _    _    _    _    _    _    _    _    _    _    _                    _
+;;  _    _    _              _              _    _    _    _               _    _    _
+;;)
+
+(defcfg
+  process-unmapped-keys yes
+  danger-enable-cmd yes
+)
+
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        slck pause
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret        prnt
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up
+  lctl lmet lalt           spc            ralt rmet cmp  rctl            lft  down rght
+)
+
+(defalias
+  * S-8
+  + S-=
+  cap (tap-hold-press 200 200 esc (layer-while-held modal))
+  tab (tap-hold-press 200 200 tab (layer-while-held nav))
+  grv (tap-hold-press 200 200 grv (layer-while-held numbers))
+  lsm C-esc
+
+  ;; KDE shortcuts
+  krn M-spc
+  kdov M-w
+  kdcw A-f4
+  kddl C-M-lft
+  kddr C-M-rght
+  kdfl M-A-h
+  kdfd M-A-j
+  kdfu M-A-k
+  kdfr M-A-l
+  kdd1 (tap-dance 200 (M-A-1 M-S-1))
+  kdd2 (tap-dance 200 (M-A-2 M-S-2))
+  kdd3 (tap-dance 200 (M-A-3 M-S-3))
+  kdd4 (tap-dance 200 (M-A-4 M-S-4))
+  kdd5 (tap-dance 200 (M-A-5 M-S-5))
+  kdd6 (tap-dance 200 (M-A-6 M-S-6))
+  kdd7 (tap-dance 200 (M-A-7 M-S-7))
+  kdd8 (tap-dance 200 (M-A-8 M-S-9))
+  kdd9 (tap-dance 200 (M-A-9 M-S-9))
+  kdd0 (tap-dance 200 (M-A-0 M-S-0))
+
+  ;; Bismuth doesn't have dbus interface, so send shortcut for bismuth actions
+  bsml M-S-h
+  bsmd M-S-j
+  bsmu M-S-k
+  bsmr M-S-l
+  bsfw M-f
+  bstf M-S-f
+  bsdw M-C-h
+  bsdh M-C-j
+  bsih M-C-k
+  bsiw M-C-l
+
+  ;; KDE Dbus commands
+  ;; Run to get list of all dbus commands: cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.shortcutNames | sort
+  ;; Currently doesn't work: Could not connect to D-Bus server: org.freedesktop.DBus.Error.NotSupported: Unable to autolaunch a dbus-daemon without a $DISPLAY for X11
+  ;;krn (cmd qdbus-qt5 org.kde.krunner /App display)
+  ;;kdov (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Overview")
+  ;;kdcw (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Close Window")
+  ;;kddl (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch One Desktop to the Left")
+  ;;kddr (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch One Desktop to the Right")
+  ;;kdfl (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch Window Left")
+  ;;kdfd (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch Window Down")
+  ;;kdfu (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch Window Up")
+  ;;kdfr (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch Window Right")
+  ;;kdd1 (tap-dance 200 ((cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch To Destop 1") (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Window To Destop 1")))
+  ;;kdd2 (tap-dance 200 ((cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch To Destop 2") (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Window To Destop 2")))
+  ;;kdd3 (tap-dance 200 ((cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch To Destop 3") (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Window To Destop 3")))
+  ;;kdd4 (tap-dance 200 ((cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch To Destop 4") (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Window To Destop 4")))
+  ;;kdd5 (tap-dance 200 ((cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch To Destop 5") (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Window To Destop 5")))
+  ;;kdd6 (tap-dance 200 ((cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch To Destop 6") (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Window To Destop 6")))
+  ;;kdd7 (tap-dance 200 ((cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch To Destop 7") (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Window To Destop 7")))
+  ;;kdd8 (tap-dance 200 ((cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch To Destop 8") (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Window To Destop 8")))
+  ;;kdd9 (tap-dance 200 ((cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch To Destop 9") (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Window To Destop 9")))
+)
+
+(deflayer default
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _
+  @grv    _    _    _    _    _    _    _    _    _    _    _    _    _     XX   _    _
+  @tab    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
+  @cap    _    _    _    _    _    _    _    _    _    _    _    _       @krn
+  _    _    _    _    _    _    _    _    _    _    _    _                    _
+  _    _    _              _              _    _    @krn    _               _    _    _
+)
+
+(deflayer modal
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     lrld    _    _
+  @kdov    _    @kdcw    _    _    _    home    pgdn    pgup    end    _    _    _    _     _    _    _
+  _    lmet    lalt    lsft    lctl    @lsm    lft    down    up    rght    _    _    _    _
+  _    _    _    _    _    _    -    _    _    _    _    _                    _
+  _    _    _              @krn              _    _    _    _               _    _    _
+)
+
+(deflayer nav
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _
+  _    @kdd1    @kdd2    @kdd3    @kdd4    @kdd5    @kdd6    @kdd7    @kdd8    @kdd9    _    _    _    _     _    _    _
+  XX    _    _    _    _    @bsfw    @bsml    @bsmd    @bsmu    @bsmr    _    _    _    _     _    _    _
+  _    _    _    _    _    _    @kdfl    @kdfd    @kdfu    @kdfr    _    _    _          _
+  _    _    _    _    @bstf    @kddl    @kddr    @bsdw    @bsdh    @bsih    @bsiw    _                    _
+  _    _    _              _              _    _    _    _               _    _    _
+)
+
+(deflayer numbers
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _
+  _    _    _    _    _    _    _    7    8    9    _    _    _    _     _    _    _
+  _    _    _    _    _    _    _    4    5    6    @+    _    _    _     _    _    _
+  _    _    _    _    _    _    _    1    2    3    -    ret    _          _
+  _    _    _    _    _    _    _    0    .    @*    /    _                    _
+  _    _    _              _              _    _    _    _               _    _    _
+)
