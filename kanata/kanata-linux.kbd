@@ -79,6 +79,9 @@
   bsmd M-S-j
   bsmu M-S-k
   bsmr M-S-l
+  bsfp M-A-b
+  bsfn M-A-n
+  bspm M-ret
   bsfw M-f
   bstf M-S-f
   bsdw M-C-h
@@ -109,7 +112,7 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _
   _    @kdd1    @kdd2    @kdd3    @kdd4    @kdd5    @kdd6    @kdd7    @kdd8    @kdd9    @kdd0    _    _    _     _    _    _
   XX    _    _    _    _    @bsfw    @bsml    @bsmd    @bsmu    @bsmr    _    _    _    _     _    _    _
-  _    _    _    _    _    _    @kdfl    @kdfd    @kdfu    @kdfr    _    _    _          _
+  _    _    _    _    _    _    @kdfl    @kdfd    @kdfu    @kdfr    @bsfp    @bsfn    @bspm          _
   _    _    _    _    @bstf    @kddl    @kddr    @bsdw    @bsdh    @bsih    @bsiw    _                    _
   _    _    _              _              _    _    _    _               _    _    _
 )
