@@ -157,7 +157,7 @@ qdbus-qt5 org.kde.KWin /KWin reconfigure
 # qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.shortcutNames
 
 if test ~/.local/share/chezmoi/kanata; then
-    if ! test  ; then
+    if ! test /etc/systemd/system/kanata.service; then
         echo "Copying kanata service file and starting kanata service..."
         sudo cp ~/.local/share/chezmoi/kanata/kanata.service /etc/systemd/system/kanata.service
         sudo systemctl enable --now kanata.service
