@@ -47,7 +47,6 @@ def get_mouse_pos(root):
 
 
 if __name__ == '__main__':
-    # Note: This doesn't seem to move mouse when switching to virtual desktop with one window open
     # See https://github.com/python-xlib/python-xlib/projects?query=is%3Aopen for mask values
     mask = Xlib.X.FocusChangeMask | Xlib.X.PropertyChangeMask
     root.change_attributes(event_mask=mask)
