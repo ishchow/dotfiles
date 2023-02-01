@@ -1,0 +1,11 @@
+[Unit]
+Description=Starts python script that changes mouse cursor on focus events
+
+[Service]
+Type=simple
+StandardOutput=journal
+Environment=DISPLAY=:0
+ExecStart=python3 %h/.local/share/chezmoi/misc/mouse_follows_focus.py
+
+[Install]
+WantedBy=default.target

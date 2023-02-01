@@ -34,7 +34,8 @@ sudo zypper in -y \
     remmina \
     spectacle \
     earlyoom \
-    intel-gpu-tools
+    intel-gpu-tools \
+    python310-python-xlib
 
 echo "Installing steam udev rules..."
 sudo zypper in --no-recommends steam-devices
@@ -48,6 +49,7 @@ systemctl --user enable --now pipewire.service
 systemctl --user enable --now wireplumber.service
 systemctl --user enable --now pipewire-pulse.{service,socket}
 systemctl --user enable --now onedrive
+systemctl --user enable --now mouse_follows_focus.service
 
 # See https://superuser.com/a/1107191 for explanation
 if cat /sys/class/dmi/id/chassis_type | grep "10" &> /dev/null; then
