@@ -31,3 +31,6 @@ if test ~/.local/share/JetBrains/Toolbox/scripts/idea; then
         --bin ~/.local/share/JetBrains/Toolbox/scripts \
         --export-path ~/.local/bin
 fi
+
+echo "Installing konsave..."
+sudo python3 -m pip install konsave
