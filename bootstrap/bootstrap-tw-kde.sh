@@ -36,6 +36,9 @@ sudo zypper in -y \
     earlyoom \
     intel-gpu-tools
 
+echo "Installing steam udev rules..."
+sudo zypper in --no-recommends steam-devices
+
 echo "Starting services..."
 sudo systemctl enable --now touchegg.service
 sudo systemctl enable --now docker.service
