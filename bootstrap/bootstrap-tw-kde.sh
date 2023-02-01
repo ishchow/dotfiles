@@ -35,7 +35,9 @@ sudo zypper in -y \
     spectacle \
     earlyoom \
     intel-gpu-tools \
-    python310-python-xlib
+    python310-python-xlib \
+    pipewire-libjack-0_3 \
+    wireplumber-audio
 
 echo "Installing steam udev rules..."
 sudo zypper in --no-recommends steam-devices
