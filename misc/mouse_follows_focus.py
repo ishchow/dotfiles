@@ -48,8 +48,7 @@ def get_mouse_pos(root):
 
 if __name__ == '__main__':
     # See https://github.com/python-xlib/python-xlib/projects?query=is%3Aopen for mask values
-    mask = Xlib.X.FocusChangeMask | Xlib.X.PropertyChangeMask
-    root.change_attributes(event_mask=mask)
+    root.change_attributes(event_mask=Xlib.X.PropertyChangeMask)
     while True:
         event = disp.next_event()
         win, changed = get_active_window()
