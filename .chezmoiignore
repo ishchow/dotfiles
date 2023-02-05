@@ -30,5 +30,6 @@ bootstrap/
 kanata/
 misc/
 nvim/
+fish/
 
 README.md

@@ -50,6 +50,16 @@ sudo zypper in -y \
     fish \
     code
 
+if ! test -d ~/.local/config/nvim; then
+    echo "Setting up nvim config..."
+    ln -s ~/.local/share/chezmoi/nvim ~/.config/nvim/
+fi
+
+if ! test -d ~/.local/config/fish; then
+    echo "Setting up nvim fish..."
+    ln -s ~/.local/share/chezmoi/fish ~/.config/fish/
+fi
+
 if [ ! -d ~/.tmux/plugins/tpm ]; then
     echo "Installing tmux plugin manager (tpm)..."
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
