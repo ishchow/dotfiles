@@ -1,6 +1,11 @@
 #!/bin/bash
 source ./bootstrap.sh
 
+if ! test -f /.dockerenv; then
+    echo "Creating /.dockerenv..."
+    sudo touch /.dockerenv
+fi
+
 echo "Installing patterns..."
 sudo zypper in --no-recommends -t pattern x11
 
