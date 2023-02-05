@@ -19,9 +19,15 @@ fi
 distrobox-export --bin $(which nvim) --export-path ~/.local/bin
 
 if ! test -f ~/.local/bin/idea && test -f ~/.local/share/JetBrains/Toolbox/scripts/idea; then
+    echo "Exporting IntelliJ Idea from distrobox..."
     distrobox-export \
         --bin ~/.local/share/JetBrains/Toolbox/scripts/idea \
         --export-path ~/.local/bin
+fi
+
+if ! test -d ~/.local/config/nvim; then
+    echo "Setting up nvim config..."
+    ln -s ~/.local/share/chezmoi/nvim ~/.config/nvim/
 fi
 
 echo "Installing konsave..."
