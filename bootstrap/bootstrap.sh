@@ -2,12 +2,20 @@
 
 source bootstrap-common.sh
 
+echo "Adding repositories..."
+if ! $(zypper lr | grep "vscode" &> /dev/null); then
+    echo "Adding vscode repo..."
+    sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+    sudo zypper addrepo -p 105 https://packages.microsoft.com/yumrepos/vscode vscode
+fi
+
 echo "Updating system..."
 sudo zypper ref && sudo zypper dup -y
 
 echo "Installing packages..."
 sudo zypper in -y -t pattern devel_basis
 sudo zypper in -y \
+    opi \
     wget \
     tree \
     curl \
@@ -39,7 +47,8 @@ sudo zypper in -y \
     lldb \
     neovim \
     fasd \
-    fish
+    fish \
+    code
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
     echo "Installing tmux plugin manager (tpm)..."

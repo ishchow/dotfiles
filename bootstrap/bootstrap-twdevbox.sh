@@ -1,20 +1,12 @@
 #!/bin/bash
 source ./bootstrap.sh
 
-echo "Adding repositories..."
-if ! $(zypper lr | grep "vscode" &> /dev/null); then
-    echo "Adding vscode repo..."
-    sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-    sudo zypper addrepo -p 105 https://packages.microsoft.com/yumrepos/vscode vscode
-fi
-
 echo "Installing patterns..."
 sudo zypper in --no-recommends -t pattern x11
 
 echo "Installing packages..."
 sudo zypper ref
 sudo zypper in -y \
-    code \
     libfuse2 \
     libfuse2-32bit \
     libgthread-2_0-0 \
@@ -28,7 +20,7 @@ distrobox-export --bin $(which nvim) --export-path ~/.local/bin
 
 if test ~/.local/share/JetBrains/Toolbox/scripts/idea; then
     distrobox-export \
-        --bin ~/.local/share/JetBrains/Toolbox/scripts \
+        --bin ~/.local/share/JetBrains/Toolbox/scripts/idea \
         --export-path ~/.local/bin
 fi
 
