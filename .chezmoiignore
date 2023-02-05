@@ -2,7 +2,7 @@
 Documents/WindowsPowerShell/
 .local/bin/VirtualDesktopIndicator
 .config/scoop
-AppData/Roaming/WinCompose/
+AppData/
 {{ end }}
 
 {{ if ne .chezmoi.os "linux"  }}
@@ -22,10 +22,13 @@ AppData/Roaming/WinCompose/
 .config/fish
 .config/touchegg
 .config/MangoHud
+.config/systemd
 {{ end  }}
 
-README.md
 ahk/
 bootstrap/
 kanata/
 misc/
+nvim/
+
+README.md
