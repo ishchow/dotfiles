@@ -30,18 +30,10 @@ Install git:
 winget install git
 ```
 
-Install fnm, chezmoi:
+Install nodejs, chezmoi:
 
 ```
-choco install chezmoi fnm
-```
-
-Install nodejs using fnm:
-
-```
-fnm env --use-on-cd | Out-String | Invoke-Expression
-fnm install v16.16.0
-fnm default v16.16.0
+choco install chezmoi nodejs
 ```
 
 Install bw cli:
