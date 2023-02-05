@@ -100,7 +100,8 @@ sudo flatpak install -y \
     com.valvesoftware.Steam \
     org.gtk.Gtk3theme.Breeze \
     org.freedesktop.Platform.GStreamer.gstreamer-vaapi \
-    org.freedesktop.Platform.ffmpeg-full
+    org.freedesktop.Platform.ffmpeg-full \
+    org.freefilesync.FreeFileSync
 
 flatpak override --user --filesystem=xdg-config/gtk-3.0:ro
 flatpak override --user --env=MANGOHUD=1 com.valvesoftware.Steam
@@ -117,20 +118,20 @@ echo "Updating xgg settings..."
 xdg-settings set default-web-browser org.mozilla.firefox.desktop
 
 echo "Updating xdg user dirs..."
-if test ~/OneDrive/; then
-    if ! ls -l ~/Music; then
+if test -d ~/OneDrive/; then
+    if ! test -d ~/Music; then
         rmdir ~/Music/
         ln -s ~/OneDrive/Music/ ~/Music
         xdg-user-dirs-update --set MUSIC ~/OneDrive/Music/
     fi
 
-    if ! ls -l ~/Pictures; then
+    if ! test -d ~/Pictures; then
         rmdir ~/Pictures
         ln -s ~/OneDrive/Pictures/ ~/Pictures
         xdg-user-dirs-update --set PICTURES ~/OneDrive/Pictures/
     fi
 
-    if ! ls -l ~/Videos; then
+    if ! test -d ~/Videos; then
         rmdir ~/Videos
         ln -s ~/OneDrive/Videos/ ~/Videos
         xdg-user-dirs-update --set VIDEOS ~/OneDrive/Videos/
@@ -163,10 +164,8 @@ qdbus-qt5 org.kde.KWin /KWin reconfigure
 # Run this to get all qdbus shortcuts
 # qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.shortcutNames
 
-if test ~/.local/share/chezmoi/kanata; then
-    if ! test /etc/systemd/system/kanata.service; then
-        echo "Copying kanata service file and starting kanata service..."
-        sudo cp ~/.local/share/chezmoi/kanata/kanata.service /etc/systemd/system/kanata.service
-        sudo systemctl enable --now kanata.service
-    fi
+if test -f ~/.local/share/chezmoi/kanata && ! test -f /etc/systemd/system/kanata.service; then
+    echo "Copying kanata service file and starting kanata service..."
+    sudo cp ~/.local/share/chezmoi/kanata/kanata.service /etc/systemd/system/kanata.service
+    sudo systemctl enable --now kanata.service
 fi
