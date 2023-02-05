@@ -1,4 +1,5 @@
 #!/bin/bash
+
 source ./bootstrap.sh
 
 if ! test -f /.dockerenv; then

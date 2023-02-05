@@ -1,8 +1,6 @@
-add_repo () {
-    if ! $(zypper lr | grep "$1" &> /dev/null); then
-        sudo zypper ar -p 105 "https://download.opensuse.org/repositories/$1/openSUSE_Tumbleweed/$1.repo"
-    fi
-}
+#/bin/bash
+
+source bootstrap-common.sh
 
 echo "Adding extra repositories..."
 add_repo "KDE:Extra"

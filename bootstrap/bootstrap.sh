@@ -2,12 +2,34 @@
 
 source bootstrap-common.sh
 
+echo "Installing basic patterns..."
+sudo zypper in -t pattern base enhanced_base devel_basis
+sudo zypper in -y  \
+    git \
+    chezmoi \
+    neovim
+
+if ! command -v node &> /dev/null; then
+    echo "Installing fnm, nodejs, and npm..."
+    curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
+    fnm install v16.16.0
+    fnm default v16.16.0
+fi
+
+if ! command -v bw &> /dev/null; then
+    echo "Installing bitwarden-cli..."
+    npm install -g @bitwarden/cli
+fi
+
+
 echo "Adding repositories..."
 if ! $(zypper lr | grep "vscode" &> /dev/null); then
     echo "Adding vscode repo..."
     sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
     sudo zypper addrepo -p 105 https://packages.microsoft.com/yumrepos/vscode vscode
 fi
+
+add_repo "home:mohms"
 
 echo "Updating system..."
 sudo zypper ref && sudo zypper dup -y
@@ -48,7 +70,8 @@ sudo zypper in -y \
     neovim \
     fasd \
     fish \
-    code
+    code \
+    nerd-fonts-firacode
 
 if ! test -d ~/.local/config/nvim; then
     echo "Setting up nvim config..."
