@@ -18,7 +18,7 @@ if command -v code &> /dev/null; then
 fi
 distrobox-export --bin $(which nvim) --export-path ~/.local/bin
 
-if test ~/.local/share/JetBrains/Toolbox/scripts/idea; then
+if ! test -f ~/.local/bin/idea && test -f ~/.local/share/JetBrains/Toolbox/scripts/idea; then
     distrobox-export \
         --bin ~/.local/share/JetBrains/Toolbox/scripts/idea \
         --export-path ~/.local/bin
