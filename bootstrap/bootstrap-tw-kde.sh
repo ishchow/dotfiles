@@ -134,6 +134,12 @@ if test -d ~/OneDrive/; then
         ln -s ~/OneDrive/Videos/ ~/Videos
         xdg-user-dirs-update --set VIDEOS ~/OneDrive/Videos/
     fi
+
+    if ! test -d ~/Documents/; then
+        rmdir ~/Documents/
+        ln -s /OneDrive/Documents/ ~/Documents/
+        xdg-user-dirs-update --set DOCUMENTS ~/OneDrive/Documents/
+    fi
 fi
 
 if flatpak list --app | grep "Firefox" &> /dev/null && ! zypper se -i MozillaFirefox &> /dev/null; then
