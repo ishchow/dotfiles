@@ -86,7 +86,6 @@ sudo flatpak install -y \
     com.getmailspring.Mailspring \
     com.github.tchx84.Flatseal \
     com.github.wwmm.easyeffects \
-    com.sindresorhus.Caprine \
     com.spotify.Client  \
     org.freedesktop.Platform.VulkanLayer.MangoHud \
     md.obsidian.Obsidian \
