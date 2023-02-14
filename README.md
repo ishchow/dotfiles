@@ -56,8 +56,8 @@ Install fnm, node, and npm:
 curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
 export PATH=/home/$USER/.local/share/.fnm:$PATH
 eval "`fnm env`"
-fnm install v16.16.0
-fnm default v16.16.0
+fnm install v18.14.0
+fnm default v18.14.0
 ```
 
 Install bitwarden cli:
