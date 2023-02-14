@@ -160,5 +160,6 @@ complete -F _complete_alias "${!BASH_ALIASES[@]}"
 eval "$(fasd --init auto)"
 
 # fnm setup
+export PATH=$HOME/.fnm:$PATH
 export PATH=$HOME/.local/share/fnm:$PATH
 eval "`fnm env`"
