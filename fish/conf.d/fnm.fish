@@ -1,3 +1,3 @@
 # fnm
-set PATH $HOME/.local/share/fnm $PATH
+set PATH $HOME/.fnm $PATH
 fnm env | source
