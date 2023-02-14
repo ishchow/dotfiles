@@ -89,3 +89,5 @@ abbr -a -- gcpa 'git cherry-pick --abort'
 abbr -a -- gdfh 'git diff HEAD'
 abbr -a -- gdfom 'git diff origin/$(git remote show origin | grep "HEAD branch" | sed "s/.* //")'
 abbr -a -- gmsom 'git merge --squash origin/$(git remote show origin | grep "HEAD branch" | sed "s/.* //")'
+abbr -a --position anywhere --function last_history_item -- !!
+abbr -a --regex ^\\.\\.+\$ --function multicd -- dotdot
