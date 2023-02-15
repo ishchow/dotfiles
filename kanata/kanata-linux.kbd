@@ -33,6 +33,7 @@
   ;; KDE shortcuts
   krn M-spc
   kdov M-w
+  kdpw C-f10
   kdcw A-f4
   kddl C-M-lft
   kddr C-M-rght
@@ -51,10 +52,11 @@
   kdd9 (tap-dance 200 (M-A-9 M-S-9))
   kdd0 (tap-dance 200 (M-A-0 M-S-0))
 
-    ;; KDE Dbus commands
+  ;; KDE Dbus commands
   ;; Run to get list of all dbus commands: cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.shortcutNames | sort
   ;; Currently doesn't work: Could not connect to D-Bus server: org.freedesktop.DBus.Error.NotSupported: Unable to autolaunch a dbus-daemon without a $DISPLAY for X11
   ;;krn (cmd qdbus-qt5 org.kde.krunner /App display)
+  ;;kdpw (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "ExposeAll")
   ;;kdov (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Overview")
   ;;kdcw (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Close Window")
   ;;kddl (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch One Desktop to the Left")
@@ -102,7 +104,7 @@
 (deflayer modal
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     lrld    _    _
-  @kdov    _    @kdcw    _    _    _    home    pgdn    pgup    end    _    _    _    _     _    _    _
+  @kdpw    _    @kdcw    _    _    _    home    pgdn    pgup    end    _    _    _    _     _    _    _
   _    lmet    lalt    lsft    lctl    @lsm    lft    down    up    rght    _    _    _    _
   _    _    _    _    _    _    -    _    _    _    _    _                    _
   _    _    _              @krn              _    _    _    _               _    _    _
