@@ -88,6 +88,26 @@ if [ ! -d ~/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
+if [ ! -d ~/.tmux/plugins/tmux-resurrect ]; then
+    echo "Installing tmux-resurrect plugin..."
+    git clone https://github.com/tmux-plugins/tmux-resurrect ~/.tmux/plugins/tmux-resurrect
+fi
+
+if [ ! -d ~/.tmux/plugins/tmux-continuum ]; then
+    echo "Installing tmux-continuum plugin..."
+    git clone https://github.com/tmux-plugins/tmux-continuum ~/.tmux/plugins/tmux-continuum
+fi
+
+if [ ! -d ~/.tmux/plugins/tmux-yank ]; then
+    echo "Installing tmux-yank plugin..."
+    git clone https://github.com/tmux-plugins/tmux-yank ~/.tmux/plugins/tmux-yank
+fi
+
+if [ ! -d ~/.tmux/plugins/tmux-resurrect ]; then
+    echo "Installing tmux-resurrect plugin..."
+    git clone https://github.com/tmux-plugins/tmux-resurrect ~/.tmux/plugins/tmux-resurrect
+fi
+
 if ! command -v fff &> /dev/null; then
     echo "Installing fast file finder (fff)..."
     git clone https://github.com/dylanaraps/fff ~/.fff
