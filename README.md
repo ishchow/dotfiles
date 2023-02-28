@@ -1,4 +1,14 @@
-Personal dotfiles for Windows and Linux. Dotfiles managed using [chezmoi](https://www.chezmoi.io/).
+# Overview
+
+Personal dotfiles for Windows and Linux.
+
+```
+.
+├── bootstrap       # Contains scripts (Bash and PowerShell) for bootstrapping new systems (Windows and Linux only)
+├── chezmoi_home    # Contains dotfiles that are managed by chezmoi (https://www.chezmoi.io/)
+├── home            # Contains dotfiles that are not managed by chezmoi (typically these are symlinked manually)
+├── misc            # Contains anything that doesn't cleanly fit into the other folders
+```
 
 # Setup dependencies
 
@@ -27,7 +37,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 Install git:
 
 ```
-winget install git
+winget install git twpayne.chezmoi
 ```
 
 Install nodejs, chezmoi:
