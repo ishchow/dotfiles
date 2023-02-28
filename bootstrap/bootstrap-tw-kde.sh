@@ -107,6 +107,7 @@ flatpak override --user --filesystem=xdg-config/MangoHud:ro com.valvesoftware.St
 flatpak override --user --filesystem=xdg-data/icons com.valvesoftware.Steam
 flatpak override --user --filesystem=xdg-data/applications com.valvesoftware.Steam
 flatpak override --user --filesystem=xdg-desktop com.valvesoftware.Steam
+flatpak override --user --socket=wayland --env=MOZ_ENABLE_WAYLAND=1 org.mozilla.firefox
 
 # workaround for missing libs after steam installation
 sudo flatpak update
