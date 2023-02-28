@@ -12,8 +12,9 @@ sudo zypper in -y  \
 if ! command -v node &> /dev/null; then
     echo "Installing fnm, nodejs, and npm..."
     curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
-    fnm install v16.16.0
-    fnm default v16.16.0
+    fnm install v18.14.0
+    fnm default v18.14.0
+    fnm use default
 fi
 
 if ! command -v bw &> /dev/null; then
