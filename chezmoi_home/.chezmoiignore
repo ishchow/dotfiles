@@ -24,12 +24,3 @@ AppData/
 .config/MangoHud
 .config/systemd
 {{ end  }}
-
-ahk/
-bootstrap/
-kanata/
-misc/
-nvim/
-fish/
-
-README.md

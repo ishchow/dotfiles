@@ -75,12 +75,12 @@ sudo zypper in -y \
 
 if ! test -d ~/.local/config/nvim; then
     echo "Setting up nvim config..."
-    ln -s ~/.local/share/chezmoi/nvim ~/.config/nvim
+    ln -s ~/.local/share/chezmoi/home/.config/nvim ~/.config/nvim
 fi
 
 if ! test -d ~/.local/config/fish; then
     echo "Setting up nvim fish..."
-    ln -s ~/.local/share/chezmoi/fish ~/.config/fish
+    ln -s ~/.local/share/chezmoi/home/.config/fish ~/.config/fish
 fi
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
