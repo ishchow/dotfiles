@@ -34,13 +34,13 @@ Install chocolatey:
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
-Install git:
+Install git and chezmoi:
 
 ```
 winget install git twpayne.chezmoi
 ```
 
-Install nodejs, chezmoi:
+Install nodejs:
 
 ```
 choco install chezmoi nodejs
@@ -54,7 +54,24 @@ npm install -g @bitwarden/cli
 
 ## Linux (OpenSUSE Tumbleweed)
 
-Install git:
+### Setup distrobox (optional)
+
+When running Tumbleweed on bare metal, I prefer to keep my development environment (including stuff needed for dotfiles management) in a container instead of on the host machine.
+
+Install distrobox and enter distrobox container shell:
+
+```
+sudo zypper in distrobox distrobox-bash-completion
+distrobox enter twdevbox
+```
+
+Afterwards, run the steps from the below section in the distrobox container.
+
+This step is not applicable when setting up a WSL environment.
+
+### Setup dependences
+
+Install git and chezmoi:
 
 ```
 sudo zypper in -y git chezmoi
@@ -68,6 +85,7 @@ export PATH=/home/$USER/.local/share/.fnm:$PATH
 eval "`fnm env`"
 fnm install v18.14.0
 fnm default v18.14.0
+fnm use default
 ```
 
 Install bitwarden cli:
@@ -112,6 +130,8 @@ git config user.email "<chezmoi repo email>" # In case default git user is diffe
 
 # Bootstrap new system
 ## Linux (OpenSUSE Tumbleweed)
+
+Note: Run this from host machine (not distrobox container)
 
 Enter bootstrap directory:
 
