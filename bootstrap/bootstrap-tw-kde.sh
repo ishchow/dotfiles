@@ -137,7 +137,7 @@ if test -d ~/OneDrive/; then
 
     if ! test -d ~/Documents/; then
         rmdir ~/Documents/
-        ln -s /OneDrive/Documents/ ~/Documents/
+        ln -s ~/OneDrive/Documents/ ~/Documents/
         xdg-user-dirs-update --set DOCUMENTS ~/OneDrive/Documents/
     fi
 fi
