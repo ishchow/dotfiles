@@ -72,7 +72,8 @@ sudo zypper in -y \
     fasd \
     fish \
     code \
-    nerd-fonts-firacode
+    nerd-fonts-firacode \
+    meld
 
 if ! test -d ~/.local/config/nvim; then
     echo "Setting up nvim config..."
