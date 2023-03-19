@@ -98,6 +98,7 @@ if vim.g.vscode then
   -- Toggle
   vim.keymap.set("n", "<Leader>ts", "<cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<cr>")
   vim.keymap.set("n", "<Leader>te", "<cmd>call VSCodeNotify('workbench.view.explorer')<cr>")
+  vim.keymap.set("n", "<Leader>tp", "<cmd>call VSCodeNotify('workbench.actions.view.problems')<cr>")
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
