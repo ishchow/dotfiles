@@ -23,4 +23,5 @@ AppData/
 .config/touchegg
 .config/MangoHud
 .config/systemd
+.config/Code
 {{ end  }}

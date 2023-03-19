@@ -1,0 +1,5 @@
+{
+    "explorer.confirmDelete": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "explorer.confirmDragAndDrop": false
+}
