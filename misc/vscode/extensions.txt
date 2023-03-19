@@ -1,0 +1,4 @@
+donjayamanne.githistory
+eamodio.gitlens
+shardulm94.trailing-spaces
+wayou.vscode-todo-highlight

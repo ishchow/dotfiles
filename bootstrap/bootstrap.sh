@@ -22,7 +22,6 @@ if ! command -v bw &> /dev/null; then
     npm install -g @bitwarden/cli
 fi
 
-
 echo "Adding repositories..."
 if ! $(zypper lr | grep "vscode" &> /dev/null); then
     echo "Adding vscode repo..."
@@ -110,12 +109,6 @@ if [ ! -d ~/.tmux/plugins/tmux-resurrect ]; then
     git clone https://github.com/tmux-plugins/tmux-resurrect ~/.tmux/plugins/tmux-resurrect
 fi
 
-if ! command -v fff &> /dev/null; then
-    echo "Installing fast file finder (fff)..."
-    git clone https://github.com/dylanaraps/fff ~/.fff
-    sudo make -C ~/.fff install
-fi
-
 if ! command -v lazygit &> /dev/null; then
     echo "Installing lazygit..."
     sudo zypper ar -p 105 https://download.opensuse.org/repositories/home:Dead_Mozay/openSUSE_Tumbleweed/home:Dead_Mozay.repo
@@ -152,4 +145,8 @@ if comamnd -v firewall-cmd &> /dev/null; then
 
     echo "Reloading firewall rules..."
     sudo firewall-cmd --reload
+fi
+
+if command -v code &> /dev/null; then
+    cat ~/.local/share/chezmoi/misc/vscode/extensions.list | xargs -L 1 code --install-extension --force
 fi
