@@ -87,5 +87,14 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy
 require("lazy").setup("plugins")
 
+-- [[ VSCode ]]
+
+if vim.g.vscode then
+  -- [[ VSCode Remaps ]]
+
+  vim.keymap.set("n", "<Leader>f", "<cmd>call VSCodeNotify('workbench.action.quickOpen')<cr>")
+  vim.keymap.set("n", "<Leader>e", "<cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<cr>")
+end
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
