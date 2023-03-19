@@ -90,10 +90,14 @@ require("lazy").setup("plugins")
 -- [[ VSCode ]]
 
 if vim.g.vscode then
-  -- [[ VSCode Remaps ]]
+  -- [[ Leader Key Maps ]]
 
-  vim.keymap.set("n", "<Leader>f", "<cmd>call VSCodeNotify('workbench.action.quickOpen')<cr>")
-  vim.keymap.set("n", "<Leader>e", "<cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<cr>")
+  -- Find
+  vim.keymap.set("n", "<Leader>ff", "<cmd>call VSCodeNotify('workbench.action.quickOpen')<cr>")
+
+  -- Toggle
+  vim.keymap.set("n", "<Leader>ts", "<cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<cr>")
+  vim.keymap.set("n", "<Leader>te", "<cmd>call VSCodeNotify('workbench.view.explorer')<cr>")
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
