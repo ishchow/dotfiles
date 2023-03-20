@@ -87,8 +87,6 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy
 require("lazy").setup("plugins")
 
--- [[ VSCode ]]
-
 if vim.g.vscode then
   -- [[ Leader Key Maps ]]
 
@@ -99,6 +97,9 @@ if vim.g.vscode then
   vim.keymap.set("n", "<Leader>ts", "<cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<cr>")
   vim.keymap.set("n", "<Leader>te", "<cmd>call VSCodeNotify('workbench.view.explorer')<cr>")
   vim.keymap.set("n", "<Leader>tp", "<cmd>call VSCodeNotify('workbench.actions.view.problems')<cr>")
+  vim.keymap.set("n", "<Leader>tg", "<cmd>call VSCodeNotify('workbench.view.scm')<cr>")
+else
+  vim.cmd.colorscheme "catppuccin-mocha"
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`

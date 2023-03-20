@@ -6,5 +6,7 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
-    "workbench.editor.showTabs": false
+    "workbench.editor.showTabs": false,
+    "git.confirmSync": false,
+    "workbench.colorTheme": "Catppuccin Mocha"
 }
