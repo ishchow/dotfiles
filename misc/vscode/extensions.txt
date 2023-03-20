@@ -3,3 +3,4 @@ eamodio.gitlens
 shardulm94.trailing-spaces
 wayou.vscode-todo-highlight
 asvetliakov.vscode-neovim
+skattyadz.vscode-quick-scope
