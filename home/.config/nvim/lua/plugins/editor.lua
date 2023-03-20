@@ -1,35 +1,18 @@
 return {
-    -- "gc" to comment visual regions/lines
   { "numToStr/Comment.nvim", opts = {} },
-
-  -- easily jump to any location and enhanced f/t motions for Leap
+  { "tpope/vim-surround", },
   {
-    "ggandor/flit.nvim",
-    keys = function()
-      ---@type LazyKeys[]
-      local ret = {}
-      for _, key in ipairs({ "f", "F", "t", "T" }) do
-        ret[#ret + 1] = { key, mode = { "n", "x", "o" }, desc = key }
-      end
-      return ret
-    end,
-    opts = { labeled_modes = "nx" },
-  },
-  {
-    "ggandor/leap.nvim",
+    "phaazon/hop.nvim",
+    opts = {},
     keys = {
-      { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
-      { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
-      { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
-    },
-    config = function(_, opts)
-      local leap = require("leap")
-      for k, v in pairs(opts) do
-        leap.opts[k] = v
-      end
-      leap.add_default_mappings(true)
-      vim.keymap.del({ "x", "o" }, "x")
-      vim.keymap.del({ "x", "o" }, "X")
-    end,
-  },
+      { "<leader>ha", "<cmd>HopAnywhere<cr>", mode = {"n", "v"}, desc = "Hop: Anywhere" },
+      { "<leader>ho", "<cmd>HopChar1<cr>", mode = {"n", "v"}, desc = "Hop: 1 Character Search" },
+      { "<leader>ht", "<cmd>HopChar2<cr>", mode = {"n", "v"}, desc = "Hop: 2 Character Search" },
+      { "<leader>hl", "<cmd>HopLine<cr>", mode = {"n", "v"}, desc = "Hop: Line" },
+      { "<leader>hs", "<cmd>HopLineStart<cr>",mode = {"n", "v"},  desc = "Hop: Line Start" },
+      { "<leader>hv", "<cmd>HopVertical<cr>",mode = {"n", "v"},  desc = "Hop: Vertical" },
+      { "<leader>hp", "<cmd>HopPattern<cr>",mode = {"n", "v"},  desc = "Hop: Pattern" },
+      { "<leader>hw", "<cmd>HopWord<cr>",mode = {"n", "v"},  desc = "Hop: Word" },
+    }
+  }
 }
