@@ -99,7 +99,7 @@ npm install -g @bitwarden/cli
 Windows:
 
 ```
-$env:BW_CLIENTSECRET='...' 
+$env:BW_CLIENTSECRET='...'
 ```
 
 Linux:
@@ -131,18 +131,18 @@ git config user.email "<chezmoi repo email>" # In case default git user is diffe
 # Bootstrap new system
 ## Linux (OpenSUSE Tumbleweed)
 
-Note: Run this from host machine (not distrobox container)
-
 Enter bootstrap directory:
 
 ```
 cd ~/.local/share/chezmoi/bootstrap
 ```
 
-Run with default arguments:
+Run appropriate bootstrap script:
 
 ```
-sudo bash bootstrap.sh
+sudo bash bootstrap-tw-kde.sh # Runs bootstrap for DE and apps, run on host
+sudo bash bootstrap-twdevbox.sh # Runs bootstrap for containerized dev env (it calls bootstrap.sh already)
+sudo bash bootstrap.sh # Runs bootstrap for dev environment, run on WSL or on host if not using distrobox
 ```
 
 ## Windows
