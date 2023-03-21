@@ -8,5 +8,6 @@
     },
     "workbench.editor.showTabs": false,
     "git.confirmSync": false,
-    "workbench.colorTheme": "Catppuccin Mocha"
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "security.workspace.trust.enabled": false
 }
