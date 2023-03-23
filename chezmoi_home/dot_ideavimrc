@@ -18,14 +18,16 @@ set number
 set relativenumber
 set idearefactormode=keep
 set scrolloff=5
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 set clipboard+=ideaput
 set showmode
+set ideamarks
 
 " Plugins
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'machakann/vim-highlightedyank'
+Plug 'easymotion/vim-easymotion'
 
 " Leader key
 let mapleader=" "
@@ -42,25 +44,40 @@ nmap <leader>P "+P
 vmap <leader>p "+p
 vmap <leader>P "+P
 
-nmap gd <Action>(GotoDeclaration)
-nmap gs <Action>(GotoSuperMethod)
-nmap gi <Action>(GotoImplementation)
-nmap gb <Action>(JumpToLastChange)
-nmap gu <Action>(FindUsages)
-nmap gr <Action>(RenameElement)
-nmap gn <Action>(GotoNextError)
-nmap gp <Action>(GotoPreviousError)
-nmap <leader>e :e ~\.ideavimrc<CR>
-nmap <leader>r <Action>(IdeaVim.ReloadVimRc.reload)
-
-map <leader>b <Action>(ToggleLineBreakpoint)
-map <leader>d <Action>(Debug)
-map <leader>s <Action>(FileStructurePopup)
-map <leader>f <Action>(RecentFiles)
-map <leader>n <Action>(GotoFile)
-map <leader>c <Action>(GotoClass)
-map <leader><leader> <Action>(SearchEverywhere)
+" Forwards and back
 map <C-O> <Action>(Back)
 map <C-I> <Action>(Forward)
+
+" Go to
+nmap <leader>gd <Action>(GotoDeclaration)
+nmap <leader>gs <Action>(GotoSuperMethod)
+nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gb <Action>(JumpToLastChange)
+nmap <leader>gu <Action>(FindUsages)
+nmap <leader>gn <Action>(GotoNextError)
+nmap <leader>gp <Action>(GotoPreviousError)
+
+" Find
+nmap <leader>ff <Action>(GotoFile)
+nmap <leader>fr <Action>(RecentFiles)
+nmap <leader>fs <Action>(FileStructurePopup)
+nmap <leader>fs <Action>(GotoSymbol)
+nmap <leader>fc <Action>(GotoClass)
+
+" Refactor
+nmap <leader>gr <Action>(RenameElement)
+
+" Toggle
+nmap <leader>tb <Action>(ToggleLineBreakpoint)
+
+" Misc
+nmap <leader>d <Action>(Debug)
+nmap <leader><leader> <Action>(SearchEverywhere)
+nmap <leader>ir <Action>(IdeaVim.ReloadVimRc.reload)
+
+" EasyMotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+nmap <leader>s <Plug>(easymotion-s2)
+nmap <leader>t <Plug>(easymotion-t2)
 
 " Find more examples here: https://jb.gg/share-ideavimrc
