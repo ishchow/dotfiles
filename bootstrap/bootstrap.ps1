@@ -106,3 +106,10 @@ if (!$p.Contains("C:\Program Files\Alt-Tab Terminator"))
     $p += ";C:\Program Files\Alt-Tab Terminator"
     [System.Environment]::SetEnvironmentVariable('Path',$p,[System.EnvironmentVariableTarget]::Machine);
 }
+
+$symLinkPath = Join-Path $(Resolve-Path ~/AppData/Local).Path "nvim"
+$actualNvimConfigPath = $(Resolve-Path ~/.local/share/chezmoi/home/.config/nvim).Path
+if (!$(Test-Path $symLinkPath) -and $(Test-Path $actualNvimConfigPath))
+{
+    cmd /c mklink /d $symLinkPath $actualNvimConfigPath
+}
