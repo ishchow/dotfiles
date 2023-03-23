@@ -113,3 +113,8 @@ if (!$(Test-Path $symLinkPath) -and $(Test-Path $actualNvimConfigPath))
 {
     cmd /c mklink /d $symLinkPath $actualNvimConfigPath
 }
+
+if (Get-Command code)
+{
+    Get-Content ~/.local/share/chezmoi/misc/vscode/extensions.txt | ForEach-Object { Invoke-Expression "code --install-extension $_" }
+}
