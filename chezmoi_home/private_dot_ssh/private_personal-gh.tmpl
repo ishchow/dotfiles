@@ -1,4 +1,4 @@
-{{- if (joinPath .chezmoi.homeDir ".ssh" "personal-gh" | lstat) -}}
+{{- if (joinPath .chezmoi.homeDir ".ssh" "personal-gh" | stat) -}}
 {{- include (joinPath .chezmoi.homeDir ".ssh" "personal-gh") -}}
 {{- else -}}
 {{- (bitwardenAttachment "personal-gh" "feb3d011-094e-4749-9cfb-ac22004ff685") -}}
