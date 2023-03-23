@@ -76,6 +76,7 @@ Install-WingetPkg FancyWM
 Install-WingetPkg 'openSUSE Tumbleweed'
 Install-WingetPkg 7zip.7zip
 Install-WingetPkg voidtools.Everything
+Install-WingetPkg Neovim.Neovim
 
 Write-Header "Installing scoop packages..."
 scoop bucket add main
