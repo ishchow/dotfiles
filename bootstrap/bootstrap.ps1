@@ -1,14 +1,14 @@
 # Run script as admin
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) { Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs; exit }
 
-function Write-Header($header) 
+function Write-Header($header)
 {
     Write-Host "------------------------------------" -ForegroundColor Green
     Write-Host $header -ForegroundColor Green
     Write-Host "------------------------------------" -ForegroundColor Green
 }
 
-function Check-Command($cmdname) 
+function Check-Command($cmdname)
 {
     return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
 }
@@ -41,7 +41,7 @@ $uwpApps = @(
     "Microsoft.SkypeApp",
     "Microsoft.GetHelp")
 
-foreach ($uwp in $uwpApps) 
+foreach ($uwp in $uwpApps)
 {
     Get-AppxPackage -Name $uwp | Remove-AppxPackage
 }
