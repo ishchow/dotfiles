@@ -61,11 +61,12 @@ nmap <leader>gp <Action>(GotoPreviousError)
 nmap <leader>ff <Action>(GotoFile)
 nmap <leader>fr <Action>(RecentFiles)
 nmap <leader>fs <Action>(FileStructurePopup)
-nmap <leader>fs <Action>(GotoSymbol)
+nmap <leader>fws <Action>(GotoSymbol)
 nmap <leader>fc <Action>(GotoClass)
 
 " Refactor
-nmap <leader>gr <Action>(RenameElement)
+nmap <leader>rt <Action>(RenameElement)
+nmap <leader>rr <Action>(RenameElement)
 
 " Toggle
 nmap <leader>tb <Action>(ToggleLineBreakpoint)

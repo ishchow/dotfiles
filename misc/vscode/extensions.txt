@@ -1,7 +1,8 @@
+asvetliakov.vscode-neovim
+Catppuccin.catppuccin-vsc
 donjayamanne.githistory
 eamodio.gitlens
+ms-vscode.powershell
 shardulm94.trailing-spaces
-wayou.vscode-todo-highlight
-asvetliakov.vscode-neovim
 skattyadz.vscode-quick-scope
-Catppuccin.catppuccin-vsc
+wayou.vscode-todo-highlight
