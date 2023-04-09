@@ -82,7 +82,7 @@ echo "Installing flatpaks..."
 sudo flatpak install -y \
     com.bitwarden.desktop \
     com.calibre_ebook.calibre \
-    com.discordapp.Discord \
+    de.shorsh.discord-screenaudio \
     com.getmailspring.Mailspring \
     com.github.tchx84.Flatseal \
     com.github.wwmm.easyeffects \
