@@ -65,11 +65,19 @@ nmap <leader>fws <Action>(GotoSymbol)
 nmap <leader>fc <Action>(GotoClass)
 
 " Refactor
-nmap <leader>rt <Action>(RenameElement)
+nmap <leader>rt <Action>(Refactorings.QuickListPopupAction)
 nmap <leader>rr <Action>(RenameElement)
+nmap <leader>riv <Action>(IntroduceVariable)
+nmap <leader>rif <Action>(IntroduceField)
+nmap <leader>rip <Action>(IntroduceParameter)
+nmap <leader>ric <Action>(IntroduceConstant)
+nmap <leader>ri <Action>(Inline)
 
 " Toggle
 nmap <leader>tb <Action>(ToggleLineBreakpoint)
+nmap <leader>tg <Action>(ActivateVersionControlToolWindow)
+nmap <leader>tt <Action>(ActivateUnitTestsToolWindow)
+nmap <leader>tp <Action>(ActivateProblemsViewToolWindow)
 
 " Misc
 nmap <leader>d <Action>(Debug)
