@@ -37,6 +37,9 @@ sudo zypper in -y \
     pipewire-libjack-0_3 \
     wireplumber-audio
 
+echo "Adding groups..."
+sudo usermod -a -G libvirt ishaat
+
 echo "Installing steam udev rules..."
 sudo zypper in --no-recommends steam-devices
 
@@ -45,6 +48,7 @@ sudo systemctl enable --now touchegg.service
 sudo systemctl enable --now docker.service
 sudo systemctl enable --now thermald.service
 sudo systemctl enable --now earlyoom
+sudo systemctl enable --now libvirtd
 systemctl --user enable --now pipewire.service
 systemctl --user enable --now wireplumber.service
 systemctl --user enable --now pipewire-pulse.{service,socket}
