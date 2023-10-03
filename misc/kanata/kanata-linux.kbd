@@ -37,10 +37,6 @@
   kdcw A-f4
   kddl C-M-lft
   kddr C-M-rght
-  kdfl M-A-h
-  kdfd M-A-j
-  kdfu M-A-k
-  kdfr M-A-l
   kdd1 (tap-dance 200 (M-A-1 M-S-1))
   kdd2 (tap-dance 200 (M-A-2 M-S-2))
   kdd3 (tap-dance 200 (M-A-3 M-S-3))
@@ -77,19 +73,23 @@
   ;;kdd0 (tap-dance 200 ((cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Switch To Destop 10") (cmd qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Window To Destop 10")))
 
   ;; Bismuth doesn't have dbus interface, so send shortcut for bismuth actions
-  bsml M-S-h
-  bsmd M-S-j
-  bsmu M-S-k
-  bsmr M-S-l
+  bsfl M-h
+  bsfd M-j
+  bsfu M-k
+  bsfr M-l
+  bsml M-C-h
+  bsmd M-C-j
+  bsmu M-C-k
+  bsmr M-C-l
   bsfp M-A-b
   bsfn M-A-n
   bspm M-ret
   bsfw M-f
   bstf M-S-f
-  bsdw M-C-h
-  bsdh M-C-j
-  bsih M-C-k
-  bsiw M-C-l
+  bsdw M-S-h
+  bsdh M-S-j
+  bsih M-S-k
+  bsiw M-S-l
 )
 
 (deflayer default
@@ -114,7 +114,7 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _
   _    @kdd1    @kdd2    @kdd3    @kdd4    @kdd5    @kdd6    @kdd7    @kdd8    @kdd9    @kdd0    _    _    _     _    _    _
   XX    _    _    _    _    @bsfw    @bsml    @bsmd    @bsmu    @bsmr    _    _    _    _     _    _    _
-  _    _    _    _    _    _    @kdfl    @kdfd    @kdfu    @kdfr    @bsfp    @bsfn    @bspm          _
+  _    _    _    _    _    _    @bsfl    @bsfd    @bsfu    @bsfr    @bsfp    @bsfn    @bspm          _
   _    _    _    _    @bstf    @kddl    @kddr    @bsdw    @bsdh    @bsih    @bsiw    _                    _
   _    _    _              _              _    _    _    _               _    _    _
 )
