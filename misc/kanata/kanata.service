@@ -7,7 +7,7 @@ Environment=PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin
 Environment=DISPLAY=:0
 Type=simple
 ExecStart=/home/ishaat/.local/share/chezmoi/kanata/kanata_cmd_allowed --cfg /home/ishaat/.local/share/chezmoi/kanata/kanata-linux.kbd
-Restart=no
+Restart=on-failure
 
 [Install]
 WantedBy=default.target
