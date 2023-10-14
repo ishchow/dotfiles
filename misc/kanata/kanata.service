@@ -6,7 +6,7 @@ Documentation=https://github.com/jtroo/kanata
 Environment=PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin
 Environment=DISPLAY=:0
 Type=simple
-ExecStart=/home/ishaat/.local/share/chezmoi/kanata/kanata_cmd_allowed --cfg /home/ishaat/.local/share/chezmoi/kanata/kanata-linux.kbd
+ExecStart=/home/ishaat/.local/share/chezmoi/misc/kanata/kanata_cmd_allowed --cfg /home/ishaat/.local/share/chezmoi/misc/kanata/kanata-linux.kbd
 Restart=on-failure
 
 [Install]
