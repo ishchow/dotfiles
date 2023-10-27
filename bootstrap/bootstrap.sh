@@ -7,6 +7,7 @@ sudo zypper in -t pattern base enhanced_base devel_basis
 sudo zypper in -y  \
     git \
     chezmoi \
+    chezmoi-fish-completion \
     neovim
 
 if ! command -v node &> /dev/null; then
