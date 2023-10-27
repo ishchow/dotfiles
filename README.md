@@ -34,16 +34,10 @@ Install chocolatey:
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
-Install git and chezmoi:
+Install git, chezmoi, ande NodeJS:
 
 ```
-winget install git twpayne.chezmoi
-```
-
-Install nodejs:
-
-```
-choco install chezmoi nodejs
+winget install Git.Git twpayne.chezmoi OpenJS.NodeJS.LTS
 ```
 
 Install bw cli:
@@ -81,7 +75,7 @@ Install fnm, node, and npm:
 
 ```
 curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
-export PATH=/home/$USER/.local/share/.fnm:$PATH
+export PATH=/home/$USER/.local/share/fnm:$PATH
 eval "`fnm env`"
 fnm install v18.14.0
 fnm default v18.14.0
