@@ -8,7 +8,7 @@ if ! test -f /.dockerenv; then
 fi
 
 echo "Installing patterns..."
-sudo zypper in --no-recommends -t pattern x11
+sudo zypper in --no-recommends -t pattern -y x11
 
 echo "Installing packages..."
 sudo zypper ref
@@ -35,6 +35,3 @@ if ! test -d ~/.local/config/nvim; then
     echo "Setting up nvim config..."
     ln -s ~/.local/share/chezmoi/nvim ~/.config/nvim/
 fi
-
-echo "Installing konsave..."
-sudo python3 -m pip install konsave

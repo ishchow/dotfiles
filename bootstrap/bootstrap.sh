@@ -12,6 +12,8 @@ sudo zypper in -y  \
 if ! command -v node &> /dev/null; then
     echo "Installing fnm, nodejs, and npm..."
     curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
+    export PATH=/home/$USER/.local/share/fnm:$PATH
+    eval "`fnm env`"
     fnm install v18.14.0
     fnm default v18.14.0
     fnm use default
@@ -47,8 +49,6 @@ sudo zypper in -y \
     ripgrep-bash-completion \
     ripgrep-fish-completion \
     bat \
-    exa \
-    exa-fish-completion \
     fd \
     fd-fish-completion \
     ruby \

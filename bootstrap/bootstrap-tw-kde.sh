@@ -2,9 +2,6 @@
 
 source bootstrap-common.sh
 
-echo "Adding extra repositories..."
-add_repo "KDE:Extra"
-
 echo "Installing packages..."
 sudo zypper ref
 sudo zypper in -y \
@@ -21,32 +18,29 @@ sudo zypper in -y \
     ark \
     opi \
     kcalc \
-    bismuth \
     touchegg \
     distrobox \
     gnome-keyring \
     onedrive \
     onedrive-completion-bash \
-    onedrive-completion-fish \
-    thermald \
     remmina \
     spectacle \
     earlyoom \
     intel-gpu-tools \
-    python310-python-xlib \
+    python311-pipx \
+    python311-python-xlib \
     pipewire-libjack-0_3 \
     wireplumber-audio
 
 echo "Adding groups..."
-sudo usermod -a -G libvirt ishaat
+sudo usermod -a -G libvirt $USER
 
 echo "Installing steam udev rules..."
-sudo zypper in --no-recommends steam-devices
+sudo zypper in --no-recommends -y steam-devices
 
 echo "Starting services..."
 sudo systemctl enable --now touchegg.service
 sudo systemctl enable --now docker.service
-sudo systemctl enable --now thermald.service
 sudo systemctl enable --now earlyoom
 sudo systemctl enable --now libvirtd
 systemctl --user enable --now pipewire.service
@@ -57,15 +51,20 @@ systemctl --user enable --now mouse_follows_focus.service
 
 # See https://superuser.com/a/1107191 for explanation
 if cat /sys/class/dmi/id/chassis_type | grep "10" &> /dev/null; then
+    echo "Removing power-profiles-daemon..."
+    sudo zypper rm power-profiles-daemon
+
+
     echo "Installing laptop specific packages..."
     sudo zypper in -y \
         powertop \
+        thermald \
         tlp
 
     echo "Starting laptop specific services..."
     sudo systemctl enable --now tlp.service
+    sudo systemctl enable --now thermald.service
 fi
-
 
 if [ ! getent group docker &> /dev/null ]; then
     echo "Setting up docker group..."
@@ -79,8 +78,8 @@ sudo firewall-cmd --permanent --zone=public --add-service=kdeconnect
 sudo firewall-cmd --permanent --zone=public --add-service=kdeconnect-kde
 sudo firewall-cmd --reload
 
-echo "Setting up flathub repo..."
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+echo "Adding flathub repo..."
+sudo flatpak --system remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 echo "Installing flatpaks..."
 sudo flatpak install -y \
@@ -104,6 +103,7 @@ sudo flatpak install -y \
     org.freedesktop.Platform.ffmpeg-full \
     org.freefilesync.FreeFileSync
 
+echo "Setting flatpak overrides..."
 flatpak override --user --filesystem=xdg-config/gtk-3.0:ro
 flatpak override --user --env=MANGOHUD=1 com.valvesoftware.Steam
 flatpak override --user --env=GDK_SCALE=2 com.valvesoftware.Steam
@@ -146,7 +146,7 @@ if test -d ~/OneDrive/; then
     fi
 fi
 
-if flatpak list --app | grep "Firefox" &> /dev/null && ! zypper se -i MozillaFirefox &> /dev/null; then
+if flatpak list --app | grep "Firefox" &> /dev/null && zypper se -i MozillaFirefox &> /dev/null; then
     echo "Removing native firefox..."
     sudo zypper rm --clean-deps MozillaFirefox
 fi
@@ -154,7 +154,7 @@ fi
 # See https://discourse.flathub.org/t/how-to-enable-video-hardware-acceleration-on-flatpak-firefox/3125 for how to setup hardware acceleration
 
 echo "Installing konsave..."
-sudo python3 -m pip install konsave
+pipx install konsave
 
 # STR=$(konsave -l)
 # if [[ "$STR" == *"No profile found"* ]]; then
@@ -165,9 +165,10 @@ sudo python3 -m pip install konsave
 #     fi    n
 # fi
 
+echo "Setting up KDE dbus settings"
 # See https://www.reddit.com/r/kde/comments/8vvwwn/setting_window_spread_to_meta_key/ for explanation
 kwriteconfig5 --file ~/.config/kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.kglobalaccel,/component/kwin,org.kde.kglobalaccel.Component,invokeShortcut,ExposeAll"
-qdbus-qt5 org.kde.KWin /KWin reconfigure
+#qdbus-qt5 org.kde.KWin /KWin reconfigure
 
 # Run this to get all qdbus shortcuts
 # qdbus-qt5 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.shortcutNames

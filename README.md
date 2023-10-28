@@ -56,6 +56,13 @@ Install distrobox and enter distrobox container shell:
 
 ```
 sudo zypper in distrobox distrobox-bash-completion
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+sudo systemctl enable --now docker.service
+sudo systemctl enable --now containerd.service
+sudo systemctl start docker
+docker run hello-world
 distrobox enter twdevbox
 ```
 
@@ -134,9 +141,9 @@ cd ~/.local/share/chezmoi/bootstrap
 Run appropriate bootstrap script:
 
 ```
-sudo bash bootstrap-tw-kde.sh # Runs bootstrap for DE and apps, run on host
-sudo bash bootstrap-twdevbox.sh # Runs bootstrap for containerized dev env (it calls bootstrap.sh already)
-sudo bash bootstrap.sh # Runs bootstrap for dev environment, run on WSL or on host if not using distrobox
+bash bootstrap-tw-kde.sh # Runs bootstrap for DE and apps, run on host
+bash bootstrap-twdevbox.sh # Runs bootstrap for containerized dev env (it calls bootstrap.sh already)
+bash bootstrap.sh # Runs bootstrap for dev environment, run on WSL or on host if not using distrobox
 ```
 
 ## Windows
