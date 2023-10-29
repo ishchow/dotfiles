@@ -125,30 +125,31 @@ xdg-settings set default-web-browser org.mozilla.firefox.desktop
 
 echo "Updating xdg user dirs..."
 if test -d ~/OneDrive/; then
-    if ! test -d ~/Music; then
+    if test -d ~/Music; then
         rmdir ~/Music/
         ln -s ~/OneDrive/Music/ ~/Music
         xdg-user-dirs-update --set MUSIC ~/OneDrive/Music/
     fi
 
-    if ! test -d ~/Pictures; then
+    if test -d ~/Pictures; then
         rmdir ~/Pictures
         ln -s ~/OneDrive/Pictures/ ~/Pictures
         xdg-user-dirs-update --set PICTURES ~/OneDrive/Pictures/
     fi
 
-    if ! test -d ~/Videos; then
+    if test -d ~/Videos; then
         rmdir ~/Videos
         ln -s ~/OneDrive/Videos/ ~/Videos
         xdg-user-dirs-update --set VIDEOS ~/OneDrive/Videos/
     fi
 
-    if ! test -d ~/Documents/; then
+    if test -d ~/Documents/; then
         rmdir ~/Documents/
-        ln -s ~/OneDrive/Documents/ ~/Documents/
+        ln -s ~/OneDrive/Documents/ ~/Documents
         xdg-user-dirs-update --set DOCUMENTS ~/OneDrive/Documents/
     fi
 fi
+
 
 if flatpak list --app | grep "Firefox" &> /dev/null && zypper se -i MozillaFirefox &> /dev/null; then
     echo "Removing native firefox..."
