@@ -30,8 +30,3 @@ if ! test -f ~/.local/bin/idea && test -f ~/.local/share/JetBrains/Toolbox/scrip
         --bin ~/.local/share/JetBrains/Toolbox/scripts/idea \
         --export-path ~/.local/bin
 fi
-
-if ! test -d ~/.local/config/nvim; then
-    echo "Setting up nvim config..."
-    ln -s ~/.local/share/chezmoi/nvim ~/.config/nvim/
-fi

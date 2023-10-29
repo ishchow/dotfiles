@@ -30,7 +30,11 @@ sudo zypper in -y \
     python311-pipx \
     python311-python-xlib \
     pipewire-libjack-0_3 \
-    wireplumber-audio
+    wireplumber-audio \
+    libfuse2 \
+    libfuse2-32bit \
+    libgthread-2_0-0 \
+    libXtst6
 
 echo "Adding groups..."
 sudo usermod -a -G libvirt $USER
