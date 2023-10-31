@@ -75,12 +75,12 @@ sudo zypper in -y \
     nerd-fonts-firacode \
     meld
 
-if ! test -d ~/.local/config/nvim; then
+if ! test -d ~/.config/nvim; then
     echo "Setting up nvim config..."
     ln -s ~/.local/share/chezmoi/home/.config/nvim ~/.config/nvim
 fi
 
-if ! test -d ~/.local/config/fish; then
+if ! test -d ~/.config/fish; then
     echo "Setting up nvim fish..."
     ln -s ~/.local/share/chezmoi/home/.config/fish ~/.config/fish
 fi
