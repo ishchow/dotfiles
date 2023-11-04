@@ -109,6 +109,7 @@ sudo flatpak install -y \
 
 echo "Setting flatpak overrides..."
 flatpak override --user --filesystem=xdg-config/gtk-3.0:ro
+flatpak override --user --filesystem=xdg-config/gtk-4.0:ro
 flatpak override --user --env=MANGOHUD=1 com.valvesoftware.Steam
 flatpak override --user --env=GDK_SCALE=2 com.valvesoftware.Steam
 flatpak override --user --filesystem=xdg-config/MangoHud:ro com.valvesoftware.Steam
