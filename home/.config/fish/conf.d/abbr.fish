@@ -99,3 +99,4 @@ abbr -a -- asv 'abbr -s > ~/.config/fish/conf.d/abbr.fish && chmod a+x ~/.config
 abbr -a -- gbrr 'git branch -r'
 abbr -a -- gcom 'git checkout $(git remote show origin | grep "HEAD branch" | sed "s/.* //")'
 abbr -a -- tns 'tmux new-session -s'
+abbr -a -- twsu 'sudo zypper ref && sudo zypper dup && sudo flatpak update && sudo fwupdmgr refresh || sudo fwupdmgr update'
