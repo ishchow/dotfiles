@@ -34,7 +34,9 @@ sudo zypper in -y \
     libfuse2 \
     libfuse2-32bit \
     libgthread-2_0-0 \
-    libXtst6
+    libXtst6 \
+    libayatana-appindicator3-1 \
+    spotify-easyrpm
 
 echo "Adding groups..."
 sudo usermod -a -G libvirt $USER
@@ -93,7 +95,6 @@ sudo flatpak install -y \
     com.getmailspring.Mailspring \
     com.github.tchx84.Flatseal \
     com.github.wwmm.easyeffects \
-    com.spotify.Client  \
     org.freedesktop.Platform.VulkanLayer.MangoHud \
     md.obsidian.Obsidian \
     org.gimp.GIMP \
@@ -105,7 +106,10 @@ sudo flatpak install -y \
     org.gtk.Gtk3theme.Breeze \
     org.freedesktop.Platform.GStreamer.gstreamer-vaapi \
     org.freedesktop.Platform.ffmpeg-full \
-    org.freefilesync.FreeFileSync
+    org.freefilesync.FreeFileSync \
+    org.gtk.Gtk3theme.adw-gtk3  \
+    org.gtk.Gtk3theme.adw-gtk3-dark \
+    com.github.GradienceTeam.Gradience
 
 echo "Setting flatpak overrides..."
 flatpak override --user --filesystem=xdg-config/gtk-3.0:ro
