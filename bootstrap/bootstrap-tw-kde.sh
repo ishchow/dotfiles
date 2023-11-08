@@ -36,7 +36,8 @@ sudo zypper in -y \
     libgthread-2_0-0 \
     libXtst6 \
     libayatana-appindicator3-1 \
-    spotify-easyrpm
+    spotify-easyrpm \
+    google-noto-sans-cjk-fonts
 
 echo "Adding groups..."
 sudo usermod -a -G libvirt $USER
