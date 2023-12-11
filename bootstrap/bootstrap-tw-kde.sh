@@ -75,8 +75,8 @@ fi
 
 if [ ! getent group docker &> /dev/null ]; then
     echo "Setting up docker group..."
-    getent group docker || sudo groupadd docker 
-    sudo usermod -aG docker $USER 
+    getent group docker || sudo groupadd docker
+    sudo usermod -aG docker $USER
     newgrp docker
 fi
 
@@ -189,3 +189,14 @@ if test -f ~/.local/share/chezmoi/misc/kanata && ! test -f /etc/systemd/system/k
     sudo cp ~/.local/share/chezmoi/misc/kanata/kanata.service /etc/systemd/system/kanata.service
     sudo systemctl enable --now kanata.service
 fi
+
+echo "Adding zypper locks"
+sudo zypper addlock patterns-desktop-multimedia
+sudo zypper addlock patterns-games-games
+sudo zypper addlock patterns-kde-kde_games
+sudo zypper addlock patterns-kde-kde_multimedia
+sudo zypper addlock patterns-kde-kde_office
+sudo zypper addlock patterns-kde-kde_pim
+sudo zypper addlock patterns-office-office
+sudo zypper addlock MozillaFirefox
+sudo zypper addlock chromium
