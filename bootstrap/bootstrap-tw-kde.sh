@@ -93,7 +93,6 @@ sudo flatpak install -y \
     com.bitwarden.desktop \
     com.calibre_ebook.calibre \
     de.shorsh.discord-screenaudio \
-    com.getmailspring.Mailspring \
     com.github.tchx84.Flatseal \
     com.github.wwmm.easyeffects \
     org.freedesktop.Platform.VulkanLayer.MangoHud \
@@ -160,6 +159,7 @@ fi
 if flatpak list --app | grep "Firefox" &> /dev/null && zypper se -i MozillaFirefox &> /dev/null; then
     echo "Removing native firefox..."
     sudo zypper rm --clean-deps MozillaFirefox
+    sudo zypper addlock MozillaFirefox
 fi
 
 # See https://discourse.flathub.org/t/how-to-enable-video-hardware-acceleration-on-flatpak-firefox/3125 for how to setup hardware acceleration
@@ -198,5 +198,4 @@ sudo zypper addlock patterns-kde-kde_multimedia
 sudo zypper addlock patterns-kde-kde_office
 sudo zypper addlock patterns-kde-kde_pim
 sudo zypper addlock patterns-office-office
-sudo zypper addlock MozillaFirefox
 sudo zypper addlock chromium
