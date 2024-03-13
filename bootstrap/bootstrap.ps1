@@ -61,10 +61,10 @@ if (!$(Check-Command "choco"))
 }
 
 Write-Header "Installing Base Chocolatey packages"
-cinst -y .\packages-base.config
+choco install -y .\packages-base.config
 
 Write-Header "Installing Windows Features"
-cinst -y .\features.config -s windowsFeatures
+choco install -y .\features.config -s windowsFeatures
 
 Write-Header "Installing winget packages"
 Install-WingetPkg Git.Git
@@ -77,6 +77,7 @@ Install-WingetPkg 'openSUSE Tumbleweed'
 Install-WingetPkg 7zip.7zip
 Install-WingetPkg voidtools.Everything
 Install-WingetPkg Neovim.Neovim
+Install-WingetPkg Obsidian.Obsidian
 
 Write-Header "Installing scoop packages..."
 scoop bucket add main

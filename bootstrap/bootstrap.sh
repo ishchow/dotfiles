@@ -3,7 +3,7 @@
 source bootstrap-common.sh
 
 echo "Installing basic patterns..."
-sudo zypper in -t pattern base enhanced_base devel_basis
+sudo zypper in -y -t pattern base enhanced_base devel_basis
 sudo zypper in -y  \
     git \
     chezmoi \
@@ -40,6 +40,7 @@ sudo zypper ref && sudo zypper dup -y
 echo "Installing packages..."
 sudo zypper in -y -t pattern devel_basis
 sudo zypper in -y \
+    fish \
     opi \
     wget \
     tree \
