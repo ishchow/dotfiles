@@ -47,7 +47,6 @@ echo "Installing steam udev rules..."
 sudo zypper in --no-recommends -y steam-devices
 
 echo "Starting services..."
-sudo systemctl enable --now touchegg.service
 sudo systemctl enable --now docker.service
 sudo systemctl enable --now earlyoom
 sudo systemctl enable --now libvirtd
@@ -172,7 +171,7 @@ pipx install konsave
 
 echo "Setting up KDE dbus settings"
 # See https://www.reddit.com/r/kde/comments/8vvwwn/setting_window_spread_to_meta_key/ for explanation
-kwriteconfig5 --file ~/.config/kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.kglobalaccel,/component/kwin,org.kde.kglobalaccel.Component,invokeShortcut,ExposeAll"
+kwriteconfig6 --file ~/.config/kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.kglobalaccel,/component/kwin,org.kde.kglobalaccel.Component,invokeShortcut,ExposeAll"
 #qdbus-qt5 org.kde.KWin /KWin reconfigure
 
 # Run this to get all qdbus shortcuts
