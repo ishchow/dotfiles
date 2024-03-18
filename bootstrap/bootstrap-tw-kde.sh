@@ -37,7 +37,8 @@ sudo zypper in -y \
     libXtst6 \
     libayatana-appindicator3-1 \
     spotify-easyrpm \
-    google-noto-sans-cjk-fonts
+    google-noto-sans-cjk-fonts \
+    xwaylandvideobridge
 
 echo "Adding groups..."
 sudo usermod -a -G libvirt $USER
