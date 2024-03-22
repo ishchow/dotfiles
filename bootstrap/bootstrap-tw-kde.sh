@@ -108,7 +108,8 @@ sudo flatpak install -y \
     org.freefilesync.FreeFileSync \
     org.gtk.Gtk3theme.adw-gtk3  \
     org.gtk.Gtk3theme.adw-gtk3-dark \
-    com.github.GradienceTeam.Gradience
+    com.github.GradienceTeam.Gradience \
+    org.mozilla.Thunderbird
 
 echo "Setting flatpak overrides..."
 flatpak override --user --filesystem=xdg-config/gtk-3.0:ro
