@@ -26,12 +26,6 @@ if ! command -v bw &> /dev/null; then
 fi
 
 echo "Adding repositories..."
-if ! $(zypper lr | grep "vscode" &> /dev/null); then
-    echo "Adding vscode repo..."
-    sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-    sudo zypper addrepo -p 105 https://packages.microsoft.com/yumrepos/vscode vscode
-fi
-
 add_repo "home:mohms"
 
 echo "Updating system..."
@@ -67,9 +61,20 @@ sudo zypper in -y \
     neovim \
     fasd \
     fish \
-    code \
     nerd-fonts-firacode \
     meld
+
+# If not in WSL
+if [[ -z "$WSL_DISTRO_NAME" ]]; then
+    if ! $(zypper lr | grep "vscode" &> /dev/null); then
+        echo "Adding vscode repo..."
+        sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+        sudo zypper addrepo -p 105 https://packages.microsoft.com/yumrepos/vscode vscode
+    fi
+
+    wcho "Installing VS Code..."
+    sudo zypper in -y code
+fi
 
 if ! test -d ~/.config/nvim; then
     echo "Setting up nvim config..."
@@ -144,6 +149,9 @@ if comamnd -v firewall-cmd &> /dev/null; then
     sudo firewall-cmd --reload
 fi
 
-if command -v code &> /dev/null; then
-    cat ~/.local/share/chezmoi/misc/vscode/extensions.list | xargs -L 1 code --install-extension --force
+# If not in WSL
+if [[ -z "$WSL_DISTRO_NAME" ]]; then
+    if command -v code &> /dev/null; then
+        cat ~/.local/share/chezmoi/misc/vscode/extensions.list | xargs -L 1 code --install-extension --force
+    fi
 fi
