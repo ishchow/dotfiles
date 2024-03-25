@@ -54,11 +54,6 @@ sudo zypper in -y \
     fd \
     fd-fish-completion \
     ruby \
-    python \
-    python2-pip \
-    python3 \
-    python3-pip \
-    python3-virtualenvwrapper \
     gpg2 \
     hub \
     tig \
