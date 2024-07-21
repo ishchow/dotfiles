@@ -38,7 +38,8 @@ sudo zypper in -y \
     libayatana-appindicator3-1 \
     spotify-easyrpm \
     google-noto-sans-cjk-fonts \
-    xwaylandvideobridge
+    xwaylandvideobridge \
+    p11-kit-server
 
 echo "Adding groups..."
 sudo usermod -a -G libvirt $USER
@@ -59,17 +60,17 @@ systemctl --user enable --now mouse_follows_focus.service
 # See https://superuser.com/a/1107191 for explanation
 if cat /sys/class/dmi/id/chassis_type | grep "10" &> /dev/null; then
     echo "Removing power-profiles-daemon..."
-    sudo zypper rm power-profiles-daemon
+    sudo zypper rm power-profiles-daemon tlp
 
 
     echo "Installing laptop specific packages..."
     sudo zypper in -y \
         powertop \
         thermald \
-        tlp
+        tuned \
+        tuned-utils
 
     echo "Starting laptop specific services..."
-    sudo systemctl enable --now tlp.service
     sudo systemctl enable --now thermald.service
 fi
 
@@ -109,7 +110,8 @@ sudo flatpak install -y \
     org.gtk.Gtk3theme.adw-gtk3  \
     org.gtk.Gtk3theme.adw-gtk3-dark \
     com.github.GradienceTeam.Gradience \
-    org.mozilla.Thunderbird
+    org.mozilla.Thunderbird \
+    Stremio com.stremio.Stremio
 
 echo "Setting flatpak overrides..."
 flatpak override --user --filesystem=xdg-config/gtk-3.0:ro
