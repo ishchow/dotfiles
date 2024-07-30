@@ -72,7 +72,6 @@ Install-WingetPkg Microsoft.PowerToys
 Install-WingetPkg Microsoft.WindowsTerminal
 Install-WingetPkg Microsoft.PowerShell
 Install-WingetPkg Microsoft.VisualStudioCode
-Install-WingetPkg FancyWM
 Install-WingetPkg 'openSUSE Tumbleweed'
 Install-WingetPkg 7zip.7zip
 Install-WingetPkg voidtools.Everything
