@@ -4,4 +4,4 @@ AddKeysToAgent yes
 
 Host github.com
     HostName github.com
-    IdentityFile ~/.ssh/personal-gh
+    IdentityFile ~/.ssh/personal-gh-v2
