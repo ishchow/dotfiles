@@ -93,7 +93,6 @@ echo "Installing flatpaks..."
 sudo flatpak install -y \
     com.bitwarden.desktop \
     com.calibre_ebook.calibre \
-    de.shorsh.discord-screenaudio \
     com.github.tchx84.Flatseal \
     com.github.wwmm.easyeffects \
     org.freedesktop.Platform.VulkanLayer.MangoHud \
@@ -109,7 +108,6 @@ sudo flatpak install -y \
     org.freefilesync.FreeFileSync \
     org.gtk.Gtk3theme.adw-gtk3  \
     org.gtk.Gtk3theme.adw-gtk3-dark \
-    com.github.GradienceTeam.Gradience \
     org.mozilla.Thunderbird \
     Stremio com.stremio.Stremio
 
