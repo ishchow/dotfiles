@@ -1,0 +1,10 @@
+https://github.com/jtroo/kanata/issues/1264#issuecomment-2763085239
+
+https://github.com/jtroo/kanata/discussions/1537
+
+cp com.example.kanata.plist /Library/LaunchDaemons/com.example.kanata.plist
+
+sudo launchctl bootstrap system /Library/LaunchDaemons/com.example.kanata.plist
+sudo launchctl enable system/com.example.kanata.plist
+
+sudo launchctl start com.example.kanata

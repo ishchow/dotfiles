@@ -12,12 +12,14 @@ AppData/
 .profile
 .tmux.conf
 .config/fish
-.config/systemd
 .config/Code
 {{ end  }}
 
 {{ if ne .chezmoi.os "linux"  }}
 .config/systemd
+{{ end  }}
+
+{{ if ne .chezmoi.os "darwin"  }}
 {{ end  }}
 
 .ssh/personal-gh-v3
