@@ -72,21 +72,17 @@ This step is not applicable when setting up a WSL environment.
 
 ### Setup dependences
 
-Install git and chezmoi:
-
 ```
-sudo zypper in -y git chezmoi
+sudo zypper in -y git chezmoi fnm
 ```
 
-Install fnm, node, and npm:
+Install latest nodejs lts and set as default:
 
 ```
-curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
-export PATH=/home/$USER/.local/share/fnm:$PATH
-eval "`fnm env`"
-fnm install v18.14.0
-fnm default v18.14.0
+fnm install v22.19.0
+fnm default v22.19.0
 fnm use default
+eval $(fnm env)
 ```
 
 Install bitwarden cli:
@@ -125,8 +121,8 @@ chezmoi init --apply ishchow
 
 ```
 chezmoi cd
-git remote set-url origin git@github.com:ishchow/dotfiles.git
 git config user.email "<chezmoi repo email>" # In case default git user is different
+git remote set-url origin git@github.com:ishchow/dotfiles.git
 ```
 
 # Bootstrap new system
