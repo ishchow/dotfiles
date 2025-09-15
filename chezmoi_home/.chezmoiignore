@@ -1,7 +1,5 @@
 {{ if ne .chezmoi.os "windows" }}
 Documents/
-.local/bin/VirtualDesktopIndicator
-.config/scoop
 AppData/
 {{ end }}
 
@@ -17,11 +15,10 @@ AppData/
 .local/bin/create_virtmic
 .local/bin/delete_virtmic
 .local/bin/kill_touchegg_logout
-.local/bin/steam
-.local/share/applications/
 .config/fish
 .config/touchegg
-.config/MangoHud
 .config/systemd
 .config/Code
 {{ end  }}
+
+.ssh/personal-gh-v3

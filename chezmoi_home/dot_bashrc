@@ -149,8 +149,6 @@ if [[ ! -z "$WSL_DISTRO_NAME" ]]; then
     export TMUX_TMPDIR='/tmp'
 fi
 
-# cargo setup
-source "$HOME/.cargo/env"
 export PATH="$PATH:~/.local/bin"
 
 # bash alias completion
@@ -160,6 +158,4 @@ complete -F _complete_alias "${!BASH_ALIASES[@]}"
 eval "$(fasd --init auto)"
 
 # fnm setup
-export PATH=$HOME/.fnm:$PATH
-export PATH=$HOME/.local/share/fnm:$PATH
 eval "`fnm env`"

@@ -84,7 +84,7 @@ if ! test -d ~/.config/nvim; then
 fi
 
 if ! test -d ~/.config/fish; then
-    echo "Setting up nvim fish..."
+    echo "Setting up fish config..."
     ln -s ~/.local/share/chezmoi/home/.config/fish ~/.config/fish
 fi
 

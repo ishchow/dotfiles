@@ -27,5 +27,3 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 export GPG_TTY=$(tty)
-source "$HOME/.cargo/env"
-export MANGOHUD=1
