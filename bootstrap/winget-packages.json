@@ -41,6 +41,9 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WindowsApp"
+				},
+				{
+					"PackageIdentifier" : "ntwind.AltTabTer"
 				}
 			],
 			"SourceDetails" : 
