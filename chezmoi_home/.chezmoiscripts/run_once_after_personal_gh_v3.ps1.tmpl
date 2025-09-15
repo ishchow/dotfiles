@@ -1,0 +1,15 @@
+{{ if (eq .chezmoi.os "windows") }}
+
+$Target = "~/.ssh/personal-gh-v3"
+
+if (!$(Test-Path $Target))
+{
+    Write-Host "Writing personal-gh-v3 from Bitwarden..."
+    bw get attachment personal-gh-v3 --itemid feb3d011-094e-4749-9cfb-ac22004ff685 --output $Target
+}
+else
+{
+    Write-Host "personal-gh-v3 already exists. Skipping."
+}
+
+{{ end }}

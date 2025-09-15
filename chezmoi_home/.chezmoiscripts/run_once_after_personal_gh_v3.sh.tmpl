@@ -1,0 +1,14 @@
+{{ if not (eq .chezmoi.os "windows") }}
+#!/bin/sh
+
+# Set the target file path
+TARGET="$HOME/.ssh/personal-gh-v3"
+
+# Only run if the file doesn't exist
+if [ ! -f "$TARGET" ]; then
+    echo "Writing personal-gh-v3 from Bitwarden..."
+    bw get attachment personal-gh-v3 --itemid feb3d011-094e-4749-9cfb-ac22004ff685 --output $TARGET
+else
+    echo "personal-gh-v3 already exists. Skipping."
+fi
+{{ end }}
