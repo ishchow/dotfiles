@@ -1,4 +1,4 @@
-{{ if not (eq .chezmoi.os "windows") }}#!/bin/sh
+{{ if ne .chezmoi.os "windows" }}#!/bin/sh
 
 # Set the target file path
 TARGET="$HOME/.ssh/personal-gh-v3"

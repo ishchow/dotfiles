@@ -1,4 +1,4 @@
-{{ if not (eq .chezmoi.os "windows") }}#!/bin/sh
+{{ if ne .chezmoi.os "windows" }}#!/bin/sh
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
     echo "Installing tmux plugin manager (tpm)..."
