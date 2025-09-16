@@ -62,7 +62,7 @@ sudo zypper in -y \
     lazygit
 
 # If not in WSL
-if [[ -z "$WSL_DISTRO_NAME" ]]; then
+if [[ ! -z "$WSL_DISTRO_NAME" ]]; then
     if ! $(zypper lr | grep "vscode" &> /dev/null); then
         echo "Adding vscode repo..."
         sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc

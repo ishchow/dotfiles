@@ -47,8 +47,8 @@ Install latest nodejs lts and set as default:
 ```
 fnm install v22.19.0
 fnm default v22.19.0
-fnm use default
 eval $(fnm env)
+fnm use default
 ```
 
 Install bitwarden cli:
