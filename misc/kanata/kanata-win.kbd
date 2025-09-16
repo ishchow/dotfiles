@@ -11,6 +11,7 @@
 (defcfg
   process-unmapped-keys yes
   danger-enable-cmd yes
+  concurrent-tap-hold yes
 )
 
 (defsrc
@@ -19,7 +20,8 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
   caps a    s    d    f    g    h    j    k    l    ;    '    ret        prnt
   lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up
-  lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght
+  lctl lmet lalt           spc            ralt rmet menu  rctl            left down rght
+  f23
 )
 
 (defalias
@@ -27,11 +29,10 @@
   + S-=
   cap (tap-hold-press 200 200 esc (layer-while-held modal))
   tab (tap-hold-press 200 200 tab (layer-while-held nav))
-  grv (tap-hold-press 200 200 grv (layer-while-held numbers))
   kw A-f4
   vdp C-M-lft
   vdn C-M-rght
-  ptr M-spc
+  ptr A-spc
   lsm C-esc
 
   ;; Alt-Tab Terminator
@@ -69,11 +70,12 @@
 
 (deflayer default
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-  @grv    _    _    _    _    _    _    _    _    _    _    _    _    _     XX   _    _
+  grv    _    _    _    _    _    _    _    _    _    _    _    _    _     XX   _    _
   @tab    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
   @cap    _    _    _    _    _    _    _    _    _    _    _    _       @ptr
   _    _    _    _    _    _    _    _    _    _    _    _                    _
   _    _    _              _              _    _    @ptr    _               _    _    _
+  _
 )
 
 (deflayer modal
@@ -83,6 +85,7 @@
   _    lmet    lalt    lsft    lctl    @lsm    lft    down    up    rght    _    _    _    _
   _    _    _    _    _    _    -    _    _    _    _    _                    _
   _    _    _              @ptr              _    _    _    _               _    _    _
+  _
 )
 
 (deflayer nav
@@ -92,13 +95,5 @@
   _    _    _    _    _    _    @fwfl    @fwfd    @fwfu    @fwfr    _    _    _          _
   _    _    _    _    @fwtm    @vdp    @vdn    @fwpu    @fwhp    @fwvp    @fwsp    _                    _
   _    _    _              _              _    _    _    _               _    _    _
-)
-
-(deflayer numbers
-  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-  _    _    _    _    _    _    _    7    8    9    _    _    _    _     _    _    _
-  _    _    _    _    _    _    _    4    5    6    @+    _    _    _     _    _    _
-  _    _    _    _    _    _    _    1    2    3    -    ret    _          _
-  _    _    _    _    _    _    _    0    .    @*    /    _                    _
-  _    _    _              _              _    _    _    _               _    _    _
+  _
 )

@@ -6,17 +6,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #InstallKeybdHook
 #SingleInstance force
 
-; Deactivate capslock completely.
-; Needs to be at top of file and defined before all other keybindings
-; and all includes. Otherwise, capslock might be able to be activated.
-;SetCapslockState, AlwaysOff
-
-; Disable Windows 10 Show Desktop Button
-Control, Hide, , TrayShowDesktopButtonWClass1, ahk_class Shell_TrayWnd
-
 #Include %A_ScriptDir%\Lib\mouse_cursor_follows_focus.ahk
-;#Include %A_ScriptDir%\Lib\remaps.ahk
-;#Include %A_ScriptDir%\Lib\modal_capslock.ahk
 
 SetTimer, ReloadScript,% 30*1000 ;30 seconds
 
