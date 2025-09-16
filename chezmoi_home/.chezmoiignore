@@ -3,7 +3,7 @@ Documents/
 AppData/
 {{ end }}
 
-{{ if ne .chezmoi.os "unix"  }}
+{{ if eq .chezmoi.os "windows"  }}
 .bash_aliases
 .bash_completion
 .bash_completion.d/
