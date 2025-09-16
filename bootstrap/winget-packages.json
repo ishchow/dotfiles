@@ -50,6 +50,9 @@
 				},
 				{
 					"PackageIdentifier": "lin-ycv.EverythingPowerToys"
+				},
+				{
+					"PackageIdentifier": "Microsoft.PowerShell"
 				}
 			],
 			"SourceDetails" : 
