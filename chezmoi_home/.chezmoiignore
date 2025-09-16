@@ -3,7 +3,7 @@ Documents/
 AppData/
 {{ end }}
 
-{{ if ne .chezmoi.os "linux"  }}
+{{ if ne .chezmoi.os "unix"  }}
 .bash_aliases
 .bash_completion
 .bash_completion.d/
@@ -11,14 +11,14 @@ AppData/
 .bashrc
 .profile
 .tmux.conf
-.local/bin/caps_lock_press_to_escape
-.local/bin/create_virtmic
-.local/bin/delete_virtmic
-.local/bin/kill_touchegg_logout
 .config/fish
-.config/touchegg
 .config/systemd
 .config/Code
 {{ end  }}
 
+{{ if ne .chezmoi.os "linux"  }}
+.config/systemd
+{{ end  }}
+
 .ssh/personal-gh-v3
+.ssh/config.d/

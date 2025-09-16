@@ -1,3 +1,0 @@
-#!/bin/sh
-
-pgrep -x touchegg | xargs -t kill -1
