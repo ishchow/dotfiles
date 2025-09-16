@@ -44,6 +44,12 @@
 				},
 				{
 					"PackageIdentifier" : "ntwind.AltTabTer"
+				},
+				{
+					"PackageIdentifier": "voidtools.Everything"
+				},
+				{
+					"PackageIdentifier": "lin-ycv.EverythingPowerToys"
 				}
 			],
 			"SourceDetails" : 

@@ -81,7 +81,7 @@
 (deflayer modal
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     lrld    _    _
-  @att    _    @kw    _    _    _    home    pgdn    pgup    end    _    _    _    _     _    _    _
+  @att    _    _    _    _    _    home    pgdn    pgup    end    _    _    _    _     _    _    _
   _    lmet    lalt    lsft    lctl    @lsm    lft    down    up    rght    _    _    _    _
   _    _    _    _    _    _    -    _    _    _    _    _                    _
   _    _    _              @ptr              _    _    _    _               _    _    _
@@ -91,7 +91,7 @@
 (deflayer nav
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
   _    @fwd1    @fwd2    @fwd3    @fwd4    @fwd5    @fwd6    @fwd7    @fwd8    @fwd9    _    _    _    _     _    _    _
-  XX    _    _    _    @fwrw    @fwtf    @fwml    @fwmd    @fwmu    @fwmr    _    _    _    _     _    _    _
+  XX    _    @kw    _    @fwrw    @fwtf    @fwml    @fwmd    @fwmu    @fwmr    _    _    _    _     _    _    _
   _    _    _    _    _    _    @fwfl    @fwfd    @fwfu    @fwfr    _    _    _          _
   _    _    _    _    @fwtm    @vdp    @vdn    @fwpu    @fwhp    @fwvp    @fwsp    _                    _
   _    _    _              _              _    _    _    _               _    _    _
