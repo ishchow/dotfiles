@@ -1,0 +1,3 @@
+[wsl2]
+# Set to -1 to never shut down the WSL 2 VM when idle
+vmIdleTimeout=-1
