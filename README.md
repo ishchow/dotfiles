@@ -24,7 +24,7 @@ Set execution policy to bypass so we can run bw cli. I generally find the defaul
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
 ```
 
-Install git, chezmoi, ande NodeJS:
+Install dependencies:
 
 ```
 winget install Git.Git twpayne.chezmoi OpenJS.NodeJS.LTS
@@ -59,6 +59,8 @@ npm install -g @bitwarden/cli
 
 # Set api client secret
 
+Note: With recent versions of bW cli, this seems to no longer be necessary.
+
 Windows:
 
 ```
@@ -88,7 +90,8 @@ chezmoi init --apply ishchow
 ```
 chezmoi cd
 git config user.email "<chezmoi repo email>" # In case default git user is different
-git remote set-url origin git@github.com:ishchow/dotfiles.git
+ssh -T git@github.com # Check if ssh to github works
+git remote set-url origin git@github.com:ishchow/dotfiles.git # If so, update chezmoi repo url
 ```
 
 # Bootstrap new system
@@ -103,9 +106,7 @@ cd ~/.local/share/chezmoi/bootstrap
 Run appropriate bootstrap script:
 
 ```
-bash bootstrap-tw-kde.sh # Runs bootstrap for DE and apps, run on host
-bash bootstrap-twdevbox.sh # Runs bootstrap for containerized dev env (it calls bootstrap.sh already)
-bash bootstrap.sh # Runs bootstrap for dev environment, run on WSL or on host if not using distrobox
+bash bootstrap.sh
 ```
 
 ## Windows
