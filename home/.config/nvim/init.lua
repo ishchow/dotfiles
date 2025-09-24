@@ -66,6 +66,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- [[ Setup neovide ]]
+vim.g.neovide_cursor_animation_length = 0
+vim.g.neovide_cursor_trail_size = 0
+vim.g.neovide_cursor_vfx_mode = ""
+
 -- [[ Plugin management ]]
 
 -- Install package manager
@@ -84,9 +89,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Setup lazy
-require("lazy").setup("plugins")
+-- Set common specs
+local specs = {
+  require("plugins.editor-common"),  -- always loaded plugins
+}
 
+-- Handle running within vscode
 if vim.g.vscode then
   -- [[ Leader Key Maps ]]
 
@@ -99,13 +107,12 @@ if vim.g.vscode then
   vim.keymap.set("n", "<Leader>tp", "<cmd>call VSCodeNotify('workbench.actions.view.problems')<cr>")
   vim.keymap.set("n", "<Leader>tg", "<cmd>call VSCodeNotify('workbench.view.scm')<cr>")
 else
-  vim.cmd.colorscheme "catppuccin-mocha"
+  table.insert(specs, require("plugins.colorschemes"))
+  table.insert(specs, require("plugins.editor-nvsc"))
 end
 
--- Setup neovide
-vim.g.neovide_cursor_animation_length = 0
-vim.g.neovide_cursor_trail_size = 0
-vim.g.neovide_cursor_vfx_mode = ""
+-- Setup lazy
+require("lazy").setup(specs)
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

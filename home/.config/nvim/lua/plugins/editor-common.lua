@@ -1,6 +1,5 @@
 return {
   { "numToStr/Comment.nvim", opts = {} },
-  { "unblevable/quick-scope", cond = not vim.g.vscode },
   { "tpope/vim-surround", },
   {
     "phaazon/hop.nvim",
