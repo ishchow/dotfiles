@@ -4,3 +4,4 @@ eamodio.gitlens
 ms-vscode.powershell
 shardulm94.trailing-spaces
 wayou.vscode-todo-highlight
+asvetliakov.vscode-neovim

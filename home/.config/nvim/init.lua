@@ -102,5 +102,10 @@ else
   vim.cmd.colorscheme "catppuccin-mocha"
 end
 
+-- Setup neovide
+vim.g.neovide_cursor_animation_length = 0
+vim.g.neovide_cursor_trail_size = 0
+vim.g.neovide_cursor_vfx_mode = ""
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
