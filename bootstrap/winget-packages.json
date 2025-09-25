@@ -1,67 +1,82 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
 	"CreationDate" : "2025-09-14T20:54:13.153-00:00",
-	"Sources" : 
+	"Sources" :
 	[
 		{
-			"Packages" : 
+			"Packages" :
 			[
 				{
-					"PackageIdentifier" : "Git.Git"
+					"PackageIdentifier" : "Git.Git",
+					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier" : "marha.VcXsrv"
+					"PackageIdentifier" : "OpenJS.NodeJS.LTS",
+					"Scope": "machine"
+
 				},
 				{
-					"PackageIdentifier" : "OpenJS.NodeJS.LTS"
+					"PackageIdentifier" : "BlastApps.FluentSearch",
+					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier" : "BlastApps.FluentSearch"
+					"PackageIdentifier" : "Microsoft.Sysinternals.Suite",
+					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.Sysinternals.Suite"
+					"PackageIdentifier" : "JetBrains.Toolbox",
+					"Scope": "user"
 				},
 				{
-					"PackageIdentifier" : "JetBrains.Toolbox"
+					"PackageIdentifier" : "Insomnia.Insomnia",
+					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier" : "Insomnia.Insomnia"
+					"PackageIdentifier" : "twpayne.chezmoi",
+					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier" : "twpayne.chezmoi"
+					"PackageIdentifier" : "Microsoft.VisualStudioCode",
+					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode"
+					"PackageIdentifier" : "Microsoft.PowerToys",
+					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerToys"
+					"PackageIdentifier" : "Microsoft.WindowsTerminal",
+					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsTerminal"
+					"PackageIdentifier" : "Microsoft.WindowsApp",
+					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsApp"
+					"PackageIdentifier" : "ntwind.AltTabTer",
+					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier" : "ntwind.AltTabTer"
+					"PackageIdentifier": "voidtools.Everything",
+					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier": "voidtools.Everything"
+					"PackageIdentifier": "lin-ycv.EverythingPowerToys",
+					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier": "lin-ycv.EverythingPowerToys"
+					"PackageIdentifier": "Microsoft.PowerShell",
+					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier": "Microsoft.PowerShell"
+					"PackageIdentifier": "Neovim.Neovim",
+					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier": "Neovim.Neovim"
-				},
-				{
-					"PackageIdentifier": "Neovide.Neovide"
+					"PackageIdentifier": "Neovide.Neovide",
+					"Scope": "machine"
 				}
 			],
-			"SourceDetails" : 
+			"SourceDetails" :
 			{
 				"Argument" : "https://cdn.winget.microsoft.com/cache",
 				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
@@ -70,13 +85,14 @@
 			}
 		},
 		{
-			"Packages" : 
+			"Packages" :
 			[
 				{
-					"PackageIdentifier" : "9P1741LKHQS9"
+					"PackageIdentifier" : "9P1741LKHQS9",
+					"Scope": "machine"
 				}
 			],
-			"SourceDetails" : 
+			"SourceDetails" :
 			{
 				"Argument" : "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
 				"Identifier" : "StoreEdgeFD",

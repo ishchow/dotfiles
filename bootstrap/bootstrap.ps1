@@ -45,6 +45,7 @@ Install-Module -Name PowerShellGet -Force
 Install-Module ZLocation
 Install-Module -Name PSFzf
 
+Write-Header "Adding Alt-Tab Terminator to PATH"
 $p = [System.Environment]::GetEnvironmentVariable('Path',[System.EnvironmentVariableTarget]::Machine)
 if (!$p.Contains("C:\Program Files\Alt-Tab Terminator"))
 {
@@ -53,6 +54,7 @@ if (!$p.Contains("C:\Program Files\Alt-Tab Terminator"))
     [System.Environment]::SetEnvironmentVariable('Path',$p,[System.EnvironmentVariableTarget]::Machine);
 }
 
+Write-Header "Setting neovim config symlink"
 $symLinkPath = Join-Path $(Resolve-Path ~/AppData/Local).Path "nvim"
 $actualNvimConfigPath = $(Resolve-Path ~/.local/share/chezmoi/home/.config/nvim).Path
 if (!$(Test-Path $symLinkPath) -and $(Test-Path $actualNvimConfigPath))
@@ -60,10 +62,20 @@ if (!$(Test-Path $symLinkPath) -and $(Test-Path $actualNvimConfigPath))
     cmd /c mklink /d $symLinkPath $actualNvimConfigPath
 }
 
+Write-Header "Installing VS Code extensions"
 if (Get-Command code)
 {
     Get-Content ~/.local/share/chezmoi/misc/vscode/extensions.txt | ForEach-Object { Invoke-Expression "code --install-extension $_" }
 }
 
-Write-Header "Setup wsl"
-wsl --install --distribution openSUSE-Tumbleweed
+Write-Header "Setup OpenSUSE Tumbleweed in WSL"
+$wslDistros = wsl.exe -l -q
+if ($wslDistros -contains "openSUSE-Tumbleweed")
+{
+    Write-Host "openSUSE Tumbleweed is already installed"
+}
+else
+{
+    Write-Host "Installing openSUSE-Tumbleweed"
+    wsl --install --distribution openSUSE-Tumbleweed
+}
