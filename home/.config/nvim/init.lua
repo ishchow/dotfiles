@@ -11,7 +11,8 @@ vim.g.maplocalleader = ' '
 vim.o.hlsearch = false
 
 -- Make line numbers default
-vim.wo.number = true
+vim.o.number = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -96,16 +97,7 @@ local specs = {
 
 -- Handle running within vscode
 if vim.g.vscode then
-  -- [[ Leader Key Maps ]]
-
-  -- Find
-  vim.keymap.set("n", "<Leader>ff", "<cmd>call VSCodeNotify('workbench.action.quickOpen')<cr>")
-
-  -- Toggle
-  vim.keymap.set("n", "<Leader>ts", "<cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<cr>")
-  vim.keymap.set("n", "<Leader>te", "<cmd>call VSCodeNotify('workbench.view.explorer')<cr>")
-  vim.keymap.set("n", "<Leader>tp", "<cmd>call VSCodeNotify('workbench.actions.view.problems')<cr>")
-  vim.keymap.set("n", "<Leader>tg", "<cmd>call VSCodeNotify('workbench.view.scm')<cr>")
+  require('vscode')
 else
   table.insert(specs, require("plugins.colorschemes"))
   table.insert(specs, require("plugins.editor-nvsc"))
