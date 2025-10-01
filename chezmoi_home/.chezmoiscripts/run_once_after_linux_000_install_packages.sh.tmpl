@@ -1,4 +1,4 @@
-#/bin/bash
+{{ if eq .chezmoi.os "linux" }}#!/bin/bash
 
 add_repo () {
     if ! $(zypper lr | grep "$1" &> /dev/null); then
@@ -8,18 +8,6 @@ add_repo () {
 
 echo "Installing basic patterns..."
 sudo zypper in -y -t pattern base enhanced_base devel_basis
-
-if ! command -v node &> /dev/null; then
-    eval "`fnm env`"
-    fnm install v22.19.0
-    fnm default v22.19.0
-    fnm use default
-fi
-
-if ! command -v bw &> /dev/null; then
-    echo "Installing bitwarden-cli..."
-    npm install -g @bitwarden/cli
-fi
 
 echo "Adding repositories..."
 add_repo "home:mohms"
@@ -81,22 +69,4 @@ if [[ -z "$WSL_DISTRO_NAME" ]]; then
         cat ~/.local/share/chezmoi/misc/vscode/extensions.list | xargs -L 1 code --install-extension --force
     fi
 fi
-
-echo "Creating projects folder..."
-mkdir -p ~/projects
-
-if command -v firewall-cmd &> /dev/null; then
-    echo "Setting up firewall rules..."
-    sudo firewall-cmd --permanent --zone=public --add-service=http
-    sudo firewall-cmd --permanent --zone=public --add-service=https
-
-    if [ ! -d ~/projects/personal-site ]; then
-        if command -v firewall-cmd &> /dev/null; then
-            echo "Setting up firewall rules for personal website..."
-            sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
-        fi
-    fi
-
-    echo "Reloading firewall rules..."
-    sudo firewall-cmd --reload
-fi
+{{ end }}

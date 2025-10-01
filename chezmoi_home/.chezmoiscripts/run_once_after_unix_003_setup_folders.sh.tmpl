@@ -3,10 +3,17 @@
 if ! test -d ~/.config/nvim; then
     echo "Setting up nvim config..."
     ln -s ~/.local/share/chezmoi/home/.config/nvim ~/.config/nvim
+else
+    echo "nvim config already setup. Skipping..."
 fi
 
 if ! test -d ~/.config/fish; then
     echo "Setting up fish config..."
     ln -s ~/.local/share/chezmoi/home/.config/fish ~/.config/fish
+else
+    echo "fish config already setup. Skipping..."
 fi
+
+echo "Creating projects folder..."
+mkdir -p ~/projects
 {{ end }}

@@ -1,0 +1,31 @@
+{{ if eq .chezmoi.os "windows" }}
+
+{{- template "ps1/bootstrap-common.ps1" . -}}
+
+Write-Host "Updating ExecutionPolicy..."
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
+
+Write-Header "Disable Sleep on AC Power..."
+Powercfg /Change standby-timeout-ac 0
+
+# To list all appx packages:
+# Get-AppxPackage | Format-Table -Property Name,Version,PackageFullName
+Write-Header "Removing UWP Apps..."
+$uwpApps = @(
+    "Microsoft.Messaging",
+    "king.com.CandyCrushSaga",
+    "Microsoft.BingNews",
+    "Microsoft.MicrosoftSolitaireCollection",
+    "Microsoft.People",
+    "Microsoft.WindowsFeedbackHub",
+    "Microsoft.YourPhone",
+    "Microsoft.MicrosoftOfficeHub",
+    "Fitbit.FitbitCoach",
+    "Microsoft.SkypeApp",
+    "Microsoft.GetHelp")
+
+foreach ($uwp in $uwpApps)
+{
+    Get-AppxPackage -Name $uwp | Remove-AppxPackage
+}
+{{ end }}

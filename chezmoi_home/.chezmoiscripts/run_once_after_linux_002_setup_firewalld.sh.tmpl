@@ -1,0 +1,18 @@
+{{ if eq .chezmoi.os "linux" }}#!/bin/bash
+
+if command -v firewall-cmd &> /dev/null; then
+    echo "Setting up firewall rules..."
+    sudo firewall-cmd --permanent --zone=public --add-service=http
+    sudo firewall-cmd --permanent --zone=public --add-service=https
+
+    if [ ! -d ~/projects/personal-site ]; then
+        if command -v firewall-cmd &> /dev/null; then
+            echo "Setting up firewall rules for personal website..."
+            sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
+        fi
+    fi
+
+    echo "Reloading firewall rules..."
+    sudo firewall-cmd --reload
+fi
+{{ end }}

@@ -1,0 +1,4 @@
+{{ if eq .chezmoi.os "darwin" }}#!/bin/zsh
+
+brew bundle install --file=~/.local/share/chezmoi/bootstrap/Brewfile
+{{ end }}

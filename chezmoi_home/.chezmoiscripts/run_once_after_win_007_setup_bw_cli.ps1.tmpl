@@ -1,0 +1,5 @@
+{{ if eq .chezmoi.os "windows" }}
+
+Write-Host "Installing bw cli..."
+npm install -g @bitwarden/cli
+{{ end }}

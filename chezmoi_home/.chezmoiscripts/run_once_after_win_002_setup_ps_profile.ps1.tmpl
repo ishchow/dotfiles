@@ -1,0 +1,9 @@
+{{ if eq .chezmoi.os "windows" }}
+
+{{- template "ps1/bootstrap-common.ps1" . -}}
+
+Write-Header "Installing powershell modules"
+Install-Module -Name PowerShellGet -Force
+Install-Module ZLocation
+Install-Module -Name PSFzf
+{{ end }}

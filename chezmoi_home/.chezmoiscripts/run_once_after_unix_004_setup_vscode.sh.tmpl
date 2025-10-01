@@ -1,0 +1,10 @@
+{{ if ne .chezmoi.os "windows" }}#!/bin/sh
+
+# If not in WSL
+if [[ -z "$WSL_DISTRO_NAME" ]]; then
+    if command -v code &> /dev/null; then
+        echo "Installing VS Code plugins..."
+        cat ~/.local/share/chezmoi/misc/vscode/extensions.txt | xargs -n 1 -I {} code --install-extension {} --force
+    fi
+fi
+{{ end }}

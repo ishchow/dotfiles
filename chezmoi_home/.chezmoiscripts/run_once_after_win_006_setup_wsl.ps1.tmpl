@@ -1,0 +1,16 @@
+{{ if eq .chezmoi.os "windows" }}
+
+{{- template "ps1/bootstrap-common.ps1" . -}}
+
+Write-Header "Setup OpenSUSE Tumbleweed in WSL"
+$wslDistros = wsl.exe -l -q
+if ($wslDistros -contains "openSUSE-Tumbleweed")
+{
+    Write-Host "openSUSE Tumbleweed is already installed"
+}
+else
+{
+    Write-Host "Installing openSUSE-Tumbleweed"
+    wsl --install --distribution openSUSE-Tumbleweed
+}
+{{ end }}

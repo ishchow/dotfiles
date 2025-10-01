@@ -158,4 +158,4 @@ complete -F _complete_alias "${!BASH_ALIASES[@]}"
 eval "$(fasd --init auto)"
 
 # fnm setup
-eval "`fnm env`"
+eval "$(fnm env --use-on-cd --shell bash)"

@@ -1,0 +1,10 @@
+{{ if eq .chezmoi.os "windows" }}
+
+{{- template "ps1/bootstrap-common.ps1" . -}}
+
+Write-Header "Installing VS Code extensions"
+if (Get-Command code)
+{
+    Get-Content ~/AppData/Roaming/Code/User/extensions.txt | ForEach-Object { Invoke-Expression "code --install-extension $_" }
+}
+{{ end }}

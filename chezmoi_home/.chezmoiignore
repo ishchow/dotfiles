@@ -20,6 +20,7 @@ AppData/
 {{ end  }}
 
 {{ if ne .chezmoi.os "darwin"  }}
+.zprofile
 {{ end  }}
 
 .ssh/personal-gh-v3

@@ -1,7 +1,9 @@
 Catppuccin.catppuccin-vsc
 donjayamanne.githistory
 eamodio.gitlens
+{{ if ne .chezmoi.os "windows" }}
 ms-vscode.powershell
+{{ end }}
 shardulm94.trailing-spaces
 wayou.vscode-todo-highlight
 asvetliakov.vscode-neovim
