@@ -106,7 +106,7 @@ cd ~/.local/share/chezmoi/bootstrap
 Run appropriate bootstrap script:
 
 ```
-bash bootstrap.sh
+bash bootstrap-tw.sh
 ```
 
 ## Windows
