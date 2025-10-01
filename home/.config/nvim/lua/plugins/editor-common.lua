@@ -15,20 +15,6 @@ return {
     }
   },
   {
-    "phaazon/hop.nvim",
-    opts = {},
-    keys = {
-      { "<leader>ha", "<cmd>HopAnywhere<cr>", mode = {"n", "v"}, desc = "Hop: Anywhere" },
-      { "<leader>ho", "<cmd>HopChar1<cr>", mode = {"n", "v"}, desc = "Hop: 1 Character Search" },
-      { "<leader>ht", "<cmd>HopChar2<cr>", mode = {"n", "v"}, desc = "Hop: 2 Character Search" },
-      { "<leader>hl", "<cmd>HopLine<cr>", mode = {"n", "v"}, desc = "Hop: Line" },
-      { "<leader>hs", "<cmd>HopLineStart<cr>", mode = {"n", "v"}, desc = "Hop: Line Start" },
-      { "<leader>hv", "<cmd>HopVertical<cr>", mode = {"n", "v"}, desc = "Hop: Vertical" },
-      { "<leader>hp", "<cmd>HopPattern<cr>", mode = {"n", "v"}, desc = "Hop: Pattern" },
-      { "<leader>hw", "<cmd>HopWord<cr>", mode = {"n", "v"}, desc = "Hop: Word" },
-    }
-  },
-  {
     "nvim-mini/mini.ai",
     opts = function()
       local ai = require("mini.ai")
@@ -76,5 +62,19 @@ return {
         end,
       },
     },
+  },
+  {
+    "nvim-mini/mini.move",
+    opts = {},
+  },
+  {
+    "tpope/vim-repeat"
+  },
+  {
+    "ggandor/leap.nvim",
+    config = function(_, opts)
+      vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
+      vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
+    end,
   }
 }

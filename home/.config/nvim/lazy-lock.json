@@ -1,11 +1,13 @@
 {
-  "catppuccin": { "branch": "main", "commit": "128af65c3a23c94b324dc8d7f02a34feee8722d4" },
+  "catppuccin": { "branch": "main", "commit": "5af9374957a65be8770696da295dc9016b96f241" },
   "eyeliner.nvim": { "branch": "main", "commit": "8f197eb30cecdf4c2cc9988a5eecc6bc34c0c7d6" },
-  "hop.nvim": { "branch": "master", "commit": "90db1b2c61b820e230599a04fedcd2679e64bd07" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
+  "leap.nvim": { "branch": "main", "commit": "07304103f6bd923004fdef9262d9a4d7925fb70a" },
   "mini.ai": { "branch": "main", "commit": "dcd346a3eda9121e917950680e5eb59f59f78aae" },
   "mini.comment": { "branch": "main", "commit": "a9474da9175b27a5c32ee712433c23b9b0f7f139" },
+  "mini.move": { "branch": "main", "commit": "710ff226e31a3b9dd7e14bc9e2993f24d653df20" },
   "mini.pairs": { "branch": "main", "commit": "3738ea30ff33e0cbf2983dc67319a5468d25b0a9" },
   "mini.surround": { "branch": "main", "commit": "4b92d30fb5e021cced6cbb68698c73018211fbfa" },
-  "ts-comments.nvim": { "branch": "main", "commit": "1bd9d0ba1d8b336c3db50692ffd0955fe1bb9f0c" }
+  "ts-comments.nvim": { "branch": "main", "commit": "1bd9d0ba1d8b336c3db50692ffd0955fe1bb9f0c" },
+  "vim-repeat": { "branch": "master", "commit": "65846025c15494983dafe5e3b46c8f88ab2e9635" }
 }
