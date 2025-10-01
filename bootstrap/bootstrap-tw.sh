@@ -1,6 +1,10 @@
 #/bin/bash
 
-source bootstrap-common.sh
+add_repo () {
+    if ! $(zypper lr | grep "$1" &> /dev/null); then
+        sudo zypper ar -p 105 "https://download.opensuse.org/repositories/$1/openSUSE_Tumbleweed/$1.repo"
+    fi
+}
 
 echo "Installing basic patterns..."
 sudo zypper in -y -t pattern base enhanced_base devel_basis

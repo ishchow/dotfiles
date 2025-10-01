@@ -37,8 +37,11 @@ foreach ($uwp in $uwpApps)
     Get-AppxPackage -Name $uwp | Remove-AppxPackage
 }
 
-Write-Header "Installing winget packages"
-winget import -i .\winget-packages.json
+Write-Header "Installing winget packages (CLI tools)"
+winget import -i .\winget-packages-cli.json
+
+Write-Header "Installing winget packages (UI tools)"
+winget import -i .\winget-packages-ui.json
 
 Write-Header "Installing powershell modules"
 Install-Module -Name PowerShellGet -Force

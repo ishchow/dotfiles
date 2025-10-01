@@ -7,20 +7,7 @@
 			"Packages" :
 			[
 				{
-					"PackageIdentifier" : "Git.Git",
-					"Scope": "machine"
-				},
-				{
-					"PackageIdentifier" : "OpenJS.NodeJS.LTS",
-					"Scope": "machine"
-
-				},
-				{
 					"PackageIdentifier" : "BlastApps.FluentSearch",
-					"Scope": "machine"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.Sysinternals.Suite",
 					"Scope": "machine"
 				},
 				{
@@ -29,10 +16,6 @@
 				},
 				{
 					"PackageIdentifier" : "Insomnia.Insomnia",
-					"Scope": "machine"
-				},
-				{
-					"PackageIdentifier" : "twpayne.chezmoi",
 					"Scope": "machine"
 				},
 				{
@@ -64,16 +47,12 @@
 					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier": "Microsoft.PowerShell",
-					"Scope": "machine"
-				},
-				{
-					"PackageIdentifier": "Neovim.Neovim",
-					"Scope": "machine"
-				},
-				{
 					"PackageIdentifier": "Neovide.Neovide",
 					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "Obsidian.Obsidian",
+					"Scope": "user"
 				}
 			],
 			"SourceDetails" :
