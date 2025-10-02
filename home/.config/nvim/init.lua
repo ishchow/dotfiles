@@ -97,10 +97,12 @@ local specs = {
 
 -- Handle running within vscode
 if vim.g.vscode then
-  require('vscode')
+  require('vsc')
 else
   table.insert(specs, require("plugins.colorschemes"))
-  table.insert(specs, require("plugins.editor-nvsc"))
+  table.insert(specs, require("plugins.editor-native"))
+  table.insert(specs, require("plugins.ui"))
+  require('native')
 end
 
 -- Setup lazy

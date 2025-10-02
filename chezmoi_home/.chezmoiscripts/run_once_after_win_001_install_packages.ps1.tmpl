@@ -1,10 +1,10 @@
 {{ if eq .chezmoi.os "windows" }}
 
-{{- template "ps1/bootstrap-common.ps1" . -}}
+{{ template "ps1/bootstrap-common.ps1" (dict "Admin" true) }}
 
 Write-Header "Installing winget packages (CLI tools)"
-winget import -i ~\.local\share\chezmoi\bootstrap\winget-packages-cli.json
+winget import -i $(Resolve-Path ~\.local\share\chezmoi\bootstrap\winget-packages-cli.json).Path
 
 Write-Header "Installing winget packages (UI tools)"
-winget import -i ~\.local\share\chezmoi\bootstrap\winget-packages-ui.json
+winget import -i $(Resolve-Path ~\.local\share\chezmoi\bootstrap\winget-packages-ui.json).Path
 {{ end }}

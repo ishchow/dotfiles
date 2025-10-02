@@ -1,6 +1,6 @@
 {{ if eq .chezmoi.os "windows" }}
 
-{{- template "ps1/bootstrap-common.ps1" . -}}
+{{ template "ps1/bootstrap-common.ps1" (dict "Admin" false) }}
 
 Write-Header "Installing VS Code extensions"
 if (Get-Command code)

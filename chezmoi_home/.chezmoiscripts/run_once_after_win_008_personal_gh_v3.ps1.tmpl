@@ -1,5 +1,8 @@
 {{ if eq .chezmoi.os "windows" }}
 
+{{ template "ps1/bootstrap-common.ps1" (dict "Admin" false) }}
+
+Write-Header "Downloading personal-gh-v3 ssh key..."
 $Target = "~/.ssh/personal-gh-v3"
 
 if (!$(Test-Path $Target))

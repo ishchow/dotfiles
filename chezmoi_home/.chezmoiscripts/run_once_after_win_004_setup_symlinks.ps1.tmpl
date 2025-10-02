@@ -1,6 +1,6 @@
 {{ if eq .chezmoi.os "windows" }}
 
-{{- template "ps1/bootstrap-common.ps1" . -}}
+{{ template "ps1/bootstrap-common.ps1" (dict "Admin" false) }}
 
 Write-Header "Setting neovim config symlink"
 $symLinkPath = Join-Path $(Resolve-Path ~/AppData/Local).Path "nvim"

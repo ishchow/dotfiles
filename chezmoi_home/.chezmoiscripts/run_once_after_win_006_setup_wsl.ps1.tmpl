@@ -1,8 +1,8 @@
 {{ if eq .chezmoi.os "windows" }}
 
-{{- template "ps1/bootstrap-common.ps1" . -}}
+{{ template "ps1/bootstrap-common.ps1" (dict "Admin" true) }}
 
-Write-Header "Setup OpenSUSE Tumbleweed in WSL"
+Write-Header "Setting up OpenSUSE Tumbleweed in WSL..."
 $wslDistros = wsl.exe -l -q
 if ($wslDistros -contains "openSUSE-Tumbleweed")
 {

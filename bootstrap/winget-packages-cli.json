@@ -30,6 +30,50 @@
 				{
 					"PackageIdentifier": "Neovim.Neovim",
 					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "sxyazi.yazi",
+					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "Gyan.FFmpeg",
+					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "7zip.7zip",
+					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "jqlang.jq",
+					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "oschwartz10612.Poppler",
+					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "sharkdp.fd",
+					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "BurntSushi.ripgrep.MSVC",
+					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "junegunn.fzf",
+					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "ajeetdsouza.zoxide",
+					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "ImageMagick.ImageMagick",
+					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "sharkdp.bat",
+					"Scope": "machine"
 				}
 			],
 			"SourceDetails" :

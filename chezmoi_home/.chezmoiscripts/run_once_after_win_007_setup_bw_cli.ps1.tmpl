@@ -1,5 +1,7 @@
 {{ if eq .chezmoi.os "windows" }}
 
+{{ template "ps1/bootstrap-common.ps1" (dict "Admin" true) }}
+
 Write-Host "Installing bw cli..."
 npm install -g @bitwarden/cli
 {{ end }}

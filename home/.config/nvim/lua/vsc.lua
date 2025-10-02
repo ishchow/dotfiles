@@ -1,3 +1,4 @@
+-- Note: this file can't be named vscode.lua since it conflicts with some lua module provided by the extension internally, so renaming to vsc.lua to account for this.
 -- [[ Leader Key Maps ]]
 
 -- Find

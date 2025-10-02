@@ -1,3 +1,4 @@
+-- This spec is for pluings that we want to run only when neovim is running natively and not embedded in another editor (ex. vscode)
 return {
   {
     "jinh0/eyeliner.nvim",

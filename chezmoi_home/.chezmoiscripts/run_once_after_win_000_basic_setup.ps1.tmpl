@@ -1,6 +1,6 @@
 {{ if eq .chezmoi.os "windows" }}
 
-{{- template "ps1/bootstrap-common.ps1" . -}}
+{{ template "ps1/bootstrap-common.ps1" (dict "Admin" true) }}
 
 Write-Host "Updating ExecutionPolicy..."
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
@@ -28,4 +28,7 @@ foreach ($uwp in $uwpApps)
 {
     Get-AppxPackage -Name $uwp | Remove-AppxPackage
 }
+
+Write-Header "Enable Sudo"
+sudo config --enable normal
 {{ end }}
