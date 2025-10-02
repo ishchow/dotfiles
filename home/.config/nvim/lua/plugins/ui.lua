@@ -57,5 +57,11 @@ return
         -- Override the default vim.notify with nvim-notify
         vim.notify = notify
       end,
+    },
+    {
+      "ibhagwan/fzf-lua",
+      enabled = vim.fn.executable("fzf") == 1,
+      dependencies = { "nvim-mini/mini.icons" },
+      opts = {}
     }
 }
