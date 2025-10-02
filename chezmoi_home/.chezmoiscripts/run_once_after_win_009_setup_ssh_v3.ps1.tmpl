@@ -1,0 +1,39 @@
+{{ if eq .chezmoi.os "windows" }}
+
+{{ template "ps1/bootstrap-common.ps1" (dict "Admin" true) }}
+
+function Ensure-WindowsCapabilityInstalled {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$CapabilityName
+    )
+
+    Write-Host "Checking if capability '$CapabilityName' is installed..."
+
+    $capability = Get-WindowsCapability -Online -Name $CapabilityName -ErrorAction SilentlyContinue
+
+    if ($null -eq $capability) {
+        Write-Warning "Capability '$CapabilityName' not found."
+        return
+    }
+
+    if ($capability.State -eq 'Installed') {
+        Write-Host "Capability '$CapabilityName' is already installed."
+    } else {
+        Write-Host "Installing capability '$CapabilityName'..."
+        try {
+            Add-WindowsCapability -Online -Name $CapabilityName -ErrorAction Stop
+            Write-Host "Capability '$CapabilityName' installed successfully."
+        }
+        catch {
+            Write-Error "Failed to install capability '$CapabilityName': $_"
+        }
+    }
+}
+
+Write-Header "Installing ssh client..."
+Ensure-WindowsCapabilityInstalled -CapabilityName 'OpenSSH.Client~~~~0.0.1.0'
+
+Write-Header "Installing ssh server..."
+Ensure-WindowsCapabilityInstalled -CapabilityName 'OpenSSH.Server~~~~0.0.1.0'
+{{ end }}

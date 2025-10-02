@@ -3,5 +3,11 @@
 {{-   $email = promptString "email" -}}
 {{- end -}}
 
+{{- $isWorkDevBox := get . "isWorkDevBox" -}}
+{{- if not (hasKey . "isWorkDevBox") -}}
+{{-   $isWorkDevBox = promptBool "Is this a work dev box?" -}}
+{{- end -}}
+
 [data]
-  email = {{ $email | quote  }}
+  email = {{ $email | quote }}
+  isWorkDevBox = {{ $isWorkDevBox }}

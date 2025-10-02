@@ -5,6 +5,9 @@
 Write-Header "Installing winget packages (CLI tools)"
 winget import -i $(Resolve-Path ~\.local\share\chezmoi\bootstrap\winget-packages-cli.json).Path
 
+{{ if not .isWorkDevBox }}
 Write-Header "Installing winget packages (UI tools)"
 winget import -i $(Resolve-Path ~\.local\share\chezmoi\bootstrap\winget-packages-ui.json).Path
+{{ end }}
+
 {{ end }}

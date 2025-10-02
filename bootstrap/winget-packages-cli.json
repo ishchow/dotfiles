@@ -74,6 +74,14 @@
 				{
 					"PackageIdentifier": "sharkdp.bat",
 					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "Microsoft.Edit",
+					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "Microsoft.devtunnel",
+					"Scope": "machine"
 				}
 			],
 			"SourceDetails" :
