@@ -1,4 +1,4 @@
-{{ if ne .chezmoi.os "windows" }}#!/bin/sh
+{{ if eq .chezmoi.os "linux" }}#!/bin/sh
 
 # If not in WSL
 if [[ -z "$WSL_DISTRO_NAME" ]]; then

@@ -1,4 +1,4 @@
-{{ if eq .chezmoi.os "linux" }}#!/bin/bash
+{{ if eq .chezmoi.os "linux" }}#!/bin/sh
 
 add_repo () {
     if ! $(zypper lr | grep "$1" &> /dev/null); then

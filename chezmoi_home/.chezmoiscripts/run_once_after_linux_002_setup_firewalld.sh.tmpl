@@ -1,4 +1,4 @@
-{{ if eq .chezmoi.os "linux" }}#!/bin/bash
+{{ if eq .chezmoi.os "linux" }}#!/bin/sh
 
 if command -v firewall-cmd &> /dev/null; then
     echo "Setting up firewall rules..."
