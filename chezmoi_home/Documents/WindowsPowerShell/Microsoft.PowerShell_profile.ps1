@@ -1,3 +1,6 @@
+# Import aliases
+. "$HOME\Documents\PowerShell\git-aliases.ps1"
+
 Import-Module PSReadLine
 Import-Module ZLocation
 
