@@ -1,5 +1,8 @@
 Import-Module PSReadLine
-Import-Module ZLocation
+if (Get-Command zoxide -ErrorAction "silentlycontinue")
+{
+    Invoke-Expression (& { (zoxide init powershell | Out-String) })
+}
 
 Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
