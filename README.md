@@ -10,10 +10,29 @@ Personal dotfiles for Windows and Linux.
 ├── misc            # Contains anything that doesn't cleanly fit into the other folders
 ```
 
-# Log into bitwarden
+# Install bootstrap dependencies
+
+## Windows
+
+Run in admin prompt:
 
 ```
-bw login
+winget install --exact --id Git.Git --scope=machine
+winget install --exact --id twpayne.chezmoi --scope=machine
+```
+
+## Linux (OpenSUSE Tumbleweed)
+
+```
+sudo zypper in -y git chezmoi
+```
+
+## OSX (HomeBrew)
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" # Install homebrew first
+brew install git
+brew install chezmoi
 ```
 
 # Initialize dotfiles
