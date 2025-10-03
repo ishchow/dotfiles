@@ -62,3 +62,21 @@ git config user.email "<chezmoi repo email>" # In case default git user is diffe
 ssh -T git@github.com # Check if ssh to github works
 git remote set-url origin git@github.com:ishchow/dotfiles.git # If so, update chezmoi repo url
 ```
+
+# Fixing line ending errors (mostly in Windows)
+
+Might get errors like this in Windows (seems to happen when I'm copying from ChatGPT):
+
+```
+PS C:\Users\ischowdh\.local\share\chezmoi> git add -A
+fatal: CRLF would be replaced by LF in chezmoi_home/AppData/Local/ishaat/bootstrap/005_stop_mssqlserver.ps1.tmpl
+```
+
+To fix do this:
+
+```
+wsl # enter WSL
+dos2unix chezmoi_home/AppData/Local/ishaat/bootstrap/005_stop_mssqlserver.ps1.tmpl # Convert file to LF line endings, repeat similar command for all offending files
+exit # exit WSL
+git add -A # should work now
+```
