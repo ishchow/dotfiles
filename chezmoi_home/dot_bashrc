@@ -154,8 +154,8 @@ export PATH="$PATH:~/.local/bin"
 # bash alias completion
 complete -F _complete_alias "${!BASH_ALIASES[@]}"
 
-# fasd setup
-eval "$(fasd --init auto)"
+# zoxide setup
+eval "$(zoxide init bash)"
 
 # fnm setup
 eval "$(fnm env --use-on-cd --shell bash)"
