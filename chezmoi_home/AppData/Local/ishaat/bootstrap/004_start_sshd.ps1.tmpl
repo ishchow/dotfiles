@@ -1,0 +1,10 @@
+{{ if eq .chezmoi.os "windows" }}
+
+{{ template "ps1/bootstrap-common.ps1" . }}
+
+Write-Header "Set sshd to run on startup"
+Set-Service -Name sshd -StartupType 'Automatic'
+
+Write-Header "Start sshd"
+Start-Service sshd
+{{ end }}
