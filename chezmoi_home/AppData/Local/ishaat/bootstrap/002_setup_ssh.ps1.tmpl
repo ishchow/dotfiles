@@ -1,6 +1,7 @@
 {{ if eq .chezmoi.os "windows" }}
+#chezmoi: sudo:true
 
-{{ template "ps1/bootstrap-common.ps1" (dict "Admin" true) }}
+{{ template "ps1/bootstrap-common.ps1" . }}
 
 function Ensure-WindowsCapabilityInstalled {
     param (

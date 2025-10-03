@@ -11,16 +11,20 @@
 					"Scope": "machine"
 				},
 				{
+					"PackageIdentifier" : "twpayne.chezmoi",
+					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "gerardog.gsudo",
+					"Scope": "machine"
+				},
+				{
 					"PackageIdentifier" : "OpenJS.NodeJS.LTS",
 					"Scope": "machine"
 
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Sysinternals.Suite",
-					"Scope": "machine"
-				},
-				{
-					"PackageIdentifier" : "twpayne.chezmoi",
 					"Scope": "machine"
 				},
 				{

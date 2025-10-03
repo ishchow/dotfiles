@@ -19,6 +19,7 @@ Run in admin prompt:
 ```
 winget install --exact --id Git.Git --scope=machine
 winget install --exact --id twpayne.chezmoi --scope=machine
+winget install --exact --id gerardog.gsudo --scope=machine
 ```
 
 ## Linux (OpenSUSE Tumbleweed)
@@ -37,11 +38,21 @@ brew install chezmoi
 
 # Initialize dotfiles
 
+## Windows
+
+```
+chezmoi init --apply ishchow --exclude=scripts # First, init the dotfiles but do not run any scripts
+gsudo --wait powershell.exe -NoProfile -NonInteractive -File $(Resolve-Path ~/AppData/Local/ishaat/bootstrap/000_bootstrap.ps1).Path # Then, do basic setup that needs to run as admin that can't be run as part of .chezmoiscripts even with gsudo support
+chezmoi init --apply ishchow # Finally, this will init dotfiles again and then run scripts
+```
+
+## Linux/OSX
+
 ```
 chezmoi init --apply ishchow
 ```
 
-This will automatically setup dotfiles and bootstrap the system using shell scripts based on platform.
+This will automatically setup dotfiles and bootstrap the system using POSIX shell scripts based on platform.
 
 # Change chezmoi repo settings
 

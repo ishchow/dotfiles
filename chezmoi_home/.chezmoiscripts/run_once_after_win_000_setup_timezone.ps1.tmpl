@@ -1,0 +1,16 @@
+{{ if eq .chezmoi.os "windows" }}
+#chezmoi: sudo:true
+
+{{ template "ps1/bootstrap-common.ps1" . }}
+
+Write-Host "Running as administrator!"
+
+# Set the time zone (requires elevation)
+Write-Header "Setting timezone"
+tzutil /s "Pacific Standard Time"
+
+Write-Host "Time zone set to Pacific Standard Time."
+
+# Optional pause to see the output clearly
+# Read-Host -Prompt "Press Enter to exit"
+{{ end }}

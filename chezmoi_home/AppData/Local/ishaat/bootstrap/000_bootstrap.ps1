@@ -1,0 +1,6 @@
+# Run as admin
+if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) { Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs; exit }
+
+powershell.exe -File "$($PSScriptRoot)\001_basic_setup.ps1"
+powershell.exe -File "$($PSScriptRoot)\002_setup_ssh.ps1"
+powershell.exe -File "$($PSScriptRoot)\003_setup_ps_profile.ps1"

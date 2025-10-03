@@ -11,3 +11,13 @@
 [data]
   email = {{ $email | quote }}
   isWorkDevBox = {{ $isWorkDevBox }}
+
+{{ if eq .chezmoi.os "windows" }}
+[scripts.default]
+interpreter = ["powershell", "-NoProfile", "-NonInteractive", "-Command"]
+
+[scripts.default.sudo]
+command = "gsudo"
+args = ["--wait"]
+inline = true
+{{ end }}

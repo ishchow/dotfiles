@@ -1,6 +1,6 @@
 {{ if eq .chezmoi.os "windows" }}
 
-{{ template "ps1/bootstrap-common.ps1" (dict "Admin" true) }}
+{{ template "ps1/bootstrap-common.ps1" . }}
 
 Write-Header "Installing powershell modules"
 Install-Module -Name PowerShellGet -Force
