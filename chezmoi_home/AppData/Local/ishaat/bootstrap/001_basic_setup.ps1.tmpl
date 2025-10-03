@@ -4,7 +4,7 @@
 {{ template "ps1/bootstrap-common.ps1" . }}
 
 Write-Host "Updating ExecutionPolicy..."
-Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
 
 Write-Header "Disable Sleep on AC Power..."
 Powercfg /Change standby-timeout-ac 0
