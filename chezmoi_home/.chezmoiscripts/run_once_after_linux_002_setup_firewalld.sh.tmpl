@@ -1,6 +1,11 @@
 {{ if eq .chezmoi.os "linux" }}#!/bin/sh
 
 if command -v firewall-cmd &> /dev/null; then
+    if grep -qi microsoft-standard-WSL2 /proc/version; then
+        echo "Runnning under WSL. Skipping firewall configuration."
+        exit 0
+    fi    
+
     echo "Setting up firewall rules..."
     sudo firewall-cmd --permanent --zone=public --add-service=http
     sudo firewall-cmd --permanent --zone=public --add-service=https
