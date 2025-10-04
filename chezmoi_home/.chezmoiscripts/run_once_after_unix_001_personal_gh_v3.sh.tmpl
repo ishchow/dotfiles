@@ -1,12 +1,20 @@
 {{ if ne .chezmoi.os "windows" }}#!/bin/sh
 
-# Set the target file path
+# Get the Windows username from PowerShell (cleaner than cmd)
+WIN_USER=$(powershell.exe -Command '$env:USERNAME' | tr -d '\r')
+WINDOWS_KEY_PATH="/mnt/c/Users/$WIN_USER/.ssh/personal-gh-v3"
 TARGET="$HOME/.ssh/personal-gh-v3"
 
-# Only run if the file doesn't exist
 if [ ! -f "$TARGET" ]; then
-    echo "Writing personal-gh-v3 from Bitwarden..."
-    bw get attachment personal-gh-v3 --itemid feb3d011-094e-4749-9cfb-ac22004ff685 --output $TARGET
+    echo "Copying personal-gh-v3 from Windows user '$WIN_USER'..."
+    cp "$WINDOWS_KEY_PATH" "$TARGET"
+
+    # Convert to Unix line endings just in case
+    if command -v dos2unix &> /dev/null; then
+        dos2unix "$TARGET"
+    fi
+
+    chmod 600 "$TARGET"
 else
     echo "personal-gh-v3 already exists. Skipping."
 fi
