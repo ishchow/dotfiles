@@ -1,18 +1,30 @@
 {{ if ne .chezmoi.os "windows" }}#!/bin/sh
+# Ensure ~/.config exists
+mkdir -p "$HOME/.config"
 
-if ! test -d ~/.config/nvim; then
-    echo "Setting up nvim config..."
-    ln -s ~/.local/share/chezmoi/home/.config/nvim ~/.config/nvim
-else
-    echo "nvim config already setup. Skipping..."
-fi
+# List of config directories to symlink
+CONFIG_DIRS=("fish" "nvim")
 
-if ! test -d ~/.config/fish; then
-    echo "Setting up fish config..."
-    ln -s ~/.local/share/chezmoi/home/.config/fish ~/.config/fish
-else
-    echo "fish config already setup. Skipping..."
-fi
+for cfgdir in "${CONFIG_DIRS[@]}"; do
+    TARGET="$HOME/.config/$cfgdir"
+    SOURCE="$HOME/.local/share/chezmoi/home/.config/$cfgdir"
+
+    if [ -d "$SOURCE" ]; then
+        if [ -L "$TARGET" ]; then
+            echo "Symlink already exists: $TARGET"
+        elif [ -d "$TARGET" ]; then
+            echo "Backing up existing directory: $TARGET -> ${TARGET}.bak"
+            mv "$TARGET" "${TARGET}.bak"
+            ln -s "$SOURCE" "$TARGET"
+            echo "Created symlink: $TARGET -> $SOURCE"
+        else
+            echo "Creating symlink: $TARGET -> $SOURCE"
+            ln -s "$SOURCE" "$TARGET"
+        fi
+    else
+        echo "Skipping $cfgdir: source $SOURCE does not exist"
+    fi
+done
 
 echo "Creating projects folder..."
 mkdir -p ~/projects
