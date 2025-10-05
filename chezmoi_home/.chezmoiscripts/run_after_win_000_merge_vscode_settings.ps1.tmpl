@@ -1,0 +1,23 @@
+{{ if eq .chezmoi.os "windows" }}
+$SettingsDir = "$env:APPDATA\Code\User"
+$UserSettings = Join-Path $SettingsDir 'settings.json'
+$CoreSettings = Join-Path $SettingsDir 'settings.core.json'
+
+# Ensure the settings directory exists
+if (-not (Test-Path $SettingsDir)) {
+    New-Item -ItemType Directory -Path $SettingsDir -Force | Out-Null
+}
+
+# Create settings.json if it doesn't exist
+if (-not (Test-Path $UserSettings)) {
+    '{}' | Set-Content -Path $UserSettings -Encoding UTF8
+}
+
+# Use jq to merge core settings into user settings
+# Note: jq must be in PATH
+$cmd = "jq -s '.[0] * .[1]' `"$UserSettings`" `"$CoreSettings`" > `"$UserSettings.tmp`""
+Invoke-Expression $cmd
+
+# Replace original file with merged output
+Move-Item -Force "$UserSettings.tmp" $UserSettings
+{{ end }}

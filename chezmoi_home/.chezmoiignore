@@ -1,6 +1,8 @@
 {{ if ne .chezmoi.os "windows" }}
 Documents/
 AppData/
+
+.config/Code/User/settings.json
 {{ end }}
 
 {{ if eq .chezmoi.os "windows"  }}
@@ -13,6 +15,8 @@ AppData/
 .tmux.conf
 .config/fish
 .config/Code
+
+AppData/Roaming/Code/User/settings.json
 {{ end  }}
 
 {{ if ne .chezmoi.os "linux"  }}

@@ -1,0 +1,16 @@
+{{ if ne .chezmoi.os "windows" }}#!/bin/sh
+
+# Paths
+SETTINGS_DIR="$HOME/.config/Code/User"
+USER_SETTINGS="$SETTINGS_DIR/settings.json"
+CORE_SETTINGS="$SETTINGS_DIR/settings.core.json"
+
+# Ensure settings.json exists
+mkdir -p "$SETTINGS_DIR"
+touch "$USER_SETTINGS"
+
+# Merge core settings into user settings using jq
+tmpfile=$(mktemp)
+
+jq -s '.[0] * .[1]' "$USER_SETTINGS" "$CORE_SETTINGS" > "$tmpfile" && mv "$tmpfile" "$USER_SETTINGS"
+{{ end }}
