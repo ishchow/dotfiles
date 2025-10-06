@@ -4,7 +4,7 @@ if command -v firewall-cmd &> /dev/null; then
     if grep -qi microsoft-standard-WSL2 /proc/version; then
         echo "Runnning under WSL. Skipping firewall configuration."
         exit 0
-    fi    
+    fi
 
     echo "Setting up firewall rules..."
     sudo firewall-cmd --permanent --zone=public --add-service=http
