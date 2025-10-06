@@ -1,5 +1,22 @@
 {{ if ne .chezmoi.os "windows" }}#!/bin/sh
 
+# If not in WSL
+if [[ -z "$WSL_DISTRO_NAME" ]]; then
+    echo "==> Downloading personal-gh-v3 ssh key..."
+    TARGET="$HOME/.ssh/personal-gh-v3"
+
+    if [ ! -f "$TARGET" ]; then
+        echo "Writing personal-gh-v3 from Bitwarden..."
+        mkdir -p "$HOME/.ssh"
+        bw get attachment personal-gh-v3 --itemid feb3d011-094e-4749-9cfb-ac22004ff685 --output "$TARGET"
+        chmod 600 "$TARGET"
+    else
+        echo "personal-gh-v3 already exists. Skipping."
+    fi
+
+    exit 0
+fi
+
 # Get the Windows username from PowerShell (cleaner than cmd)
 WIN_USER=$(powershell.exe -Command '$env:USERNAME' | tr -d '\r')
 WINDOWS_KEY_PATH="/mnt/c/Users/$WIN_USER/.ssh/personal-gh-v3"

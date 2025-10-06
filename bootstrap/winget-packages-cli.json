@@ -86,6 +86,10 @@
 				{
 					"PackageIdentifier": "Microsoft.devtunnel",
 					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "Bitwarden.CLI",
+					"Scope": "machine"
 				}
 			],
 			"SourceDetails" :
