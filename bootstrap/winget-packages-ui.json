@@ -65,6 +65,10 @@
 				{
 					"PackageIdentifier" : "9P1741LKHQS9",
 					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "9NP355QT2SQB",
+					"Scope": "machine"
 				}
 			],
 			"SourceDetails" :
