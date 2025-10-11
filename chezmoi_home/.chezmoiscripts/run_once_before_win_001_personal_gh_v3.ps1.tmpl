@@ -8,7 +8,12 @@ $Target = "$HOME\.ssh\personal-gh-v3"
 if (!$(Test-Path $Target))
 {
     Write-Host "Writing personal-gh-v3 from Bitwarden..."
+    bw login
     bw get attachment personal-gh-v3 --itemid feb3d011-094e-4749-9cfb-ac22004ff685 --output $Target
+    if (!$(Test-Path $Target))
+    {
+        throw "personal-gh-v3 wasn't downloaded for some reason!"
+    }
 }
 else
 {

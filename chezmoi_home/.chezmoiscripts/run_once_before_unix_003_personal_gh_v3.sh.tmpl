@@ -8,6 +8,7 @@ if [[ -z "$WSL_DISTRO_NAME" ]]; then
     if [ ! -f "$TARGET" ]; then
         echo "Writing personal-gh-v3 from Bitwarden..."
         mkdir -p "$HOME/.ssh"
+        bw login
         bw get attachment personal-gh-v3 --itemid feb3d011-094e-4749-9cfb-ac22004ff685 --output "$TARGET"
         chmod 600 "$TARGET"
     else

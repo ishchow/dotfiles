@@ -15,12 +15,8 @@
 					"Scope": "user"
 				},
 				{
-					"PackageIdentifier" : "Insomnia.Insomnia",
-					"Scope": "machine"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode",
-					"Scope": "machine"
+					"Scope": "user"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerToys",
@@ -40,10 +36,6 @@
 				},
 				{
 					"PackageIdentifier": "voidtools.Everything",
-					"Scope": "machine"
-				},
-				{
-					"PackageIdentifier": "lin-ycv.EverythingPowerToys",
 					"Scope": "machine"
 				},
 				{

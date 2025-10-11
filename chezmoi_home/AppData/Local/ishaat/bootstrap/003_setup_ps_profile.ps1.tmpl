@@ -1,4 +1,5 @@
 {{ if eq .chezmoi.os "windows" }}
+#chezmoi: sudo:true
 
 {{ template "ps1/bootstrap-common.ps1" . }}
 

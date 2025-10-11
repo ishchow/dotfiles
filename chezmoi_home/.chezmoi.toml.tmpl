@@ -14,7 +14,7 @@
 
 {{ if eq .chezmoi.os "windows" }}
 [scripts.default]
-interpreter = ["powershell", "-NoProfile", "-NonInteractive", "-Command"]
+interpreter = ["pwsh.exe", "-NoProfile", "-NonInteractive", "-Command"]
 
 [scripts.default.sudo]
 command = "gsudo"
