@@ -49,6 +49,10 @@
 				{
 					"PackageIdentifier": "AutoHotkey.AutoHotkey",
 					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "DominikReichl.KeePass",
+					"Scope": "machine"
 				}
 			],
 			"SourceDetails" :
@@ -64,11 +68,13 @@
 			[
 				{
 					"PackageIdentifier" : "9P1741LKHQS9",
-					"Scope": "machine"
+					"Scope": "machine",
+					"x-comment": "FancyWM"
 				},
 				{
 					"PackageIdentifier": "9NP355QT2SQB",
-					"Scope": "machine"
+					"Scope": "machine",
+					"x-comment": "Azure VPN Client"
 				}
 			],
 			"SourceDetails" :

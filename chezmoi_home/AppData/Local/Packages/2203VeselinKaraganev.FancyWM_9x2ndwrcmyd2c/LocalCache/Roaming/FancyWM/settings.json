@@ -438,7 +438,8 @@
     }
   },
   "ProcessIgnoreList": [
-    "Taskmgr"
+    "Taskmgr",
+    "Kusto.Explorer"
   ],
   "ClassIgnoreList": [
     "OperationStatusWindow"
