@@ -1,0 +1,41 @@
+{{ if eq .chezmoi.os "windows" }}
+#chezmoi: sudo:true
+
+{{ template "ps1/bootstrap-common.ps1" . }}
+
+Write-Header "Installing kanata..."
+# Define the download URL and target install path
+$downloadUrl = "https://github.com/jtroo/kanata/releases/download/v1.9.0/kanata_cmd_allowed.exe"
+$installDir = "C:\Program Files\kanata"
+$installPath = Join-Path $installDir "kanata_cmd_allowed.exe"
+
+# Check if the file already exists
+if (-Not (Test-Path $installPath)) {
+    Write-Host "File not found. Installing to $installPath..."
+
+    # Create the directory if it doesn't exist
+    if (-Not (Test-Path $installDir)) {
+        New-Item -ItemType Directory -Path $installDir -Force | Out-Null
+    }
+
+    # Download the file
+    Invoke-WebRequest -Uri $downloadUrl -OutFile $installPath
+
+    Write-Host "Installation complete."
+} else {
+    Write-Host "File already exists at $installPath. Skipping download."
+}
+
+Write-Header "Setting up symlink to kanata config..."
+$actualFilePath = "$HOME\.local\share\chezmoi\misc\kanata\kanata-win.kbd"
+$configDir = "C:\ProgramData\kanata"
+$symLinkPath = "$configDir\kanata-win.kbd"
+
+# Create the directory if it doesn't exist
+if (-Not (Test-Path $configDir)) {
+    New-Item -ItemType Directory -Path $configDir -Force | Out-Null
+}
+
+New-Symlink -SymLinkPath $symLinkPath -TargetPath $actualFilePath
+
+{{ end }}
