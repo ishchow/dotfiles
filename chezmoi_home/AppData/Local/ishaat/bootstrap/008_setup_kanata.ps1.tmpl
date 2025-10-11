@@ -38,4 +38,33 @@ if (-Not (Test-Path $configDir)) {
 
 New-Symlink -SymLinkPath $symLinkPath -TargetPath $actualFilePath
 
+Write-Header "Writing scheduler task"
+$taskName = "run-kanata"
+$taskPath = "\ishaat\"
+$taskXmlPath = "$HOME\AppData\Local\kanata\run-kanata.xml"
+
+# Function to check if task exists
+function TaskExists {
+    param (
+        [string]$Name,
+        [string]$Path
+    )
+    try {
+        $task = Get-ScheduledTask -TaskName $Name -TaskPath $Path -ErrorAction Stop
+        return $true
+    } catch {
+        return $false
+    }
+}
+
+if (-not (TaskExists -Name $taskName -Path $taskPath)) {
+    Write-Host "Registering scheduled task '$taskPath$taskName'..."
+    $xmlContent = Get-Content $taskXmlPath | Out-String
+    Register-ScheduledTask -Xml $xmlContent -TaskName $taskName -TaskPath $taskPath
+    Write-Host "Task registered successfully."
+} else {
+    Write-Host "Scheduled task '$taskPath$taskName' already exists. Skipping registration."
+}
+Register-ScheduledTask -Xml (Get-Content $taskXmlPath | Out-String) -TaskName "MyTaskName"
+
 {{ end }}

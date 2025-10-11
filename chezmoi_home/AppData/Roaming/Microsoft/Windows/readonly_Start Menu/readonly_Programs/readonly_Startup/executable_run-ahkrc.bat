@@ -1,0 +1,1 @@
+@"C:\Program Files\AutoHotkey\AutoHotkeyU64_UIA.exe" "%USERPROFILE%\.local\share\chezmoi\misc\ahk\ahkrc.ahk"

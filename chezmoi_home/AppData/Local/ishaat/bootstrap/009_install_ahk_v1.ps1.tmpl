@@ -1,0 +1,47 @@
+{{ if eq .chezmoi.os "windows" }}
+#chezmoi: sudo:true
+
+{{ template "ps1/bootstrap-common.ps1" . }}
+
+Write-Header "Installing AutoHotkey v1..."
+# Define variables
+$ahkExePath = "$Env:ProgramFiles\AutoHotkey\AutoHotkey.exe"
+$installerUrl = "https://github.com/AutoHotkey/AutoHotkey/releases/download/v1.1.34.02/AutoHotkey_1.1.34.02_setup.exe"
+$installerPath = "$Env:TEMP\AutoHotkey_1.1.34.02_setup.exe"
+
+# Function to get AutoHotkey version
+function Get-AhkVersion {
+    param ($exePath)
+    if (-Not (Test-Path $exePath)) {
+        return $null
+    }
+    try {
+        $fileVersionInfo = [System.Diagnostics.FileVersionInfo]::GetVersionInfo($exePath)
+        return $fileVersionInfo.ProductVersion
+    } catch {
+        return $null
+    }
+}
+
+# Check if AutoHotkey v1 is installed
+$version = Get-AhkVersion -exePath $ahkExePath
+if ($version -and $version.StartsWith("1.")) {
+    Write-Output "AutoHotkey v1 is already installed. Version: $version"
+    exit 0
+} else {
+    Write-Output "AutoHotkey v1 is not installed or version is not v1."
+}
+
+# Download installer
+Write-Output "Downloading AutoHotkey v1 installer..."
+Invoke-WebRequest -Uri $installerUrl -OutFile $installerPath
+
+# Run installer silently
+Write-Output "Running installer..."
+Start-Process -FilePath $installerPath -ArgumentList "/S" -Wait
+
+Write-Output "Installation complete."
+
+# Cleanup installer
+Remove-Item $installerPath -Force
+{{ end }}

@@ -45,6 +45,10 @@
 				{
 					"PackageIdentifier": "Obsidian.Obsidian",
 					"Scope": "user"
+				},
+				{
+					"PackageIdentifier": "AutoHotkey.AutoHotkey",
+					"Scope": "machine"
 				}
 			],
 			"SourceDetails" :
