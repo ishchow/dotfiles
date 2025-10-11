@@ -62,7 +62,7 @@ This will automatically setup dotfiles and bootstrap the system using POSIX shel
 chezmoi cd
 git config user.email "<chezmoi repo email>" # In case default git user is different
 ssh -T git@github.com # Check if ssh to github works
-git remote set-url origin git@github.com:ishchow/dotfiles.git # If so, update chezmoi repo url
+git remote set-url --push origin git@github.com:ishchow/dotfiles.git # If so, update chezmoi repo url for push only. Fetch stays on HTTPS for convenience.
 ```
 
 # Fixing line ending errors (mostly in Windows)
