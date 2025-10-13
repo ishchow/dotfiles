@@ -21,7 +21,6 @@
 				{
 					"PackageIdentifier" : "OpenJS.NodeJS.LTS",
 					"Scope": "machine"
-
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Sysinternals.Suite",
