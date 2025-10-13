@@ -53,6 +53,10 @@
 				{
 					"PackageIdentifier": "DominikReichl.KeePass",
 					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "Spotify.Spotify",
+					"Scope": "user"
 				}
 			],
 			"SourceDetails" :
