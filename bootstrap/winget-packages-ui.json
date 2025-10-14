@@ -39,6 +39,10 @@
 					"Scope": "machine"
 				},
 				{
+					"PackageIdentifier": "lin-ycv.EverythingPowerToys",
+					"Scope": "user"
+				}
+				{
 					"PackageIdentifier": "Neovide.Neovide",
 					"Scope": "machine"
 				},
