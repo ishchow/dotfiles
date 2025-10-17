@@ -1,8 +1,4 @@
 Import-Module PSReadLine
-if (Get-Command zoxide -ErrorAction "silentlycontinue")
-{
-    Invoke-Expression (& { (zoxide init powershell | Out-String) })
-}
 
 Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
@@ -17,6 +13,11 @@ Set-PSReadLineKeyHandler -Key Ctrl+Q -Function TabCompletePrevious
 Set-PSReadLineKeyHandler -Key Ctrl+C -Function Copy
 Set-PSReadLineKeyHandler -Key Ctrl+v -Function Paste
 
+if (Get-Command zoxide -ErrorAction "silentlycontinue")
+{
+    Invoke-Expression (& { (zoxide init powershell | Out-String) })
+}
+
 if (Get-Command fzf -ErrorAction "silentlycontinue")
 {
     Import-Module -Name PSFzf
@@ -24,9 +25,9 @@ if (Get-Command fzf -ErrorAction "silentlycontinue")
     Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 }
 
-if (Get-Command fnm -ErrorAction "silentlycontinue")
+if (Get-Command starship -ErrorAction "silentlycontinue")
 {
-    fnm env --use-on-cd | Out-String | Invoke-Expression
+    Invoke-Expression (&starship init powershell)
 }
 
 function Show-Notification {

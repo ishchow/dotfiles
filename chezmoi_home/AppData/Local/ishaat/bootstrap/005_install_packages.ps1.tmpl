@@ -63,7 +63,6 @@ if (!$(Verify-WingetPackagesInstalled $cliImportPath))
 Write-Header "Installing winget packages (UI tools)"
 $uiFilePath = $(Resolve-Path ~\.local\share\chezmoi\bootstrap\winget-packages-ui.json).Path
 winget import -i $uiFilePath --accept-source-agreements
-Verify-WingetPackagesInstalled $uiFilePath
 if (!$(Verify-WingetPackagesInstalled $uiFilePath))
 {
     throw "Not all UI packages were installed!"
