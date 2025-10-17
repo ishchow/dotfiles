@@ -56,7 +56,7 @@ brew install chezmoi
 sudo config --enable normal
 chezmoi init --apply ishchow --exclude=scripts # First, init the dotfiles but do not run any scripts
 Set-ExecutionPolicy -ExecutionPolicy Bypass
-sudo pwsh.exe -File $(Resolve-Path ~/AppData/Local/ishaat/bootstrap/000_bootstrap.ps1).Path # Then, do basic setup that needs to run as admin. .chezmoiscripts are pain when script needs to run as admin, so managing separately.
+pwsh.exe -File $(Resolve-Path ~/AppData/Local/ishaat/bootstrap/000_bootstrap.ps1).Path # Then, do bootstrap that mostly needs to run as admin. .chezmoiscripts are pain when script needs to run as admin, so managing separately. We don't run the entire script as Admin as some child scripts fail when run as Admin, so parent script will invoke child scripts needing Admin using sudo.
 chezmoi init --apply ishchow # Finally, this will init dotfiles again and then run scripts
 ```
 
