@@ -1,7 +1,8 @@
 # Overview
 
-Personal dotfiles for Windows and Linux.
+Personal dotfiles.
 
+## Repo structure
 ```
 .
 ├── bootstrap       # Contains data used for bootstrapping new systems
@@ -9,6 +10,17 @@ Personal dotfiles for Windows and Linux.
 ├── home            # Contains dotfiles that are not managed by chezmoi (typically these are symlinked manually)
 ├── misc            # Contains anything that doesn't cleanly fit into the other folders
 ```
+
+## Supported and Tested Platforms
+These are the platforms that this repo is used to manage and tested with:
+- Windows 11 or above
+- Linux
+    - Scipts to install packages and instructions on bootstrapping only support OpenSUSE Tumbleweed
+    - But the rest of the config works fine on any Linux system (theoretically, not tested)
+- MacOS
+    - Apple Silicon
+    - Sequoia or above
+        - Techincally can work on Intel Mac but some paths may be hardcoded to Apple Silicon paths
 
 # Install bootstrap dependencies
 
