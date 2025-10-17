@@ -1,0 +1,5 @@
+export WEZTERM_CONFIG_FILE=$HOME/.config/wezterm/wezterm.lua
+
+if [[ $- == *i* ]] && command -v fish >/dev/null 2>&1; then
+  exec fish
+fi
