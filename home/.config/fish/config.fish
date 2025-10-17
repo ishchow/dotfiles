@@ -8,3 +8,4 @@ if not set -q SSH_AUTH_SOCK
 end
 
 zoxide init fish | source
+starship init fish | source

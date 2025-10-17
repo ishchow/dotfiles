@@ -61,6 +61,10 @@
 				{
 					"PackageIdentifier": "Spotify.Spotify",
 					"Scope": "user"
+				},
+				{
+					"PackageIdentifier": "wez.wezterm",
+					"Scope": "machine"
 				}
 			],
 			"SourceDetails" :

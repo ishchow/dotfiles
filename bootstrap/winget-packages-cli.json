@@ -89,6 +89,14 @@
 				{
 					"PackageIdentifier": "Bitwarden.CLI",
 					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "Starship.Starship",
+					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "JesseDuffield.lazygit",
+					"Scope": "machine"
 				}
 			],
 			"SourceDetails" :
