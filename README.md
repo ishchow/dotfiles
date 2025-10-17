@@ -19,8 +19,8 @@ These are the platforms that this repo is used to manage and tested with:
     - But the rest of the config works fine on any Linux system (theoretically, not tested)
 - MacOS
     - Apple Silicon
+        - Techincally can work on Intel Mac but some paths may be hardcoded to Apple Silico paths
     - Sequoia or above
-        - Techincally can work on Intel Mac but some paths may be hardcoded to Apple Silicon paths
 
 # Install bootstrap dependencies
 
