@@ -75,13 +75,7 @@ chezmoi cd
 git config user.email "<chezmoi repo email>" # In case default git user is different
 git config remote.origin.url https://github.com/ishchow/dotfiles.git # set fetch URL to https to avoid potential SSH login for fetch/pull since repo is public
 ssh -T git@github.com # Check if ssh to github works
-<<<<<<< Updated upstream
-git remote set-url --push origin git@github.com:ishchow/dotfiles.git # If so, update chezmoi repo url for push only. Fetch stays on HTTPS for convenience.
-||||||| Stash base
-git remote set-url origin git@github.com:ishchow/dotfiles.git # If so, update chezmoi repo url
-=======
 git remote set-url --push origin git@github.com:ishchow/dotfiles.git # If so, update chezmoi repo url
->>>>>>> Stashed changes
 ```
 
 # Fixing line ending errors (mostly in Windows)
