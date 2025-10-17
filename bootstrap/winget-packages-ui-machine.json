@@ -11,14 +11,6 @@
 					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier" : "JetBrains.Toolbox",
-					"Scope": "user"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode",
-					"Scope": "user"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.PowerToys",
 					"Scope": "machine"
 				},
@@ -39,16 +31,8 @@
 					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier": "lin-ycv.EverythingPowerToys",
-					"Scope": "user"
-				},
-				{
 					"PackageIdentifier": "Neovide.Neovide",
 					"Scope": "machine"
-				},
-				{
-					"PackageIdentifier": "Obsidian.Obsidian",
-					"Scope": "user"
 				},
 				{
 					"PackageIdentifier": "AutoHotkey.AutoHotkey",
@@ -56,14 +40,6 @@
 				},
 				{
 					"PackageIdentifier": "DominikReichl.KeePass",
-					"Scope": "machine"
-				},
-				{
-					"PackageIdentifier": "Spotify.Spotify",
-					"Scope": "user"
-				},
-				{
-					"PackageIdentifier": "wez.wezterm",
 					"Scope": "machine"
 				}
 			],

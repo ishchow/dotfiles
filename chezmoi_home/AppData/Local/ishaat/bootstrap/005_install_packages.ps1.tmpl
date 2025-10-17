@@ -3,69 +3,17 @@
 
 {{ template "ps1/bootstrap-common.ps1" . }}
 
-function Verify-WingetPackagesInstalled {
-    param(
-        [Parameter(Mandatory=$true)]
-        [string]$ManifestPath
-    )
-
-    if (-Not (Test-Path $ManifestPath)) {
-        Write-Error "Manifest file not found at path: $ManifestPath"
-        return $false
-    }
-
-    try {
-        $manifestJson = Get-Content -Raw -Path $ManifestPath | ConvertFrom-Json
-    } catch {
-        Write-Error "Failed to parse JSON manifest: $_"
-        return $false
-    }
-
-    $allPackages = @()
-    foreach ($source in $manifestJson.Sources) {
-        foreach ($pkg in $source.Packages) {
-            $allPackages += $pkg.PackageIdentifier
-        }
-    }
-
-    $missingPackages = @()
-
-    Write-Host "Verifying installed packages..."
-
-    foreach ($pkgId in $allPackages) {
-        $result = winget list --id $pkgId 2>$null
-        if ([string]::IsNullOrWhiteSpace($result)) {
-            Write-Warning "Package NOT installed: $pkgId"
-            $missingPackages += $pkgId
-        } else {
-            Write-Host "Package installed: $pkgId"
-        }
-    }
-
-    if ($missingPackages.Count -gt 0) {
-        Write-Error "The following packages are missing:`n$($missingPackages -join "`n")"
-        return $false
-    } else {
-        Write-Host "All packages are installed."
-        return $true
-    }
-}
-
 Write-Header "Installing winget packages (CLI tools)"
 $cliImportPath = $(Resolve-Path ~\.local\share\chezmoi\bootstrap\winget-packages-cli.json).Path
-winget import -i $cliImportPath --accept-source-agreements
-if (!$(Verify-WingetPackagesInstalled $cliImportPath))
-{
-    throw "Not all CLI packages were installed!"
-}
+sudo winget import -i $cliImportPath --accept-source-agreements
 
 {{ if not .isWorkDevBox }}
-Write-Header "Installing winget packages (UI tools)"
-$uiFilePath = $(Resolve-Path ~\.local\share\chezmoi\bootstrap\winget-packages-ui.json).Path
-winget import -i $uiFilePath --accept-source-agreements
-if (!$(Verify-WingetPackagesInstalled $uiFilePath))
-{
-    throw "Not all UI packages were installed!"
-}
+Write-Header "Installing machine winget packages (UI tools)"
+$uiMachineFilePath = $(Resolve-Path ~\.local\share\chezmoi\bootstrap\winget-packages-ui-machine.json).Path
+sudo winget import -i $uiMachineFilePath --accept-source-agreements
+
+Write-Header "Installing user winget packages (UI tools)"
+$uiUserFilePath = $(Resolve-Path ~\.local\share\chezmoi\bootstrap\winget-packages-ui-user.json).Path
+winget import -i $uiUserFilePath --accept-source-agreements
 {{ end }}
 {{ end }}

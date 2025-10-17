@@ -1,0 +1,44 @@
+{
+	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
+	"CreationDate" : "2025-09-14T20:54:13.153-00:00",
+	"Sources" :
+	[
+		{
+			"Packages" :
+			[
+				{
+					"PackageIdentifier" : "JetBrains.Toolbox",
+					"Scope": "user"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VisualStudioCode",
+					"Scope": "user"
+				},
+				{
+					"PackageIdentifier": "lin-ycv.EverythingPowerToys",
+					"Scope": "user"
+				},
+				{
+					"PackageIdentifier": "Obsidian.Obsidian",
+					"Scope": "user"
+				},
+				{
+					"PackageIdentifier": "Spotify.Spotify",
+					"Scope": "user"
+				},
+				{
+					"PackageIdentifier": "wez.wezterm",
+					"x-comment": "Installation fails if scope is explicity set. So omitting here."
+				}
+			],
+			"SourceDetails" :
+			{
+				"Argument" : "https://cdn.winget.microsoft.com/cache",
+				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
+				"Name" : "winget",
+				"Type" : "Microsoft.PreIndexed.Package"
+			}
+		}
+	],
+	"WinGetVersion" : "1.11.430"
+}
