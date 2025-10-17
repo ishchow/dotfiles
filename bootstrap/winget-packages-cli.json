@@ -97,6 +97,10 @@
 				{
 					"PackageIdentifier": "JesseDuffield.lazygit",
 					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "jdx.mise",
+					"Scope": "machine"
 				}
 			],
 			"SourceDetails" :
