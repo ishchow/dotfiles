@@ -30,3 +30,4 @@ AppData/Roaming/Code/User/settings.json
 
 .ssh/personal-gh-v3
 .ssh/config.d/
+.gitconfig-private
