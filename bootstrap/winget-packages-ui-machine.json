@@ -41,6 +41,10 @@
 				{
 					"PackageIdentifier": "DominikReichl.KeePass",
 					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "Microsoft.SQLServerManagementStudio.21",
+					"Scope": "machine"
 				}
 			],
 			"SourceDetails" :
