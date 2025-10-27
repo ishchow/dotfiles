@@ -97,6 +97,10 @@
 				{
 					"PackageIdentifier": "jdx.mise",
 					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "Microsoft.DotNet.SDK.9",
+					"x-comment": "Installation fails if scope is explicity set. So omitting here."
 				}
 			],
 			"SourceDetails" :
