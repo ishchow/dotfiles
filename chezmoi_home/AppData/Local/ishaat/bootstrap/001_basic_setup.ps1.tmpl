@@ -32,4 +32,7 @@ foreach ($uwp in $uwpApps)
 
 Write-Header "Enable Sudo"
 sudo config --enable normal
+
+Write-Header "Enable long paths in git"
+sudo git config --system core.longpaths true
 {{ end }}
