@@ -1,0 +1,5 @@
+{{ if ne .chezmoi.os "windows" }}#!/bin/sh
+
+echo "Setting up quarto..."
+quarto install tinytex
+{{ end }}

@@ -8,3 +8,4 @@ asvetliakov.vscode-neovim
 ms-vscode-remote.vscode-remote-extensionpack
 yinfei.luahelper
 ms-dotnettools.dotnet-interactive-vscode
+quarto.quarto
