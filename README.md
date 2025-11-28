@@ -43,7 +43,8 @@ sudo zypper in -y git chezmoi
 ## OSX (HomeBrew)
 
 ```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" # Install homebrew first
+# Install homebrew first
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install git
 brew install chezmoi
 ```
@@ -54,10 +55,17 @@ brew install chezmoi
 
 ```
 sudo config --enable normal
-chezmoi init --apply ishchow --exclude=scripts # First, init the dotfiles but do not run any scripts
+# First, init the dotfiles but do not run any scripts
+chezmoi init --apply ishchow --exclude=scripts
 Set-ExecutionPolicy -ExecutionPolicy Bypass
-pwsh.exe -File $(Resolve-Path ~/AppData/Local/ishaat/bootstrap/000_bootstrap.ps1).Path # Then, do bootstrap that mostly needs to run as admin. .chezmoiscripts are pain when script needs to run as admin, so managing separately. We don't run the entire script as Admin as some child scripts fail when run as Admin, so parent script will invoke child scripts needing Admin using sudo.
-chezmoi init --apply ishchow # Finally, this will init dotfiles again and then run scripts
+# Then, do bootstrap that mostly needs to run as admin.
+# .chezmoiscripts are pain when script needs to run as admin.
+# So managing these scripts separately.
+# We don't run the entire script as Admin as some child scripts fail when run as Admin.
+# So parent script will invoke child scripts needing Admin using sudo.
+pwsh.exe -File $(Resolve-Path ~/AppData/Local/ishaat/bootstrap/000_bootstrap.ps1).Path
+# Finally, this will init dotfiles again and then run scripts
+chezmoi init --apply ishchow
 ```
 
 ## Linux/OSX
@@ -72,10 +80,14 @@ This will automatically setup dotfiles and bootstrap the system using POSIX shel
 
 ```
 chezmoi cd
-git config user.email "<chezmoi repo email>" # In case default git user is different
-git config remote.origin.url https://github.com/ishchow/dotfiles.git # set fetch URL to https to avoid potential SSH login for fetch/pull since repo is public
-ssh -T git@github.com # Check if ssh to github works
-git remote set-url --push origin git@github.com:ishchow/dotfiles.git # If so, update chezmoi repo url
+# In case default git user is different
+git config user.email "<chezmoi repo email>"
+# set fetch URL to https to avoid potential SSH login for fetch/pull since repo is public
+git config remote.origin.url https://github.com/ishchow/dotfiles.git
+# Check if ssh to github works
+ssh -T git@github.com
+# If so, update chezmoi repo url
+git remote set-url --push origin git@github.com:ishchow/dotfiles.git
 ```
 
 # Fixing line ending errors (mostly in Windows)
@@ -90,8 +102,12 @@ fatal: CRLF would be replaced by LF in chezmoi_home/AppData/Local/ishaat/bootstr
 To fix do this:
 
 ```
-wsl # enter WSL
-dos2unix chezmoi_home/AppData/Local/ishaat/bootstrap/005_stop_mssqlserver.ps1.tmpl # Convert file to LF line endings, repeat similar command for all offending files
-exit # exit WSL
-git add -A # should work now
+# enter WSL
+wsl
+# Convert file to LF line endings, repeat similar command for all offending files
+dos2unix chezmoi_home/AppData/Local/ishaat/bootstrap/005_stop_mssqlserver.ps1.tmpl
+# exit WSL
+exit
+# should work now
+git add -A
 ```
