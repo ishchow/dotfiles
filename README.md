@@ -89,13 +89,13 @@ chezmoi cd
 # In case default git user is different
 git config user.email "<chezmoi repo email>"
 
-# set fetch URL to https to avoid potential SSH login for fetch/pull since repo is public
+# set remote URL to https to avoid potential SSH login for fetch/pull since repo is public
 git config remote.origin.url https://github.com/ishchow/dotfiles.git
 
 # Check if ssh to github works
 ssh -T git@github.com
 
-# If so, update chezmoi repo url
+# If so, update chezmoi repo url for pushes only.
 git remote set-url --push origin git@github.com:ishchow/dotfiles.git
 ```
 
