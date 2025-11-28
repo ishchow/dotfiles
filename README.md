@@ -7,7 +7,7 @@ Personal dotfiles.
 .
 ├── bootstrap       # Contains data used for bootstrapping new systems
 ├── chezmoi_home    # Contains dotfiles that are managed by chezmoi (https://www.chezmoi.io/)
-├── home            # Contains dotfiles that are not managed by chezmoi (typically these are symlinked manually)
+├── home            # Contains dotfiles that are not managed by chezmoi (typically these are symlinked using setup scripts)
 ├── misc            # Contains anything that doesn't cleanly fit into the other folders
 ```
 
