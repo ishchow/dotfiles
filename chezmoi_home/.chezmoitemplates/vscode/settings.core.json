@@ -9,5 +9,6 @@
     "workbench.editor.showTabs": false,
     "git.confirmSync": false,
     "workbench.colorTheme": "Catppuccin Mocha",
-    "security.workspace.trust.enabled": false
+    "security.workspace.trust.enabled": false,
+    "gitHubCopilot.inlineSuggest.enable": false
 }
