@@ -38,6 +38,22 @@
 				"Name" : "winget",
 				"Type" : "Microsoft.PreIndexed.Package"
 			}
+		},
+		{
+			"Packages" :
+			[
+				{
+					"PackageIdentifier" : "9WZDNCRDMDM3",
+					"x-comment": "NuGet Package Explorer"
+				}
+			],
+			"SourceDetails" :
+			{
+				"Argument" : "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
+				"Identifier" : "StoreEdgeFD",
+				"Name" : "msstore",
+				"Type" : "Microsoft.Rest"
+			}
 		}
 	],
 	"WinGetVersion" : "1.11.430"
