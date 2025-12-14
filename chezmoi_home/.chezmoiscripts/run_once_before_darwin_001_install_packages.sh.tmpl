@@ -1,4 +1,4 @@
 {{ if eq .chezmoi.os "darwin" }}#!/bin/sh
-
+softwareupdate --install-rosetta --agree-to-license
 brew bundle install --file=~/.local/share/chezmoi/bootstrap/Brewfile
 {{ end }}
