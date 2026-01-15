@@ -105,6 +105,10 @@
 				{
 					"PackageIdentifier": "Posit.Quarto",
 					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "GitHub.Copilot",
+					"Scope": "machine"
 				}
 			],
 			"SourceDetails" :
