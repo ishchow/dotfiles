@@ -1,3 +1,6 @@
+# ------------------------------------------------------------------------------------------------------------------------
+# Common Settings
+# ------------------------------------------------------------------------------------------------------------------------
 Import-Module PSReadLine
 
 Set-PSReadLineOption -EditMode Emacs
@@ -13,6 +16,9 @@ Set-PSReadLineKeyHandler -Key Ctrl+Q -Function TabCompletePrevious
 Set-PSReadLineKeyHandler -Key Ctrl+C -Function Copy
 Set-PSReadLineKeyHandler -Key Ctrl+v -Function Paste
 
+# ------------------------------------------------------------------------------------------------------------------------
+# Integrations with External Tools
+# ------------------------------------------------------------------------------------------------------------------------
 if (Get-Command zoxide -ErrorAction "silentlycontinue")
 {
     Invoke-Expression (& { (zoxide init powershell | Out-String) })
@@ -30,6 +36,9 @@ if (Get-Command starship -ErrorAction "silentlycontinue")
     Invoke-Expression (&starship init powershell)
 }
 
+# ------------------------------------------------------------------------------------------------------------------------
+# Functions
+# ------------------------------------------------------------------------------------------------------------------------
 function Show-Notification {
     [cmdletbinding()]
     Param (
@@ -58,3 +67,15 @@ function Show-Notification {
     $Notifier = [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier("PowerShell")
     $Notifier.Show($Toast);
 }
+
+function Remove-StaleBranches
+{
+   git fetch --prune
+   git branch -vv | Select-String ': gone]' | ForEach-Object { ($_ -split '\s+')[1] } | ForEach-Object { git branch -D $_ }
+}
+
+# ------------------------------------------------------------------------------------------------------------------------
+# Aliases
+# ------------------------------------------------------------------------------------------------------------------------
+
+Set-Alias -Name gprnlcl -Value Remove-StaleBranches
