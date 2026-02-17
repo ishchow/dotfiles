@@ -1,0 +1,6 @@
+{{ if eq .chezmoi.os "windows" }}
+echo "Setting up mise tools..."
+
+# Run mise commands
+{{ template "mise-commands" . }}
+{{ end }}
