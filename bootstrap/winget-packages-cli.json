@@ -107,6 +107,10 @@
 					"Scope": "machine"
 				},
 				{
+					"PackageIdentifier": "Chocolatey.Chocolatey",
+					"Scope": "machine"
+				},
+				{
 					"PackageIdentifier": "GitHub.Copilot",
 					"Scope": "machine"
 				}
