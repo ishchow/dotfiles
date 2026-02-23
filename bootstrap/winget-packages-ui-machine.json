@@ -45,6 +45,10 @@
 				{
 					"PackageIdentifier": "Microsoft.SQLServerManagementStudio.21",
 					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "KDE.Okular",
+					"Scope": "machine"
 				}
 			],
 			"SourceDetails" :
