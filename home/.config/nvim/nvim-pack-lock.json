@@ -24,6 +24,10 @@
       "rev": "e8fae66",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
+    "mini.misc": {
+      "rev": "de8947231c29012271722651aa07f6749c41d1ed",
+      "src": "https://github.com/nvim-mini/mini.misc"
+    },
     "mini.move": {
       "rev": "7231697",
       "src": "https://github.com/nvim-mini/mini.move"
