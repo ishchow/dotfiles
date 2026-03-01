@@ -67,46 +67,57 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- [[ Setup neovide ]]
-vim.g.neovide_cursor_animation_length = 0
-vim.g.neovide_cursor_trail_size = 0
-vim.g.neovide_cursor_vfx_mode = ""
+-- [[ Plugin management with vim.pack ]]
 
--- [[ Plugin management ]]
+vim.pack.add({
+  -- Core editor plugins (always loaded)
+  'https://github.com/nvim-mini/mini.pairs',
+  'https://github.com/nvim-mini/mini.ai',
+  'https://github.com/nvim-mini/mini.surround',
+  'https://github.com/nvim-mini/mini.comment',
+  'https://github.com/nvim-mini/mini.move',
+  'https://github.com/tpope/vim-repeat',
+  'https://github.com/ggandor/leap.nvim',
 
--- Install package manager
---    https://github.com/folke/lazy.nvim
---    `:help lazy.nvim.txt` for more info
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  }
-end
-vim.opt.rtp:prepend(lazypath)
+  -- Dependencies (load before other UI plugins)
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/nvim-mini/mini.icons',
 
--- Set common specs
-local specs = {
-  require("plugins.editor-common"),  -- always loaded plugins
-}
+  -- UI and native plugins (conditionally configured)
+  'https://github.com/catppuccin/nvim',
+  'https://github.com/rcarriga/nvim-notify',
+  'https://github.com/mikavilpas/yazi.nvim',
+  'https://github.com/ibhagwan/fzf-lua',
+  'https://github.com/jinh0/eyeliner.nvim',
+  'https://github.com/folke/ts-comments.nvim',
+})
 
 -- Handle running within vscode
 if vim.g.vscode then
   require('vsc')
+  require('plugins.editor-common')
 else
-  table.insert(specs, require("plugins.colorschemes"))
-  table.insert(specs, require("plugins.editor-native"))
-  table.insert(specs, require("plugins.ui"))
-  require('native')
-end
+  -- Load colorscheme first (priority)
+  require("catppuccin").setup({ flavour = "mocha" })
+  vim.cmd.colorscheme("catppuccin-mocha")
 
--- Setup lazy
-require("lazy").setup(specs)
+  -- Setup notify and override vim.notify (priority)
+  local notify = require("notify")
+  notify.setup({
+    stages = "fade",
+    timeout = 3000,
+    background_colour = "#000000",
+  })
+  vim.notify = notify
+
+  -- Load native plugins check
+  require('native')
+
+  -- Load plugin configurations
+  require('plugins.editor-common')
+  require('plugins.editor-native')
+  require('plugins.ui')
+end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

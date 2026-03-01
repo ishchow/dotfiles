@@ -1,0 +1,64 @@
+{
+  "plugins": {
+    "eyeliner.nvim": {
+      "rev": "8f197eb",
+      "src": "https://github.com/jinh0/eyeliner.nvim"
+    },
+    "fzf-lua": {
+      "rev": "7c21f30",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "leap.nvim": {
+      "rev": "0730410",
+      "src": "https://github.com/ggandor/leap.nvim"
+    },
+    "mini.ai": {
+      "rev": "e0d00c2",
+      "src": "https://github.com/nvim-mini/mini.ai"
+    },
+    "mini.comment": {
+      "rev": "796eff9",
+      "src": "https://github.com/nvim-mini/mini.comment"
+    },
+    "mini.icons": {
+      "rev": "e8fae66",
+      "src": "https://github.com/nvim-mini/mini.icons"
+    },
+    "mini.move": {
+      "rev": "7231697",
+      "src": "https://github.com/nvim-mini/mini.move"
+    },
+    "mini.pairs": {
+      "rev": "bada72f",
+      "src": "https://github.com/nvim-mini/mini.pairs"
+    },
+    "mini.surround": {
+      "rev": "aec6ed2",
+      "src": "https://github.com/nvim-mini/mini.surround"
+    },
+    "nvim": {
+      "rev": "c891845",
+      "src": "https://github.com/catppuccin/nvim"
+    },
+    "nvim-notify": {
+      "rev": "8701bec",
+      "src": "https://github.com/rcarriga/nvim-notify"
+    },
+    "plenary.nvim": {
+      "rev": "b9fd522",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "ts-comments.nvim": {
+      "rev": "1bd9d0b",
+      "src": "https://github.com/folke/ts-comments.nvim"
+    },
+    "vim-repeat": {
+      "rev": "6584602",
+      "src": "https://github.com/tpope/vim-repeat"
+    },
+    "yazi.nvim": {
+      "rev": "3f81faf",
+      "src": "https://github.com/mikavilpas/yazi.nvim"
+    }
+  }
+}
