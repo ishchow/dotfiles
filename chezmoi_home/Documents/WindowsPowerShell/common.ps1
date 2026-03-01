@@ -36,6 +36,9 @@ if (Get-Command starship -ErrorAction "silentlycontinue")
     Invoke-Expression (&starship init powershell)
 }
 
+# mise setup
+{{ template "shell-mise-activation-pwsh.ps1" . }}
+
 # ------------------------------------------------------------------------------------------------------------------------
 # Functions
 # ------------------------------------------------------------------------------------------------------------------------

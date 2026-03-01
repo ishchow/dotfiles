@@ -1,7 +1,39 @@
 {{ if ne .chezmoi.os "windows" }}#!/bin/sh
 
-echo "Setting up mise tools..."
+set -e  # Exit on error
 
-# Run mise commands
+echo "========================================"
+echo "Setting up mise tools..."
+echo "========================================"
+
+# Verify mise is installed
+if ! command -v mise >/dev/null 2>&1; then
+  echo "ERROR: mise is not installed or not in PATH"
+  echo "Please install mise first: https://mise.jdx.dev/getting-started.html"
+  exit 1
+fi
+
+echo "mise version: $(mise --version)"
+
+# Run mise commands (installs/updates tools)
 {{ template "mise-commands" . }}
+
+# Verify critical tools were installed
+echo ""
+echo "Verifying tool installations..."
+for tool in python node neovim lua-language-server marksman; do
+  if mise list "$tool" >/dev/null 2>&1; then
+    echo "✓ $tool installed"
+  else
+    echo "WARNING: $tool installation may have failed"
+  fi
+done
+
+echo ""
+echo "========================================"
+echo "mise setup complete!"
+echo "========================================"
+echo "Installed tools:"
+mise list
+
 {{ end }}

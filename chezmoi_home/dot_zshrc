@@ -1,5 +1,8 @@
 export WEZTERM_CONFIG_FILE=$HOME/.config/wezterm/wezterm.lua
 
+# mise setup (before exec fish to ensure PATH is set)
+{{ template "shell-mise-activation-bash.sh" . }}
+
 if [[ $- == *i* ]] && command -v fish >/dev/null 2>&1; then
   exec fish
 fi

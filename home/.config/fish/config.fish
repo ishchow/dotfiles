@@ -9,3 +9,6 @@ end
 
 zoxide init fish | source
 starship init fish | source
+
+# mise setup
+{{ template "shell-mise-activation-fish.fish" . }}

@@ -1,6 +1,38 @@
 {{ if eq .chezmoi.os "windows" }}
-echo "Setting up mise tools..."
 
-# Run mise commands
+{{ template "ps1/bootstrap-common.ps1" . }}
+
+Write-Header "Setting up mise tools"
+
+# Verify mise is installed
+if (-not (Get-Command mise -ErrorAction SilentlyContinue)) {
+    Write-Error "mise is not installed or not in PATH"
+    Write-Host "Please install mise first: https://mise.jdx.dev/getting-started.html" -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "mise version: $(mise --version)" -ForegroundColor Cyan
+
+# Run mise commands (installs/updates tools)
 {{ template "mise-commands" . }}
+
+# Verify critical tools were installed
+Write-Host ""
+Write-Host "Verifying tool installations..." -ForegroundColor Cyan
+
+$tools = @("python", "node", "neovim", "lua-language-server", "marksman")
+foreach ($tool in $tools) {
+    $installed = mise list $tool 2>$null
+    if ($installed) {
+        Write-Host "✓ $tool installed" -ForegroundColor Green
+    } else {
+        Write-Warning "$tool installation may have failed"
+    }
+}
+
+Write-Host ""
+Write-Header "mise setup complete!"
+Write-Host "Installed tools:"
+mise list
+
 {{ end }}

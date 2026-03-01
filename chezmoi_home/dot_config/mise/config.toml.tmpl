@@ -1,0 +1,25 @@
+# ~/.config/mise/config.toml
+# Managed by chezmoi - DO NOT EDIT MANUALLY
+# Source: ~/.local/share/chezmoi/chezmoi_home/dot_config/mise/config.toml.tmpl
+
+[tools]
+# Programming languages
+"python" = "latest"
+"node" = "lts"
+
+# Neovim editor (nightly build)
+"neovim" = "nightly"
+
+# Language servers for Neovim
+"lua-language-server" = "latest"
+"marksman" = "latest"
+
+[settings]
+# Enable experimental features
+experimental = true
+
+# Shorten status output for cleaner shell prompts
+[settings.status]
+missing_tools = "never"
+show_env = false
+show_tools = false
