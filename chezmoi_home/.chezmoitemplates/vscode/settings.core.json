@@ -4,7 +4,8 @@
     "explorer.confirmDragAndDrop": false,
     "editor.lineNumbers": "relative",
     "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
+        "asvetliakov.vscode-neovim": 1,
+        "vscode-neovim.neovimExecutablePaths.osx": "/Users/ishaat/.local/share/bob/nvim-bin/nvim"
     },
     "workbench.editor.showTabs": false,
     "git.confirmSync": false,

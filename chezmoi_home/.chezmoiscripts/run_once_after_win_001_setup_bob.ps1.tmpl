@@ -1,0 +1,13 @@
+{{ if eq .chezmoi.os "windows" }}
+
+{{ template "ps1/bootstrap-common.ps1" . }}
+
+# Install bob
+powershell -c "irm https://raw.githubusercontent.com/MordechaiHadad/bob/master/scripts/install.ps1 | iex"
+
+# Temporarily add ~/.local/bin to PATH for this session
+$env:PATH = "$HOME\.local\bin;$env:PATH"
+
+# Setup bob
+bob use nightly
+{{ end }}

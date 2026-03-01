@@ -8,4 +8,4 @@ SETUVAR _fisher_PatrickF1_2F_fzf_2E_fish_files:/home/ishaat/\x2econfig/fish/func
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:/home/ishaat/\x2econfig/fish/functions/fisher\x2efish\x1e/home/ishaat/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ePatrickF1/fzf\x2efish
 SETUVAR fish_key_bindings:fish_default_key_bindings
-SETUVAR fish_user_paths:/home/ishaat/bin\x1e/home/ishaat/\x2elocal/bin
+SETUVAR --export fish_user_paths:/Users/ishaat/\x2elocal/share/bob/nvim\x2dbin\x1e/Users/ishaat/\x2elocal/bin\x1e/home/ishaat/bin\x1e/home/ishaat/\x2elocal/bin

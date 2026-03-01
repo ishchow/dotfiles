@@ -8,3 +8,5 @@ if [ -f "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER" ]; then
 fi
 
 export WEZTERM_CONFIG_FILE=$HOME/.config/wezterm/wezterm.lua
+
+path=("$HOME/.local/bin" $path)

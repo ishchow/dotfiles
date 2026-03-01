@@ -27,10 +27,6 @@
 					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier": "Neovim.Neovim",
-					"Scope": "machine"
-				},
-				{
 					"PackageIdentifier": "sxyazi.yazi",
 					"Scope": "machine"
 				},

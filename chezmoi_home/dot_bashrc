@@ -149,7 +149,7 @@ if [[ ! -z "$WSL_DISTRO_NAME" ]]; then
     export TMUX_TMPDIR='/tmp'
 fi
 
-export PATH="$PATH:~/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
 
 # bash alias completion
 complete -F _complete_alias "${!BASH_ALIASES[@]}"
