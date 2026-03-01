@@ -1,3 +1,9 @@
+-- [[ Plugin Configurations ]]
+
+-- ============================================================================
+-- Common Editor Plugins (VSCode + Native)
+-- ============================================================================
+
 -- Configure mini.pairs
 require("mini.pairs").setup({
   modes = { insert = true, command = true, terminal = false },
@@ -48,19 +54,49 @@ require("mini.surround").setup({
 })
 
 -- Configure mini.comment
-require("mini.comment").setup({
-  options = {
-    custom_commentstring = function()
-      return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
-    end,
-  },
-})
+require("mini.comment").setup({})
 
 -- Configure mini.move
 require("mini.move").setup({})
 
 -- vim-repeat has no setup (just loaded)
 
--- Configure leap.nvim
-vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
-vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
+-- ============================================================================
+-- Native-Only Plugins
+-- ============================================================================
+
+if not vim.g.vscode then
+  -- Configure eyeliner.nvim
+  require("eyeliner").setup({
+    highlight_on_key = true, -- highlight only after pressing f/F/t/T
+    dim = false,             -- dimming other chars
+  })
+
+  -- Configure ts-comments.nvim (only if nvim >= 0.10.0)
+  if vim.fn.has("nvim-0.10.0") == 1 then
+    require("ts-comments").setup({})
+  end
+
+  -- Configure yazi.nvim
+  require("yazi").setup({
+    open_for_directories = false,
+    keymaps = {
+      show_help = "<f1>",
+    },
+  })
+
+  -- Configure fzf-lua
+  require("fzf-lua").setup({})
+
+  -- Check for required executables
+  local os_utils = require("ishaat.os")
+  os_utils.check_executable("yazi")
+  os_utils.check_executable("fzf")
+  os_utils.check_executable("rg")
+  os_utils.check_executable("fd")
+  os_utils.check_executable("bat")
+  os_utils.check_executable("zoxide")
+end
+
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et

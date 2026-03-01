@@ -1,0 +1,21 @@
+{
+  "nvim_keymap": {
+    "prefix": "nmap",
+    "body": [
+      "vim.keymap.set('${1:n}', '${2:<key>}', ${3:'<action>'}, { desc = '${4:description}' })"
+    ],
+    "description": "Neovim keymap"
+  },
+  "nvim_autocmd": {
+    "prefix": "autocmd",
+    "body": [
+      "vim.api.nvim_create_autocmd('${1:Event}', {",
+      "  pattern = '${2:*}',",
+      "  callback = function()",
+      "    ${3:-- Add code here}",
+      "  end,",
+      "})"
+    ],
+    "description": "Neovim autocmd"
+  }
+}

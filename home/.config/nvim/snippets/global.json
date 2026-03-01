@@ -1,0 +1,10 @@
+{
+  "example_snippet": {
+    "prefix": "example",
+    "body": [
+      "This is an example snippet",
+      "Add your global snippets here"
+    ],
+    "description": "Example global snippet"
+  }
+}
