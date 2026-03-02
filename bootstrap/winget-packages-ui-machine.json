@@ -31,10 +31,6 @@
 					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier": "Neovide.Neovide",
-					"Scope": "machine"
-				},
-				{
 					"PackageIdentifier": "AutoHotkey.AutoHotkey",
 					"Scope": "machine"
 				},
