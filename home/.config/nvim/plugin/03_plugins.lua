@@ -99,11 +99,18 @@ if not vim.g.vscode then
 
   -- Configure blink.cmp
   require('blink.cmp').setup({
-    keymap = { preset = 'default' },
+    keymap = {
+      -- Accept with Enter rather than Ctrl-y (default) to match IDE behavior
+      preset = 'enter',
+      -- Get IDE style behavior for Tab and Shift-Tab
+      ['<Tab>'] = { 'select_next', 'fallback' },
+      ['<S-Tab>'] = { 'select_prev', 'fallback' },
+    },
     appearance = { nerd_font_variant = 'mono' },
     completion = { documentation = { auto_show = false } },
     sources = {
       default = { 'copilot', 'lsp', 'path', 'buffer' },
+      -- Make Copilot more prominent by giving it a higher score offset and showing it
       providers = {
         copilot = {
           name = 'copilot',

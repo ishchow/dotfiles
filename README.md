@@ -123,3 +123,25 @@ exit
 # should work now
 git add -A
 ```
+# NeoVim Bootstrap
+
+`nvim .` -> all the plugins should be automatically installed.
+
+## Check LSP health
+
+Run in command mode: `:checkhealth lsp`.
+
+# Copilot Bootstrap
+
+## Copilot CLI
+
+```
+copilot
+/login
+```
+
+Sign in via device code flow.
+
+## Copilot LSP in NeoVim
+
+Run in command mode `:LspCopilotSignIn`. Sign in via device code flow.
