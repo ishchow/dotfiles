@@ -44,6 +44,10 @@
       "rev": "c891845",
       "src": "https://github.com/catppuccin/nvim"
     },
+    "nvim-lspconfig": {
+      "rev": "ead0f5f342d8d323441e7d4b88f0fc436a81ad5f",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
     "nvim-notify": {
       "rev": "8701bec",
       "src": "https://github.com/rcarriga/nvim-notify"

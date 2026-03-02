@@ -96,6 +96,14 @@ if not vim.g.vscode then
   os_utils.check_executable("fd")
   os_utils.check_executable("bat")
   os_utils.check_executable("zoxide")
+
+  -- LSP: nvim-lspconfig provides base configs in its lsp/ directory.
+  -- Override per-server settings in after/lsp/<server>.lua (see :h lsp-config).
+  -- List servers to enable here:
+  vim.lsp.enable({
+    'lua_ls',
+    'marksman',
+  })
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
