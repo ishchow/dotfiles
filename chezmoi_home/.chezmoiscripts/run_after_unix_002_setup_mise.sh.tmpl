@@ -15,19 +15,11 @@ fi
 
 echo "mise version: $(mise --version)"
 
-# Run mise commands (installs/updates tools)
-{{ template "mise-commands" . }}
+# Add neovim plugin (required for neovim support)
+mise plugins add neovim
 
-# Verify critical tools were installed
-echo ""
-echo "Verifying tool installations..."
-for tool in python node neovim lua-language-server marksman; do
-  if mise list "$tool" >/dev/null 2>&1; then
-    echo "✓ $tool installed"
-  else
-    echo "WARNING: $tool installation may have failed"
-  fi
-done
+# Install all tools declared in ~/.config/mise/config.toml
+mise install
 
 echo ""
 echo "========================================"

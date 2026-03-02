@@ -157,8 +157,10 @@ complete -F _complete_alias "${!BASH_ALIASES[@]}"
 # zoxide setup
 eval "$(zoxide init bash)"
 
-# mise setup
-{{ template "shell-mise-activation-bash.sh" . }}
+# mise (runtime version manager) activation
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate bash)"
+fi
 
 # Start ssh-agent if not already running
 if [ -z "$SSH_AUTH_SOCK" ] || ! ps -p "$SSH_AGENT_PID" > /dev/null 2>&1; then

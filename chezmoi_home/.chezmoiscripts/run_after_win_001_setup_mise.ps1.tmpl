@@ -13,24 +13,31 @@ if (-not (Get-Command mise -ErrorAction SilentlyContinue)) {
 
 Write-Host "mise version: $(mise --version)" -ForegroundColor Cyan
 
-# Run mise commands (installs/updates tools)
-{{ template "mise-commands" . }}
-
-# Verify critical tools were installed
-Write-Host ""
-Write-Host "Verifying tool installations..." -ForegroundColor Cyan
-
-$tools = @("python", "node", "neovim", "lua-language-server", "marksman")
-foreach ($tool in $tools) {
-    $installed = mise list $tool 2>$null
-    if ($installed) {
-        Write-Host "✓ $tool installed" -ForegroundColor Green
-    } else {
-        Write-Warning "$tool installation may have failed"
+# Ensure mise-shim.exe exists next to mise.exe (winget package doesn't include it)
+$miseExe = (Get-Command mise -CommandType Application -ErrorAction SilentlyContinue).Source
+if ($miseExe) {
+    # Resolve symlink (e.g. WinGet\Links\mise.exe -> actual path)
+    $link = Get-Item $miseExe
+    if ($link.Target) { $miseExe = $link.Target }
+    $miseDir = Split-Path $miseExe
+    $shimPath = Join-Path $miseDir "mise-shim.exe"
+    if (-not (Test-Path $shimPath)) {
+        Write-Host "Copying mise-shim.exe next to mise.exe..." -ForegroundColor Cyan
+        Copy-Item $miseExe $shimPath -ErrorAction SilentlyContinue
+        if (Test-Path $shimPath) {
+            Write-Host "[OK] mise-shim.exe created" -ForegroundColor Green
+        } else {
+            Write-Warning "Could not copy mise-shim.exe (may need admin privileges)"
+        }
     }
 }
 
-Write-Host ""
+# Add neovim plugin (required for neovim support)
+mise plugins add neovim
+
+# Install all tools declared in ~/.config/mise/config.toml
+mise install
+
 Write-Header "mise setup complete!"
 Write-Host "Installed tools:"
 mise list
