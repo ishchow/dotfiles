@@ -103,7 +103,15 @@ if not vim.g.vscode then
     appearance = { nerd_font_variant = 'mono' },
     completion = { documentation = { auto_show = false } },
     sources = {
-      default = { 'lsp', 'path', 'buffer' },
+      default = { 'copilot', 'lsp', 'path', 'buffer' },
+      providers = {
+        copilot = {
+          name = 'copilot',
+          module = 'blink-copilot',
+          score_offset = 100,
+          async = true,
+        },
+      },
     },
     fuzzy = { implementation = 'prefer_rust_with_warning' },
   })
@@ -114,6 +122,7 @@ if not vim.g.vscode then
   vim.lsp.enable({
     'lua_ls',
     'marksman',
+    'copilot',
   })
 end
 

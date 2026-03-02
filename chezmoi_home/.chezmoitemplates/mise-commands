@@ -1,12 +1,5 @@
 # Add neovim plugin (required for neovim support)
-mise plugins add neovim || true
+mise plugins add neovim
 
-# Install/update global tools via mise
-mise use --global python@latest
-mise use --global node@lts
-mise use --global neovim@nightly
-mise use --global lua-language-server@latest
-mise use --global marksman@latest
-
-# Ensure all configured tools are installed
+# Install all tools declared in ~/.config/mise/config.toml
 mise install

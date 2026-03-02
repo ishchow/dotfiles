@@ -30,6 +30,7 @@ if not vim.g.vscode then
 
         -- Completion
         'https://github.com/saghen/blink.cmp',
+        'https://github.com/fang2hou/blink-copilot',
     })
 end
 
