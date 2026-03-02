@@ -120,6 +120,13 @@ if not vim.g.vscode then
         },
       },
     },
+    -- Prefer the Rust implementation of the fuzzy matcher for better performance.
+    -- However, fall back to the Lua implementation with a warning if the Rust
+    -- one fails to load. Prebuilt Rust binaries are only attached to tagged
+    -- releases. Since vim.pack clones at HEAD by default, the lockfile rev
+    -- must be pinned to a release tag commit (check blink.cmp's releases
+    -- page for the correct hash). If the rev drifts to an untagged commit,
+    -- the Rust binary won't be found and this setting will fall back to Lua.
     fuzzy = { implementation = 'prefer_rust_with_warning' },
   })
 
