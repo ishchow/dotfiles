@@ -97,6 +97,17 @@ if not vim.g.vscode then
   os_utils.check_executable("bat")
   os_utils.check_executable("zoxide")
 
+  -- Configure blink.cmp
+  require('blink.cmp').setup({
+    keymap = { preset = 'default' },
+    appearance = { nerd_font_variant = 'mono' },
+    completion = { documentation = { auto_show = false } },
+    sources = {
+      default = { 'lsp', 'path', 'buffer' },
+    },
+    fuzzy = { implementation = 'prefer_rust_with_warning' },
+  })
+
   -- LSP: nvim-lspconfig provides base configs in its lsp/ directory.
   -- Override per-server settings in after/lsp/<server>.lua (see :h lsp-config).
   -- List servers to enable here:

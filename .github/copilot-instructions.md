@@ -82,3 +82,65 @@ To add `sharkdp.bat` as a CLI tool:
 - The bootstrap script (`chezmoi_home/AppData/Local/ishaat/bootstrap/005_install_packages.ps1.tmpl`) runs `winget import` for each file.
 - UI packages (both `ui-machine` and `ui-user`) are skipped on work dev boxes (controlled by the `.isWorkDevBox` chezmoi variable).
 - If a counterpart exists on macOS, also add a `brew` or `cask` entry to `bootstrap/Brewfile`.
+
+## Adding Neovim Plugins
+
+Neovim plugins are managed via the built-in `vim.pack` package manager. Plugin specs live in `home/.config/nvim/plugin/01_pack.lua` and plugin configurations in `home/.config/nvim/plugin/03_plugins.lua`.
+
+### Where to add the plugin spec
+
+There are **two** `vim.pack.add()` blocks in `01_pack.lua`:
+
+1. **Core editor plugins** (top-level block) — loaded in **both** native Neovim and VS Code Neovim extension. Use this for text-editing plugins that don't depend on Neovim UI (e.g., surround, autopairs, motions).
+
+2. **Native-only plugins** (inside `if not vim.g.vscode`) — loaded **only** in native Neovim. Use this for anything that depends on Neovim UI, LSP, file management, completion, etc.
+
+Add the plugin URL string to the appropriate block:
+
+**`home/.config/nvim/plugin/01_pack.lua`**
+```lua
+-- Core (VSCode + Native):
+vim.pack.add({
+  'https://github.com/user/plugin',
+})
+
+-- Native-only:
+if not vim.g.vscode then
+    vim.pack.add({
+        'https://github.com/user/plugin',
+    })
+end
+```
+
+### Where to add plugin configuration
+
+Add `require("plugin").setup({})` (or equivalent) to `home/.config/nvim/plugin/03_plugins.lua`, in the matching section:
+
+- **Common Editor Plugins** section — for plugins in the core block.
+- **Native-Only Plugins** section (inside `if not vim.g.vscode`) — for native-only plugins.
+
+### LSP server configs
+
+LSP servers use the native `vim.lsp.config` / `vim.lsp.enable` API (Neovim 0.11+). The `nvim-lspconfig` plugin provides base configs in its `lsp/` directory.
+
+- **Enable a server**: add its name to the `vim.lsp.enable({})` call in `03_plugins.lua`.
+- **Override server settings**: create `home/.config/nvim/after/lsp/<server>.lua` returning a config table. This merges on top of nvim-lspconfig's base. Only include overrides, not the full config.
+- **Install the server binary externally** (via `mise`, `brew`, etc.) — we don't use Mason.
+
+### vim.pack management commands
+
+The lockfile is at `home/.config/nvim/nvim-pack-lock.json`. Useful commands:
+
+| Task | Command |
+|------|---------|
+| Delete a plugin from disk | `:lua vim.pack.del({ 'plugin-name' })` |
+| Force update to lockfile rev | `:lua vim.pack.update({ 'plugin-name' }, { offline = true, target = 'lockfile' })` |
+| Update all plugins | `:lua vim.pack.update()` |
+| Update specific plugin | `:lua vim.pack.update({ 'plugin-name' })` |
+| List non-active (orphaned) plugins | `:lua =vim.iter(vim.pack.get()):filter(function(x) return not x.active end):map(function(x) return x.spec.name end):totable()` |
+
+### Notes
+
+- After removing a plugin spec from `01_pack.lua`, restart Neovim, then run `:lua vim.pack.del({ 'plugin-name' })` to clean it from disk.
+- Plugins that ship prebuilt binaries (e.g., `blink.cmp`) need their lockfile `rev` to point to a **release tag commit** — not an arbitrary commit on `main`. Check the plugin's releases page for the correct commit hash.
+- The lockfile should be committed to version control. On a new machine, `vim.pack` auto-installs all lockfile entries on first startup.

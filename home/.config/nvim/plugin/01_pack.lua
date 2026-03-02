@@ -27,6 +27,9 @@ if not vim.g.vscode then
 
         -- LSP
         'https://github.com/neovim/nvim-lspconfig',
+
+        -- Completion
+        'https://github.com/saghen/blink.cmp',
     })
 end
 

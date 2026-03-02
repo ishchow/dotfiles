@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "blink.cmp": {
+      "rev": "4b18c32adef2898f95cdef6192cbd5796c1a332d",
+      "src": "https://github.com/saghen/blink.cmp"
+    },
     "eyeliner.nvim": {
       "rev": "8f197eb",
       "src": "https://github.com/jinh0/eyeliner.nvim"
