@@ -13,24 +13,24 @@ vim.pack.add({
 
 if not vim.g.vscode then
     vim.pack.add({
-        -- Dependencies (load before other UI plugins)
-        'https://github.com/nvim-lua/plenary.nvim',
-        'https://github.com/nvim-mini/mini.icons',
+      -- Dependencies (load before other UI plugins)
+      'https://github.com/nvim-lua/plenary.nvim',
+      'https://github.com/nvim-mini/mini.icons',
 
-        -- UI and native plugins (conditionally configured)
-        'https://github.com/catppuccin/nvim',
-        'https://github.com/rcarriga/nvim-notify',
-        'https://github.com/mikavilpas/yazi.nvim',
-        'https://github.com/ibhagwan/fzf-lua',
-        'https://github.com/jinh0/eyeliner.nvim',
-        'https://github.com/folke/ts-comments.nvim',
+      -- UI and native plugins (conditionally configured)
+      'https://github.com/catppuccin/nvim',
+      'https://github.com/rcarriga/nvim-notify',
+      'https://github.com/mikavilpas/yazi.nvim',
+      'https://github.com/ibhagwan/fzf-lua',
+      'https://github.com/jinh0/eyeliner.nvim',
+      'https://github.com/folke/ts-comments.nvim',
 
-        -- LSP
-        'https://github.com/neovim/nvim-lspconfig',
+      -- LSP
+      'https://github.com/neovim/nvim-lspconfig',
 
-        -- Completion
-        'https://github.com/saghen/blink.cmp',
-        'https://github.com/fang2hou/blink-copilot',
+      -- Completion
+      'https://github.com/saghen/blink.cmp',
+      'https://github.com/fang2hou/blink-copilot',
     })
 end
 
