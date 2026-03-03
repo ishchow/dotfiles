@@ -29,9 +29,7 @@ These are the platforms that this repo is used to manage and tested with:
 Run in admin prompt:
 
 ```
-winget install --exact --id Git.Git --scope=machine
-winget install --exact --id twpayne.chezmoi --scope=machine
-winget install --exact --id gerardog.gsudo --scope=machine
+@('Git.Git', 'twpayne.chezmoi', 'gerardog.gsudo') | ForEach-Object { winget install --exact --id $_ --scope=machine }
 ```
 
 ## Linux (OpenSUSE Tumbleweed)
