@@ -38,7 +38,12 @@ if (Get-Command starship -ErrorAction "silentlycontinue")
 
 # mise (runtime version manager) activation
 if (Get-Command mise -ErrorAction SilentlyContinue) {
-    Invoke-Expression (& { (mise activate pwsh | Out-String) })
+    $__misePath = (Get-Command mise -CommandType Application).Source
+    $__miseActivate = (& "$__misePath" activate pwsh | Out-String)
+    # Fix unquoted exe paths containing spaces (mise bug)
+    $__miseActivate = $__miseActivate -replace "& $([regex]::Escape($__misePath))", "& `"$__misePath`""
+    Invoke-Expression $__miseActivate
+    Remove-Variable __misePath, __miseActivate
 }
 
 # ------------------------------------------------------------------------------------------------------------------------

@@ -4,17 +4,18 @@
 
 Write-Header "Setting up mise tools"
 
-# Verify mise is installed
-if (-not (Get-Command mise -ErrorAction SilentlyContinue)) {
+# Verify mise is installed and resolve its full path (may contain spaces)
+$miseBin = (Get-Command mise -CommandType Application -ErrorAction SilentlyContinue).Source
+if (-not $miseBin) {
     Write-Error "mise is not installed or not in PATH"
     Write-Host "Please install mise first: https://mise.jdx.dev/getting-started.html" -ForegroundColor Red
     exit 1
 }
 
-Write-Host "mise version: $(mise --version)" -ForegroundColor Cyan
+Write-Host "mise version: $(& "$miseBin" --version)" -ForegroundColor Cyan
 
 # Ensure mise-shim.exe exists next to mise.exe (winget package doesn't include it)
-$miseExe = (Get-Command mise -CommandType Application -ErrorAction SilentlyContinue).Source
+$miseExe = $miseBin
 if ($miseExe) {
     # Resolve symlink (e.g. WinGet\Links\mise.exe -> actual path)
     $link = Get-Item $miseExe
@@ -33,13 +34,13 @@ if ($miseExe) {
 }
 
 # Add neovim plugin (required for neovim support)
-mise plugins add neovim
+& "$miseBin" plugins add neovim
 
 # Install all tools declared in ~/.config/mise/config.toml
-mise install
+& "$miseBin" install
 
 Write-Header "mise setup complete!"
 Write-Host "Installed tools:"
-mise list
+& "$miseBin" list
 
 {{ end }}
