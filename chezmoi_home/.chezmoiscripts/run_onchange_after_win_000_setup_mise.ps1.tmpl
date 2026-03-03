@@ -1,4 +1,5 @@
 {{ if eq .chezmoi.os "windows" }}
+# mise config hash: {{ include "dot_config/mise/config.toml.tmpl" | sha256sum }}
 
 {{ template "ps1/bootstrap-common.ps1" . }}
 

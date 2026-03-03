@@ -1,4 +1,5 @@
 {{ if ne .chezmoi.os "windows" }}#!/bin/sh
+# mise config hash: {{ include "dot_config/mise/config.toml.tmpl" | sha256sum }}
 
 set -e  # Exit on error
 
