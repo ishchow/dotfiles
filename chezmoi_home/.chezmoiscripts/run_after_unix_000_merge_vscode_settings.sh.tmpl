@@ -7,7 +7,7 @@ CORE_SETTINGS="$SETTINGS_DIR/settings.core.json"
 
 # Ensure settings.json exists
 mkdir -p "$SETTINGS_DIR"
-touch "$USER_SETTINGS"
+[ ! -s "$USER_SETTINGS" ] && echo '{}' > "$USER_SETTINGS"
 
 # Merge core settings into user settings using jq
 tmpfile=$(mktemp)

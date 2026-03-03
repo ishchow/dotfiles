@@ -1,6 +1,11 @@
 # ------------------------------------------------------------------------------------------------------------------------
 # Common Settings
 # ------------------------------------------------------------------------------------------------------------------------
+
+# Disable PS7.3+ behaviour where non-zero native exit codes throw
+# NativeCommandExitException. Too noisy with tools like git, zoxide, etc.
+$PSNativeCommandUseErrorActionPreference = $false
+
 Import-Module PSReadLine
 
 Set-PSReadLineOption -EditMode Emacs
@@ -19,6 +24,24 @@ Set-PSReadLineKeyHandler -Key Ctrl+v -Function Paste
 # ------------------------------------------------------------------------------------------------------------------------
 # Integrations with External Tools
 # ------------------------------------------------------------------------------------------------------------------------
+
+# mise (runtime version manager) activation — must come first so that
+# tools installed via mise (zoxide, fzf, starship, etc.) are on PATH
+# before we try to initialise them.
+if (Get-Command mise -ErrorAction SilentlyContinue) {
+    $__misePath = (Get-Command mise -CommandType Application).Source
+    $__miseActivate = (& "$__misePath" activate pwsh | Out-String)
+    # Fix unquoted exe paths containing spaces (mise bug)
+    $__miseActivate = $__miseActivate -replace "& $([regex]::Escape($__misePath))", "& `"$__misePath`""
+    Invoke-Expression $__miseActivate
+    Remove-Variable __misePath, __miseActivate
+}
+
+# NOTE: In PS7.3+, $PSNativeCommandUseErrorActionPreference defaults to $true,
+# which causes zoxide's non-zero exit codes (e.g. "no match found") to throw a
+# NativeCommandExitException. This is a known zoxide issue — their PowerShell
+# init script doesn't account for it. The error is cosmetic and only appears
+# when the zoxide database has no match for the query.
 if (Get-Command zoxide -ErrorAction "silentlycontinue")
 {
     Invoke-Expression (& { (zoxide init powershell | Out-String) })
@@ -35,17 +58,6 @@ if (Get-Command starship -ErrorAction "silentlycontinue")
 {
     Invoke-Expression (&starship init powershell)
 }
-
-# mise (runtime version manager) activation
-if (Get-Command mise -ErrorAction SilentlyContinue) {
-    $__misePath = (Get-Command mise -CommandType Application).Source
-    $__miseActivate = (& "$__misePath" activate pwsh | Out-String)
-    # Fix unquoted exe paths containing spaces (mise bug)
-    $__miseActivate = $__miseActivate -replace "& $([regex]::Escape($__misePath))", "& `"$__misePath`""
-    Invoke-Expression $__miseActivate
-    Remove-Variable __misePath, __miseActivate
-}
-
 # ------------------------------------------------------------------------------------------------------------------------
 # Functions
 # ------------------------------------------------------------------------------------------------------------------------
