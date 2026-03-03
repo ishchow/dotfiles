@@ -15,8 +15,23 @@
 "marksman" = "latest"
 "npm:@github/copilot-language-server" = "latest"
 
-# CLI tools
+# CLI tools (cross-platform, managed by mise instead of system package managers)
 "npm:@github/copilot" = "latest"
+"ripgrep" = "latest"
+"fd" = "latest"
+"bat" = "latest"
+"fzf" = "latest"
+"lazygit" = "latest"
+"zoxide" = "latest"
+"starship" = "latest"
+"yazi" = "latest"
+"ast-grep" = "latest"
+"difftastic" = "latest"
+"npm:httpyac" = "latest"
+"resvg" = "latest"
+{{ if not .isWorkDevBox }}
+"zola" = "latest"
+{{ end }}
 
 [settings]
 # Enable experimental features

@@ -119,8 +119,10 @@ fi
 export GPG_TTY=$(tty)
 # source <(gopass completion bash)
 
-# Enable fzf keybindings
-source /usr/share/bash-completion/completions/fzf-key-bindings
+# Enable fzf keybindings and completions (works with mise-installed fzf)
+if command -v fzf >/dev/null 2>&1; then
+  eval "$(fzf --bash)"
+fi
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"

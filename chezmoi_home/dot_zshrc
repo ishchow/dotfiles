@@ -2,7 +2,12 @@ export WEZTERM_CONFIG_FILE=$HOME/.config/wezterm/wezterm.lua
 
 # mise (runtime version manager) activation (before exec fish to ensure PATH is set)
 if command -v mise >/dev/null 2>&1; then
-  eval "$(mise activate bash)"
+  eval "$(mise activate zsh)"
+fi
+
+# Enable fzf keybindings and completions
+if command -v fzf >/dev/null 2>&1; then
+  eval "$(fzf --zsh)"
 fi
 
 if [[ $- == *i* ]] && command -v fish >/dev/null 2>&1; then

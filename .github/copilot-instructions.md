@@ -2,15 +2,11 @@
 
 ## Adding VS Code Extensions
 
-When adding a new VS Code extension to this repo, update **both** of the following files:
+When adding a new VS Code extension to this repo, update **only** this file:
 
 1. **`chezmoi_home/.chezmoitemplates/vscode/extensions.txt`**
-   - This is the shared chezmoi template used by both Linux (`~/.config/Code/User/extensions.txt`) and Windows (`AppData/Roaming/Code/User/extensions.txt`).
+   - This is the shared chezmoi template used by Linux (`~/.config/Code/User/extensions.txt`), Windows (`AppData/Roaming/Code/User/extensions.txt`), and macOS (`~/.Brewfile` vscode entries).
    - Add the extension ID (e.g. `publisher.extension-name`) on its own line.
-
-2. **`bootstrap/Brewfile`**
-   - This is the Homebrew bundle file used on macOS.
-   - Add a line in the `vscode` section: `vscode "publisher.extension-name"`
 
 ### Example
 
@@ -21,17 +17,21 @@ To add the extension `yzhang.markdown-all-in-one`:
 yzhang.markdown-all-in-one
 ```
 
-**`bootstrap/Brewfile`**
-```ruby
-vscode "yzhang.markdown-all-in-one"
-```
-
 ### Notes
 
 - The two consumer files (`chezmoi_home/dot_config/private_Code/User/extensions.txt.tmpl` and `chezmoi_home/AppData/Roaming/Code/User/extensions.txt.tmpl`) both render from the shared template — do **not** edit them directly.
+- The macOS Brewfile (`chezmoi_home/dot_Brewfile.tmpl`) auto-generates `vscode` lines from this template — do **not** add vscode entries to the Brewfile manually.
 - On Linux, extensions are installed via a chezmoi run-once script that reads the template output and runs `code --install-extension` for each entry.
-- On macOS, `brew bundle` handles VS Code extension installation from the Brewfile.
+- On macOS, `brew bundle --global` handles VS Code extension installation from `~/.Brewfile`.
 - On Windows, extensions are managed via the rendered `extensions.txt` file.
+
+## Adding Homebrew Packages (macOS)
+
+The Brewfile is managed as a chezmoi template at `chezmoi_home/dot_Brewfile.tmpl`, which renders to `~/.Brewfile` on macOS. It is ignored on non-darwin platforms via `.chezmoiignore`.
+
+- Add `brew` lines for CLI tools and `cask` lines for GUI apps directly to `chezmoi_home/dot_Brewfile.tmpl`.
+- Do **not** add `vscode` lines manually — they are auto-generated from `chezmoi_home/.chezmoitemplates/vscode/extensions.txt`.
+- Run `brew bundle --global` to install from `~/.Brewfile`.
 
 ## Adding Winget Packages (Windows)
 
@@ -81,7 +81,7 @@ To add `sharkdp.bat` as a CLI tool:
 - These files follow the [winget import/export schema v2.0](https://aka.ms/winget-packages.schema.2.0.json).
 - The bootstrap script (`chezmoi_home/AppData/Local/ishaat/bootstrap/005_install_packages.ps1.tmpl`) runs `winget import` for each file.
 - UI packages (both `ui-machine` and `ui-user`) are skipped on work dev boxes (controlled by the `.isWorkDevBox` chezmoi variable).
-- If a counterpart exists on macOS, also add a `brew` or `cask` entry to `bootstrap/Brewfile`.
+- If a counterpart exists on macOS, also add a `brew` or `cask` entry to `chezmoi_home/dot_Brewfile.tmpl`.
 
 ## Adding Neovim Plugins
 

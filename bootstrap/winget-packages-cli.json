@@ -27,10 +27,6 @@
 					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier": "sxyazi.yazi",
-					"Scope": "machine"
-				},
-				{
 					"PackageIdentifier": "Gyan.FFmpeg",
 					"Scope": "machine"
 				},
@@ -47,27 +43,7 @@
 					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier": "sharkdp.fd",
-					"Scope": "machine"
-				},
-				{
-					"PackageIdentifier": "BurntSushi.ripgrep.MSVC",
-					"Scope": "machine"
-				},
-				{
-					"PackageIdentifier": "junegunn.fzf",
-					"Scope": "machine"
-				},
-				{
-					"PackageIdentifier": "ajeetdsouza.zoxide",
-					"Scope": "machine"
-				},
-				{
 					"PackageIdentifier": "ImageMagick.ImageMagick",
-					"Scope": "machine"
-				},
-				{
-					"PackageIdentifier": "sharkdp.bat",
 					"Scope": "machine"
 				},
 				{
@@ -80,14 +56,6 @@
 				},
 				{
 					"PackageIdentifier": "Bitwarden.CLI",
-					"Scope": "machine"
-				},
-				{
-					"PackageIdentifier": "Starship.Starship",
-					"Scope": "machine"
-				},
-				{
-					"PackageIdentifier": "JesseDuffield.lazygit",
 					"Scope": "machine"
 				},
 				{
@@ -104,6 +72,18 @@
 				},
 				{
 					"PackageIdentifier": "Chocolatey.Chocolatey",
+					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "Microsoft.WinDbg",
+					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "Microsoft.WindowsTerminal",
+					"Scope": "machine"
+				},
+				{
+					"PackageIdentifier": "Microsoft.WSL",
 					"Scope": "machine"
 				}
 			],
