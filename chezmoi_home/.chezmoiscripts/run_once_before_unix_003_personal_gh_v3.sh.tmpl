@@ -18,8 +18,8 @@ if [[ -z "$WSL_DISTRO_NAME" ]]; then
     exit 0
 fi
 
-# Get the Windows username from PowerShell (cleaner than cmd)
-WIN_USER=$(powershell.exe -Command '$env:USERNAME' | tr -d '\r')
+# Get the Windows username from cmd.exe (avoids PowerShell profile noise from mise)
+WIN_USER=$(cmd.exe /C "echo %USERNAME%" 2>/dev/null | tr -d '\r')
 WINDOWS_KEY_PATH="/mnt/c/Users/$WIN_USER/.ssh/personal-gh-v3"
 TARGET="$HOME/.ssh/personal-gh-v3"
 
