@@ -12,4 +12,5 @@ pomdtr.excalidraw-editor
 quarto.quarto
 yzhang.markdown-all-in-one
 bierner.markdown-mermaid
+MermaidChart.vscode-mermaid-chart
 TakumiI.markdowntable
