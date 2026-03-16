@@ -25,6 +25,6 @@ cask "ghostty"
 cask "quarto"
 cask "claude-code"
 cask "calibre"
-{{ range (include ".chezmoitemplates/vscode/extensions.txt" . | trim | splitList "\n") -}}
+{{ range (include ".chezmoitemplates/vscode/extensions.txt" | trim | splitList "\n") -}}
 vscode "{{ . }}"
 {{ end -}}
