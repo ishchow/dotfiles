@@ -23,8 +23,7 @@
 					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier": "Microsoft.PowerShell",
-					"Scope": "machine"
+					"PackageIdentifier": "Microsoft.PowerShell"
 				},
 				{
 					"PackageIdentifier": "Gyan.FFmpeg",
@@ -64,7 +63,7 @@
 				},
 				{
 					"PackageIdentifier": "Microsoft.DotNet.SDK.9",
-					"x-comment": "Installation fails if scope is explicity set. So omitting here."
+					"x-comment": "Installation fails if scope is explicitly set, so scope is omitted."
 				},
 				{
 					"PackageIdentifier": "Posit.Quarto",
@@ -76,15 +75,19 @@
 				},
 				{
 					"PackageIdentifier": "Microsoft.WinDbg",
-					"Scope": "machine"
+					"x-comment": "Installation can fail when scope is explicitly set, so scope is omitted."
 				},
 				{
 					"PackageIdentifier": "Microsoft.WindowsTerminal",
-					"Scope": "machine"
+					"x-comment": "Installation can fail when scope is explicitly set, so scope is omitted."
 				},
 				{
 					"PackageIdentifier": "Microsoft.WSL",
-					"Scope": "machine"
+					"x-comment": "Installation can fail when scope is explicitly set, so scope is omitted."
+				},
+				{
+					"PackageIdentifier": "Neovim.Neovim",
+					"x-comment": "Installation can fail when scope is explicitly set, so scope is omitted."
 				}
 			],
 			"SourceDetails" :

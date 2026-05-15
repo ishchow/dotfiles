@@ -28,7 +28,7 @@
 				},
 				{
 					"PackageIdentifier": "wez.wezterm",
-					"x-comment": "Installation fails if scope is explicity set. So omitting here."
+					"x-comment": "Installation fails if scope is explicitly set, so scope is omitted."
 				}
 			],
 			"SourceDetails" :
@@ -42,6 +42,14 @@
 		{
 			"Packages" :
 			[
+				{
+					"PackageIdentifier" : "9P1741LKHQS9",
+					"x-comment": "FancyWM"
+				},
+				{
+					"PackageIdentifier": "9NP355QT2SQB",
+					"x-comment": "Azure VPN Client"
+				},
 				{
 					"PackageIdentifier" : "9WZDNCRDMDM3",
 					"x-comment": "NuGet Package Explorer"

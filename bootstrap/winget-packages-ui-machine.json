@@ -15,10 +15,6 @@
 					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsTerminal",
-					"Scope": "machine"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.WindowsApp",
 					"Scope": "machine"
 				},
@@ -53,28 +49,6 @@
 				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
 				"Name" : "winget",
 				"Type" : "Microsoft.PreIndexed.Package"
-			}
-		},
-		{
-			"Packages" :
-			[
-				{
-					"PackageIdentifier" : "9P1741LKHQS9",
-					"Scope": "machine",
-					"x-comment": "FancyWM"
-				},
-				{
-					"PackageIdentifier": "9NP355QT2SQB",
-					"Scope": "machine",
-					"x-comment": "Azure VPN Client"
-				}
-			],
-			"SourceDetails" :
-			{
-				"Argument" : "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
-				"Identifier" : "StoreEdgeFD",
-				"Name" : "msstore",
-				"Type" : "Microsoft.Rest"
 			}
 		}
 	],

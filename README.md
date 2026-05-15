@@ -19,7 +19,7 @@ These are the platforms that this repo is used to manage and tested with:
     - But the rest of the config works fine on any Linux system (theoretically, not tested)
 - MacOS
     - Apple Silicon
-        - Techincally can work on Intel Mac but some paths may be hardcoded to Apple Silico paths
+        - Techincally can work on Intel Mac but some paths may be hardcoded to Apple Silicon paths
     - Sequoia or above
 
 # Install bootstrap dependencies
@@ -65,7 +65,7 @@ chezmoi init --apply ishchow --exclude=scripts
 # So managing these scripts separately.
 # We don't run the entire script as Admin as some child scripts fail when run as Admin.
 # So parent script will invoke child scripts needing Admin using sudo.
-pwsh.exe -File $(Resolve-Path ~/AppData/Local/ishaat/bootstrap/000_bootstrap.ps1).Path
+powershell.exe -File $(Resolve-Path ~/AppData/Local/ishaat/bootstrap/000_bootstrap.ps1).Path
 
 # Finally, this will init dotfiles again and then run scripts
 chezmoi init --apply ishchow
