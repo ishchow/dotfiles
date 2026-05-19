@@ -1,5 +1,27 @@
 set-option -s escape-time 10
 
+# remap prefix from 'C-b' to 'C-a'
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+# Shortcut to reload config
+bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
+
+# Set mouse mode on
+set -g mouse on
+
+# Set focus events on
+set-option -g focus-events on
+
+# Set term color properly
+set -g default-terminal "xterm-256color"
+set -ga terminal-overrides ",*256col*:Tc"
+# set-option -g default-terminal "tmux-256color" */
+# set-option -sa terminal-overrides ',*256col*:RGB' */
+# set-option -ga terminal-overrides ',XXX:Tc'
+
+{{- if ne .chezmoi.os "windows" -}}
 run '~/.tmux/plugins/tmux-yank/yank.tmux'
 run '~/.tmux/plugins/tmux-resurrect/resurrect.tmux'
 run '~/.tmux/plugins/tmux-continuum/continuum.tmux'
@@ -11,29 +33,9 @@ run '~/.tmux/plugins/tmux-continuum/continuum.tmux'
 
 set -g @continuum-restore 'on'
 
-# remap prefix from 'C-b' to 'C-a'
-unbind C-b
-set-option -g prefix C-a
-bind-key C-a send-prefix
-
-# Shortcut to reload config
-bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
-
-# Set term color properly
-set -g default-terminal "xterm-256color"
-set -ga terminal-overrides ",*256col*:Tc"
-# set-option -g default-terminal "tmux-256color" */
-# set-option -sa terminal-overrides ',*256col*:RGB' */
-# set-option -ga terminal-overrides ',XXX:Tc'
-
-# Set mouse mode on
-set -g mouse on
-
-# Set focus events on
-set-option -g focus-events on
-
 # Use fish as default shell
 set -g default-command /usr/bin/fish
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 # run -b '~/.tmux/plugins/tpm/tpm'
+{{- end }}

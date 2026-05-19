@@ -12,7 +12,6 @@ AppData/
 .bash_logout
 .bashrc
 .profile
-.tmux.conf
 .config/fish
 .config/Code
 
