@@ -62,6 +62,10 @@
 					"Scope": "machine"
 				},
 				{
+					"PackageIdentifier": "marlocarlo.psmux",
+					"Scope": "machine"
+				},
+				{
 					"PackageIdentifier": "Microsoft.DotNet.SDK.9",
 					"x-comment": "Installation fails if scope is explicitly set, so scope is omitted."
 				},

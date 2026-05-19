@@ -34,10 +34,31 @@ end
 -- ============================================================================
 
 if not vim.g.vscode then
+  -- Window navigation keymaps
+  vim.keymap.set("n", "<leader>h", "<C-w>h", { desc = "Go to left window" })
+  vim.keymap.set("n", "<leader>j", "<C-w>j", { desc = "Go to lower window" })
+  vim.keymap.set("n", "<leader>k", "<C-w>k", { desc = "Go to upper window" })
+  vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "Go to right window" })
+  vim.keymap.set("n", "<leader>w", "<C-w>w", { desc = "Go to next window" })
+  vim.keymap.set("n", "<leader>W", "<C-w>W", { desc = "Go to previous window" })
+
+  -- Terminal-mode fallbacks (Ctrl+. is not reliably recognized in all terminals)
+  vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+  vim.keymap.set("t", "<leader>h", "<C-\\><C-n><C-w>h", { desc = "Go to left window" })
+  vim.keymap.set("t", "<leader>j", "<C-\\><C-n><C-w>j", { desc = "Go to lower window" })
+  vim.keymap.set("t", "<leader>k", "<C-\\><C-n><C-w>k", { desc = "Go to upper window" })
+  vim.keymap.set("t", "<leader>l", "<C-\\><C-n><C-w>l", { desc = "Go to right window" })
+  vim.keymap.set("t", "<leader>w", "<C-\\><C-n><C-w>w", { desc = "Go to next window" })
+  vim.keymap.set("t", "<leader>W", "<C-\\><C-n><C-w>W", { desc = "Go to previous window" })
+
   -- Yazi file manager keymaps
   vim.keymap.set({ "n", "v" }, "<leader>-", "<cmd>Yazi<cr>", { desc = "Open yazi at the current file" })
   vim.keymap.set("n", "<leader>cw", "<cmd>Yazi cwd<cr>", { desc = "Open the file manager in nvim's working directory" })
   vim.keymap.set("n", "<c-up>", "<cmd>Yazi toggle<cr>", { desc = "Resume the last yazi session" })
+
+  -- Raw terminal toggle keymaps
+  vim.keymap.set("n", "<leader>aa", "<cmd>ToggleTerm<cr>", { desc = "Toggle Terminal" })
+  vim.keymap.set("t", "<leader>aa", "<C-\\><C-n><cmd>ToggleTerm<cr>", { desc = "Toggle Terminal" })
 
   -- LSP keymaps using <leader> instead of g-prefix
   -- This keeps Vim defaults intact

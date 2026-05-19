@@ -82,6 +82,37 @@ vim.o.clipboard = 'unnamedplus'
 
 vim.o.iskeyword = '@,48-57,_,192-255,-'
 
+-- On Windows, prefer PowerShell 7 (pwsh) and fall back to Windows PowerShell.
+-- See :help shell-powershell and :help shell-pwsh.
+if vim.fn.has('win32') == 1 then
+  local shell = nil
+
+  if vim.fn.executable('pwsh') == 1 then
+    shell = 'pwsh'
+  elseif vim.fn.executable('powershell') == 1 then
+    shell = 'powershell'
+  end
+
+  if shell then
+    vim.o.shell = shell
+    vim.o.shelltemp = false
+    vim.o.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command '
+    vim.o.shellcmdflag = vim.o.shellcmdflag
+      .. '[Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();'
+      .. "$PSDefaultParameterValues['Out-File:Encoding']='utf8';"
+
+    if shell == 'pwsh' then
+      vim.o.shellcmdflag = vim.o.shellcmdflag .. "$PSStyle.OutputRendering = 'PlainText';"
+      vim.g.__SuppressAnsiEscapeSequences = 1
+    end
+
+    vim.o.shellpipe = '> %s 2>&1'
+    vim.o.shellredir = '> %s 2>&1'
+    vim.o.shellquote = ''
+    vim.o.shellxquote = ''
+  end
+end
+
 vim.o.formatlistpat = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
 
 -- Completion =================================================================

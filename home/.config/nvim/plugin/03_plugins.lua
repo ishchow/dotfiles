@@ -66,6 +66,15 @@ require("mini.move").setup({})
 -- ============================================================================
 
 if not vim.g.vscode then
+  -- Check for required executables
+  local os_utils = require("ishaat.os")
+  os_utils.check_executable("yazi")
+  os_utils.check_executable("fzf")
+  os_utils.check_executable("rg")
+  os_utils.check_executable("fd")
+  os_utils.check_executable("bat")
+  os_utils.check_executable("zoxide")
+
   -- Configure eyeliner.nvim
   require("eyeliner").setup({
     highlight_on_key = true, -- highlight only after pressing f/F/t/T
@@ -77,9 +86,13 @@ if not vim.g.vscode then
     require("ts-comments").setup({})
   end
 
+  -- Disable netrw to prevent it from loading behind yazi
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+
   -- Configure yazi.nvim
   require("yazi").setup({
-    open_for_directories = false,
+    open_for_directories = true,
     keymaps = {
       show_help = "<f1>",
     },
@@ -88,14 +101,14 @@ if not vim.g.vscode then
   -- Configure fzf-lua
   require("fzf-lua").setup({})
 
-  -- Check for required executables
-  local os_utils = require("ishaat.os")
-  os_utils.check_executable("yazi")
-  os_utils.check_executable("fzf")
-  os_utils.check_executable("rg")
-  os_utils.check_executable("fd")
-  os_utils.check_executable("bat")
-  os_utils.check_executable("zoxide")
+  -- Configure toggleterm.nvim for raw terminal usage
+  require("toggleterm").setup({
+    direction = "float",
+    start_in_insert = true,
+    persist_mode = true,
+    terminal_mappings = true,
+  })
+
 
   -- Configure blink.cmp
   require('blink.cmp').setup({
