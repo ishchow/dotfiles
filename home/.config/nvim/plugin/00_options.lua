@@ -69,7 +69,9 @@ vim.o.shiftwidth    = 2
 vim.o.smartcase     = true
 vim.o.smartindent   = true
 vim.o.spelloptions  = 'camel'
+vim.o.swapfile      = false
 vim.o.tabstop       = 2
+vim.o.autoread      = true
 vim.o.virtualedit   = 'block'
 
 -- Set highlight on search
@@ -133,6 +135,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
   group = highlight_group,
+  pattern = '*',
+})
+
+-- Keep buffers in sync with files changed outside Neovim (git, formatters, chezmoi apply).
+local checktime_group = vim.api.nvim_create_augroup('AutoCheckTime', { clear = true })
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  callback = function()
+    if vim.fn.mode() ~= 'c' then
+      vim.cmd('checktime')
+    end
+  end,
+  group = checktime_group,
   pattern = '*',
 })
 
