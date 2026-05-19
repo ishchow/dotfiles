@@ -56,10 +56,6 @@ if not vim.g.vscode then
   vim.keymap.set("n", "<leader>cw", "<cmd>Yazi cwd<cr>", { desc = "Open the file manager in nvim's working directory" })
   vim.keymap.set("n", "<c-up>", "<cmd>Yazi toggle<cr>", { desc = "Resume the last yazi session" })
 
-  -- Raw terminal toggle keymaps
-  vim.keymap.set("n", "<leader>aa", "<cmd>ToggleTerm<cr>", { desc = "Toggle Terminal" })
-  vim.keymap.set("t", "<leader>aa", "<C-\\><C-n><cmd>ToggleTerm<cr>", { desc = "Toggle Terminal" })
-
   -- LSP keymaps using <leader> instead of g-prefix
   -- This keeps Vim defaults intact
   vim.api.nvim_create_autocmd('LspAttach', {

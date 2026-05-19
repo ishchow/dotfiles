@@ -121,6 +121,7 @@ exit
 # should work now
 git add -A
 ```
+
 # NeoVim Bootstrap
 
 `nvim .` -> all the plugins should be automatically installed.

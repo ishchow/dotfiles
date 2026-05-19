@@ -101,14 +101,6 @@ if not vim.g.vscode then
   -- Configure fzf-lua
   require("fzf-lua").setup({})
 
-  -- Configure toggleterm.nvim for raw terminal usage
-  require("toggleterm").setup({
-    direction = "float",
-    start_in_insert = true,
-    persist_mode = true,
-    terminal_mappings = true,
-  })
-
 
   -- Configure blink.cmp
   require('blink.cmp').setup({

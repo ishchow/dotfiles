@@ -1,0 +1,22 @@
+{{ if eq .chezmoi.os "windows" }}
+
+{{ template "ps1/bootstrap-common.ps1" . }}
+
+Write-Header "Setting up YAZI_FILE_ONE environment variable"
+
+$gitFileExe = "C:\Program Files\Git\usr\bin\file.exe"
+
+if (-Not (Test-Path $gitFileExe)) {
+    Write-Warning "Git for Windows file.exe not found at '$gitFileExe'. Skipping YAZI_FILE_ONE setup."
+    exit 1
+}
+
+$current = [System.Environment]::GetEnvironmentVariable('YAZI_FILE_ONE', [System.EnvironmentVariableTarget]::Machine)
+
+if ($current -eq $gitFileExe) {
+    Write-Host "YAZI_FILE_ONE is already set to '$gitFileExe'. Skipping."
+} else {
+    [System.Environment]::SetEnvironmentVariable('YAZI_FILE_ONE', $gitFileExe, [System.EnvironmentVariableTarget]::Machine)
+    Write-Host "YAZI_FILE_ONE set to '$gitFileExe'."
+}
+{{ end }}
