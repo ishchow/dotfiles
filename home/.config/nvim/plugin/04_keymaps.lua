@@ -113,8 +113,6 @@ if not vim.g.vscode then
   vim.keymap.set("n", "<leader>j", "<C-w>j", { desc = "Go to lower window" })
   vim.keymap.set("n", "<leader>k", "<C-w>k", { desc = "Go to upper window" })
   vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "Go to right window" })
-  vim.keymap.set("n", "<leader>w", "<C-w>w", { desc = "Go to next window" })
-  vim.keymap.set("n", "<leader>W", "<C-w>W", { desc = "Go to previous window" })
 
   -- Terminal-mode fallbacks (Ctrl+. is not reliably recognized in all terminals)
   vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
@@ -122,13 +120,16 @@ if not vim.g.vscode then
   vim.keymap.set("t", "<leader>j", "<C-\\><C-n><C-w>j", { desc = "Go to lower window" })
   vim.keymap.set("t", "<leader>k", "<C-\\><C-n><C-w>k", { desc = "Go to upper window" })
   vim.keymap.set("t", "<leader>l", "<C-\\><C-n><C-w>l", { desc = "Go to right window" })
-  vim.keymap.set("t", "<leader>w", "<C-\\><C-n><C-w>w", { desc = "Go to next window" })
-  vim.keymap.set("t", "<leader>W", "<C-\\><C-n><C-w>W", { desc = "Go to previous window" })
 
   -- Yazi file manager keymaps
   vim.keymap.set({ "n", "v" }, "<leader>-", "<cmd>Yazi<cr>", { desc = "Open yazi at the current file" })
   vim.keymap.set("n", "<leader>cw", "<cmd>Yazi cwd<cr>", { desc = "Open the file manager in nvim's working directory" })
   vim.keymap.set("n", "<c-up>", "<cmd>Yazi toggle<cr>", { desc = "Resume the last yazi session" })
+
+  -- fzf-lua keymaps
+  vim.keymap.set("n", "<leader>fb", "<cmd>FzfLua buffers<cr>", { desc = "Find buffers" })
+  vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<cr>", { desc = "Find files" })
+  vim.keymap.set("n", "<leader>fg", "<cmd>FzfLua git_files<cr>", { desc = "Find git files" })
 
   -- LSP keymaps using <leader> instead of g-prefix
   -- This keeps Vim defaults intact

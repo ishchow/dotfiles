@@ -104,7 +104,17 @@ if not vim.g.vscode then
   })
 
   -- Configure fzf-lua
-  require("fzf-lua").setup({})
+  require("fzf-lua").setup({
+    -- Keep picker navigation explicit to avoid terminal/fzf variance on Windows.
+    keymap = {
+      fzf = {
+        ["up"] = "up",
+        ["down"] = "down",
+        ["ctrl-p"] = "up",
+        ["ctrl-n"] = "down",
+      },
+    },
+  })
 
 
   -- Configure blink.cmp
