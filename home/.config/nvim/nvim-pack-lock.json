@@ -72,6 +72,10 @@
       "rev": "6584602",
       "src": "https://github.com/tpope/vim-repeat"
     },
+    "vim-table-mode": {
+      "rev": "bb025308a45c67c7c8f0763ba37bc2ee3f534df0",
+      "src": "https://github.com/dhruvasagar/vim-table-mode"
+    },
     "yazi.nvim": {
       "rev": "3f81faf",
       "src": "https://github.com/mikavilpas/yazi.nvim"

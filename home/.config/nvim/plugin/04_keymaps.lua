@@ -34,6 +34,80 @@ end
 -- ============================================================================
 
 if not vim.g.vscode then
+  -- Table workflow commands (vim-table-mode)
+  local function build_gfm_separator_from_header(header)
+    if not header:match("^%s*|") then
+      return nil
+    end
+
+    local cells = {}
+    for cell in header:gmatch("|([^|]*)") do
+      table.insert(cells, cell)
+    end
+
+    if #cells == 0 then
+      return nil
+    end
+
+    local sep_cells = {}
+    for _, cell in ipairs(cells) do
+      local inner_width = math.max(3, #cell - 2)
+      table.insert(sep_cells, " :" .. string.rep("-", math.max(2, inner_width - 1)) .. " ")
+    end
+
+    return "|" .. table.concat(sep_cells, "|") .. "|"
+  end
+
+  local function ensure_gfm_header_separator(header_line)
+    local header = vim.fn.getline(header_line)
+    local separator = build_gfm_separator_from_header(header)
+    if not separator then
+      return
+    end
+
+    local next_line_num = header_line + 1
+    local next_line = vim.fn.getline(next_line_num)
+    if next_line ~= "" and next_line:match("^%s*|[%s:%-]+|%s*$") then
+      vim.fn.setline(next_line_num, separator)
+    else
+      vim.fn.append(header_line, separator)
+    end
+  end
+
+  vim.api.nvim_create_user_command("TableCsv", function(opts)
+    if opts.range > 0 then
+      vim.cmd(string.format("%d,%dTableize/,", opts.line1, opts.line2))
+      ensure_gfm_header_separator(opts.line1)
+    else
+      local current = vim.fn.line('.')
+      vim.cmd("Tableize/,")
+      ensure_gfm_header_separator(current)
+    end
+  end, { range = true, desc = "Convert CSV text to markdown table" })
+
+  vim.api.nvim_create_user_command("TableTsv", function(opts)
+    if opts.range > 0 then
+      vim.cmd(string.format("%d,%dTableize/\\t", opts.line1, opts.line2))
+      ensure_gfm_header_separator(opts.line1)
+    else
+      local current = vim.fn.line('.')
+      vim.cmd("Tableize/\\t")
+      ensure_gfm_header_separator(current)
+    end
+  end, { range = true, desc = "Convert TSV text to markdown table" })
+
+  vim.api.nvim_create_user_command("TableFormat", function()
+    vim.cmd("TableModeRealign")
+  end, { desc = "Realign/format current table" })
+
+  vim.api.nvim_create_user_command("TableGfmHeader", function(opts)
+    if opts.range > 0 then
+      ensure_gfm_header_separator(opts.line1)
+    else
+      ensure_gfm_header_separator(vim.fn.line('.'))
+    end
+  end, { range = true, desc = "Insert or refresh GFM alignment separator row" })
+
   -- Window navigation keymaps
   vim.keymap.set("n", "<leader>h", "<C-w>h", { desc = "Go to left window" })
   vim.keymap.set("n", "<leader>j", "<C-w>j", { desc = "Go to lower window" })

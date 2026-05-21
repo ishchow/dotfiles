@@ -86,6 +86,11 @@ if not vim.g.vscode then
     require("ts-comments").setup({})
   end
 
+  -- Configure vim-table-mode for markdown-friendly tables.
+  -- Keep custom mappings local to this config and add explicit user commands in keymaps.
+  vim.g.table_mode_disable_mappings = 1
+  vim.g.table_mode_corner = '|'
+
   -- Disable netrw to prevent it from loading behind yazi
   vim.g.loaded_netrw = 1
   vim.g.loaded_netrwPlugin = 1

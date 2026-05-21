@@ -24,6 +24,7 @@ if not vim.g.vscode then
       'https://github.com/ibhagwan/fzf-lua',
       'https://github.com/jinh0/eyeliner.nvim',
       'https://github.com/folke/ts-comments.nvim',
+      'https://github.com/dhruvasagar/vim-table-mode',
 
       -- LSP
       'https://github.com/neovim/nvim-lspconfig',
