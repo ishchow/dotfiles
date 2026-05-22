@@ -177,7 +177,7 @@ if not vim.g.vscode then
   -- List servers to enable here:
   vim.lsp.enable({
     'lua_ls',
-    'marksman',
+    'markdown_oxide',
     'copilot',
   })
 end
