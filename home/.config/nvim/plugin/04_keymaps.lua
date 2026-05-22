@@ -221,6 +221,23 @@ if not vim.g.vscode then
   nmap_leader('fs', '<Cmd>FzfLua lsp_document_symbols<CR>',         'Symbols document')
   nmap_leader('fS', '<Cmd>FzfLua lsp_live_workspace_symbols<CR>',   'Symbols workspace')
 
+  -- g is for 'Git' (gitsigns) -----------------------------------------------
+  local gs = require('gitsigns')
+  nmap_leader('gb', function() gs.blame_line({ full = true }) end, 'Blame line')
+  nmap_leader('gB', gs.toggle_current_line_blame,                  'Blame toggle')
+  nmap_leader('gd', gs.diffthis,                                   'Diff')
+  nmap_leader('gD', function() gs.diffthis('~') end,               'Diff ~')
+  nmap_leader('gp', gs.preview_hunk,                               'Preview hunk')
+  nmap_leader('gr', gs.reset_hunk,                                 'Reset hunk')
+  nmap_leader('gR', gs.reset_buffer,                               'Reset buffer')
+  nmap_leader('gs', gs.stage_hunk,                                 'Stage hunk')
+  nmap_leader('gS', gs.stage_buffer,                               'Stage buffer')
+  nmap_leader('gu', gs.undo_stage_hunk,                            'Undo stage hunk')
+
+  -- Hunk navigation
+  nmap(']h', function() gs.nav_hunk('next') end, 'Next hunk')
+  nmap('[h', function() gs.nav_hunk('prev') end, 'Previous hunk')
+
   -- l is for 'Language' (LSP) -----------------------------------------------
   vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)

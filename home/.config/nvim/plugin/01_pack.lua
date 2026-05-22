@@ -34,6 +34,9 @@ if not vim.g.vscode then
       'https://github.com/saghen/blink.cmp',
       'https://github.com/fang2hou/blink-copilot',
 
+      -- Git
+      'https://github.com/lewis6991/gitsigns.nvim',
+
       -- Markdown preview
       'https://github.com/brianhuster/live-preview.nvim',
     })

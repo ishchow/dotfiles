@@ -139,6 +139,18 @@ if not vim.g.vscode then
   })
 
 
+  -- Configure gitsigns.nvim
+  require('gitsigns').setup({
+    signs = {
+      add          = { text = '▎' },
+      change       = { text = '▎' },
+      delete       = { text = '' },
+      topdelete    = { text = '' },
+      changedelete = { text = '▎' },
+      untracked    = { text = '▎' },
+    },
+  })
+
   -- Configure blink.cmp
   require('blink.cmp').setup({
     keymap = {
