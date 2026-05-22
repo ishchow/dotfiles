@@ -88,9 +88,13 @@ if not vim.g.vscode then
     },
   })
   wk.add({
-    { "<leader>c", group = "CWD" },
+    { "<leader>b", group = "Buffer" },
+    { "<leader>e", group = "Explore/Edit" },
     { "<leader>f", group = "Find" },
-    { "<leader>g", group = "LSP / Go to" },
+    { "<leader>g", group = "Git" },
+    { "<leader>l", group = "Language" },
+    { "<leader>o", group = "Other" },
+    { "<leader>t", group = "Terminal" },
   })
 
   -- Configure eyeliner.nvim

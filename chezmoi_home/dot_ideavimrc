@@ -1,8 +1,21 @@
+" ┌─────────────────┐
+" │ IdeaVim Config  │
+" └─────────────────┘
+"
+" Uses the same mnemonic leader groups as Neovim (04_keymaps.lua):
+"   b — Buffer        e — Explore/Edit    f — Find
+"   g — Git           l — Language         r — Refactor (IDE-specific)
+"   o — Other         t — Terminal
+
 " Configure handlers
 sethandler <C-O> a:vim
 sethandler <C-I> a:vim
 sethandler <C-[> a:vim
 sethandler <C-]> a:vim
+sethandler <C-H> a:vim
+sethandler <C-J> a:vim
+sethandler <C-K> a:vim
+sethandler <C-L> a:vim
 sethandler <C-S> a:ide
 sethandler <C-F> a:ide
 sethandler <C-R> a:ide
@@ -35,58 +48,88 @@ let mapleader=" "
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 
-" system clipboard
-vmap <leader>y "+y
-vmap <leader>d "+d
-nmap <leader>y "+yy
-nmap <leader>p "+p
-nmap <leader>P "+P
-vmap <leader>p "+p
-vmap <leader>P "+P
+" General mappings ============================================================
 
-" Forwards and back
+" Navigation (forwards/back)
 map <C-O> <Action>(Back)
 map <C-I> <Action>(Forward)
 
-" Go to
-nmap <leader>gd <Action>(GotoDeclaration)
-nmap <leader>gs <Action>(GotoSuperMethod)
-nmap <leader>gi <Action>(GotoImplementation)
-nmap <leader>gb <Action>(JumpToLastChange)
-nmap <leader>gu <Action>(FindUsages)
-nmap <leader>gn <Action>(GotoNextError)
-nmap <leader>gp <Action>(GotoPreviousError)
+" Window navigation (matches Neovim <C-hjkl>)
+nmap <C-H> <C-W>h
+nmap <C-J> <C-W>j
+nmap <C-K> <C-W>k
+nmap <C-L> <C-W>l
 
-" Find
-nmap <leader>ff <Action>(GotoFile)
-nmap <leader>fr <Action>(RecentFiles)
-nmap <leader>fs <Action>(FileStructurePopup)
-nmap <leader>fws <Action>(GotoSymbol)
+" Diagnostic navigation (matches Neovim built-in ]d / [d)
+nmap ]d <Action>(GotoNextError)
+nmap [d <Action>(GotoPreviousError)
+
+" EasyMotion (matches Neovim leap s/S without leader)
+let g:EasyMotion_do_mapping = 0
+nmap s <Plug>(easymotion-s2)
+
+" b is for 'Buffer' ===========================================================
+nmap <leader>ba <Action>(Switcher)
+nmap <leader>bd <Action>(CloseContent)
+nmap <leader>bn <Action>(NextTab)
+nmap <leader>bp <Action>(PreviousTab)
+
+" e is for 'Explore/Edit' =====================================================
+nmap <leader>ed <Action>(ActivateProblemsViewToolWindow)
+nmap <leader>ee <Action>(ActivateProjectToolWindow)
+nmap <leader>eg <Action>(ActivateVersionControlToolWindow)
+nmap <leader>eq <Action>(ActivateMessagesToolWindow)
+nmap <leader>es <Action>(ToggleSideBar)
+
+" f is for 'Find' =============================================================
+nmap <leader>fb <Action>(Switcher)
 nmap <leader>fc <Action>(GotoClass)
-
-" Refactor
-nmap <leader>rt <Action>(Refactorings.QuickListPopupAction)
-nmap <leader>rr <Action>(RenameElement)
-nmap <leader>riv <Action>(IntroduceVariable)
-nmap <leader>rif <Action>(IntroduceField)
-nmap <leader>rip <Action>(IntroduceParameter)
-nmap <leader>ric <Action>(IntroduceConstant)
-nmap <leader>ri <Action>(Inline)
-
-" Toggle
-nmap <leader>tb <Action>(ToggleLineBreakpoint)
-nmap <leader>tg <Action>(ActivateVersionControlToolWindow)
-nmap <leader>tt <Action>(ActivateUnitTestsToolWindow)
-nmap <leader>tp <Action>(ActivateProblemsViewToolWindow)
-
-" Misc
-nmap <leader>d <Action>(Debug)
+nmap <leader>fd <Action>(ActivateProblemsViewToolWindow)
+nmap <leader>ff <Action>(GotoFile)
+nmap <leader>fg <Action>(FindInPath)
+nmap <leader>fG <Action>(FindUsagesInFile)
+nmap <leader>fh <Action>(HelpTopics)
+nmap <leader>fr <Action>(RecentFiles)
+nmap <leader>fR <Action>(FindUsages)
+nmap <leader>fs <Action>(GotoSymbol)
+nmap <leader>fS <Action>(FileStructurePopup)
 nmap <leader><leader> <Action>(SearchEverywhere)
-nmap <leader>ir <Action>(IdeaVim.ReloadVimRc.reload)
 
-" EasyMotion
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-nmap <leader>s <Plug>(easymotion-s2)
-nmap <leader>t <Plug>(easymotion-t2)
+" g is for 'Git' ==============================================================
+nmap <leader>gc <Action>(CheckinProject)
+nmap <leader>gd <Action>(Compare.SameVersion)
+nmap <leader>gl <Action>(Vcs.Show.Log)
+nmap <leader>go <Action>(Vcs.Show.Local.Changes)
+nmap <leader>gs <Action>(Vcs.ShowDiffChangedLines)
+
+" l is for 'Language' ==========================================================
+nmap <leader>la <Action>(ShowIntentionActions)
+nmap <leader>ld <Action>(ShowErrorDescription)
+nmap <leader>lD <Action>(GotoDeclaration)
+nmap <leader>lh <Action>(QuickJavaDoc)
+nmap <leader>li <Action>(GotoImplementation)
+nmap <leader>lr <Action>(RenameElement)
+nmap <leader>lR <Action>(FindUsages)
+nmap <leader>ls <Action>(GotoDeclaration)
+nmap <leader>lS <Action>(GotoSuperMethod)
+nmap <leader>lt <Action>(GotoTypeDeclaration)
+
+" r is for 'Refactor' (IDE-specific) ==========================================
+nmap <leader>ra <Action>(Refactorings.QuickListPopupAction)
+nmap <leader>rc <Action>(IntroduceConstant)
+nmap <leader>rf <Action>(IntroduceField)
+nmap <leader>ri <Action>(Inline)
+nmap <leader>rp <Action>(IntroduceParameter)
+nmap <leader>rr <Action>(RenameElement)
+nmap <leader>rv <Action>(IntroduceVariable)
+
+" o is for 'Other' =============================================================
+nmap <leader>ob <Action>(ToggleLineBreakpoint)
+nmap <leader>od <Action>(Debug)
+nmap <leader>or <Action>(IdeaVim.ReloadVimRc.reload)
+nmap <leader>oz <Action>(ToggleDistractionFreeMode)
+
+" t is for 'Terminal' ==========================================================
+nmap <leader>tt <Action>(ActivateTerminalToolWindow)
 
 " Find more examples here: https://jb.gg/share-ideavimrc
