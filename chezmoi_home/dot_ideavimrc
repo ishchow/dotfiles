@@ -91,8 +91,8 @@ nmap <leader>fG <Action>(FindUsagesInFile)
 nmap <leader>fh <Action>(HelpTopics)
 nmap <leader>fr <Action>(RecentFiles)
 nmap <leader>fR <Action>(FindUsages)
-nmap <leader>fs <Action>(GotoSymbol)
-nmap <leader>fS <Action>(FileStructurePopup)
+nmap <leader>fs <Action>(FileStructurePopup)
+nmap <leader>fS <Action>(GotoSymbol)
 nmap <leader><leader> <Action>(SearchEverywhere)
 
 " g is for 'Git' ==============================================================

@@ -57,9 +57,9 @@ if vim.g.vscode then
   -- f is for 'Find'
   nmap_leader('ff', act('workbench.action.quickOpen'),                   'Files')
   nmap_leader('fg', act('workbench.action.findInFiles'),                 'Grep')
-  nmap_leader('fh', act('workbench.action.showAllSymbols'),              'Symbols workspace')
   nmap_leader('fr', act('workbench.action.openRecent'),                  'Recent')
-  nmap_leader('fS', act('workbench.action.gotoSymbol'),                  'Symbols document')
+  nmap_leader('fs', act('workbench.action.gotoSymbol'),                  'Symbols document')
+  nmap_leader('fS', act('workbench.action.showAllSymbols'),              'Symbols workspace')
   vim.keymap.set('n', '<Leader><Leader>', act('workbench.action.showCommands'), { desc = 'Command palette' })
 
   -- l is for 'Language'
@@ -217,8 +217,8 @@ if not vim.g.vscode then
   nmap_leader('fi', '<Cmd>FzfLua git_files<CR>',                    'Git files')
   nmap_leader('fr', '<Cmd>FzfLua resume<CR>',                       'Resume')
   nmap_leader('fR', '<Cmd>FzfLua lsp_references<CR>',               'References (LSP)')
-  nmap_leader('fs', '<Cmd>FzfLua lsp_live_workspace_symbols<CR>',   'Symbols workspace')
-  nmap_leader('fS', '<Cmd>FzfLua lsp_document_symbols<CR>',         'Symbols document')
+  nmap_leader('fs', '<Cmd>FzfLua lsp_document_symbols<CR>',         'Symbols document')
+  nmap_leader('fS', '<Cmd>FzfLua lsp_live_workspace_symbols<CR>',   'Symbols workspace')
 
   -- l is for 'Language' (LSP) -----------------------------------------------
   vim.api.nvim_create_autocmd('LspAttach', {

@@ -83,6 +83,24 @@ To add `sharkdp.bat` as a CLI tool:
 - UI packages (both `ui-machine` and `ui-user`) are skipped on work dev boxes (controlled by the `.isWorkDevBox` chezmoi variable).
 - If a counterpart exists on macOS, also add a `brew` or `cask` entry to `chezmoi_home/dot_Brewfile.tmpl`.
 
+## Vim Keymappings
+
+Vim-style keymappings are maintained across three IDE contexts. When changing a leader mapping, update **all** files that define the equivalent binding so they stay in sync.
+
+| Context | File | Notes |
+|---------|------|-------|
+| Neovim (native) | `home/.config/nvim/plugin/04_keymaps.lua` | Inside the `else` (non-vscode) branch. Uses FzfLua, LSP, etc. |
+| Neovim (VS Code extension) | `home/.config/nvim/plugin/04_keymaps.lua` | Inside the `if vim.g.vscode` branch. Uses `vscode-neovim` `act()` calls. |
+| JetBrains (IdeaVim) | `chezmoi_home/dot_ideavimrc` | Uses `<Action>(...)` for IDE actions. |
+
+All three share the same mnemonic leader-key groups (`b` Buffer, `e` Explore, `f` Find, `g` Git, `l` Language, `o` Other, `t` Terminal). The convention is: lowercase second key = global/workspace scope, uppercase second key = local/buffer scope.
+
+### Notes
+
+- When adding, removing, or swapping a leader mapping, check all three contexts for the equivalent binding.
+- Not every mapping has a counterpart in every context (e.g., IdeaVim has an `r` Refactor group that Neovim doesn't), but common ones like find (`f`), language (`l`), and buffer (`b`) should match.
+- The Neovim file has two branches in a single file; the IdeaVim config is a separate file.
+
 ## Adding Neovim Plugins
 
 Neovim plugins are managed via the built-in `vim.pack` package manager. Plugin specs live in `home/.config/nvim/plugin/01_pack.lua` and plugin configurations in `home/.config/nvim/plugin/03_plugins.lua`.
