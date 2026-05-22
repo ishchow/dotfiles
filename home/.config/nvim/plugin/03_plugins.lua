@@ -151,6 +151,9 @@ if not vim.g.vscode then
     },
   })
 
+  -- Configure blink.indent (indent guides + scope)
+  require('blink.indent').setup({})
+
   -- Configure blink.cmp
   require('blink.cmp').setup({
     keymap = {
