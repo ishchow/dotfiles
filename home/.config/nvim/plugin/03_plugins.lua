@@ -172,6 +172,11 @@ if not vim.g.vscode then
     fuzzy = { implementation = 'prefer_rust_with_warning' },
   })
 
+  -- Configure live-preview.nvim (markdown/HTML browser preview)
+  require('livepreview.config').set({
+    picker = 'fzf-lua',
+  })
+
   -- LSP: nvim-lspconfig provides base configs in its lsp/ directory.
   -- Override per-server settings in after/lsp/<server>.lua (see :h lsp-config).
   -- List servers to enable here:

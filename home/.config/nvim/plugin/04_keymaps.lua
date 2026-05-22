@@ -78,6 +78,7 @@ if vim.g.vscode then
   nmap_leader('rr', act('editor.action.rename'),                         'Rename')
 
   -- o is for 'Other'
+  nmap_leader('op', act('markdown.showPreview'),                         'Preview')
   nmap_leader('oz', act('workbench.action.toggleZenMode'),               'Zen mode')
 
   -- t is for 'Terminal'
@@ -238,6 +239,9 @@ if not vim.g.vscode then
       map('n', '<Leader>lt', vim.lsp.buf.type_definition, vim.tbl_extend('force', opts, { desc = 'Type definition' }))
     end,
   })
+
+  -- o is for 'Other' ---------------------------------------------------------
+  nmap_leader('op', '<Cmd>LivePreview start<CR>', 'Preview')
 
   -- t is for 'Terminal' ------------------------------------------------------
   nmap_leader('tt', '<Cmd>vertical term<CR>',   'Terminal (vertical)')

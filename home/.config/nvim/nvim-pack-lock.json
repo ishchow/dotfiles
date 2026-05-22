@@ -20,6 +20,10 @@
       "rev": "0730410",
       "src": "https://github.com/ggandor/leap.nvim"
     },
+    "live-preview.nvim": {
+      "rev": "c1fcf75c5f9c9c01dd392852de44204b60f1b5b1",
+      "src": "https://github.com/brianhuster/live-preview.nvim"
+    },
     "mini.ai": {
       "rev": "e0d00c2",
       "src": "https://github.com/nvim-mini/mini.ai"

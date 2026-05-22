@@ -33,6 +33,9 @@ if not vim.g.vscode then
       -- Completion
       'https://github.com/saghen/blink.cmp',
       'https://github.com/fang2hou/blink-copilot',
+
+      -- Markdown preview
+      'https://github.com/brianhuster/live-preview.nvim',
     })
 end
 

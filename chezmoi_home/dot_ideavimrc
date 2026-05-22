@@ -124,6 +124,7 @@ nmap <leader>rr <Action>(RenameElement)
 nmap <leader>rv <Action>(IntroduceVariable)
 
 " o is for 'Other' =============================================================
+nmap <leader>op <Action>(Markdown.ShowPreview)
 nmap <leader>ob <Action>(ToggleLineBreakpoint)
 nmap <leader>od <Action>(Debug)
 nmap <leader>or <Action>(IdeaVim.ReloadVimRc.reload)
