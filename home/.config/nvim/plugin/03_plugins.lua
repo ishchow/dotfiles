@@ -75,6 +75,24 @@ if not vim.g.vscode then
   os_utils.check_executable("bat")
   os_utils.check_executable("zoxide")
 
+  -- Configure which-key.nvim
+  local wk = require("which-key")
+  wk.setup({
+    icons = {
+      provider = "mini.icons",
+    },
+    plugins = {
+      marks = false,
+      registers = false,
+      spelling = { enabled = false },
+    },
+  })
+  wk.add({
+    { "<leader>c", group = "CWD" },
+    { "<leader>f", group = "Find" },
+    { "<leader>g", group = "LSP / Go to" },
+  })
+
   -- Configure eyeliner.nvim
   require("eyeliner").setup({
     highlight_on_key = true, -- highlight only after pressing f/F/t/T

@@ -76,6 +76,10 @@
       "rev": "bb025308a45c67c7c8f0763ba37bc2ee3f534df0",
       "src": "https://github.com/dhruvasagar/vim-table-mode"
     },
+    "which-key.nvim": {
+      "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
+      "src": "https://github.com/folke/which-key.nvim"
+    },
     "yazi.nvim": {
       "rev": "3f81faf",
       "src": "https://github.com/mikavilpas/yazi.nvim"
