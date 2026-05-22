@@ -8,6 +8,10 @@
       "rev": "4b18c32adef2898f95cdef6192cbd5796c1a332d",
       "src": "https://github.com/saghen/blink.cmp"
     },
+    "blink.indent": {
+      "rev": "15b3b25c2e76025733cc96df0144e9a9ef4d495c",
+      "src": "https://github.com/saghen/blink.indent"
+    },
     "eyeliner.nvim": {
       "rev": "8f197eb",
       "src": "https://github.com/jinh0/eyeliner.nvim"
