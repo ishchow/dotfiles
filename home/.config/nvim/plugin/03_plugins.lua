@@ -119,8 +119,8 @@ if not vim.g.vscode then
   vim.g.loaded_netrw = 1
   vim.g.loaded_netrwPlugin = 1
 
-  -- Configure broot.nvim
-  require("broot").setup({})
+  -- Configure snacks.nvim (snacks are lazy-loaded on first use)
+  require("snacks").setup({})
 
   -- Configure yazi.nvim
   require("yazi").setup({
