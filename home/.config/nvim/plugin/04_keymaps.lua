@@ -258,6 +258,11 @@ if not vim.g.vscode then
   })
 
   -- o is for 'Other' ---------------------------------------------------------
+  vim.api.nvim_create_user_command('CopyNvimServerName', function()
+    vim.fn.setreg('+', vim.v.servername)
+    vim.notify('Copied: ' .. vim.v.servername)
+  end, { desc = 'Copy Neovim server name to clipboard' })
+  nmap_leader('os', '<Cmd>CopyNvimServerName<CR>', 'Copy server name')
   nmap_leader('op', '<Cmd>LivePreview start<CR>', 'Preview')
 
   -- t is for 'Terminal' ------------------------------------------------------
