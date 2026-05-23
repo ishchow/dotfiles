@@ -237,10 +237,14 @@ if not vim.g.vscode then
     nes = { enabled = false },
     cli = {
       watch = true,
-      mux = {
-        enabled = true,
-        backend = 'tmux',
-        create = 'window',
+      -- TODO: re-enable once sidekick supports Windows process discovery for tmux
+      -- mux = {
+      --   enabled = true,
+      --   backend = 'tmux',
+      --   create = 'window',
+      -- },
+      win = {
+        layout = 'float',
       },
       tools = {
         agency_copilot = {
