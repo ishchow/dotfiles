@@ -12,6 +12,10 @@
       "rev": "15b3b25c2e76025733cc96df0144e9a9ef4d495c",
       "src": "https://github.com/saghen/blink.indent"
     },
+    "diffview.nvim": {
+      "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
+      "src": "https://github.com/sindrets/diffview.nvim"
+    },
     "eyeliner.nvim": {
       "rev": "8f197eb",
       "src": "https://github.com/jinh0/eyeliner.nvim"

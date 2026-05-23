@@ -12,6 +12,17 @@ vim.pack.add({
 })
 
 if not vim.g.vscode then
+    -- Stub nvim-web-devicons so plugins that check for it at load time
+    -- don't warn. MiniIcons.mock_nvim_web_devicons() replaces this later
+    -- in 03_plugins.lua with the full implementation.
+    package.preload['nvim-web-devicons'] = function()
+      return {
+        get_icon = function() return '', 'Normal' end,
+        get_icon_by_filetype = function() return '', 'Normal' end,
+        setup = function() end,
+      }
+    end
+
     vim.pack.add({
       -- Dependencies (load before other UI plugins)
       'https://github.com/nvim-lua/plenary.nvim',
@@ -48,6 +59,7 @@ if not vim.g.vscode then
 
       -- Git
       'https://github.com/lewis6991/gitsigns.nvim',
+      'https://github.com/sindrets/diffview.nvim',
 
       -- Markdown preview
       'https://github.com/brianhuster/live-preview.nvim',

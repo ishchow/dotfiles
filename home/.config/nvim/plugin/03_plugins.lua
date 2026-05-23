@@ -66,6 +66,9 @@ require("mini.move").setup({})
 -- ============================================================================
 
 if not vim.g.vscode then
+  -- Replace the nvim-web-devicons stub from 01_pack.lua with the real mock
+  require('mini.icons').mock_nvim_web_devicons()
+
   -- Check for required executables
   local os_utils = require("ishaat.os")
   os_utils.check_executable("yazi")
@@ -164,6 +167,11 @@ if not vim.g.vscode then
       changedelete = { text = '▎' },
       untracked    = { text = '▎' },
     },
+  })
+
+  -- Configure diffview.nvim (git diff/merge/log viewer)
+  require('diffview').setup({
+    use_icons = true,
   })
 
   -- Configure blink.indent (indent guides + scope)

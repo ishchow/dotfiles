@@ -234,6 +234,10 @@ if not vim.g.vscode then
   nmap_leader('gs', gs.stage_hunk,                                 'Stage hunk')
   nmap_leader('gS', gs.stage_buffer,                               'Stage buffer')
   nmap_leader('gu', gs.undo_stage_hunk,                            'Undo stage hunk')
+  nmap_leader('gv', '<Cmd>DiffviewOpen<CR>',                       'Diffview open')
+  nmap_leader('gV', '<Cmd>DiffviewClose<CR>',                      'Diffview close')
+  nmap_leader('gh', '<Cmd>DiffviewFileHistory %<CR>',              'File history')
+  nmap_leader('gH', '<Cmd>DiffviewFileHistory<CR>',                'Branch history')
 
   -- Hunk navigation
   nmap(']h', function() gs.nav_hunk('next') end, 'Next hunk')
@@ -264,6 +268,7 @@ if not vim.g.vscode then
     vim.notify('Copied: ' .. vim.v.servername)
   end, { desc = 'Copy Neovim server name to clipboard' })
   nmap_leader('os', '<Cmd>CopyNvimServerName<CR>', 'Copy server name')
+  nmap_leader('ot', function() MiniTrailspace.trim() end, 'Trim trailing whitespace')
   nmap_leader('op', '<Cmd>LivePreview start<CR>', 'Preview')
 
   -- t is for 'Terminal' ------------------------------------------------------
