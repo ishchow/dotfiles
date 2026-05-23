@@ -56,9 +56,17 @@
       "rev": "bada72f",
       "src": "https://github.com/nvim-mini/mini.pairs"
     },
+    "mini.statusline": {
+      "rev": "7091f554d7d26b5d55f4c937634da53ba277a44a",
+      "src": "https://github.com/nvim-mini/mini.statusline"
+    },
     "mini.surround": {
       "rev": "aec6ed2",
       "src": "https://github.com/nvim-mini/mini.surround"
+    },
+    "mini.trailspace": {
+      "rev": "22653218f1aedc9bf306c8b4e8ec2c8a575f6fae",
+      "src": "https://github.com/nvim-mini/mini.trailspace"
     },
     "nvim": {
       "rev": "c891845",

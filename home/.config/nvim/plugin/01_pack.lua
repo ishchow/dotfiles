@@ -37,6 +37,12 @@ if not vim.g.vscode then
       -- Indent guides
       'https://github.com/saghen/blink.indent',
 
+      -- Statusline
+      'https://github.com/nvim-mini/mini.statusline',
+
+      -- Trailing whitespace
+      'https://github.com/nvim-mini/mini.trailspace',
+
       -- Git
       'https://github.com/lewis6991/gitsigns.nvim',
 
