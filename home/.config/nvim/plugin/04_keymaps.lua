@@ -261,6 +261,12 @@ if not vim.g.vscode then
   nmap_leader('op', '<Cmd>LivePreview start<CR>', 'Preview')
 
   -- t is for 'Terminal' ------------------------------------------------------
+  nmap_leader('ta', function()
+    require('sidekick.cli').toggle({ name = 'agency_copilot', focus = true })
+  end, 'Agency Copilot')
+  vim.keymap.set({ 'n', 't', 'i', 'x' }, '<C-.>', function()
+    require('sidekick.cli').focus()
+  end, { desc = 'Sidekick Focus' })
   nmap_leader('tt', '<Cmd>vertical term<CR>',   'Terminal (vertical)')
   nmap_leader('tT', '<Cmd>horizontal term<CR>', 'Terminal (horizontal)')
 end

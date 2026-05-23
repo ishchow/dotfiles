@@ -95,6 +95,7 @@ if not vim.g.vscode then
     { "<leader>l", group = "Language" },
     { "<leader>o", group = "Other" },
     { "<leader>t", group = "Terminal" },
+    { "<leader>ta", desc = "Agency Copilot" },
   })
 
   -- Configure eyeliner.nvim
@@ -207,6 +208,31 @@ if not vim.g.vscode then
   -- Configure live-preview.nvim (markdown/HTML browser preview)
   require('livepreview.config').set({
     picker = 'fzf-lua',
+  })
+
+  -- Configure sidekick.nvim (AI CLI terminal with tmux integration)
+  require('sidekick').setup({
+    nes = { enabled = false },
+    cli = {
+      watch = true,
+      mux = {
+        enabled = true,
+        backend = 'tmux',
+        create = 'window',
+      },
+      tools = {
+        agency_copilot = {
+          cmd = { 'agency', 'copilot' },
+          is_proc = function(_, proc)
+            local re = vim.regex('\\<copilot\\>')
+            return re:match_str(proc.cmd) and not proc.cmd:find('language%-server') or false
+          end,
+        },
+      },
+    },
+    copilot = {
+      status = { enabled = false },
+    },
   })
 
   -- LSP: nvim-lspconfig provides base configs in its lsp/ directory.
