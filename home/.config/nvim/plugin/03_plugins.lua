@@ -160,27 +160,15 @@ if not vim.g.vscode then
   -- Configure mini.trailspace (highlight + trim trailing whitespace)
   require('mini.trailspace').setup({})
 
-  -- Treesitter (built-in, no plugin needed on Neovim 0.11+).
-  -- This makes mini.ai textobjects, ts-comments, and mini.pairs skip_ts work.
-
-  -- Ensure core parsers are installed at startup.
-  local ts_ensure_installed = {
-    'bash', 'c', 'c_sharp', 'css', 'html', 'javascript', 'json', 'lua',
-    'markdown', 'markdown_inline', 'python', 'query', 'sql', 'typescript',
-    'vim', 'vimdoc', 'yaml',
-  }
-  for _, lang in ipairs(ts_ensure_installed) do
-    if not vim.treesitter.language.is_installed(lang) then
-      vim.treesitter.install.install(lang)
-    end
-  end
-
-  -- Enable treesitter highlighting for every buffer that has a parser.
-  vim.api.nvim_create_autocmd('FileType', {
-    callback = function(args)
-      pcall(vim.treesitter.start, args.buf)
-    end,
-    desc = 'Enable treesitter highlighting',
+  -- Treesitter (parser management via nvim-treesitter plugin).
+  -- The plugin is archived but its main branch works with Neovim 0.12.
+  -- It provides ensure_installed + automatic parser compilation.
+  require('nvim-treesitter').setup({
+    ensure_installed = {
+      'bash', 'c', 'c_sharp', 'css', 'html', 'javascript', 'json', 'lua',
+      'markdown', 'markdown_inline', 'python', 'query', 'sql', 'typescript',
+      'vim', 'vimdoc', 'yaml',
+    },
   })
 
   -- Configure blink.cmp

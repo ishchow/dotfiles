@@ -94,7 +94,11 @@
 					"x-comment": "Installation can fail when scope is explicitly set, so scope is omitted."
 				},
 				{
-					"PackageIdentifier": "DEVCOM.JetBrainsMonoNerdFont",
+						"PackageIdentifier": "Microsoft.VisualStudio.BuildTools",
+						"x-comment": "C/C++ compiler needed by tree-sitter for parser compilation. On machines with VS Enterprise this is harmless (components are deduplicated)."
+					},
+					{
+						"PackageIdentifier": "DEVCOM.JetBrainsMonoNerdFont",
 					"x-comment": "Nerd Font required for mini.icons and which-key.nvim icon rendering in the terminal."
 				}
 			],

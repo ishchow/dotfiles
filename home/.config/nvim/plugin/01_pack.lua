@@ -27,6 +27,9 @@ if not vim.g.vscode then
       'https://github.com/folke/which-key.nvim',
       'https://github.com/dhruvasagar/vim-table-mode',
 
+      -- Treesitter (parser management + ensure_installed)
+      'https://github.com/nvim-treesitter/nvim-treesitter',
+
       -- LSP
       'https://github.com/neovim/nvim-lspconfig',
 

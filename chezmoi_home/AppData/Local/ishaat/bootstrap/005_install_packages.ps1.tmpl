@@ -12,4 +12,18 @@ sudo winget import -i $uiMachineFilePath --accept-source-agreements --accept-pac
 Write-Header "Installing user winget packages (UI tools)"
 $uiUserFilePath = $(Resolve-Path ~\.local\share\chezmoi\bootstrap\winget-packages-ui-user.json).Path
 winget import -i $uiUserFilePath --accept-source-agreements --accept-package-agreements
+
+Write-Header "Ensuring Visual Studio C++ Build Tools workload"
+# winget import installs the VS Build Tools shell, but the C++ workload
+# (needed by tree-sitter for parser compilation) must be added separately.
+$vsInstaller = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vs_installer.exe"
+if (Test-Path $vsInstaller) {
+    Write-Host "Adding VCTools workload to VS Build Tools..." -ForegroundColor Cyan
+    sudo & $vsInstaller modify --productId Microsoft.VisualStudio.Product.BuildTools `
+        --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended `
+        --quiet --norestart 2>&1 | Out-Null
+    Write-Host "[OK] VCTools workload ensured" -ForegroundColor Green
+} else {
+    Write-Warning "VS Installer not found — C++ build tools may not be available for tree-sitter"
+}
 {{ end }}
