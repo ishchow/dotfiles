@@ -119,8 +119,18 @@ if not vim.g.vscode then
   vim.g.loaded_netrw = 1
   vim.g.loaded_netrwPlugin = 1
 
-  -- Configure snacks.nvim (snacks are lazy-loaded on first use)
-  require("snacks").setup({})
+  -- Configure broot (custom module — uses list-based termopen to avoid shell quoting issues)
+  local broot_conf_dir
+  if vim.fn.has("win32") == 1 then
+    broot_conf_dir = vim.fn.expand("$APPDATA/dystroy/broot/config")
+  else
+    broot_conf_dir = vim.fn.expand("~/.config/broot")
+  end
+  require("ishaat.broot").setup({
+    config_files = {
+      broot_conf_dir .. "/conf-nvim.hjson",
+    },
+  })
 
   -- Configure yazi.nvim
   require("yazi").setup({

@@ -197,7 +197,7 @@ if not vim.g.vscode then
     vim.cmd(vim.fn.getqflist({ winid = true }).winid ~= 0 and 'cclose' or 'copen')
   end
 
-  nmap_leader('eb', function() require("ishaat.broot").open() end, 'Broot (cwd)')
+  nmap_leader('eb', '<Cmd>Broot<CR>',                        'Broot (cwd)')
   nmap_leader('ed', '<Cmd>Yazi cwd<CR>',                    'Directory (cwd)')
   nmap_leader('ef', '<Cmd>Yazi<CR>',                        'File directory')
   nmap_leader('er', '<Cmd>Yazi toggle<CR>',                 'Resume yazi session')

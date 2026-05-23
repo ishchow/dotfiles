@@ -21,7 +21,6 @@ if not vim.g.vscode then
       'https://github.com/catppuccin/nvim',
       'https://github.com/rcarriga/nvim-notify',
       'https://github.com/mikavilpas/yazi.nvim',
-      'https://github.com/folke/snacks.nvim',
       'https://github.com/ibhagwan/fzf-lua',
       'https://github.com/jinh0/eyeliner.nvim',
       'https://github.com/folke/ts-comments.nvim',

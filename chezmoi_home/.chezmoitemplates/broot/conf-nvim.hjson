@@ -1,0 +1,24 @@
+###############################################################
+# Broot configuration for neovim integration.
+# Imports base settings and skins only. The edit verb is
+# generated dynamically by the lua module (ishaat.broot) with
+# the neovim server address baked in.
+###############################################################
+
+imports: [
+
+    conf-base.hjson
+
+    {
+        luma: [
+            dark
+            unknown
+        ]
+        file: skins/tokyo-night.hjson
+    }
+
+    {
+        luma: light
+        file: skins/white.hjson
+    }
+]

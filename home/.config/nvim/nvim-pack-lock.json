@@ -12,10 +12,6 @@
       "rev": "15b3b25c2e76025733cc96df0144e9a9ef4d495c",
       "src": "https://github.com/saghen/blink.indent"
     },
-    "broot.nvim": {
-      "rev": "d8db32bc1f91044235ebd272b4228113b3bf6b70",
-      "src": "https://github.com/aohoyd/broot.nvim"
-    },
     "eyeliner.nvim": {
       "rev": "8f197eb",
       "src": "https://github.com/jinh0/eyeliner.nvim"
@@ -95,10 +91,6 @@
     "sidekick.nvim": {
       "rev": "208e1c5b8170c01fd1d07df0139322a76479b235",
       "src": "https://github.com/folke/sidekick.nvim"
-    },
-    "snacks.nvim": {
-      "rev": "0770753c88228f7f15449c6a5b242e3f7cd0d71c",
-      "src": "https://github.com/folke/snacks.nvim"
     },
     "ts-comments.nvim": {
       "rev": "1bd9d0b",
