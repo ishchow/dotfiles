@@ -69,6 +69,7 @@ if not vim.g.vscode then
   -- Check for required executables
   local os_utils = require("ishaat.os")
   os_utils.check_executable("yazi")
+  os_utils.check_executable("broot")
   os_utils.check_executable("fzf")
   os_utils.check_executable("rg")
   os_utils.check_executable("fd")
@@ -117,6 +118,9 @@ if not vim.g.vscode then
   -- Disable netrw to prevent it from loading behind yazi
   vim.g.loaded_netrw = 1
   vim.g.loaded_netrwPlugin = 1
+
+  -- Configure broot.nvim
+  require("broot").setup({})
 
   -- Configure yazi.nvim
   require("yazi").setup({

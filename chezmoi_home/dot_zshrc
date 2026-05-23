@@ -10,6 +10,18 @@ if command -v fzf >/dev/null 2>&1; then
   eval "$(fzf --zsh)"
 fi
 
+# broot shell integration (cd-on-quit via `br` command)
+if command -v broot >/dev/null 2>&1; then
+  function br {
+    local tmp="$(mktemp)"
+    broot --outcmd "$tmp" "$@"
+    if [[ -s "$tmp" ]]; then
+      source "$tmp"
+    fi
+    rm -f "$tmp"
+  }
+fi
+
 if [[ $- == *i* ]] && command -v fish >/dev/null 2>&1; then
   exec fish
 fi

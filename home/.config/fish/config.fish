@@ -14,3 +14,15 @@ starship init fish | source
 if command -v mise >/dev/null 2>&1
   mise activate fish | source
 end
+
+# broot shell integration (cd-on-quit via `br` command)
+if command -v broot >/dev/null 2>&1
+  function br
+    set f (mktemp)
+    broot --outcmd $f $argv
+    if test -s $f
+      source $f
+    end
+    rm -f $f
+  end
+end

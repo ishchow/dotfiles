@@ -58,6 +58,18 @@ if (Get-Command starship -ErrorAction "silentlycontinue")
 {
     Invoke-Expression (&starship init powershell)
 }
+# broot shell integration (cd-on-quit via `br` command)
+if (Get-Command broot -ErrorAction SilentlyContinue) {
+    function br {
+        $tmp = [System.IO.Path]::GetTempFileName()
+        broot --outcmd $tmp @args
+        if ((Test-Path $tmp) -and ((Get-Item $tmp).Length -gt 0)) {
+            . $tmp
+        }
+        Remove-Item $tmp -ErrorAction SilentlyContinue
+    }
+}
+
 # ------------------------------------------------------------------------------------------------------------------------
 # Functions
 # ------------------------------------------------------------------------------------------------------------------------

@@ -12,6 +12,8 @@ AppData/
 .bash_logout
 .bashrc
 .profile
+.zshrc
+.config/broot
 .config/fish
 .config/Code
 
