@@ -1,8 +1,7 @@
 ###############################################################
 # Main broot configuration for CLI use.
 # Imports base settings (which includes skin) and verbs.
-# For neovim, the lua module uses conf-base.hjson directly
-# with a runtime-generated verb file.
+# For neovim integration, see conf-nvim.hjson.
 ###############################################################
 
 imports: [

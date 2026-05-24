@@ -122,7 +122,7 @@ if not vim.g.vscode then
   vim.g.loaded_netrw = 1
   vim.g.loaded_netrwPlugin = 1
 
-  -- Configure broot (custom module — uses list-based termopen to avoid shell quoting issues)
+  -- Configure broot (custom module — uses conf-nvim.hjson for neovim-specific verbs)
   local broot_conf_dir
   if vim.fn.has("win32") == 1 then
     broot_conf_dir = vim.fn.expand("$APPDATA/dystroy/broot/config")
@@ -130,9 +130,7 @@ if not vim.g.vscode then
     broot_conf_dir = vim.fn.expand("~/.config/broot")
   end
   require("ishaat.broot").setup({
-    config_files = {
-      broot_conf_dir .. "/conf-base.hjson",
-    },
+    conf_path = broot_conf_dir .. "/conf-nvim.hjson",
   })
 
   -- Configure yazi.nvim

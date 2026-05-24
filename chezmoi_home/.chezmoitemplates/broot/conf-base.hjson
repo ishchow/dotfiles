@@ -1,8 +1,9 @@
 ###############################################################
 # Base broot configuration (shared between CLI and neovim).
 # This file contains settings and skin — no verb definitions.
-# Verbs are added by conf.hjson (CLI) or generated at runtime
-# by the neovim lua module (ishaat.broot).
+# Verbs are added by the importing config:
+#   - conf.hjson imports this + verbs.hjson (CLI use)
+#   - conf-nvim.hjson imports this + verbs-nvim.hjson (neovim)
 #
 # Configuration documentation is available at
 #     https://dystroy.org/broot

@@ -1,0 +1,20 @@
+###############################################################
+# Neovim-specific verb definitions for broot.
+#
+# When broot is launched from neovim (ishaat.broot module),
+# Enter triggers print_path which writes the selected file
+# path to stdout. The neovim module captures this and opens
+# the file in a buffer.
+#
+# For standalone CLI verbs, see verbs.hjson.
+###############################################################
+
+verbs: [
+    {
+        key: enter
+        invocation: edit
+        shortcut: e
+        apply_to: text_file
+        internal: "print_path"
+    }
+]

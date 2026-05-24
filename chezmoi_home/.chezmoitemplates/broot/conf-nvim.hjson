@@ -1,0 +1,14 @@
+###############################################################
+# Broot configuration for neovim integration.
+# Imports base settings (which includes skin) and neovim-
+# specific verbs (Enter → print_path instead of external edit).
+#
+# For standalone CLI config, see conf.hjson.
+###############################################################
+
+imports: [
+
+    conf-base.hjson
+
+    verbs-nvim.hjson
+]
