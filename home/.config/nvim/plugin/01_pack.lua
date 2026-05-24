@@ -23,6 +23,11 @@ if not vim.g.vscode then
       }
     end
 
+    -- Disable vim-table-mode default mappings before loading (they conflict with <Leader>t group)
+    vim.g.table_mode_disable_mappings = 1
+    vim.g.table_mode_disable_tableize_mappings = 1
+    vim.g.table_mode_corner = '|'
+
     vim.pack.add({
       -- Dependencies (load before other UI plugins)
       'https://github.com/nvim-lua/plenary.nvim',
@@ -66,6 +71,9 @@ if not vim.g.vscode then
 
       -- AI CLI terminal
       'https://github.com/folke/sidekick.nvim',
+
+      -- UI overrides (vim.ui.input)
+      'https://github.com/folke/snacks.nvim',
     })
 end
 

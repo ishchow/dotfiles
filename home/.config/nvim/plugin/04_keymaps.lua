@@ -278,14 +278,22 @@ if not vim.g.vscode then
   nmap_leader('tA', function()
     vim.system({ 'tmux', 'new-window', '-c', vim.fn.getcwd(), 'agency', 'copilot' })
   end, 'Agency Copilot (tmux)')
+  vim.keymap.set({ 'n', 'x' }, '<leader>ts', function()
+    vim.ui.input({ prompt = 'Sidekick: ' }, function(text)
+      if text and text ~= '' then
+        require('sidekick.cli').send(text)
+      end
+    end)
+  end, { desc = 'Send to Sidekick' })
+  nmap_leader('tp', function()
+    require('sidekick.cli').prompt()
+  end, 'Prompt Sidekick')
   vim.keymap.set({ 'n', 't', 'i', 'x' }, '<C-.>', function()
     require('sidekick.cli').focus()
   end, { desc = 'Sidekick Focus' })
   vim.keymap.set('t', '<Esc><Esc>', function()
     require('sidekick.cli').hide()
   end, { desc = 'Hide Sidekick' })
-  nmap_leader('tt', '<Cmd>vertical term<CR>',   'Terminal (vertical)')
-  nmap_leader('tT', '<Cmd>horizontal term<CR>', 'Terminal (horizontal)')
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`

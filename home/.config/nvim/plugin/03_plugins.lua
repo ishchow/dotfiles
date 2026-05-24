@@ -114,9 +114,9 @@ if not vim.g.vscode then
   end
 
   -- Configure vim-table-mode for markdown-friendly tables.
-  -- Keep custom mappings local to this config and add explicit user commands in keymaps.
-  vim.g.table_mode_disable_mappings = 1
-  vim.g.table_mode_corner = '|'
+  -- NOTE: vim.g.table_mode_disable_mappings and vim.g.table_mode_corner
+  -- are set in 01_pack.lua (before vim.pack.add) so they take effect
+  -- before the plugin loads.
 
   -- Disable netrw to prevent it from loading behind yazi
   vim.g.loaded_netrw = 1
@@ -167,8 +167,10 @@ if not vim.g.vscode then
     git = { files = { winopts = { preview = { hidden = "hidden" } } } },
   })
 
+  -- Register fzf-lua as the vim.ui.select backend
+  require("fzf-lua").register_ui_select()
 
-  -- Configure gitsigns.nvim
+
   require('gitsigns').setup({
     signs = {
       add          = { text = '▎' },
@@ -247,6 +249,7 @@ if not vim.g.vscode then
   require('sidekick').setup({
     nes = { enabled = false },
     cli = {
+      picker = 'fzf-lua',
       watch = true,
       -- TODO: re-enable once sidekick supports Windows process discovery for tmux
       -- mux = {
@@ -270,6 +273,11 @@ if not vim.g.vscode then
     copilot = {
       status = { enabled = false },
     },
+  })
+
+  -- Configure snacks.nvim (only vim.ui.input override)
+  require('snacks').setup({
+    input = { enabled = true },
   })
 
   -- LSP: nvim-lspconfig provides base configs in its lsp/ directory.
