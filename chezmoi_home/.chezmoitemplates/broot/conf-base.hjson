@@ -1,8 +1,8 @@
 ###############################################################
 # Base broot configuration (shared between CLI and neovim).
-# This file contains settings only — no verb definitions.
-# Verbs and context-specific behavior are imported by
-# conf.hjson (CLI) or conf-nvim.hjson (neovim).
+# This file contains settings and skin — no verb definitions.
+# Verbs are added by conf.hjson (CLI) or generated at runtime
+# by the neovim lua module (ishaat.broot).
 #
 # Configuration documentation is available at
 #     https://dystroy.org/broot
@@ -11,6 +11,16 @@
 # properties are commented out. To enable them, remove the `#`.
 #
 ###############################################################
+
+imports: [
+    {
+        luma: [
+            dark
+            unknown
+        ]
+        file: skins/tokyo-night.hjson
+    }
+]
 
 ###############################################################
 # Default flags

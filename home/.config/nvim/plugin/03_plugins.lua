@@ -131,7 +131,7 @@ if not vim.g.vscode then
   end
   require("ishaat.broot").setup({
     config_files = {
-      broot_conf_dir .. "/conf-nvim.hjson",
+      broot_conf_dir .. "/conf-base.hjson",
     },
   })
 
