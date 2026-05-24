@@ -1,0 +1,19 @@
+{{ if eq .chezmoi.os "windows" }}
+
+{{ template "ps1/bootstrap-common.ps1" . }}
+
+Write-Header "Setting up PPM (psmux plugin manager)"
+
+$ppmDir = Join-Path $env:USERPROFILE ".psmux\plugins\ppm"
+if (!(Test-Path $ppmDir)) {
+    Write-Host "Installing PPM..."
+    $tmpDir = Join-Path $env:TEMP "psmux-plugins"
+    git clone --depth=1 https://github.com/psmux/psmux-plugins.git $tmpDir
+    New-Item -ItemType Directory -Path (Split-Path $ppmDir) -Force | Out-Null
+    Copy-Item "$tmpDir\ppm" $ppmDir -Recurse
+    Remove-Item $tmpDir -Recurse -Force
+    Write-Host "PPM installed to $ppmDir" -ForegroundColor Green
+} else {
+    Write-Host "PPM already installed at $ppmDir"
+}
+{{ end }}

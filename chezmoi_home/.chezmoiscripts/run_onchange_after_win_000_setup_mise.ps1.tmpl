@@ -32,12 +32,9 @@ if ($miseExe) {
             Write-Warning "Could not copy mise-shim.exe (may need admin privileges)"
         }
     }
-}
+    }
 
-# Add neovim plugin (required for neovim support)
-& "$miseBin" plugins add neovim
-
-# Install all tools declared in ~/.config/mise/config.toml
+    # Install all tools declared in ~/.config/mise/config.toml
 & "$miseBin" install
 
 Write-Header "mise setup complete!"

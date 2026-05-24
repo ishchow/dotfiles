@@ -1,22 +1,19 @@
 {{ if ne .chezmoi.os "windows" }}#!/bin/sh
 
-if [ ! -d ~/.tmux/plugins/tpm ]; then
-    echo "Installing tmux plugin manager (tpm)..."
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+echo "Setting up TPM (tmux plugin manager)..."
+
+TPM_DIR="$HOME/.tmux/plugins/tpm"
+if [ ! -d "$TPM_DIR" ]; then
+    echo "Installing TPM..."
+    git clone --depth=1 https://github.com/tmux-plugins/tpm "$TPM_DIR"
+    echo "TPM installed to $TPM_DIR"
+else
+    echo "TPM already installed at $TPM_DIR"
 fi
 
-if [ ! -d ~/.tmux/plugins/tmux-resurrect ]; then
-    echo "Installing tmux-resurrect plugin..."
-    git clone https://github.com/tmux-plugins/tmux-resurrect ~/.tmux/plugins/tmux-resurrect
-fi
-
-if [ ! -d ~/.tmux/plugins/tmux-continuum ]; then
-    echo "Installing tmux-continuum plugin..."
-    git clone https://github.com/tmux-plugins/tmux-continuum ~/.tmux/plugins/tmux-continuum
-fi
-
-if [ ! -d ~/.tmux/plugins/tmux-yank ]; then
-    echo "Installing tmux-yank plugin..."
-    git clone https://github.com/tmux-plugins/tmux-yank ~/.tmux/plugins/tmux-yank
+# Auto-install plugins declared in tmux.conf
+if [ -x "$TPM_DIR/bin/install_plugins" ]; then
+    echo "Installing tmux plugins..."
+    "$TPM_DIR/bin/install_plugins"
 fi
 {{ end }}

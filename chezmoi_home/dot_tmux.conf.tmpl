@@ -21,21 +21,29 @@ set -ga terminal-overrides ",*256col*:Tc"
 # set-option -sa terminal-overrides ',*256col*:RGB' */
 # set-option -ga terminal-overrides ',XXX:Tc'
 
-{{- if ne .chezmoi.os "windows" -}}
-run '~/.tmux/plugins/tmux-yank/yank.tmux'
-run '~/.tmux/plugins/tmux-resurrect/resurrect.tmux'
-run '~/.tmux/plugins/tmux-continuum/continuum.tmux'
+{{- if eq .chezmoi.os "windows" }}
+# psmux plugins (Windows)
+set -g @plugin 'psmux-plugins/ppm'
+set -g @plugin 'psmux-plugins/psmux-yank'
+set -g @plugin 'psmux-plugins/psmux-resurrect'
+set -g @plugin 'psmux-plugins/psmux-continuum'
 
-# TPM not working: https://github.com/tmux-plugins/tpm/issues/97
-# set -g @plugin 'tmux-plugins/tpm'
-# set -g @plugin 'tmux-plugins/tmux-resurrect'
-# set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @continuum-restore 'on'
+
+# Initialize PPM (keep at the very bottom)
+run '~/.psmux/plugins/ppm/ppm.ps1'
+{{- else }}
+# tmux plugins (Linux/macOS)
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
 
 set -g @continuum-restore 'on'
 
 # Use fish as default shell
 set -g default-command /usr/bin/fish
 
-# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-# run -b '~/.tmux/plugins/tpm/tpm'
+# Initialize TPM (keep at the very bottom)
+run '~/.tmux/plugins/tpm/tpm'
 {{- end }}
