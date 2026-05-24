@@ -20,6 +20,10 @@
       "rev": "8f197eb",
       "src": "https://github.com/jinh0/eyeliner.nvim"
     },
+    "friendly-snippets": {
+      "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
+      "src": "https://github.com/rafamadriz/friendly-snippets"
+    },
     "fzf-lua": {
       "rev": "7c21f30",
       "src": "https://github.com/ibhagwan/fzf-lua"

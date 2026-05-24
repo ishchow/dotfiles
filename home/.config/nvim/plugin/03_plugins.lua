@@ -219,7 +219,7 @@ if not vim.g.vscode then
     appearance = { nerd_font_variant = 'mono' },
     completion = { documentation = { auto_show = false } },
     sources = {
-      default = { 'copilot', 'lsp', 'path', 'buffer' },
+      default = { 'copilot', 'lsp', 'snippets', 'path', 'buffer' },
       -- Make Copilot more prominent by giving it a higher score offset and showing it
       providers = {
         copilot = {
