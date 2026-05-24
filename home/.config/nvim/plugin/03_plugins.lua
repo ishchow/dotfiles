@@ -143,6 +143,10 @@ if not vim.g.vscode then
 
   -- Configure fzf-lua
   require("fzf-lua").setup({
+    winopts = {
+      width = 0.95,
+      height = 0.95,
+    },
     -- Keep picker navigation explicit to avoid terminal/fzf variance on Windows.
     keymap = {
       fzf = {
@@ -152,6 +156,9 @@ if not vim.g.vscode then
         ["ctrl-n"] = "down",
       },
     },
+    -- Start with preview hidden for file list pickers (toggle with F4).
+    files = { winopts = { preview = { hidden = "hidden" } } },
+    git = { files = { winopts = { preview = { hidden = "hidden" } } } },
   })
 
 
