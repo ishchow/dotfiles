@@ -141,8 +141,11 @@ if not vim.g.vscode then
     },
   })
 
-  -- Configure fzf-lua
+  -- Configure fzf-lua (max-perf: disables git/file icons for speed)
   require("fzf-lua").setup({
+    "max-perf",
+    -- Override max-perf's native fzf previewer back to the builtin Neovim previewer.
+    previewer = "builtin",
     winopts = {
       width = 0.95,
       height = 0.95,
@@ -156,8 +159,11 @@ if not vim.g.vscode then
         ["ctrl-n"] = "down",
       },
     },
+    -- Use fd explicitly for fastest file finding.
     -- Start with preview hidden for file list pickers (toggle with F4).
-    files = { winopts = { preview = { hidden = "hidden" } } },
+    files = {
+      winopts = { preview = { hidden = "hidden" } },
+    },
     git = { files = { winopts = { preview = { hidden = "hidden" } } } },
   })
 
