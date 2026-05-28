@@ -251,6 +251,54 @@ if not vim.g.vscode then
   nmap('[h', function() gs.nav_hunk('prev') end, 'Previous hunk')
 
   -- l is for 'Language' (LSP) -----------------------------------------------
+
+  -- Custom picker: restart LSP server(s) attached to the current buffer.
+  local function lsp_restart_picker()
+    local fzf_lua = require('fzf-lua')
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
+    if #clients == 0 then
+      vim.notify('No LSP clients attached to this buffer', vim.log.levels.WARN)
+      return
+    end
+
+    -- Build entries: "[All]" plus one line per client
+    local entries = { '[All]' }
+    for _, c in ipairs(clients) do
+      table.insert(entries, string.format('%s (id: %d)', c.name, c.id))
+    end
+
+    fzf_lua.fzf_exec(entries, {
+      prompt = 'LSP Restart> ',
+      actions = {
+        ['default'] = function(selected)
+          if not selected or #selected == 0 then return end
+
+          local ids_to_stop = {}
+          for _, entry in ipairs(selected) do
+            if entry == '[All]' then
+              -- Restart every client on this buffer
+              ids_to_stop = {}
+              for _, c in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+                ids_to_stop[c.id] = true
+              end
+              break
+            end
+            local id = tonumber(entry:match('id: (%d+)'))
+            if id then ids_to_stop[id] = true end
+          end
+
+          for id in pairs(ids_to_stop) do
+            vim.lsp.stop_client(id)
+          end
+
+          -- Re-edit buffer after a short delay so servers re-attach
+          vim.defer_fn(function() vim.cmd('edit') end, 200)
+        end,
+      },
+      fzf_opts = { ['--multi'] = true },
+    })
+  end
+
   vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
       local buf = args.buf
@@ -266,6 +314,7 @@ if not vim.g.vscode then
       map('n', '<Leader>ls', vim.lsp.buf.definition,      vim.tbl_extend('force', opts, { desc = 'Source definition' }))
       map('n', '<Leader>lD', vim.lsp.buf.declaration,     vim.tbl_extend('force', opts, { desc = 'Declaration' }))
       map('n', '<Leader>lt', vim.lsp.buf.type_definition, vim.tbl_extend('force', opts, { desc = 'Type definition' }))
+      map('n', '<Leader>lx', lsp_restart_picker,          vim.tbl_extend('force', opts, { desc = 'Restart LSP' }))
     end,
   })
 
