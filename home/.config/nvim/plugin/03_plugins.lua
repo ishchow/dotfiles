@@ -266,6 +266,9 @@ if not vim.g.vscode then
     },
   })
 
+  -- Configure dropbar.nvim (treesitter-based breadcrumbs in winbar)
+  require('dropbar').setup()
+
   -- Configure blink.cmp
   require('blink.cmp').setup({
     keymap = {

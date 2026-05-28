@@ -46,6 +46,9 @@ if not vim.g.vscode then
       -- Treesitter (parser management + ensure_installed)
       'https://github.com/nvim-treesitter/nvim-treesitter',
 
+      -- Breadcrumbs (treesitter-based winbar)
+      'https://github.com/Bekaboo/dropbar.nvim',
+
       -- LSP
       'https://github.com/neovim/nvim-lspconfig',
 
