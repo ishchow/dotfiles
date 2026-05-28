@@ -198,6 +198,9 @@ if not vim.g.vscode then
   end
 
   nmap_leader('eb', '<Cmd>Broot<CR>',                        'Broot (cwd)')
+  nmap_leader('eB', function()
+    require('ishaat.broot').broot({ directory = vim.fn.expand('%:p:h') })
+  end, 'Broot (current file)')
   nmap_leader('ed', '<Cmd>Yazi cwd<CR>',                    'Directory (cwd)')
   nmap_leader('ef', '<Cmd>Yazi<CR>',                        'File directory')
   nmap_leader('er', '<Cmd>Yazi toggle<CR>',                 'Resume yazi session')
@@ -213,6 +216,9 @@ if not vim.g.vscode then
   nmap_leader('fd', '<Cmd>FzfLua diagnostics_workspace<CR>',        'Diagnostics workspace')
   nmap_leader('fD', '<Cmd>FzfLua diagnostics_document<CR>',         'Diagnostics buffer')
   nmap_leader('ff', '<Cmd>FzfLua files<CR>',                        'Files')
+  nmap_leader('fF', function()
+    require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') })
+  end, 'Files (current file)')
   nmap_leader('fg', '<Cmd>FzfLua live_grep<CR>',                    'Grep live')
   nmap_leader('fG', '<Cmd>FzfLua grep_cword<CR>',                   'Grep current word')
   nmap_leader('fh', '<Cmd>FzfLua helptags<CR>',                     'Help tags')
