@@ -170,6 +170,65 @@ if not vim.g.vscode then
   -- Register fzf-lua as the vim.ui.select backend
   require("fzf-lua").register_ui_select()
 
+  -- Custom picker: git submodules — select a submodule and cd into it.
+  _G.git_submodules = function(opts)
+    local fzf_lua = require("fzf-lua")
+    local ansi = fzf_lua.utils.ansi_codes
+    opts = opts or {}
+    opts.prompt = "Git Submodules> "
+    local function strip_ansi(s)
+      return s:gsub("\27%[[%d;]*m", "")
+    end
+    local function parse_path(selected)
+      return vim.trim(strip_ansi(selected[1]))
+    end
+    opts.actions = {
+      ["default"] = function(selected)
+        local p = parse_path(selected)
+        vim.cmd.cd(p)
+        vim.notify("cd " .. vim.fn.getcwd(), vim.log.levels.INFO)
+      end,
+      ["ctrl-e"] = function(selected)
+        fzf_lua.files({ cwd = parse_path(selected) })
+      end,
+    }
+    opts.preview = {
+      type = "cmd",
+      fn = function(items)
+        local p = vim.trim(strip_ansi(items[1]))
+        if p == "" then return "echo 'No submodule path'" end
+        return string.format("git -C %s log --oneline -15 2>&1 || echo 'not a git repo'",
+          vim.fn.shellescape(p))
+      end,
+    }
+    -- Avoid `git submodule status` (slow — checks SHA of every submodule).
+    -- Instead, read initialized names from .git/config and map to paths via .gitmodules.
+    -- Both are instant config reads (~0.1s vs ~2s for `status`).
+    local init = vim.system(
+      { "git", "config", "--get-regexp", [[submodule\..*\.url]] }, { text = true }):wait()
+    local paths_result = vim.system(
+      { "git", "config", "--file", ".gitmodules", "--get-regexp", [[submodule\..*\.path]] },
+      { text = true }):wait()
+    if not init.stdout or not paths_result.stdout then
+      vim.notify("Not a repo with submodules", vim.log.levels.WARN)
+      return
+    end
+    -- Build set of initialized submodule names from local config.
+    local initialized = {}
+    for name in init.stdout:gmatch("submodule%.(.-)%.url") do
+      initialized[name] = true
+    end
+    -- Map name→path from .gitmodules, keep only initialized ones.
+    local entries = {}
+    for name, path_str in paths_result.stdout:gmatch("submodule%.(.-)%.path%s+(%S+)") do
+      if initialized[name] then
+        table.insert(entries, ansi.green(path_str))
+      end
+    end
+    table.sort(entries, function(a, b) return strip_ansi(a) < strip_ansi(b) end)
+    fzf_lua.fzf_exec(entries, opts)
+  end
+
 
   require('gitsigns').setup({
     signs = {

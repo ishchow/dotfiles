@@ -217,6 +217,7 @@ if not vim.g.vscode then
   nmap_leader('fG', '<Cmd>FzfLua grep_cword<CR>',                   'Grep current word')
   nmap_leader('fh', '<Cmd>FzfLua helptags<CR>',                     'Help tags')
   nmap_leader('fi', '<Cmd>FzfLua git_files<CR>',                    'Git files')
+  nmap_leader('fm', git_submodules,                                  'Git submodules')
   nmap_leader('fr', '<Cmd>FzfLua resume<CR>',                       'Resume')
   nmap_leader('fR', '<Cmd>FzfLua lsp_references<CR>',               'References (LSP)')
   nmap_leader('fs', '<Cmd>FzfLua lsp_document_symbols<CR>',         'Symbols document')
