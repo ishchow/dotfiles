@@ -266,6 +266,18 @@ if not vim.g.vscode then
     },
   })
 
+  -- Enable treesitter highlighting for all filetypes with installed parsers.
+  -- The archived nvim-treesitter plugin only manages parser installation;
+  -- highlighting must be started explicitly (Neovim <0.12).
+  vim.api.nvim_create_autocmd('FileType', {
+    group = vim.api.nvim_create_augroup('treesitter-highlight', {}),
+    callback = function(ev)
+      if pcall(vim.treesitter.start, ev.buf) then
+        vim.bo[ev.buf].syntax = ''
+      end
+    end,
+  })
+
   -- Configure dropbar.nvim (treesitter-based breadcrumbs in winbar)
   require('dropbar').setup()
 
@@ -274,13 +286,23 @@ if not vim.g.vscode then
     keymap = {
       -- Accept with Enter rather than Ctrl-y (default) to match IDE behavior
       preset = 'enter',
-      -- Tab: snippet forward → NES jump/apply → select next → fallback
+      -- Tab: NES accept when suggestion pending → snippet forward → select next → fallback
       ['<Tab>'] = {
-        'snippet_forward',
-        function()
-          return require('sidekick').nes_jump_or_apply()
+        function(cmp)
+          if vim.b[vim.api.nvim_get_current_buf()].nes_state then
+            cmp.hide()
+            return (
+              require('copilot-lsp.nes').apply_pending_nes()
+              and require('copilot-lsp.nes').walk_cursor_end_edit()
+            )
+          end
+          if cmp.snippet_active() then
+            return cmp.accept()
+          else
+            return cmp.select_and_accept()
+          end
         end,
-        'select_next',
+        'snippet_forward',
         'fallback',
       },
       ['<S-Tab>'] = { 'select_prev', 'fallback' },
@@ -314,8 +336,15 @@ if not vim.g.vscode then
     picker = 'fzf-lua',
   })
 
+  -- Configure copilot-lsp (NES — Next Edit Suggestions)
+  vim.g.copilot_nes_debounce = 500
+  require('copilot-lsp').setup({
+    nes = { move_count_threshold = 3 },
+  })
+
   -- Configure sidekick.nvim (AI CLI terminal with tmux integration)
   require('sidekick').setup({
+    nes = { enabled = false },
 
     cli = {
       picker = 'fzf-lua',
@@ -355,7 +384,7 @@ if not vim.g.vscode then
   vim.lsp.enable({
     'lua_ls',
     'markdown_oxide',
-    'copilot',
+    'copilot_ls',
   })
 end
 

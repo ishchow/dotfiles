@@ -342,13 +342,23 @@ if not vim.g.vscode then
   -- o is for 'Other' ---------------------------------------------------------
   nmap_leader('ot', function() MiniTrailspace.trim() end, 'Trim trailing whitespace')
   nmap_leader('op', '<Cmd>LivePreview start<CR>', 'Preview')
+  nmap_leader('of', '<Cmd>TableFormat<CR>', 'Format table')
+  nmap_leader('ox', function() require('copilot-lsp.nes').clear() end, 'Dismiss NES suggestion')
 
-  -- NES (Next Edit Suggestions) — normal-mode Tab to jump/apply
+  -- NES (Next Edit Suggestions via copilot-lsp): walk to edit start, then apply and advance.
+  -- Falls back to <C-i> (jump-list forward) when no suggestion is pending.
   vim.keymap.set('n', '<Tab>', function()
-    if not require('sidekick').nes_jump_or_apply() then
-      return '<Tab>'
+    local bufnr = vim.api.nvim_get_current_buf()
+    if vim.b[bufnr].nes_state then
+      local _ = require('copilot-lsp.nes').walk_cursor_start_edit()
+        or (
+          require('copilot-lsp.nes').apply_pending_nes()
+          and require('copilot-lsp.nes').walk_cursor_end_edit()
+        )
+      return nil
     end
-  end, { expr = true, desc = 'Goto/Apply Next Edit Suggestion' })
+    return '<C-i>'
+  end, { desc = 'Accept NES suggestion', expr = true })
 
   -- t is for 'Terminal' ------------------------------------------------------
   nmap_leader('ta', function()

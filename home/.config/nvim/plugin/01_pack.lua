@@ -77,6 +77,9 @@ if not vim.g.vscode then
       -- AI CLI terminal
       'https://github.com/folke/sidekick.nvim',
 
+      -- Copilot NES (Next Edit Suggestions)
+      'https://github.com/copilotlsp-nvim/copilot-lsp',
+
       -- UI overrides (vim.ui.input)
       'https://github.com/folke/snacks.nvim',
     })
