@@ -6,9 +6,9 @@
 -- first key describes the semantic group, second key executes an action.
 --
 -- Leader groups:
---   b — Buffer        e — Explore/Edit    f — Find
---   g — Git (reserved)  l — Language (LSP)  o — Other
---   t — Terminal
+--   b — Buffer        c — Copy            e — Explore/Edit
+--   f — Find          g — Git (reserved)  l — Language (LSP)
+--   o — Other         t — Terminal
 --
 -- Convention: lowercase second key = global/workspace scope,
 -- uppercase second key = local/buffer scope.
@@ -76,6 +76,16 @@ if vim.g.vscode then
   -- r is for 'Refactor' (IDE-specific)
   nmap_leader('ra', act('editor.action.refactor'),                       'Refactor menu')
   nmap_leader('rr', act('editor.action.rename'),                         'Rename')
+
+  -- c is for 'Copy'
+  local function copy_to_clipboard(value, label)
+    vim.fn.setreg('+', value)
+    vim.notify('Copied ' .. label .. ': ' .. value)
+  end
+  nmap_leader('cp', function() copy_to_clipboard(vim.fn.expand('%:p'), 'absolute path') end, 'Absolute path')
+  nmap_leader('cr', function() copy_to_clipboard(vim.fn.expand('%:.'), 'relative path') end, 'Relative path')
+  nmap_leader('cf', function() copy_to_clipboard(vim.fn.expand('%:t'), 'filename') end,      'Filename')
+  nmap_leader('cd', function() copy_to_clipboard(vim.fn.getcwd(), 'cwd') end,                'Working directory')
 
   -- o is for 'Other'
   nmap_leader('op', act('markdown.showPreview'),                         'Preview')
@@ -318,14 +328,27 @@ if not vim.g.vscode then
     end,
   })
 
+  -- c is for 'Copy' ----------------------------------------------------------
+  local function copy_to_clipboard(value, label)
+    vim.fn.setreg('+', value)
+    vim.notify('Copied ' .. label .. ': ' .. value)
+  end
+  nmap_leader('cp', function() copy_to_clipboard(vim.fn.expand('%:p'), 'absolute path') end, 'Absolute path')
+  nmap_leader('cr', function() copy_to_clipboard(vim.fn.expand('%:.'), 'relative path') end, 'Relative path')
+  nmap_leader('cf', function() copy_to_clipboard(vim.fn.expand('%:t'), 'filename') end,      'Filename')
+  nmap_leader('cd', function() copy_to_clipboard(vim.fn.getcwd(), 'cwd') end,                'Working directory')
+  nmap_leader('cs', function() copy_to_clipboard(vim.v.servername, 'server name') end,       'Server name')
+
   -- o is for 'Other' ---------------------------------------------------------
-  vim.api.nvim_create_user_command('CopyNvimServerName', function()
-    vim.fn.setreg('+', vim.v.servername)
-    vim.notify('Copied: ' .. vim.v.servername)
-  end, { desc = 'Copy Neovim server name to clipboard' })
-  nmap_leader('os', '<Cmd>CopyNvimServerName<CR>', 'Copy server name')
   nmap_leader('ot', function() MiniTrailspace.trim() end, 'Trim trailing whitespace')
   nmap_leader('op', '<Cmd>LivePreview start<CR>', 'Preview')
+
+  -- NES (Next Edit Suggestions) — normal-mode Tab to jump/apply
+  vim.keymap.set('n', '<Tab>', function()
+    if not require('sidekick').nes_jump_or_apply() then
+      return '<Tab>'
+    end
+  end, { expr = true, desc = 'Goto/Apply Next Edit Suggestion' })
 
   -- t is for 'Terminal' ------------------------------------------------------
   nmap_leader('ta', function()

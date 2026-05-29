@@ -274,8 +274,15 @@ if not vim.g.vscode then
     keymap = {
       -- Accept with Enter rather than Ctrl-y (default) to match IDE behavior
       preset = 'enter',
-      -- Get IDE style behavior for Tab and Shift-Tab
-      ['<Tab>'] = { 'select_next', 'fallback' },
+      -- Tab: snippet forward → NES jump/apply → select next → fallback
+      ['<Tab>'] = {
+        'snippet_forward',
+        function()
+          return require('sidekick').nes_jump_or_apply()
+        end,
+        'select_next',
+        'fallback',
+      },
       ['<S-Tab>'] = { 'select_prev', 'fallback' },
     },
     appearance = { nerd_font_variant = 'mono' },
@@ -309,7 +316,7 @@ if not vim.g.vscode then
 
   -- Configure sidekick.nvim (AI CLI terminal with tmux integration)
   require('sidekick').setup({
-    nes = { enabled = false },
+
     cli = {
       picker = 'fzf-lua',
       watch = true,

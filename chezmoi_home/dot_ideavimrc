@@ -3,8 +3,9 @@
 " └─────────────────┘
 "
 " Uses the same mnemonic leader groups as Neovim (04_keymaps.lua):
-"   b — Buffer        e — Explore/Edit    f — Find
-"   g — Git           l — Language         r — Refactor (IDE-specific)
+"   b — Buffer        c — Copy            e — Explore/Edit
+"   f — Find          g — Git             l — Language
+"   r — Refactor (IDE-specific)
 "   o — Other         t — Terminal
 
 " Configure handlers
@@ -73,6 +74,11 @@ nmap <leader>ba <Action>(Switcher)
 nmap <leader>bd <Action>(CloseContent)
 nmap <leader>bn <Action>(NextTab)
 nmap <leader>bp <Action>(PreviousTab)
+
+" c is for 'Copy' =============================================================
+nmap <leader>cp <Action>(CopyAbsolutePath)
+nmap <leader>cr <Action>(CopyContentRootPath)
+nmap <leader>cf <Action>(CopyFileName)
 
 " e is for 'Explore/Edit' =====================================================
 nmap <leader>ed <Action>(ActivateProblemsViewToolWindow)
