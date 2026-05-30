@@ -34,6 +34,7 @@ set -g @continuum-restore 'on'
 run '~/.psmux/plugins/ppm/ppm.ps1'
 {{- else }}
 # tmux plugins (Linux/macOS)
+set-environment -g TMUX_PLUGIN_MANAGER_PATH "$HOME/.tmux/plugins/"
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
@@ -42,7 +43,11 @@ set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @continuum-restore 'on'
 
 # Use fish as default shell
+{{- if eq .chezmoi.os "darwin" }}
+set -g default-command /opt/homebrew/bin/fish
+{{- else }}
 set -g default-command /usr/bin/fish
+{{- end }}
 
 # Initialize TPM (keep at the very bottom)
 run '~/.tmux/plugins/tpm/tpm'

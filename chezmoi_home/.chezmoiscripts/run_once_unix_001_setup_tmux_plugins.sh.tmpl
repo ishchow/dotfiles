@@ -11,7 +11,7 @@ else
     echo "TPM already installed at $TPM_DIR"
 fi
 
-# Auto-install plugins declared in tmux.conf
+# Auto-install plugins declared in tmux.conf.
 if [ -x "$TPM_DIR/bin/install_plugins" ]; then
     echo "Installing tmux plugins..."
     "$TPM_DIR/bin/install_plugins"
