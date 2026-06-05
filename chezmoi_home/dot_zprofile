@@ -9,4 +9,4 @@ fi
 
 export WEZTERM_CONFIG_FILE=$HOME/.config/wezterm/wezterm.lua
 
-path=("$HOME/.local/bin" $path)
+path=("$HOME/.local/share/mise/shims" "$HOME/.local/bin" $path)

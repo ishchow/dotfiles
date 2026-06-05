@@ -26,4 +26,9 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# mise shims for non-interactive processes (e.g. VS Code MCP servers)
+if [ -d "$HOME/.local/share/mise/shims" ] ; then
+    PATH="$HOME/.local/share/mise/shims:$PATH"
+fi
+
 export GPG_TTY=$(tty)

@@ -19,6 +19,9 @@ echo "mise version: $(mise --version)"
 # Install all tools declared in ~/.config/mise/config.toml
 mise install
 
+# Generate shims so non-shell processes (e.g. VS Code MCP servers) can find mise-managed tools
+mise reshim
+
 echo ""
 echo "========================================"
 echo "mise setup complete!"

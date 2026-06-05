@@ -24,7 +24,6 @@ set -ga terminal-overrides ",*256col*:Tc"
 {{- if eq .chezmoi.os "windows" }}
 # psmux plugins (Windows)
 set -g @plugin 'psmux-plugins/ppm'
-set -g @plugin 'psmux-plugins/psmux-yank'
 set -g @plugin 'psmux-plugins/psmux-resurrect'
 set -g @plugin 'psmux-plugins/psmux-continuum'
 

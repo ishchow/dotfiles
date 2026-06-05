@@ -37,6 +37,19 @@ if ($miseExe) {
     # Install all tools declared in ~/.config/mise/config.toml
 & "$miseBin" install
 
+# Ensure mise shims directory is in the User PATH so that non-shell processes
+# (e.g. VS Code MCP servers launched from a shortcut) can find mise-managed tools.
+$shimsDir = "$env:LOCALAPPDATA\mise\shims"
+if (Test-Path $shimsDir) {
+    $userPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
+    if ($userPath -notlike "*$shimsDir*") {
+        [System.Environment]::SetEnvironmentVariable("Path", "$shimsDir;$userPath", "User")
+        Write-Host "[OK] Added mise shims to User PATH: $shimsDir" -ForegroundColor Green
+    } else {
+        Write-Host "[OK] mise shims already in User PATH" -ForegroundColor Green
+    }
+}
+
 Write-Header "mise setup complete!"
 Write-Host "Installed tools:"
 & "$miseBin" list
