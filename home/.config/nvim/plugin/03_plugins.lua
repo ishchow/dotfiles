@@ -258,25 +258,28 @@ if not vim.g.vscode then
   -- Treesitter (parser management via nvim-treesitter plugin).
   -- The plugin is archived but its main branch works with Neovim 0.12.
   -- It provides ensure_installed + automatic parser compilation.
-  require('nvim-treesitter').setup({
-    ensure_installed = {
-      'bash', 'c', 'c_sharp', 'css', 'html', 'javascript', 'json', 'lua',
-      'markdown', 'markdown_inline', 'python', 'query', 'sql', 'typescript',
-      'vim', 'vimdoc', 'yaml',
-    },
-  })
+  -- Defer so parser loading doesn't block UI render.
+  Config.later(function()
+    require('nvim-treesitter').setup({
+      ensure_installed = {
+        'bash', 'c', 'c_sharp', 'css', 'html', 'javascript', 'json', 'lua',
+        'markdown', 'markdown_inline', 'python', 'query', 'sql', 'typescript',
+        'vim', 'vimdoc', 'yaml',
+      },
+    })
 
-  -- Enable treesitter highlighting for all filetypes with installed parsers.
-  -- The archived nvim-treesitter plugin only manages parser installation;
-  -- highlighting must be started explicitly (Neovim <0.12).
-  vim.api.nvim_create_autocmd('FileType', {
-    group = vim.api.nvim_create_augroup('treesitter-highlight', {}),
-    callback = function(ev)
-      if pcall(vim.treesitter.start, ev.buf) then
-        vim.bo[ev.buf].syntax = ''
-      end
-    end,
-  })
+    -- Enable treesitter highlighting for all filetypes with installed parsers.
+    -- The archived nvim-treesitter plugin only manages parser installation;
+    -- highlighting must be started explicitly (Neovim <0.12).
+    vim.api.nvim_create_autocmd('FileType', {
+      group = vim.api.nvim_create_augroup('treesitter-highlight', {}),
+      callback = function(ev)
+        if pcall(vim.treesitter.start, ev.buf) then
+          vim.bo[ev.buf].syntax = ''
+        end
+      end,
+    })
+  end)
 
   -- Configure dropbar.nvim (treesitter-based breadcrumbs in winbar)
   require('dropbar').setup()
@@ -380,12 +383,14 @@ if not vim.g.vscode then
 
   -- LSP: nvim-lspconfig provides base configs in its lsp/ directory.
   -- Override per-server settings in after/lsp/<server>.lua (see :h lsp-config).
-  -- List servers to enable here:
-  vim.lsp.enable({
-    'lua_ls',
-    'markdown_oxide',
-    'copilot_ls',
-  })
+  -- Defer LSP server startup so workspace indexing (e.g. lua_ls) doesn't block UI render.
+  Config.later(function()
+    vim.lsp.enable({
+      'lua_ls',
+      'markdown_oxide',
+      'copilot_ls',
+    })
+  end)
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
