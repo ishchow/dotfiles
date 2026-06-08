@@ -345,36 +345,6 @@ if not vim.g.vscode then
     nes = { move_count_threshold = 3 },
   })
 
-  -- Configure sidekick.nvim (AI CLI terminal with tmux integration)
-  require('sidekick').setup({
-    nes = { enabled = false },
-
-    cli = {
-      picker = 'fzf-lua',
-      watch = true,
-      -- TODO: re-enable once sidekick supports Windows process discovery for tmux
-      -- mux = {
-      --   enabled = true,
-      --   backend = 'tmux',
-      --   create = 'window',
-      -- },
-      win = {
-        layout = 'float',
-      },
-      tools = {
-        agency_copilot = {
-          cmd = { 'agency', 'copilot' },
-          is_proc = function(_, proc)
-            local re = vim.regex('\\<copilot\\>')
-            return re:match_str(proc.cmd) and not proc.cmd:find('language%-server') or false
-          end,
-        },
-      },
-    },
-    copilot = {
-      status = { enabled = false },
-    },
-  })
 
   -- Configure snacks.nvim (only vim.ui.input override)
   require('snacks').setup({

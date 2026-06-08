@@ -74,8 +74,6 @@ if not vim.g.vscode then
       -- Markdown preview
       'https://github.com/brianhuster/live-preview.nvim',
 
-      -- AI CLI terminal
-      'https://github.com/folke/sidekick.nvim',
 
       -- Copilot NES (Next Edit Suggestions)
       'https://github.com/copilotlsp-nvim/copilot-lsp',
