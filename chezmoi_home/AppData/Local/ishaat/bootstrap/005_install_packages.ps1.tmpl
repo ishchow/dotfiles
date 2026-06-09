@@ -19,11 +19,11 @@ Write-Header "Ensuring Visual Studio C++ Build Tools workload"
 $vsInstaller = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vs_installer.exe"
 if (Test-Path $vsInstaller) {
     Write-Host "Adding VCTools workload to VS Build Tools..." -ForegroundColor Cyan
-    sudo & $vsInstaller modify --productId Microsoft.VisualStudio.Product.BuildTools `
+    sudo $vsInstaller modify --productId Microsoft.VisualStudio.Product.BuildTools `
         --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended `
         --quiet --norestart 2>&1 | Out-Null
     Write-Host "[OK] VCTools workload ensured" -ForegroundColor Green
 } else {
-    Write-Warning "VS Installer not found — C++ build tools may not be available for tree-sitter"
+    Write-Warning "VS Installer not found -- C++ build tools may not be available for tree-sitter"
 }
 {{ end }}
