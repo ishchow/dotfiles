@@ -15,10 +15,6 @@
 					"Scope": "machine"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsApp",
-					"Scope": "machine"
-				},
-				{
 					"PackageIdentifier" : "ntwind.AltTabTer",
 					"Scope": "machine"
 				},

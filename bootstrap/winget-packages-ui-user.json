@@ -27,7 +27,11 @@
 					"Scope": "user"
 				},
 				{
-					"PackageIdentifier": "wez.wezterm",
+						"PackageIdentifier": "Microsoft.WindowsApp",
+						"x-comment": "Scope omitted: installer does not support explicit scope"
+					},
+					{
+						"PackageIdentifier": "wez.wezterm",
 					"x-comment": "Installation fails if scope is explicitly set, so scope is omitted."
 				}
 			],
