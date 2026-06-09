@@ -28,7 +28,7 @@ Set-PSReadLineKeyHandler -Key Ctrl+v -Function Paste
 # mise (runtime version manager) activation — must come first so that
 # tools installed via mise (zoxide, fzf, starship, etc.) are on PATH
 # before we try to initialise them.
-if (Get-Command mise -ErrorAction SilentlyContinue) {
+if ((Get-Command mise -ErrorAction SilentlyContinue) -and ($PSVersionTable.PSVersion.Major -ge 7)) {
     $__misePath = (Get-Command mise -CommandType Application).Source
     $__miseActivate = (& "$__misePath" activate pwsh | Out-String)
     # Fix unquoted exe paths containing spaces (mise bug)
