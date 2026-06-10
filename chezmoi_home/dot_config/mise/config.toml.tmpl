@@ -33,6 +33,15 @@
 "zola" = "latest"
 {{ end }}
 
+{{ if eq .chezmoi.os "windows" }}
+# Debuggers (Windows only)
+[tools."github:Samsung/netcoredbg"]
+version = "latest"
+version_prefix = ""
+bin_path = "netcoredbg"
+asset_pattern = "netcoredbg-win64.zip"
+{{ end }}
+
 [settings]
 # Enable experimental features
 experimental = true
