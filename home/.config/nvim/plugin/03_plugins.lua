@@ -338,6 +338,28 @@ if not vim.g.vscode then
     input = { enabled = true },
   })
 
+  -- Configure roslyn.nvim (C# LSP via Microsoft Roslyn language server)
+  vim.lsp.config("roslyn", {
+    settings = {
+      ["csharp|inlay_hints"] = {
+        csharp_enable_inlay_hints_for_implicit_variable_types = true,
+        csharp_enable_inlay_hints_for_lambda_parameter_types = true,
+        dotnet_enable_inlay_hints_for_literal_parameters = true,
+        dotnet_enable_inlay_hints_for_object_creation_parameters = true,
+      },
+      ["csharp|code_lens"] = {
+        dotnet_enable_references_code_lens = true,
+      },
+      ["csharp|completion"] = {
+        dotnet_show_completion_items_from_unimported_namespaces = true,
+        dotnet_show_name_completion_suggestions = true,
+      },
+    },
+  })
+  require("roslyn").setup({
+    broad_search = true,
+  })
+
   -- LSP: nvim-lspconfig provides base configs in its lsp/ directory.
   -- Override per-server settings in after/lsp/<server>.lua (see :h lsp-config).
   -- Defer LSP server startup so workspace indexing (e.g. lua_ls) doesn't block UI render.
@@ -346,7 +368,6 @@ if not vim.g.vscode then
       'lua_ls',
       'markdown_oxide',
       'copilot_ls',
-      -- 'omnisharp',
     })
   end)
 end

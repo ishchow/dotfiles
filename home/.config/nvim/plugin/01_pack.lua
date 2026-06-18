@@ -51,7 +51,7 @@ if not vim.g.vscode then
 
       -- LSP
       'https://github.com/neovim/nvim-lspconfig',
-      'https://github.com/Hoffs/omnisharp-extended-lsp.nvim',
+      'https://github.com/seblyng/roslyn.nvim',
 
       -- Completion
       'https://github.com/saghen/blink.cmp',
