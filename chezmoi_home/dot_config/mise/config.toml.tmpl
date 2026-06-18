@@ -34,6 +34,9 @@
 {{ end }}
 
 # .NET development tools
+[tools."dotnet:roslyn-language-server"]
+version = "latest"
+prerelease = true
 
 {{ if eq .chezmoi.os "windows" }}
 # Debuggers (Windows only)
