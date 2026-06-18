@@ -8,7 +8,7 @@
 -- Leader groups:
 --   b — Buffer        c — Copy            d — Dotnet
 --   e — Explore/Edit  f — Find            g — Git (reserved)
---   l — Language (LSP) o — Other          t — Terminal
+--   l — Language (LSP) o — Other
 --
 -- Convention: lowercase second key = global/workspace scope,
 -- uppercase second key = local/buffer scope.
@@ -90,9 +90,6 @@ if vim.g.vscode then
   -- o is for 'Other'
   nmap_leader('op', act('markdown.showPreview'),                         'Preview')
   nmap_leader('oz', act('workbench.action.toggleZenMode'),               'Zen mode')
-
-  -- t is for 'Terminal'
-  nmap_leader('tt', act('workbench.action.terminal.toggleTerminal'),     'Terminal')
 end
 
 -- ============================================================================
@@ -356,10 +353,6 @@ if not vim.g.vscode then
   nmap_leader('ot', function() MiniTrailspace.trim() end, 'Trim trailing whitespace')
   nmap_leader('op', '<Cmd>LivePreview start<CR>', 'Preview')
   nmap_leader('of', '<Cmd>TableFormat<CR>', 'Format table')
-  -- t is for 'Terminal' ------------------------------------------------------
-  nmap_leader('ta', function()
-    vim.system({ 'tmux', 'new-window', '-c', vim.fn.getcwd(), 'agency', 'copilot' })
-  end, 'Agency Copilot (tmux)')
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
