@@ -3,6 +3,7 @@
 Personal dotfiles.
 
 ## Repo structure
+
 ```
 .
 ├── bootstrap       # Contains data used for bootstrapping new systems
