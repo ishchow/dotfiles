@@ -51,6 +51,7 @@ if not vim.g.vscode then
 
       -- LSP
       'https://github.com/neovim/nvim-lspconfig',
+      'https://github.com/Hoffs/omnisharp-extended-lsp.nvim',
 
       -- Completion
       'https://github.com/saghen/blink.cmp',
@@ -74,9 +75,6 @@ if not vim.g.vscode then
       -- Markdown preview
       'https://github.com/brianhuster/live-preview.nvim',
 
-
-      -- Copilot NES (Next Edit Suggestions)
-      'https://github.com/copilotlsp-nvim/copilot-lsp',
 
       -- UI overrides (vim.ui.input)
       'https://github.com/folke/snacks.nvim',

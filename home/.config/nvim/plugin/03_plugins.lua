@@ -93,6 +93,8 @@ if not vim.g.vscode then
   })
   wk.add({
     { "<leader>b", group = "Buffer" },
+    { "<leader>c", group = "Copy" },
+    { "<leader>d", group = "Dotnet" },
     { "<leader>e", group = "Explore/Edit" },
     { "<leader>f", group = "Find" },
     { "<leader>g", group = "Git" },
@@ -289,16 +291,8 @@ if not vim.g.vscode then
     keymap = {
       -- Accept with Enter rather than Ctrl-y (default) to match IDE behavior
       preset = 'enter',
-      -- Tab: NES accept when suggestion pending → snippet forward → select next → fallback
       ['<Tab>'] = {
         function(cmp)
-          if vim.b[vim.api.nvim_get_current_buf()].nes_state then
-            cmp.hide()
-            return (
-              require('copilot-lsp.nes').apply_pending_nes()
-              and require('copilot-lsp.nes').walk_cursor_end_edit()
-            )
-          end
           if cmp.snippet_active() then
             return cmp.accept()
           else
@@ -339,13 +333,6 @@ if not vim.g.vscode then
     picker = 'fzf-lua',
   })
 
-  -- Configure copilot-lsp (NES — Next Edit Suggestions)
-  vim.g.copilot_nes_debounce = 500
-  require('copilot-lsp').setup({
-    nes = { move_count_threshold = 3 },
-  })
-
-
   -- Configure snacks.nvim (only vim.ui.input override)
   require('snacks').setup({
     input = { enabled = true },
@@ -359,6 +346,7 @@ if not vim.g.vscode then
       'lua_ls',
       'markdown_oxide',
       'copilot_ls',
+      -- 'omnisharp',
     })
   end)
 end

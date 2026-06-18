@@ -100,7 +100,12 @@
 					{
 						"PackageIdentifier": "DEVCOM.JetBrainsMonoNerdFont",
 					"x-comment": "Nerd Font required for mini.icons and which-key.nvim icon rendering in the terminal."
-				}
+					},
+					{
+						"PackageIdentifier": "Microsoft.NuGet",
+						"Scope": "machine",
+						"x-comment": "NuGet CLI required by easy-dotnet.nvim for .NET Framework support."
+					}
 			],
 			"SourceDetails" :
 			{
