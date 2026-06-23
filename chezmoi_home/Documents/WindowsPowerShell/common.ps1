@@ -108,8 +108,33 @@ function Remove-StaleBranches
    git branch -vv | Select-String ': gone]' | ForEach-Object { ($_ -split '\s+')[1] } | ForEach-Object { git branch -D $_ }
 }
 
+# Checkout a remote branch reliably (works with Azure DevOps where shorthand fetch fails)
+# Also sets upstream tracking so git pull works correctly.
+function Switch-RemoteBranch
+{
+    [CmdletBinding()]
+    Param(
+        [Parameter(Mandatory, Position = 0)]
+        [string]$Branch,
+
+        [string]$Remote = 'origin'
+    )
+
+    git fetch $Remote "refs/heads/${Branch}:${Branch}" 2>$null
+    if ($LASTEXITCODE -ne 0) {
+        # Fallback: branch may already exist locally
+        git checkout $Branch
+    } else {
+        git checkout $Branch
+    }
+
+    # Set upstream tracking so git pull fetches the correct remote branch
+    git branch --set-upstream-to="${Remote}/${Branch}" $Branch 2>$null
+}
+
 # ------------------------------------------------------------------------------------------------------------------------
 # Aliases
 # ------------------------------------------------------------------------------------------------------------------------
 
 Set-Alias -Name gprnlcl -Value Remove-StaleBranches
+Set-Alias -Name gco -Value Switch-RemoteBranch
