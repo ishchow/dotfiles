@@ -30,7 +30,8 @@ These are the platforms that this repo is used to manage and tested with:
 Run in admin prompt:
 
 ```
-@('Git.Git', 'twpayne.chezmoi', 'gerardog.gsudo') | ForEach-Object { winget install --exact --id $_ --scope=machine }
+@('Git.Git', 'gerardog.gsudo') | ForEach-Object { winget install --exact --id $_ --scope=machine }
+@('twpayne.chezmoi') | ForEach-Object { winget install --exact --id $_ }
 ```
 
 ## Linux (OpenSUSE Tumbleweed)

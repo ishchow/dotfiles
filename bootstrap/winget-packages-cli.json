@@ -12,7 +12,7 @@
 				},
 				{
 					"PackageIdentifier" : "twpayne.chezmoi",
-					"Scope": "machine"
+					"Scope": "user"
 				},
 				{
 					"PackageIdentifier": "gerardog.gsudo",
