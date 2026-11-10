@@ -15,27 +15,17 @@ if (-not $miseBin) {
 
 Write-Host "mise version: $(& "$miseBin" --version)" -ForegroundColor Cyan
 
-# Ensure mise-shim.exe exists next to mise.exe (winget package doesn't include it)
-$miseExe = $miseBin
-if ($miseExe) {
-    # Resolve symlink (e.g. WinGet\Links\mise.exe -> actual path)
-    $link = Get-Item $miseExe
-    if ($link.Target) { $miseExe = $link.Target }
-    $miseDir = Split-Path $miseExe
-    $shimPath = Join-Path $miseDir "mise-shim.exe"
-    if (-not (Test-Path $shimPath)) {
-        Write-Host "Copying mise-shim.exe next to mise.exe..." -ForegroundColor Cyan
-        Copy-Item $miseExe $shimPath -ErrorAction SilentlyContinue
-        if (Test-Path $shimPath) {
-            Write-Host "[OK] mise-shim.exe created" -ForegroundColor Green
-        } else {
-            Write-Warning "Could not copy mise-shim.exe (may need admin privileges)"
-        }
-    }
-    }
-
-    # Install all tools declared in ~/.config/mise/config.toml
+# Install all tools declared in ~/.config/mise/config.toml
 & "$miseBin" install
+if ($LASTEXITCODE -ne 0) {
+    throw "mise install failed with exit code $LASTEXITCODE"
+}
+
+# Generate shims for non-shell processes (e.g. VS Code MCP servers).
+& "$miseBin" reshim
+if ($LASTEXITCODE -ne 0) {
+    throw "mise reshim failed with exit code $LASTEXITCODE"
+}
 
 # Ensure mise shims directory is in the User PATH so that non-shell processes
 # (e.g. VS Code MCP servers launched from a shortcut) can find mise-managed tools.
